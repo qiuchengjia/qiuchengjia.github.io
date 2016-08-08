@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-08T08:19:47.840Z</updated>
+  <updated>2016-08-08T12:14:01.794Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>Java注解</title>
     <link href="http://www.qiuchengjia.cn/2016/08/07/JAVA/Java%E6%B3%A8%E8%A7%A3/"/>
     <id>http://www.qiuchengjia.cn/2016/08/07/JAVA/Java注解/</id>
-    <published>2016-08-07T05:20:39.000Z</published>
-    <updated>2016-08-08T08:19:47.840Z</updated>
+    <published>2016-08-07T13:20:39.000Z</published>
+    <updated>2016-08-08T12:14:01.794Z</updated>
     
     <content type="html"><![CDATA[<h3 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h3><ul>
 <li><p>注解对于开发人员来讲既熟悉又陌生，熟悉是因为只要你是做开发，都会用到注解（常见的@Override）；陌生是因为即使不使用注解也照常能够进行开发；注解不是必须的，但了解注解有助于我们深入理解某些第三方框架（比如Android Support Annotations、JUnit、xUtils、ActiveAndroid等），提高工作效率</p>
@@ -193,7 +193,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.setFlavour(IceCreamFlavourManager.VANILLA &amp; IceCreamFlavourManager.CHOCOLATE);</div></pre></td></tr></table></figure>
 <h4 id="线程注解："><a href="#线程注解：" class="headerlink" title="线程注解："></a><strong>线程注解：</strong></h4><ul>
-<li>对对对</li>
+<li>对对对aaaa</li>
 </ul>
 ]]></content>
     
