@@ -1,0 +1,1114 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是反射“反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：
+
+内省用于在运行时检测某个对象的类型和其包含的属性
+
+反射用于在运行时检测和修改某个对象的结构及其行为
+
+
+从它们的定义可以看出，内省是反射的一个子集。有些语言支持内省，但并不支持反射，如C++
+
+内省示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java反射">
+<meta property="og:url" content="http://yoursite.com/2016/07/29/JAVA/Java反射/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是反射“反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：
+
+内省用于在运行时检测某个对象的类型和其包含的属性
+
+反射用于在运行时检测和修改某个对象的结构及其行为
+
+
+从它们的定义可以看出，内省是反射的一个子集。有些语言支持内省，但并不支持反射，如C++
+
+内省示">
+<meta property="og:updated_time" content="2016-08-02T13:21:35.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java反射">
+<meta name="twitter:description" content="什么是反射“反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：
+
+内省用于在运行时检测某个对象的类型和其包含的属性
+
+反射用于在运行时检测和修改某个对象的结构及其行为
+
+
+从它们的定义可以看出，内省是反射的一个子集。有些语言支持内省，但并不支持反射，如C++
+
+内省示">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/29/JAVA/Java反射/"/>
+
+  <title> Java反射 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java反射
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-07-29T16:18:26+08:00" content="2016-07-29">
+              2016-07-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/29/JAVA/Java反射/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/29/JAVA/Java反射/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/29/JAVA/Java反射/" class="leancloud_visitors" data-flag-title="Java反射">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><p>“<strong>反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。</strong>”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：</p>
+<ul>
+<li><p>内省用于在运行时检测某个对象的类型和其包含的属性</p>
+</li>
+<li><p>反射用于在运行时检测和修改某个对象的结构及其行为</p>
+</li>
+</ul>
+<p>从它们的定义可以看出，内省是反射的一个子集。有些语言支持内省，但并不支持反射，如C++</p>
+<ul>
+<li>内省示例：instanceof 运算符用于检测某个对象是否属于特定的类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Dog) &#123;</div><div class="line">    Dog d = (Dog) obj;</div><div class="line">    d.bark();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>反射示例：Class.forName()方法可以通过类或接口的名称（一个字符串或完全限定名）来获取对应的Class对象。forName方法会触发类的初始化</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用反射</span></div><div class="line">Class&lt;?&gt; c = Class.forName(<span class="string">"classpath.and.classname"</span>);</div><div class="line">Object dog = c.newInstance();</div><div class="line">Method m = c.getDeclaredMethod(<span class="string">"bark"</span>, <span class="keyword">new</span> Class&lt;?&gt;[<span class="number">0</span>]);</div><div class="line">m.invoke(dog);</div></pre></td></tr></table></figure>
+<ul>
+<li>在Java中，反射更接近于内省，因为你无法改变一个对象的结构。虽然一些API可以用来修改方法和属性的可见性，但并不能修改结构<a id="more"></a>
+</li>
+</ul>
+<h3 id="为什么需要反射"><a href="#为什么需要反射" class="headerlink" title="为什么需要反射"></a>为什么需要反射</h3><p>反射能够让我们：</p>
+<ul>
+<li><p>在运行时检测对象的类型</p>
+</li>
+<li><p>动态构造某个类的对象</p>
+</li>
+<li><p>检测类的属性和方法</p>
+</li>
+<li><p>任意调用对象的方法</p>
+</li>
+<li><p>修改构造函数、方法、属性的可见性</p>
+</li>
+<li><p>以及其他</p>
+</li>
+</ul>
+<p><strong>反射是框架中常用的方法</strong></p>
+<ul>
+<li>例如，<a href="http://www.programcreek.com/2012/02/junit-tutorial-2-annotations/" target="_blank" rel="external">JUnit</a> 通过反射来遍历包含 @Test 注解的方法，并在运行单元测试时调用它们。（这个连接中包含了一些<a href="http://www.programcreek.com/2012/02/junit-tutorial-2-annotations/" target="_blank" rel="external">JUnit</a> 的使用案例）</li>
+</ul>
+<p>对于Web框架，开发人员在配置文件中定义他们对各种接口和类的实现。通过反射机制，框架能够快速地动态初始化所需要的类</p>
+<ul>
+<li>例如，Spring框架使用如下的配置文件：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"someID"</span> <span class="attr">class</span>=<span class="string">"com.programcreek.Foo"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"someField"</span> <span class="attr">value</span>=<span class="string">"someValue"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>当Spring容器处理<bean>元素时，会使用Class.forName(“com.programcreek.Foo”)来初始化这个类，并再次使用反射获取<property>元素对应的setter方法，为对象的属性赋值</property></bean></p>
+</li>
+<li><p>Servlet也会使用相同的机制：</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>someServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.programcreek.WhyReflectionServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="处理泛型"><a href="#处理泛型" class="headerlink" title="处理泛型"></a>处理泛型</h3><ul>
+<li>Java 5中引入了泛型的概念之后，Java反射API也做了相应的修改，以提供对泛型的支持。由于类型擦除机制的存在，泛型类中的类型参数等信息，在运行时刻是不存在的。JVM看到的都是原始类型。对此，Java 5对Java类文件的格式做了修订，添加了Signature属性，用来包含不在JVM类型系统中的类型信息。 在运行时刻，JVM会读取Signature属性的内容并提供给反射API来使用。<br>比如在代码中声明了一个域是List类型的，虽然在运行时刻其类型会变成原始类型List，但是仍然可以通过反射来获取到所用的实际的类型参数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Field field = Pair.class.getDeclaredField(<span class="string">"myList"</span>); <span class="comment">//myList的类型是List </span></div><div class="line">Type type = field.getGenericType(); </div><div class="line"><span class="keyword">if</span> (type <span class="keyword">instanceof</span> ParameterizedType) &#123;     </div><div class="line">    ParameterizedType paramType = (ParameterizedType) type;     </div><div class="line">    Type[] actualTypes = paramType.getActualTypeArguments();     </div><div class="line">    <span class="keyword">for</span> (Type aType : actualTypes) &#123;         </div><div class="line">        <span class="keyword">if</span> (aType <span class="keyword">instanceof</span> Class) &#123;         </div><div class="line">            Class clz = (Class) aType;             </div><div class="line">            System.out.println(clz.getName()); <span class="comment">//输出java.lang.String         </span></div><div class="line">        &#125;     </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h3><p>在程序运行期间，Java运行时系统始终为所有的对象维护一个被称为运行时的类型标识。这个信息跟踪着这个对象所属的类。可以通过专门的Java类访问这些信息，保存这些信息的类被称为<strong>Class类</strong>。<br>获取Class对象的三种方法：</p>
+<ol>
+<li><p>通过调用Object类中的getClass()方法返回一个Class对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object myObject = <span class="keyword">new</span> Object();</div><div class="line">Class myObjectClass = myObject.getClass();</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过调用静态方法forName获得类名对应的Class对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String className = <span class="string">"java.util.Date"</span>;</div><div class="line">Class cl = Class.forName(className);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：在使用<code>Class.forName()</code>方法时，必须提供一个类的全名，这个全名包括类所在的包的名字。</p>
+<ol>
+<li>如果在调用该方法时，没有找到该路径的类，将会抛出ClassNotFoundException。<br>获得Class对象的第三种方法非常简单，如果<code>T</code>是任意的Java类型，<code>T.class</code>将代表匹配的类对象<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class cl1 = Date.class;</div><div class="line">Class cl2 = <span class="keyword">int</span>.class;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>补充：可通过下面方式访问类的父类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object myObject = <span class="keyword">new</span> Object();</div><div class="line">Class myObjectClass = myObject.getSuperclass();</div></pre></td></tr></table></figure></p>
+<h3 id="获取类名"><a href="#获取类名" class="headerlink" title="获取类名"></a>获取类名</h3><p>通过Class对象可以获取两个版本的类名：</p>
+<ol>
+<li><p>通过getName()方法返回类的全限定类名(包含包名)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">String className = aClass.getName();</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过getSimpleName()方法返回类名(不包含包名)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">String className = aClass.getSimpleName();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="获取修饰符"><a href="#获取修饰符" class="headerlink" title="获取修饰符"></a>获取修饰符</h3><p>可以通过Class对象的<code>getModifiers()</code>方法来访问一个类的修饰符，该方法通过返回一个整型数值，用不同的位开关描述public/private/static等修饰符的使用状况。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line"><span class="keyword">int</span> modifiers = aClass.getModifiers();</div></pre></td></tr></table></figure></p>
+<p>还可以使用Modifier类中的isPublic、isPrivate或isFinal判断方法或构造器是否是public、private或final。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Modifier.isAbstract(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isFinal(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isInterface(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isNative(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isPrivate(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isProtected(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isPublic(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isStatic(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isStrict(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isSynchronized(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isTransient(<span class="keyword">int</span> modifiers);</div><div class="line">Modifier.isVolatile(<span class="keyword">int</span> modifiers);</div></pre></td></tr></table></figure></p>
+<h3 id="获取包信息"><a href="#获取包信息" class="headerlink" title="获取包信息"></a>获取包信息</h3><p>可通过以下方式获取包信息：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">Object object = <span class="keyword">new</span> Object();</div><div class="line">Class cl = object.getClass();</div><div class="line">System.out.println(cl.getPackage());</div><div class="line">...</div><div class="line"><span class="comment">/*output</span></div><div class="line">package java.lang, Java Platform API Specification, version 1.7</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<h3 id="获取实现的接口集合"><a href="#获取实现的接口集合" class="headerlink" title="获取实现的接口集合"></a>获取实现的接口集合</h3><p>可通过调用Class对象的<code>getInterfaces()</code>方法获取一个类实现的接口集合<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">Class[] interfaces = aClass.getInterfaces();</div></pre></td></tr></table></figure></p>
+<p>注意：getInterfaces()方法仅仅只返回当前类所实现的接口，不包括当前类的父类所实现的接口。</p>
+<h3 id="获取构造器"><a href="#获取构造器" class="headerlink" title="获取构造器"></a>获取构造器</h3><p>可通过调用Class对象的<code>getConstructors()</code>方法获取一个类的构造函数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">Constructor[] constructors = aClass.getConstructors();</div></pre></td></tr></table></figure></p>
+<p>返回的Constructor数组包含每一个声明为<code>public</code>的构造方法。</p>
+<hr>
+<p>还可以通过给定的构造方法的参数类型获取指定的构造方法，如下：返回的构造方法的方法参数为String类型<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">Constructor constructor = aClass.getConstructor(<span class="keyword">new</span> Class[]&#123;String.class&#125;);</div></pre></td></tr></table></figure></p>
+<p>注意：如果没有指定的构造方法能匹配给定的方法参数，则会抛出<code>NoSuchMethodException</code>异常。</p>
+<hr>
+<p>还可以获取指定构造方法的方法参数信息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Constructor constructor = ... <span class="comment">//获取Constructor对象</span></div><div class="line">Class[] parameterTypes = constructor.getParameterTypes();</div></pre></td></tr></table></figure></p>
+<hr>
+<p>利用Constructor对象实例化一个类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Constructor constructor = ... <span class="comment">//获取Constructor对象</span></div><div class="line">Class[] parameterTypes = constructor.getParameterTypes();</div></pre></td></tr></table></figure></p>
+<h3 id="获取方法"><a href="#获取方法" class="headerlink" title="获取方法"></a>获取方法</h3><p>可通过调用Class对象的<code>getMethods()</code>方法获取一个类的所有方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ...<span class="comment">//获取Class对象</span></div><div class="line">Method[] methods = aClass.getMethods();</div></pre></td></tr></table></figure></p>
+<p>返回的Method对象数组包含了指定类中声明为public的所有变量集合。</p>
+<hr>
+<p>还可以通过具体的参数类型来获取指定的方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class  aClass = ...<span class="comment">//获取Class对象</span></div><div class="line">Method method = aClass.getMethod(<span class="string">"doSomething"</span>, <span class="keyword">new</span> Class[]&#123;String.class&#125;);</div></pre></td></tr></table></figure></p>
+<p>注意：如果根据给定的方法名称以及参数类型无法匹配到相应的方法，则会抛出NoSuchMethodException</p>
+<hr>
+<p>获取指定方法的方法参数以及返回类型<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Method method = ... <span class="comment">//获取Class对象</span></div><div class="line">Class[] parameterTypes = method.getParameterTypes();</div><div class="line">Class returnType = method.getReturnType();</div></pre></td></tr></table></figure></p>
+<hr>
+<p>通过Method对象调用方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取一个方法名为doSomesthing，参数类型为String的方法</span></div><div class="line">Method method = MyObject.class.getMethod(<span class="string">"doSomething"</span>, String.class);</div><div class="line">Object returnValue = method.invoke(<span class="keyword">null</span>, <span class="string">"parameter-value1"</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="获取变量"><a href="#获取变量" class="headerlink" title="获取变量"></a>获取变量</h3><p>可通过调用Class对象的<code>getFields()</code>方法获取一个类的成员变量<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">Field[] method = aClass.getFields();</div></pre></td></tr></table></figure></p>
+<p>返回的Field对象数组包含了指定类中声明为<code>public</code>的所有变量集合</p>
+<hr>
+<p>还可以通过具体的变量名称获取指定的变量<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">Field[] method = aClass.getFields(<span class="string">"someField"</span>);</div></pre></td></tr></table></figure></p>
+<p>注意：在调用<code>getField()</code>方法时，如果根据给定的方法参数没有找到对应的变量，那么就会抛出<code>NoSuchFieldException</code></p>
+<hr>
+<p>通过调用<code>Field</code>对象的<code>getName()</code>方法获取它的变量名称<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Field field = ... <span class="comment">//获取Field对象</span></div><div class="line">String fieldName = field.getName();</div></pre></td></tr></table></figure></p>
+<hr>
+<p>通过调用<code>Field</code>对象<code>getType()</code>方法来获取一个变量的类型（如String, int等等）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Class aClass = ... <span class="comment">//获取Class对象</span></div><div class="line">Field field = aClass.getField(<span class="string">"someField"</span>);</div><div class="line">Object fieldType = field.getType();</div></pre></td></tr></table></figure></p>
+<hr>
+<p>通过调用<code>Field.get()</code>或<code>Field.set()</code>方法获取或设置(get/set)变量值<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Class  aClass = MyObject.class</div><div class="line">Field field = aClass.getField(<span class="string">"someField"</span>);</div><div class="line"></div><div class="line">MyObject objectInstance = <span class="keyword">new</span> MyObject();</div><div class="line"></div><div class="line">Object value = field.get(objectInstance);</div><div class="line"></div><div class="line">field.set(objetInstance, value);</div></pre></td></tr></table></figure></p>
+<h3 id="获取指定类的getters和setters"><a href="#获取指定类的getters和setters" class="headerlink" title="获取指定类的getters和setters"></a>获取指定类的getters和setters</h3><ul>
+<li>Getter：Getter方法的名字以get开头，没有方法参数，返回一个值</li>
+<li>Setter：Setter方法的名字以set开头，有一个方法参数</li>
+</ul>
+<p>一个获取getter方法和setter方法的例子:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printGettersSetters</span><span class="params">(Class aClass)</span></span>&#123;</div><div class="line">  Method[] methods = aClass.getMethods();</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(Method method : methods)&#123;</div><div class="line">    <span class="keyword">if</span>(isGetter(method)) System.out.println(<span class="string">"getter: "</span> + method);</div><div class="line">    <span class="keyword">if</span>(isSetter(method)) System.out.println(<span class="string">"setter: "</span> + method);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isGetter</span><span class="params">(Method method)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(!method.getName().startsWith(<span class="string">"get"</span>))      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">if</span>(method.getParameterTypes().length != <span class="number">0</span>)   <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">void</span>.class.equals(method.getReturnType()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isSetter</span><span class="params">(Method method)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(!method.getName().startsWith(<span class="string">"set"</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">if</span>(method.getParameterTypes().length != <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="获取私有变量"><a href="#获取私有变量" class="headerlink" title="获取私有变量"></a>获取私有变量</h3><p>可以通过调用<code>Class.getDeclaredField(String name)</code>方法或者<code>Class.getDeclaredFields()</code>方法获取私有变量和受保护变量，不包括超类的成员；<code>Class.getField(String name)</code>和<code>Class.getFields()</code>只会返回公有变量，其中包括超类的公有变量，而无法获取私有变量。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrivateObject</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> String privateString = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">PrivateObject</span><span class="params">(String privateString)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.privateString = privateString;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**********************************************************************/</span></div><div class="line">PrivateObject privateObject = <span class="keyword">new</span> PrivateObject(<span class="string">"The Private Value"</span>);</div><div class="line"></div><div class="line">Field privateStringField = PrivateObject.class.</div><div class="line">            getDeclaredField(<span class="string">"privateString"</span>);</div><div class="line"></div><div class="line">privateStringField.setAccessible(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">String fieldValue = (String) privateStringField.get(privateObject);</div><div class="line">System.out.println(<span class="string">"fieldValue = "</span> + fieldValue);</div></pre></td></tr></table></figure></p>
+<p>这个例子会输出”fieldValue = The Private Value”，<code>The Private Value</code>是<code>PrivateObject</code>实例的<code>privateString</code>私有变量的值，注意调用<code>PrivateObject.class.getDeclaredField(&quot;privateString&quot;)</code>方法会返回一个私有变量，这个方法返回的变量是定义在<code>PrivateObject</code>类中的而不是在它的父类中定义的变量。<br>注意：<code>privateStringField.setAccessible(true)</code>这行代码，通过调用<code>setAccessible()</code>方法会关闭指定类Field实例的反射访问检查，这行代码执行之后不论是私有的、受保护的以及包访问的作用域，你都可以在任何地方访问，即使你不在他的访问权限作用域之内。但是你如果你用一般代码来访问这些不在你权限作用域之内的代码依然是不可以的，在编译的时候就会报错。</p>
+<h3 id="获取私有方法"><a href="#获取私有方法" class="headerlink" title="获取私有方法"></a>获取私有方法</h3><p>可以通过调用<code>Class.getDeclaredMethod(String name, Class[] parameterTypes)</code>或者<code>Class.getDeclaredMethods()</code>方法获取私有方法，不包括超类的成员；<code>Class.getMethod(String name, Class[] parameterTypes)</code>和<code>Class.getMethods()</code>方法，只会返回公有的方法，其中包括超类的公有方法，而无法获取私有方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrivateObject</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> String privateString = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">PrivateObject</span><span class="params">(String privateString)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.privateString = privateString;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> String <span class="title">getPrivateString</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.privateString;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*******************************************************************/</span></div><div class="line">PrivateObject privateObject = <span class="keyword">new</span> PrivateObject(<span class="string">"The Private Value"</span>);</div><div class="line"></div><div class="line">Method privateStringMethod = PrivateObject.class.</div><div class="line">        getDeclaredMethod(<span class="string">"getPrivateString"</span>, <span class="keyword">null</span>);</div><div class="line"></div><div class="line">privateStringMethod.setAccessible(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">String returnValue = (String)</div><div class="line">        privateStringMethod.invoke(privateObject, <span class="keyword">null</span>);</div><div class="line"></div><div class="line">System.out.println(<span class="string">"returnValue = "</span> + returnValue);</div></pre></td></tr></table></figure></p>
+<p>这个例子会输出<code>&quot;returnValue = The Private Value&quot;</code>，<code>The Private Value</code>是<code>PrivateObject</code>实例的<code>getPrivateString()</code>方法的返回值。<code>PrivateObject.class.getDeclaredMethod(&quot;privateString&quot;)</code>方法会返回一个私有方法，这个方法是定义在<code>PrivateObject</code>类中的而不是在它的父类中定义的。<br>注意：Method.setAcessible(true)这行代码，通过调用setAccessible()方法会关闭指定类的Method实例的反射访问检查，这行代码执行之后不论是私有的、受保护的以及包访问的作用域，你都可以在任何地方访问，即使你不在他的访问权限作用域之内。但是你如果你用一般代码来访问这些不在你权限作用域之内的代码依然是不可以的，在编译的时候就会报错。</p>
+<h3 id="获取注解"><a href="#获取注解" class="headerlink" title="获取注解"></a>获取注解</h3><p><strong>什么是注解？</strong><br>注解是Java 5的一个新特性。注解是插入你代码中的一种注释或者说是一种元数据（meta data）。这些注解信息可以在编译期使用预编译工具进行处理（pre-compiler tools），也可以在运行期使用Java反射机制进行处理。<br>下面是一个类注解的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@MyAnnotation</span>(name=<span class="string">"someName"</span>,  value = <span class="string">"Hello World"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在TheClass类定义的上面有一个@MyAnnotation的注解。注解的定义与接口的定义相似，下面是MyAnnotation注解的定义：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotation &#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">value</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在interface前面的@符号表名这是一个注解，一旦你定义了一个注解之后你就可以将其应用到你的代码中。</p>
+<blockquote>
+<p>说明：在注解定义中的两个指示@Retention(RetentionPolicy.RUNTIME)和@Target(ElementType.TYPE)，说明了这个注解该如何使用。</p>
+<ol>
+<li>@Retention(RetentionPolicy.RUNTIME)表示这个注解可以在运行期通过反射访问。如果你没有在注解定义的时候使用这个指示那么这个注解的信息不会保留到运行期，这样反射就无法获取它的信息。</li>
+<li>@Target(ElementType.TYPE) 表示这个注解只能用在类型上面（比如类跟接口）。你同样可以把Type改为Field或者Method，或者你可以不用这个指示，这样的话你的注解在类，方法和变量上就都可以使用了。</li>
+</ol>
+</blockquote>
+<hr>
+<p><strong>类注解</strong><br>下是一个访问类注解的例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Class aClass = TheClass.class;</div><div class="line">Annotation[] annotations = aClass.getAnnotations();</div><div class="line"></div><div class="line"><span class="keyword">for</span>(Annotation annotation : annotations)&#123;</div><div class="line">    <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line">        MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line">        System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</div><div class="line">        System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你还可以像下面这样指定访问一个类的注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Class aClass = TheClass.class;</div><div class="line">Annotation annotation = aClass.getAnnotation(MyAnnotation.class);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line">    MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line">    System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</div><div class="line">    System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>方法注解</strong><br>下面是一个方法注解的例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</div><div class="line">  <span class="meta">@MyAnnotation</span>(name=<span class="string">"someName"</span>,  value = <span class="string">"Hello World"</span>)</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你可以像这样访问方法注解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Method method = ... <span class="comment">//获取方法对象</span></div><div class="line">Annotation[] annotations = method.getDeclaredAnnotations();</div><div class="line"></div><div class="line"><span class="keyword">for</span>(Annotation annotation : annotations)&#123;</div><div class="line">    <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line">        MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line">        System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</div><div class="line">        System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你可以像这样访问指定的方法注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Method method = ... <span class="comment">// 获取方法对象</span></div><div class="line">Annotation annotation = method.getAnnotation(MyAnnotation.class);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line">    MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line">    System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</div><div class="line">    System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>参数注解</strong><br>方法参数也可以添加注解，就像下面这样<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doSomethingElse</span><span class="params">(</span></span></div><div class="line">        @MyAnnotation(name=<span class="string">"aName"</span>, value=<span class="string">"aValue"</span>) String parameter)&#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你可以通过Method对象来访问方法参数注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Method method = ... <span class="comment">//获取方法对象</span></div><div class="line">Annotation[][] parameterAnnotations = method.getParameterAnnotations();</div><div class="line">Class[] parameterTypes = method.getParameterTypes();</div><div class="line"></div><div class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(Annotation[] annotations : parameterAnnotations)&#123;</div><div class="line">  Class parameterType = parameterTypes[i++];</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(Annotation annotation : annotations)&#123;</div><div class="line">    <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line">        MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line">        System.out.println(<span class="string">"param: "</span> + parameterType.getName());</div><div class="line">        System.out.println(<span class="string">"name : "</span> + myAnnotation.name());</div><div class="line">        System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>需要注意的是Method.getParameterAnnotations()方法返回一个注解类型的二维数组，每一个方法的参数包含一个注解数组。</p>
+<hr>
+<p><strong>变量注解</strong><br>下面是一个变量注解的例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="meta">@MyAnnotation</span>(name=<span class="string">"someName"</span>,  value = <span class="string">"Hello World"</span>)</div><div class="line">  <span class="keyword">public</span> String myField = <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你可以像这样来访问变量的注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Field field = ... <span class="comment">//获取方法对象&lt;/pre&gt;</span></div><div class="line">&lt;pre&gt;Annotation[] annotations = field.getDeclaredAnnotations();</div><div class="line"></div><div class="line"><span class="keyword">for</span>(Annotation annotation : annotations)&#123;</div><div class="line"> <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line"> MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line"> System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</div><div class="line"> System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你可以像这样访问指定的变量注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Field field = ...<span class="comment">//获取方法对象&lt;/pre&gt;</span></div><div class="line">&lt;pre&gt;</div><div class="line">Annotation annotation = field.getAnnotation(MyAnnotation.class);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</div><div class="line"> MyAnnotation myAnnotation = (MyAnnotation) annotation;</div><div class="line"> System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</div><div class="line"> System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
+<li><a href="http://ifeve.com/java-reflection/" target="_blank" rel="external">Java Reflection教程</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag">#JAVA</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/23/JVM/Java垃圾收集机制/" rel="next" title="Java垃圾收集机制">
+                <i class="fa fa-chevron-left"></i> Java垃圾收集机制
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/02/JAVA/Java泛型/" rel="prev" title="Java泛型">
+                Java泛型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/29/JAVA/Java反射/"
+     data-title="Java反射"
+     data-content=""
+     data-url="http://yoursite.com/2016/07/29/JAVA/Java反射/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/29/JAVA/Java反射/"
+           data-title="Java反射" data-url="http://yoursite.com/2016/07/29/JAVA/Java反射/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E5%A4%B4%E5%83%8F.jpg"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/qiuchengjia" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Coding
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/145466621/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/qq_26891045" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lrdup.net/" title="键盘上的舞者" target="_blank">键盘上的舞者</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/whjkm" title="Just do it !" target="_blank">Just do it !</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/" title="程序员减压网站" target="_blank">程序员减压网站</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/" title="优秀博客和网站" target="_blank">优秀博客和网站</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/links/" title="中国博客联盟" target="_blank">中国博客联盟</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.pythontip.com/acm/problemCategory" title="ACM各大OJ题集" target="_blank">ACM各大OJ题集</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://a.ilhong.cn/" title="淡清风" target="_blank">淡清风</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gongchuangsu.com/" title="贱贱的梦想" target="_blank">贱贱的梦想</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是反射"><span class="nav-number">1.</span> <span class="nav-text">什么是反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要反射"><span class="nav-number">2.</span> <span class="nav-text">为什么需要反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理泛型"><span class="nav-number">3.</span> <span class="nav-text">处理泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class类"><span class="nav-number">4.</span> <span class="nav-text">Class类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取类名"><span class="nav-number">5.</span> <span class="nav-text">获取类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取修饰符"><span class="nav-number">6.</span> <span class="nav-text">获取修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取包信息"><span class="nav-number">7.</span> <span class="nav-text">获取包信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取实现的接口集合"><span class="nav-number">8.</span> <span class="nav-text">获取实现的接口集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取构造器"><span class="nav-number">9.</span> <span class="nav-text">获取构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取方法"><span class="nav-number">10.</span> <span class="nav-text">获取方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取变量"><span class="nav-number">11.</span> <span class="nav-text">获取变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取指定类的getters和setters"><span class="nav-number">12.</span> <span class="nav-text">获取指定类的getters和setters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取私有变量"><span class="nav-number">13.</span> <span class="nav-text">获取私有变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取私有方法"><span class="nav-number">14.</span> <span class="nav-text">获取私有方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取注解"><span class="nav-number">15.</span> <span class="nav-text">获取注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">16.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+
+<div class="theme-info">
+
+  
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qiuchengjia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("SrdwhMrgLMuFT7RutWzheSK8-gzGzoHsz", "K6zzn3r4jSvkq3riXpiMOrrj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

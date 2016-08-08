@@ -1,0 +1,1461 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AndroidStudio," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="最常用快捷键
+
+
+快捷键
+用途描述
+
+
+
+
+ctrl+k
+commit到版本控制软件
+
+
+ctrl+shift+K
+push到远程仓库
+
+
+ctrl+T
+拉取版本到本地
+
+
+shift+F10
+部署到模拟器运行
+
+
+Ctrl+Shift+Space
+自动补全代码
+
+
+Ctrl+Alt+L
+格式化代码
+
+
+Ctrl + Shift + I
+快速查看定义
+
+
+Ctrl＋E
+可以显示最近编辑的文件列表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidStudio快捷键和使用技巧">
+<meta property="og:url" content="http://yoursite.com/2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最常用快捷键
+
+
+快捷键
+用途描述
+
+
+
+
+ctrl+k
+commit到版本控制软件
+
+
+ctrl+shift+K
+push到远程仓库
+
+
+ctrl+T
+拉取版本到本地
+
+
+shift+F10
+部署到模拟器运行
+
+
+Ctrl+Shift+Space
+自动补全代码
+
+
+Ctrl+Alt+L
+格式化代码
+
+
+Ctrl + Shift + I
+快速查看定义
+
+
+Ctrl＋E
+可以显示最近编辑的文件列表">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A71.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A72.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A73.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A74.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A75.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A76.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A77.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A78.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A79.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A710.gif">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A711.gif">
+<meta property="og:updated_time" content="2016-07-02T04:39:07.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidStudio快捷键和使用技巧">
+<meta name="twitter:description" content="最常用快捷键
+
+
+快捷键
+用途描述
+
+
+
+
+ctrl+k
+commit到版本控制软件
+
+
+ctrl+shift+K
+push到远程仓库
+
+
+ctrl+T
+拉取版本到本地
+
+
+shift+F10
+部署到模拟器运行
+
+
+Ctrl+Shift+Space
+自动补全代码
+
+
+Ctrl+Alt+L
+格式化代码
+
+
+Ctrl + Shift + I
+快速查看定义
+
+
+Ctrl＋E
+可以显示最近编辑的文件列表">
+<meta name="twitter:image" content="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A71.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/"/>
+
+  <title> AndroidStudio快捷键和使用技巧 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AndroidStudio快捷键和使用技巧
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T21:44:57+08:00" content="2016-06-29">
+              2016-06-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
+                    <span itemprop="name">AndroidStudio</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/" class="leancloud_visitors" data-flag-title="AndroidStudio快捷键和使用技巧">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="最常用快捷键"><a href="#最常用快捷键" class="headerlink" title="最常用快捷键"></a>最常用快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th style="text-align:center">用途描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctrl+k</td>
+<td style="text-align:center">commit到版本控制软件</td>
+</tr>
+<tr>
+<td>ctrl+shift+K</td>
+<td style="text-align:center">push到远程仓库</td>
+</tr>
+<tr>
+<td>ctrl+T</td>
+<td style="text-align:center">拉取版本到本地</td>
+</tr>
+<tr>
+<td>shift+F10</td>
+<td style="text-align:center">部署到模拟器运行</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Space</td>
+<td style="text-align:center">自动补全代码</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+L</td>
+<td style="text-align:center">格式化代码</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + I</td>
+<td style="text-align:center">快速查看定义</td>
+</tr>
+<tr>
+<td>Ctrl＋E</td>
+<td style="text-align:center">可以显示最近编辑的文件列表</td>
+</tr>
+<tr>
+<td>Shift＋Click</td>
+<td style="text-align:center">可以关闭文件</td>
+</tr>
+<tr>
+<td>Ctrl＋[或]</td>
+<td style="text-align:center">可以跳到大括号的开头结尾</td>
+</tr>
+<tr>
+<td>Ctrl＋Shift＋Backspace</td>
+<td style="text-align:center">可以跳转到上次编辑的地方</td>
+</tr>
+<tr>
+<td>Ctrl＋F12</td>
+<td style="text-align:center">可以显示当前文件的结构</td>
+</tr>
+<tr>
+<td>Ctrl＋F7</td>
+<td style="text-align:center">可以查询当前元素在当前文件中的引用，然后按F3可以选择</td>
+</tr>
+<tr>
+<td>Ctrl＋N</td>
+<td style="text-align:center">可以快速打开类</td>
+</tr>
+<tr>
+<td>Ctrl＋Shift＋N</td>
+<td style="text-align:center">可以快速打开文件</td>
+</tr>
+<tr>
+<td>Alt＋Q</td>
+<td style="text-align:center">可以看到当前方法的声明</td>
+</tr>
+<tr>
+<td>Ctrl＋W</td>
+<td style="text-align:center">可以选择单词继而语句继而行继而函数</td>
+</tr>
+<tr>
+<td>Alt＋F1</td>
+<td style="text-align:center">可以将正在编辑的元素在各个面板中定位</td>
+</tr>
+<tr>
+<td>Ctrl＋P</td>
+<td style="text-align:center">可以显示参数信息</td>
+</tr>
+<tr>
+<td>Ctrl＋Shift＋Insert</td>
+<td style="text-align:center">可以选择剪贴板内容并插入</td>
+</tr>
+<tr>
+<td>Alt＋Insert</td>
+<td style="text-align:center">可以生成构造器/Getter/Setter等</td>
+</tr>
+<tr>
+<td>Ctrl＋Alt＋V</td>
+<td style="text-align:center">可以引入变量。例如把括号内的SQL赋成一个变量</td>
+</tr>
+<tr>
+<td>Ctrl＋Alt＋T</td>
+<td style="text-align:center">可以把代码包在一块内，例如try/catch</td>
+</tr>
+<tr>
+<td>Alt＋Up and Alt＋Down</td>
+<td style="text-align:center">可在方法间快速移动</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td style="text-align:center">该操作仅仅把光标移回编辑器。</td>
+</tr>
+<tr>
+<td>Shift + Esc</td>
+<td style="text-align:center">该操作会关闭当前面板，然后把光标移回到编辑器</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td style="text-align:center">展现当前类的大纲，并可以快速跳转</td>
+</tr>
+<tr>
+<td>Ctrl + Tab</td>
+<td style="text-align:center">切换器,可以用来快速打开文件</td>
+</tr>
+<tr>
+<td>Alt + `</td>
+<td style="text-align:center">版本控制操作弹窗</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + M</td>
+<td style="text-align:center">提取方法</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + P</td>
+<td style="text-align:center">提取参数</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + J</td>
+<td style="text-align:center">合并行和文本</td>
+</tr>
+<tr>
+<td>Ctrl + J</td>
+<td style="text-align:center">动态模版，非常好用</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Up/Down</td>
+<td style="text-align:center">上下移动方法</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th style="text-align:center">用途描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + Shift + F12</td>
+<td style="text-align:center">隐藏所有面板</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + “+”/ “-“</td>
+<td style="text-align:center">展开/折叠代码</td>
+</tr>
+<tr>
+<td>Alt+回车</td>
+<td style="text-align:center">导入包,自动修正</td>
+</tr>
+<tr>
+<td>Ctrl+N</td>
+<td style="text-align:center">查找类</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+N</td>
+<td style="text-align:center">查找文件</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+O</td>
+<td style="text-align:center">优化导入的类和包</td>
+</tr>
+<tr>
+<td>Alt+Insert</td>
+<td style="text-align:center">生成代码(如get,set方法,构造函数等)</td>
+</tr>
+<tr>
+<td>Ctrl+E或者Alt+Shift+C</td>
+<td style="text-align:center">最近访问的文件</td>
+</tr>
+<tr>
+<td>Ctrl+shift+E</td>
+<td style="text-align:center">打开最近修改的文件</td>
+</tr>
+<tr>
+<td>Ctrl+R</td>
+<td style="text-align:center">替换文本</td>
+</tr>
+<tr>
+<td>Ctrl+F</td>
+<td style="text-align:center">查找文本</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Space</td>
+<td style="text-align:center">自动补全代码</td>
+</tr>
+<tr>
+<td>Ctrl+空格</td>
+<td style="text-align:center">代码提示</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Space</td>
+<td style="text-align:center">类名或接口名提示</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td style="text-align:center">方法参数提示</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Alt+N</td>
+<td style="text-align:center">查找类中的方法或变量</td>
+</tr>
+<tr>
+<td>Alt+Shift+C</td>
+<td style="text-align:center">对比最近修改的代码</td>
+</tr>
+<tr>
+<td>Shift+F6</td>
+<td style="text-align:center">重构-重命名</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Up/Down</td>
+<td style="text-align:center">上下移动本行代码</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td style="text-align:center">剪切行</td>
+</tr>
+<tr>
+<td>Ctrl+Y</td>
+<td style="text-align:center">删除行</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td style="text-align:center">复制行</td>
+</tr>
+<tr>
+<td>Ctrl+/ 或 Ctrl+Shift+/</td>
+<td style="text-align:center">注释（// 或者 /**/）</td>
+</tr>
+<tr>
+<td>Ctrl+J</td>
+<td style="text-align:center">自动代码</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td style="text-align:center">最近访问的文件</td>
+</tr>
+<tr>
+<td>Ctrl+H</td>
+<td style="text-align:center">显示类结构图</td>
+</tr>
+<tr>
+<td>Ctrl+Q</td>
+<td style="text-align:center">显示注释文档</td>
+</tr>
+<tr>
+<td>Alt+F1</td>
+<td style="text-align:center">查找代码所在位置</td>
+</tr>
+<tr>
+<td>Alt+1</td>
+<td style="text-align:center">快速打开或隐藏工程面板</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+ left/right</td>
+<td style="text-align:center">返回至上次浏览的位置</td>
+</tr>
+<tr>
+<td>Alt+ left/right</td>
+<td style="text-align:center">切换代码视图</td>
+</tr>
+<tr>
+<td>Alt+ Up/Down</td>
+<td style="text-align:center">在方法间快速移动定位</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Up/Down</td>
+<td style="text-align:center">代码向上/下移动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h3><h4 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h4><ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA3ODY0MzEyMA==&amp;mid=2657236292&amp;idx=1&amp;sn=7584243ad7f7559d42410eda4468b01c&amp;scene=0#wechat_redirect" target="_blank" rel="external">传送门</a></li>
+</ul>
+<h4 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h4><ul>
+<li><p>添加/移除书签：F3(OS X) 、F11(Windows/Linux);</p>
+</li>
+<li><p>添加/移除书签(带标记)：Alt + F3(OS X)、Ctrl + F11(Windows/Linux);</p>
+</li>
+<li><p>显示全部书签：Cmd + F3(OS X) 、Shift + F11(Windows/Linux)，显示所有的书签列表，并且是可以搜索的</p>
+</li>
+<li><p>上一个/下一个书签：无，可以在设置中设置快捷键</p>
+</li>
+<li><p>更多：当你为某个书签指定了标记，你可以使用快捷键 Ctrl + 标记 来快速跳转到标记处，比如输入Ctrl + 1，跳到标记为1的书签处</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A71.gif" alt=""></center>
+
+<h4 id="与分支比对"><a href="#与分支比对" class="headerlink" title="与分支比对"></a>与分支比对</h4><ul>
+<li><p>描述：假如你的项目是使用git来管理的，你可以将当前文件或者文件夹与其他的分支进行比对。比较有用的是可以让你了解到你与主分支有多少差别。</p>
+</li>
+<li><p>调用：Menu → VCS → Git → Compare With Branch</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A72.gif" alt=""></center>
+
+<h4 id="在外部打开文件"><a href="#在外部打开文件" class="headerlink" title="在外部打开文件"></a>在外部打开文件</h4><ul>
+<li><p>描述：通过这个快捷键，简单地点击Tab，就可以打开当前文件所在的位置或者该文件的任意上层路径。</p>
+</li>
+<li><p>快捷键：Cmd + 单击Tab(OS X)、Ctrl + 点击Tab(Windows/Linux);</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A73.gif" alt=""></center>
+
+<h4 id="Select-In"><a href="#Select-In" class="headerlink" title="Select In"></a>Select In</h4><ul>
+<li><p>描述：拿着当前文件然后问你在哪里选中该文件。恕我直言，最有用的就是在项目结构或者资源管理器中打开 该文件。每一个操作都有数字或者字母作为前缀，可以通过这个前缀来快速跳转。通常，我会 Alt + F1 然后 回车(Enter) 来打开项目视图，然后 再用 Alt + F1 在OS X的Finder里找到文件。你可以在文件中或者直接在项目视图里使用该操作</p>
+</li>
+<li><p>快捷键：Alt + F1</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A74.gif" alt=""></center>
+
+
+<h4 id="Sublime-Text式的多处选择"><a href="#Sublime-Text式的多处选择" class="headerlink" title="Sublime Text式的多处选择"></a>Sublime Text式的多处选择</h4><ul>
+<li><p>描述：这个功能超级赞！该操作会识别当前选中字符串，选择下一个同样的字符串，并且添加一个光标。这意味着你可以在同一个文件里拥有多个光标，你可以同时在所有光标处输入任何东西</p>
+</li>
+<li><p>快捷键：Ctrl + G(OS X)、Alt + Ｊ（Windows、Linux）</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A75.gif" alt=""></center>
+
+<h4 id="编写正则表达式"><a href="#编写正则表达式" class="headerlink" title="编写正则表达式"></a>编写正则表达式</h4><ul>
+<li><p>描述：使用Java编写正则表达式是一件很困难的事，主要原因是：</p>
+</li>
+<li><p>你必须得避开反斜杠；</p>
+</li>
+<li><p>说实话，正则很难；</p>
+</li>
+<li><p>看第二条。</p>
+</li>
+<li><p>IDE能帮我们干点啥呢？当然是一个舒服的界面来编写和测试正则啦~ - 快捷键：Alt + Enter → check regexp</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A76.gif" alt=""></center>
+
+<h4 id="使用Enter和Tab进行代码补全的差别"><a href="#使用Enter和Tab进行代码补全的差别" class="headerlink" title="使用Enter和Tab进行代码补全的差别"></a>使用Enter和Tab进行代码补全的差别</h4><ul>
+<li><p>描述：代码补全时，可以使用Enter或Tab来进行补全操作，但是两者是有差别的</p>
+</li>
+<li><p>使用Enter时：从光标处插入补全的代码，对原来的代码不做任何操作</p>
+</li>
+<li><p>使用Tab时：从光标处插入补全的代码，并删除后面的代码，直到遇到点号、圆括号、分号或空格为止</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A77.gif" alt=""></center>
+
+<h4 id="提取变量"><a href="#提取变量" class="headerlink" title="提取变量"></a>提取变量</h4><ul>
+<li><p>描述：这是一个提取变量的快捷操作。当你在没有写变量声明的直接写下值的时候，这是一个很方便生成变量声明的操作，同时还会给出一个建议的变量命名</p>
+</li>
+<li><p>调用：Menu → Refactor → Extract → Variable</p>
+</li>
+<li><p>快捷键：Cmd + Alt + V(OS X)、Ctrl + Alt + V(Windows/Linux)；</p>
+</li>
+<li><p>更多：当你需要改变变量声明的类型，例如使用 List 替代 ArrayList，可以按下Shift + Tab，就会显示所有可用的变量类型</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A78.gif" alt=""></center>
+
+<h4 id="取反补全"><a href="#取反补全" class="headerlink" title="取反补全"></a>取反补全</h4><ul>
+<li><p>描述：有时你自动补全一个布尔值，然后回到该值的前面添加一个感叹号来完成取反操作，现在通过使用输入!代替enter完成补全操作，就可以跳过这些繁琐的操作了</p>
+</li>
+<li><p>快捷键：代码补全的时候，按下!即可（有时需要上下键选中候选项）</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A79.gif" alt=""></center>
+
+<h4 id="包裹代码"><a href="#包裹代码" class="headerlink" title="包裹代码"></a>包裹代码</h4><ul>
+<li><p>描述： 该操作可以用特定代码结构包裹住选中的代码块，通常是if语句，循环，try/catch语句或者runnable语句。 如果你没有选中任何东西，该操作会包裹当前一整行</p>
+</li>
+<li><p>快捷键：Cmd + Alt + T(OS X)、Ctrl + Alt + T(Windows/Linux)</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A710.gif" alt=""></center>
+
+<h4 id="移除包裹代码"><a href="#移除包裹代码" class="headerlink" title="移除包裹代码"></a>移除包裹代码</h4><ul>
+<li><p>描述：该操作会移除周围的代码，它可能是一条if语句，一个while循环，一个try/catch语句甚至是一个runnable语句。该操作恰恰和包裹代码（Surround With）相反</p>
+</li>
+<li><p>快捷键：Cmd + Shift + Delete(OS X)、Ctrl + Shift + Delete(Windows/Linux)</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A711.gif" alt=""></center>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AndroidStudio/" rel="tag">#AndroidStudio</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/29/Android/AndroidStudio指定git的忽略文件/" rel="next" title="AndroidStudio指定git的忽略文件">
+                <i class="fa fa-chevron-left"></i> AndroidStudio指定git的忽略文件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/03/Android/Android-api-level对照表/" rel="prev" title="Android api level对照表">
+                Android api level对照表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/"
+     data-title="AndroidStudio快捷键和使用技巧"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/"
+           data-title="AndroidStudio快捷键和使用技巧" data-url="http://yoursite.com/2016/06/29/AndroidStudio/AndroidStudio快捷键和使用技巧/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E5%A4%B4%E5%83%8F.jpg"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/qiuchengjia" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Coding
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/145466621/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/qq_26891045" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lrdup.net/" title="键盘上的舞者" target="_blank">键盘上的舞者</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/whjkm" title="Just do it !" target="_blank">Just do it !</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/" title="程序员减压网站" target="_blank">程序员减压网站</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/" title="优秀博客和网站" target="_blank">优秀博客和网站</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/links/" title="中国博客联盟" target="_blank">中国博客联盟</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.pythontip.com/acm/problemCategory" title="ACM各大OJ题集" target="_blank">ACM各大OJ题集</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://a.ilhong.cn/" title="淡清风" target="_blank">淡清风</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gongchuangsu.com/" title="贱贱的梦想" target="_blank">贱贱的梦想</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最常用快捷键"><span class="nav-number">1.</span> <span class="nav-text">最常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用快捷键"><span class="nav-number">2.</span> <span class="nav-text">常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用技巧"><span class="nav-number">3.</span> <span class="nav-text">使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章"><span class="nav-number">3.1.</span> <span class="nav-text">文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#书签"><span class="nav-number">3.2.</span> <span class="nav-text">书签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与分支比对"><span class="nav-number">3.3.</span> <span class="nav-text">与分支比对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在外部打开文件"><span class="nav-number">3.4.</span> <span class="nav-text">在外部打开文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Select-In"><span class="nav-number">3.5.</span> <span class="nav-text">Select In</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sublime-Text式的多处选择"><span class="nav-number">3.6.</span> <span class="nav-text">Sublime Text式的多处选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写正则表达式"><span class="nav-number">3.7.</span> <span class="nav-text">编写正则表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Enter和Tab进行代码补全的差别"><span class="nav-number">3.8.</span> <span class="nav-text">使用Enter和Tab进行代码补全的差别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取变量"><span class="nav-number">3.9.</span> <span class="nav-text">提取变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反补全"><span class="nav-number">3.10.</span> <span class="nav-text">取反补全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包裹代码"><span class="nav-number">3.11.</span> <span class="nav-text">包裹代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除包裹代码"><span class="nav-number">3.12.</span> <span class="nav-text">移除包裹代码</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+
+<div class="theme-info">
+
+  
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qiuchengjia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("SrdwhMrgLMuFT7RutWzheSK8-gzGzoHsz", "K6zzn3r4jSvkq3riXpiMOrrj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

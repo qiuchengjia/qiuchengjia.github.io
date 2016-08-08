@@ -1,0 +1,995 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++,STL,算法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="STL算法部分主要由头文件,,组成。要使用 STL中的算法函数必须包含头文件，对于数值算法须包含，中则定义了一些模板类，用来声明函数对象。STL中算法大致分为四类：①非可变序列算法：指不直接修改其所操作的容器内容的算法。②可变序列算法：指可以修改它们所操作的容器内容的算法。③排序算法：包括对序列进行排序和合并的算法、搜索算法以及有序序列上的集合操作。④数值算法：对容器内容进行数值计算。
+
+
+查找">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" STL之算法总结">
+<meta property="og:url" content="http://yoursite.com/2016/06/01/C++/STL之算法总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="STL算法部分主要由头文件,,组成。要使用 STL中的算法函数必须包含头文件，对于数值算法须包含，中则定义了一些模板类，用来声明函数对象。STL中算法大致分为四类：①非可变序列算法：指不直接修改其所操作的容器内容的算法。②可变序列算法：指可以修改它们所操作的容器内容的算法。③排序算法：包括对序列进行排序和合并的算法、搜索算法以及有序序列上的集合操作。④数值算法：对容器内容进行数值计算。
+
+
+查找">
+<meta property="og:image" content="http://img.blog.csdn.net/20160519155043788">
+<meta property="og:updated_time" content="2016-06-17T13:50:17.775Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" STL之算法总结">
+<meta name="twitter:description" content="STL算法部分主要由头文件,,组成。要使用 STL中的算法函数必须包含头文件，对于数值算法须包含，中则定义了一些模板类，用来声明函数对象。STL中算法大致分为四类：①非可变序列算法：指不直接修改其所操作的容器内容的算法。②可变序列算法：指可以修改它们所操作的容器内容的算法。③排序算法：包括对序列进行排序和合并的算法、搜索算法以及有序序列上的集合操作。④数值算法：对容器内容进行数值计算。
+
+
+查找">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160519155043788">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/01/C++/STL之算法总结/"/>
+
+  <title>  STL之算法总结 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                 STL之算法总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T17:59:21+08:00" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/01/C++/STL之算法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/C++/STL之算法总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/01/C++/STL之算法总结/" class="leancloud_visitors" data-flag-title=" STL之算法总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>STL算法部分主要由头文件<algorithm>,<numeric>,<functional>组成。<br>要使用 STL中的算法函数必须包含头文件<algorithm>，<br>对于数值算法须包含<numeric>，<functional>中则定义了一些模板类，用来声明函数对象。<br>STL中算法大致分为四类：<br>①非可变序列算法：指不直接修改其所操作的容器内容的算法。<br>②可变序列算法：指可以修改它们所操作的容器内容的算法。<br>③排序算法：包括对序列进行排序和合并的算法、搜索算法以及有序序列上的集合操作。<br>④数值算法：对容器内容进行数值计算。</functional></numeric></algorithm></functional></numeric></algorithm></li>
+</ul>
+<ul>
+<li><h3 id="查找算法-13个-：判断容器中是否包含某个值"><a href="#查找算法-13个-：判断容器中是否包含某个值" class="headerlink" title="查找算法(13个)：判断容器中是否包含某个值"></a>查找算法(13个)：判断容器中是否包含某个值</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">adjacent_find  </div><div class="line"><span class="comment">//在iterator对标识元素范围内，查找一对相邻    </span></div><div class="line"><span class="comment">//重复元素，找到则返回指向这对元素的第一个元素的ForwardIterator。  </span></div><div class="line"><span class="comment">//否则返回last。重载版本使用输入的二元操作符代替相等的判断。    </span></div><div class="line">    </div><div class="line">binary_search  </div><div class="line"><span class="comment">//在有序序列中查找value，找到返回true。 </span></div><div class="line"><span class="comment">//重载的版本实用指定的比较函数对象或函数指针来判断相等。  </span></div><div class="line">  </div><div class="line">includes  <span class="comment">//判断区间1是否包含2，是binary_search的扩展  </span></div><div class="line">    </div><div class="line">count  </div><div class="line"><span class="comment">//利用等于操作符，把标志范围内的元素与输入值比较，返回相等元素个数。    </span></div><div class="line">    </div><div class="line">count_if  </div><div class="line"><span class="comment">//利用输入的操作符，对标志范围内的元素进行操作，</span></div><div class="line"><span class="comment">//返回结果为true的个数。    </span></div><div class="line">    </div><div class="line">equal_range  </div><div class="line"><span class="comment">//功能类似equal，返回一对iterator，    </span></div><div class="line"><span class="comment">//第一个表示lower_bound，第二个表示upper_bound。    </span></div><div class="line">    </div><div class="line">find  </div><div class="line"><span class="comment">//利用底层元素的等于操作符，对指定范围内的元素    </span></div><div class="line"><span class="comment">//与输入值进行比较。当匹配时，结束搜索，</span></div><div class="line"><span class="comment">//返回该元素的一个InputIterator。    </span></div><div class="line">    </div><div class="line">find_end  </div><div class="line"><span class="comment">//在指定范围内查找"由输入的另外一对iterator标志    </span></div><div class="line"><span class="comment">//的第二个序列"的最后一次出现。找到则返回最后一对的    </span></div><div class="line"><span class="comment">//第一个ForwardIterator，否则返回输入的"另外一对"的    </span></div><div class="line"><span class="comment">//第一个ForwardIterator。重载版本使用用户输入的操作符代替等于操作。    </span></div><div class="line">    </div><div class="line">find_first_of  </div><div class="line"><span class="comment">//在指定范围内查找"由输入的另外一对iterator标志    </span></div><div class="line"><span class="comment">//的第二个序列"中任意一个元素的第一次出现</span></div><div class="line"><span class="comment">//重载版本中使用了用户自定义操作符。    </span></div><div class="line">    </div><div class="line">find_if  <span class="comment">//使用输入的函数代替等于操作符执行find。    </span></div><div class="line">    </div><div class="line">lower_bound  </div><div class="line"><span class="comment">//返回一个ForwardIterator，指向在有序    </span></div><div class="line"><span class="comment">//序列范围内的可以插入指定值而不破坏容器顺序的第一个    </span></div><div class="line"><span class="comment">//位置。重载函数使用自定义比较操作。    </span></div><div class="line">    </div><div class="line">upper_bound  </div><div class="line"><span class="comment">//返回一个ForwardIterator，指向在    </span></div><div class="line"><span class="comment">//有序序列范围内插入value而不破坏容器顺序的最后    </span></div><div class="line"><span class="comment">//一个位置，该位置标志一个大于value的值。</span></div><div class="line"><span class="comment">//重载函数使用自定义比较操作。    </span></div><div class="line">    </div><div class="line">search  <span class="comment">//给出两个范围，返回一个ForwardIterator，    </span></div><div class="line"><span class="comment">//查找成功指向第一个范围内第一次出现子序列(第二个范围)    </span></div><div class="line"><span class="comment">//的位置，查找失败指向last1。重载版本使用自定义的比较操作。    </span></div><div class="line">    </div><div class="line">search_n  </div><div class="line"><span class="comment">//在指定范围内查找val出现n次的子序列。重载版本使用自定义的比较操作。</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h3 id="排序和通用算法-14个-：提供元素排序策略"><a href="#排序和通用算法-14个-：提供元素排序策略" class="headerlink" title="排序和通用算法(14个)：提供元素排序策略"></a>排序和通用算法(14个)：提供元素排序策略</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">inplace_merge  </div><div class="line"><span class="comment">//合并两个有序序列，结果序列覆盖两端范围。</span></div><div class="line"><span class="comment">//重载版本使用输入的操作进行排序。  </span></div><div class="line">  </div><div class="line">merge  </div><div class="line"><span class="comment">//合并两个有序序列，存放到另一个序列。重载版本使用自定义的比较。  </span></div><div class="line">  </div><div class="line">nth_element  </div><div class="line"><span class="comment">//将范围内的序列重新排序，使所有小于第n个元素的元素  </span></div><div class="line"><span class="comment">//都出现在它前面，而大于它的都出现在后面。</span></div><div class="line"><span class="comment">//重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">partial_sort  </div><div class="line"><span class="comment">//对序列做部分排序，被排序元素个数正好可以被放到范围内。  </span></div><div class="line"><span class="comment">//重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">partial_sort_copy  <span class="comment">//与partial_sort类似，不过将经过排序的序列复制到另一个容器。  </span></div><div class="line">  </div><div class="line">partition  </div><div class="line"><span class="comment">//对指定范围内元素重新排序，使用输入的函数，</span></div><div class="line"><span class="comment">//把结果为true的元素放在结果为false的元素之前。  </span></div><div class="line">  </div><div class="line">random_shuffle  </div><div class="line"><span class="comment">//对指定范围内的元素随机调整次序。重载版本输入一个随机数产生操作。  </span></div><div class="line">  </div><div class="line">reverse  <span class="comment">//将指定范围内元素重新反序排序。  </span></div><div class="line">  </div><div class="line">reverse_copy  <span class="comment">//与reverse类似，不过将结果写入另一个容器。  </span></div><div class="line">  </div><div class="line">rotate  </div><div class="line"><span class="comment">//将指定范围内元素移到容器末尾，由middle指向的</span></div><div class="line">元素成为容器第一个元素。  </div><div class="line">  </div><div class="line">rotate_copy  <span class="comment">//与rotate类似，不过将结果写入另一个容器。  </span></div><div class="line">  </div><div class="line">sort  </div><div class="line"><span class="comment">//以升序重新排列指定范围内的元素。重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">stable_sort  <span class="comment">//与sort类似，不过保留相等元素之间的顺序关系。  </span></div><div class="line">  </div><div class="line">stable_partition  </div><div class="line"><span class="comment">//与partition类似，不过不保证保留容器中的相对顺序。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="删除和替换算法-15个"><a href="#删除和替换算法-15个" class="headerlink" title="删除和替换算法(15个)"></a>删除和替换算法(15个)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">copy  <span class="comment">//复制序列  </span></div><div class="line">  </div><div class="line">copy_backward <span class="comment">//与copy相同，不过元素是以相反顺序被拷贝。  </span></div><div class="line">  </div><div class="line">iter_swap  <span class="comment">//交换两个ForwardIterator的值。  </span></div><div class="line">  </div><div class="line">remove  </div><div class="line"><span class="comment">//删除指定范围内所有等于指定元素的元素。注意，  </span></div><div class="line"><span class="comment">//该函数不是真正删除函数。内置函数不适合使用remove和remove_if函数。  </span></div><div class="line">  </div><div class="line">remove_copy  <span class="comment">//将所有不匹配元素复制到一个制定容器，  </span></div><div class="line"><span class="comment">//返回OutputIterator指向被拷贝的末元素的下一个位置。  </span></div><div class="line">  </div><div class="line">remove_if  <span class="comment">//删除指定范围内输入操作结果为true的所有元素。  </span></div><div class="line">  </div><div class="line">remove_copy_if  <span class="comment">//将所有不匹配元素拷贝到一个指定容器。  </span></div><div class="line">  </div><div class="line">replace  <span class="comment">//将指定范围内所有等于vold的元素都用vnew代替。  </span></div><div class="line">  </div><div class="line">replace_copy  <span class="comment">//与replace类似，不过将结果写入另一个容器。  </span></div><div class="line">  </div><div class="line">replace_if  <span class="comment">//将指定范围内所有操作结果为true的元素用新值代替。  </span></div><div class="line">  </div><div class="line">replace_copy_if  <span class="comment">//与replace_if，不过将结果写入另一个容器。  </span></div><div class="line">  </div><div class="line">swap  <span class="comment">//交换存储在两个对象中的值。  </span></div><div class="line">  </div><div class="line">swap_range  <span class="comment">//将指定范围内的元素与另一个序列元素值进行交换。  </span></div><div class="line">  </div><div class="line">unique  </div><div class="line"><span class="comment">//清除序列中重复元素，和remove类似，它也不能  </span></div><div class="line"><span class="comment">//真正删除元素。重载版本使用自定义比较操作。  </span></div><div class="line">  </div><div class="line">unique_copy  <span class="comment">//与unique类似，不过把结果输出到另一个容器。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="排列组合算法-2个-：提供计算给定集合按一定顺序的所有可能排列组合"><a href="#排列组合算法-2个-：提供计算给定集合按一定顺序的所有可能排列组合" class="headerlink" title="排列组合算法(2个)：提供计算给定集合按一定顺序的所有可能排列组合"></a>排列组合算法(2个)：提供计算给定集合按一定顺序的所有可能排列组合</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">next_permutation  </div><div class="line"><span class="comment">//取出当前范围内的排列，并重新排序为  </span></div><div class="line"><span class="comment">//下一个排列。重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">prev_permutation  </div><div class="line"><span class="comment">//取出指定范围内的序列并将它重新排序  </span></div><div class="line"><span class="comment">//为上一个序列。如果不存在上一个序列则返回false。</span></div><div class="line"><span class="comment">//重载版本使用自定义的比较操作。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="算术算法-4个"><a href="#算术算法-4个" class="headerlink" title="算术算法(4个)"></a>算术算法(4个)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">accumulate  <span class="comment">//iterator对标识的序列段元素之和，加到一个由  </span></div><div class="line"><span class="comment">//val指定的初始值上。重载版本不再做加法，而是传进来的</span></div><div class="line"><span class="comment">//二元操作符被应用到元素上。  </span></div><div class="line">  </div><div class="line">partial_sum  <span class="comment">//创建一个新序列，其中每个元素值代表指定  </span></div><div class="line"><span class="comment">//范围内该位置前所有元素之和。重载版本使用自定义操作代替加法。  </span></div><div class="line">  </div><div class="line">inner_product  <span class="comment">//对两个序列做内积(对应元素相乘，再求和)并  </span></div><div class="line"><span class="comment">//将内积加到一个输入的初始值上。重载版本使用用户定义的操作。  </span></div><div class="line">  </div><div class="line">adjacent_difference  <span class="comment">//创建一个新序列，新序列中每个新值代表  </span></div><div class="line"><span class="comment">//当前元素与上一个元素的差。重载版本用指定二元操作计算相邻元素的差。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="生成和异变算法-6个"><a href="#生成和异变算法-6个" class="headerlink" title="生成和异变算法(6个)"></a>生成和异变算法(6个)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">fill  <span class="comment">//将输入值赋给标志范围内的所有元素。  </span></div><div class="line">  </div><div class="line">fill_n  <span class="comment">//将输入值赋给first到first+n范围内的所有元素。  </span></div><div class="line">  </div><div class="line">for_each  <span class="comment">//用指定函数依次对指定范围内所有元素进行迭代访问，  </span></div><div class="line"><span class="comment">//返回所指定的函数类型。该函数不得修改序列中的元素。  </span></div><div class="line">  </div><div class="line">generate  <span class="comment">//连续调用输入的函数来填充指定的范围。  </span></div><div class="line">  </div><div class="line">generate_n  </div><div class="line"><span class="comment">//与generate函数类似，填充从指定iterator开始的n个元素。  </span></div><div class="line">  </div><div class="line">transform  </div><div class="line"><span class="comment">//将输入的操作作用与指定范围内的每个元素，并产生一个新的序列。  </span></div><div class="line"><span class="comment">//重载版本将操作作用在一对元素上，另外一个元素来自输入的</span></div><div class="line"><span class="comment">//另外一个序列。结果输出到指定容器</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="关系算法-8个"><a href="#关系算法-8个" class="headerlink" title="关系算法(8个)"></a>关系算法(8个)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">equal  <span class="comment">//如果两个序列在标志范围内元素都相等，返回true。  </span></div><div class="line"><span class="comment">//重载版本使用输入的操作符代替默认的等于操作符。  </span></div><div class="line">  </div><div class="line">includes  <span class="comment">//判断第一个指定范围内的所有元素是否都被第二个  </span></div><div class="line"><span class="comment">//范围包含，使用底层元素的&lt;操作符，成功返回true。</span></div><div class="line"><span class="comment">//重载版本使用用户输入的函数。  </span></div><div class="line">  </div><div class="line">lexicographical_compare  <span class="comment">//比较两个序列。重载版本使用用户自定义比较操作。  </span></div><div class="line">  </div><div class="line">max  <span class="comment">//返回两个元素中较大一个。重载版本使用自定义比较操作。  </span></div><div class="line">  </div><div class="line">max_element  <span class="comment">//返回一个ForwardIterator，指出序列中最大的</span></div><div class="line"><span class="comment">//元素。重载版本使用自定义比较操作。  </span></div><div class="line">  </div><div class="line">min  <span class="comment">//返回两个元素中较小一个。重载版本使用自定义比较操作。  </span></div><div class="line">  </div><div class="line">min_element  <span class="comment">//返回一个ForwardIterator，指出序列中最小的</span></div><div class="line"><span class="comment">//元素。重载版本使用自定义比较操作。  </span></div><div class="line">  </div><div class="line">mismatch  <span class="comment">//并行比较两个序列，指出第一个</span></div><div class="line"><span class="comment">//不匹配的位置，返回一对iterator，  </span></div><div class="line"><span class="comment">//标志第一个不匹配元素位置。如果都匹配，返回每个</span></div><div class="line"><span class="comment">//容器的last。重载版本使用自定义的比较操作。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="集合算法-4个"><a href="#集合算法-4个" class="headerlink" title="集合算法(4个)"></a>集合算法(4个)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">set_union  <span class="comment">//构造一个有序序列，包含两个序列中所有的不重复</span></div><div class="line"><span class="comment">//元素。重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">set_intersection  <span class="comment">//构造一个有序序列，其中元素在两个序列中</span></div><div class="line"><span class="comment">//都存在。重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">set_difference  </div><div class="line"><span class="comment">//构造一个有序序列，该序列仅保留第一个序列中存在的而  </span></div><div class="line"><span class="comment">//第二个中不存在的元素。重载版本使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">set_symmetric_difference  <span class="comment">//构造一个有序序列，该序列取两个序列的对称差集(并集-交集)。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="堆算法-4个"><a href="#堆算法-4个" class="headerlink" title="堆算法(4个)"></a>堆算法(4个)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">make_heap  </div><div class="line"><span class="comment">//把指定范围内的元素生成一个堆。重载版本使用自定义比较操作。  </span></div><div class="line">  </div><div class="line">pop_heap  </div><div class="line"><span class="comment">//并不真正把最大元素从堆中弹出，而是重新排序堆。它把  </span></div><div class="line"><span class="comment">//first和last-1交换，然后重新生成一个堆。可使用容器的back来访问  </span></div><div class="line"><span class="comment">//被"弹出"的元素或者使用pop_back进行真正的删除。重载版本</span></div><div class="line"><span class="comment">//使用自定义的比较操作。  </span></div><div class="line">  </div><div class="line">push_heap  </div><div class="line"><span class="comment">//假设first到last-1是一个有效堆，要被加入到堆的元素存放在  </span></div><div class="line"><span class="comment">//位置last-1，重新生成堆。在指向该函数前，必须先把元素插入</span></div><div class="line"><span class="comment">//容器后。重载版本使用指定的比较操作。  </span></div><div class="line">  </div><div class="line">sort_heap  <span class="comment">//对指定范围内的序列重新排序，它假设该序列是</span></div><div class="line"><span class="comment">//个有序堆。重载版本使用自定义比较操作。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="常用算法图示"><a href="#常用算法图示" class="headerlink" title="常用算法图示"></a>常用算法图示</h3></li>
+</ul>
+<center><img src="http://img.blog.csdn.net/20160519155043788" alt=""></center>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C++</a>
+          
+            <a href="/tags/STL/" rel="tag">#STL</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/01/C++/STL之priority-queue（优先队列）/" rel="next" title=" STL之priority_queue（优先队列）">
+                <i class="fa fa-chevron-left"></i>  STL之priority_queue（优先队列）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/01/C++/C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()/" rel="prev" title="C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()">
+                C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar() <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/01/C++/STL之算法总结/"
+     data-title=" STL之算法总结"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/01/C++/STL之算法总结/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/01/C++/STL之算法总结/"
+           data-title=" STL之算法总结" data-url="http://yoursite.com/2016/06/01/C++/STL之算法总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E5%A4%B4%E5%83%8F.jpg"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/qiuchengjia" target="_blank" title="Coding">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Coding
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/145466621/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/qq_26891045" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lrdup.net/" title="键盘上的舞者" target="_blank">键盘上的舞者</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/whjkm" title="Just do it !" target="_blank">Just do it !</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/" title="程序员减压网站" target="_blank">程序员减压网站</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/" title="优秀博客和网站" target="_blank">优秀博客和网站</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qiuchengjia.cn/links/" title="中国博客联盟" target="_blank">中国博客联盟</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.pythontip.com/acm/problemCategory" title="ACM各大OJ题集" target="_blank">ACM各大OJ题集</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://a.ilhong.cn/" title="淡清风" target="_blank">淡清风</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gongchuangsu.com/" title="贱贱的梦想" target="_blank">贱贱的梦想</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找算法-13个-：判断容器中是否包含某个值"><span class="nav-number">1.</span> <span class="nav-text">查找算法(13个)：判断容器中是否包含某个值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序和通用算法-14个-：提供元素排序策略"><span class="nav-number">2.</span> <span class="nav-text">排序和通用算法(14个)：提供元素排序策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除和替换算法-15个"><span class="nav-number">3.</span> <span class="nav-text">删除和替换算法(15个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排列组合算法-2个-：提供计算给定集合按一定顺序的所有可能排列组合"><span class="nav-number">4.</span> <span class="nav-text">排列组合算法(2个)：提供计算给定集合按一定顺序的所有可能排列组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术算法-4个"><span class="nav-number">5.</span> <span class="nav-text">算术算法(4个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成和异变算法-6个"><span class="nav-number">6.</span> <span class="nav-text">生成和异变算法(6个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系算法-8个"><span class="nav-number">7.</span> <span class="nav-text">关系算法(8个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合算法-4个"><span class="nav-number">8.</span> <span class="nav-text">集合算法(4个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆算法-4个"><span class="nav-number">9.</span> <span class="nav-text">堆算法(4个)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用算法图示"><span class="nav-number">10.</span> <span class="nav-text">常用算法图示</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+
+<div class="theme-info">
+
+  
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qiuchengjia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("SrdwhMrgLMuFT7RutWzheSK8-gzGzoHsz", "K6zzn3r4jSvkq3riXpiMOrrj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
