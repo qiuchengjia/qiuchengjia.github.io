@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/07/JAVA/Java%E6%B3%A8%E8%A7%A3/</loc>
+    <lastmod>2016-08-08T13:18:09.111Z</lastmod>
+    <data>
+        <display>
+        <title>Java注解</title>
+        <pubTime>2016-08-07T13:20:39.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/03/%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2016-08-08T12:41:07.198Z</lastmod>
     <data>
@@ -19,26 +39,6 @@
            
              
               <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/07/JAVA/Java%E6%B3%A8%E8%A7%A3/</loc>
-    <lastmod>2016-08-08T12:14:01.794Z</lastmod>
-    <data>
-        <display>
-        <title>Java注解</title>
-        <pubTime>2016-08-07T13:20:39.000Z</pubTime>
-        
-        <tag>JAVA</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
           
         </display>
     </data>

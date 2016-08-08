@@ -120,7 +120,13 @@ ava注解又称为标注，是Java从1.5开始支持">
 ava注解又称为标注，是Java从1.5开始支持">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A32.jpg">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A31.jpg">
-<meta property="og:updated_time" content="2016-08-08T12:14:01.794Z">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A34.jpg">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A36.jpg">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A37.jpg">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A38.jpg">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A39.jpg">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A310.jpg">
+<meta property="og:updated_time" content="2016-08-08T13:18:09.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java注解">
 <meta name="twitter:description" content="什么是注解
@@ -589,8 +595,173 @@ ava注解又称为标注，是Java从1.5开始支持">
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.setFlavour(IceCreamFlavourManager.VANILLA &amp; IceCreamFlavourManager.CHOCOLATE);</div></pre></td></tr></table></figure>
 <h4 id="线程注解："><a href="#线程注解：" class="headerlink" title="线程注解："></a><strong>线程注解：</strong></h4><ul>
-<li>对对对aaaa</li>
+<li>用于标记指定的方法、类（如果一个类中的所有方法都有相同的线程需求，就可以对这个类进行注解，比如View.java就被@UIThread所标记）只能在指定的线程类中被调用，包括：@UiThread、@MainThread、@WorkerThread、@BinderThread；以@UIThread为例，说明这类注解的使用方法：</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main_layout);</div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable()&#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">                setTextInOtherThread(R.string.app_name);</div><div class="line">             <span class="comment">// setTextInOtherThread2(R.string.app_name);</span></div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@UiThread</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTextInOtherThread</span><span class="params">(@StringRes <span class="keyword">int</span> resId)</span></span>&#123;</div><div class="line">        TextView threadTxtView = (TextView)MainActivity.<span class="keyword">this</span>.findViewById(R.id.threadTxtViewId);</div><div class="line">        threadTxtView.setText(resId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTextInOtherThread2</span><span class="params">(@StringRes <span class="keyword">final</span> <span class="keyword">int</span> resId)</span></span>&#123;</div><div class="line">        MainActivity.<span class="keyword">this</span>.runOnUiThread(<span class="keyword">new</span> Runnable()&#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">                TextView threadTxtView = (TextView)MainActivity.<span class="keyword">this</span>.findViewById(R.id.threadTxtViewId);</div><div class="line">                threadTxtView.setText(resId);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>@UIThread和@MainThread的区别：</strong>在进程里只有一个主线程。这个就是@MainThread。同时这个线程也是一个@UiThread。比如activity的主要窗口就运行在这个线程上。然而它也有能力为应用创建其他线程。这很少见，一般具备这样功能的都是系统进程。通常是把和生命周期有关的用@MainThread标注，和View层级结构相关的用@UiThread标注。但是由于@MainThread本质上是一个@UiThread，而大部分情况下@UiThread又是一个@MainThread，所以工具(lint ,Android Studio,等等)可以把他们互换，所以你能在一个可以调用@MainThread方法的地方也能调用@UiThread方法，反之亦然</li>
+</ul>
+<h4 id="GRB颜色值注解："><a href="#GRB颜色值注解：" class="headerlink" title="GRB颜色值注解："></a><strong>GRB颜色值注解：</strong></h4><ul>
+<li>用于标记传递的颜色值必须是整型值，并且不能是color资源ID；当你的API期望一个颜色资源的时候，可以用@ColorRes标注，但是当你有一个相反的使用场景时，这种用法就不可用了，因为你并不是期望一个颜色资源id，而是一个真实的RGB或者ARGB的颜色值。在这种情况下，你可以使用@ColorInt注解，表示你期望的是一个代表颜色的整数值：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTextColor</span><span class="params">(@ColorInt <span class="keyword">int</span> color)</span></span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>有了这个，当你传递一个颜色id而不是颜色值的时候，lint就会标记出这段不正确的代码：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A34.jpg" alt=""></center>
+
+<h4 id="值约束注解："><a href="#值约束注解：" class="headerlink" title="值约束注解："></a><strong>值约束注解：</strong></h4><ul>
+<li>用于标记参数必须是指定类型的值，并且值的范围必须在约束的范围内，包括@Size、@IntRange、@FloatRange。如果你的参数是一个float或者double类型，并且一定要在某个范围内，你可以使用@FloatRange注解：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAlpha</span><span class="params">(@FloatRange(from=<span class="number">0.0</span>, to=<span class="number">1.0</span>)</span> <span class="keyword">float</span> alpha)</span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果有人使用该API的时候传递一个0-255的值，比如尝试调用setAlpha(128)，那么工具就会捕获这一问题：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A36.jpg" alt=""></center>
+
+<ul>
+<li><p>把这些注解应用到参数上是非常有用的，因为用户很有可能会提供错误范围的参数，比如上面的setAlpha例子，有的API是采用0-255的方式，而有的是采用0-1的float值的方式</p>
+</li>
+<li><p>对于数据、集合以及字符串，你可以用@Size注解参数来限定集合的大小(当参数是字符串的时候，可以限定字符串的长度)。举几个例子:</p>
+<ol>
+<li><p>集合不能为空: @Size(min=1)；</p>
+</li>
+<li><p>字符串最大只能有23个字符: @Size(max=23)；</p>
+</li>
+<li><p>数组只能有2个元素: @Size(2)；</p>
+</li>
+<li><p>数组的大小必须是2的倍数 (例如图形API中获取位置的x/y坐标数组: @Size(multiple=2)</p>
+</li>
+</ol>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A37.jpg" alt=""></center>
+
+<h4 id="权限注解："><a href="#权限注解：" class="headerlink" title="权限注解："></a><strong>权限注解：</strong></h4><ul>
+<li>如果你的方法需要调用者有特定的权限，你可以使用@RequiresPermission注解：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequiresPermission</span>(Manifest.permission.SET_WALLPAPER)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setWallpaper</span><span class="params">(Bitmap bitmap)</span> <span class="keyword">throws</span> IOException</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果你至少需要权限集合中的一个，你可以使用anyOf属性：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequiresPermission</span>(anyOf = &#123;</div><div class="line">    Manifest.permission.ACCESS_COARSE_LOCATION,</div><div class="line">    Manifest.permission.ACCESS_FINE_LOCATION&#125;)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Location <span class="title">getLastKnownLocation</span><span class="params">(String provider)</span></span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果你同时需要多个权限，你可以用allOf属性：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequiresPermission</span>(allOf = &#123;</div><div class="line">    Manifest.permission.READ_HISTORY_BOOKMARKS, </div><div class="line">    Manifest.permission.WRITE_HISTORY_BOOKMARKS&#125;)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">updateVisitedHistory</span><span class="params">(ContentResolver cr, String url, <span class="keyword">boolean</span> real)</span> </span>&#123;</div></pre></td></tr></table></figure>
+<ul>
+<li>对于intents的权限，可以直接在定义的intent常量字符串字段上标注权限需求(他们通常都已经被@SdkConstant注解标注过了):</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequiresPermission</span>(android.Manifest.permission.BLUETOOTH)</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ACTION_REQUEST_DISCOVERABLE =</div><div class="line">            <span class="string">"android.bluetooth.adapter.action.REQUEST_DISCOVERABLE"</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>对于content providers的权限，你可能需要单独的标注读和写的权限访问，所以可以用@Read或者@Write标注每一个权限需求：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequiresPermission</span>.Read(<span class="meta">@RequiresPermission</span>(READ_HISTORY_BOOKMARKS))</div><div class="line"><span class="meta">@RequiresPermission</span>.Write(<span class="meta">@RequiresPermission</span>(WRITE_HISTORY_BOOKMARKS))</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Uri BOOKMARKS_URI = Uri.parse(<span class="string">"content://browser/bookmarks"</span>);</div></pre></td></tr></table></figure>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A38.jpg" alt=""></center>
+
+
+<h4 id="复写方法注解："><a href="#复写方法注解：" class="headerlink" title="复写方法注解："></a><strong>复写方法注解：</strong></h4><ul>
+<li>如果你的API允许使用者重写你的方法，但你又需要你自己的方法(父方法)在重写的时候也被调用，这时候你可以使用@CallSuper标注：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@CallSuper</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div></pre></td></tr></table></figure>
+<ul>
+<li>用了这个后，当重写的方法没有调用父方法时，工具就会给予警告提示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A39.jpg" alt=""></center>
+
+<h4 id="返回值注解："><a href="#返回值注解：" class="headerlink" title="返回值注解："></a><strong>返回值注解：</strong></h4><ul>
+<li><p>如果你的方法有返回值，你期望调用者用这个值做些事情，那么你可以使用@CheckResult注解标注这个方法</p>
+</li>
+<li><p>你并不需要为每个非空方法都进行标注。它主要的目的是帮助哪些容易被混淆，难以被理解的API的使用者</p>
+</li>
+<li><p>比如，可能很多开发者都对String.trim()一知半解，认为调用了这个方法，就可以让字符串改变以去掉空白字符。如果这个方法被@CheckResult标注，工具就会对那些没有使用trim()返回结果的调用者发出警告</p>
+</li>
+<li><p>Android中，Context#checkPermission这个方法已经被@CheckResult标注了：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@CheckResult</span>(suggest=<span class="string">"#enforcePermission(String,int,int,String)"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">checkPermission</span><span class="params">(@NonNull String permission, <span class="keyword">int</span> pid, <span class="keyword">int</span> uid)</span></span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>这是非常重要的，因为有些使用context.checkPermission的开发者认为他们已经执行了一个权限 —-但其实这个方法仅仅只做了检查并且反馈一个是否成功的值而已。如果开发者使用了这个方法，但是又不用其返回值，那么这个开发者真正想调用的可能是这个Context#enforcePermission方法，而不是checkPermission</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E6%B3%A8%E8%A7%A310.jpg" alt=""></center>
+
+<h4 id="测试可见注解："><a href="#测试可见注解：" class="headerlink" title="测试可见注解："></a><strong>测试可见注解：</strong></h4><ul>
+<li>你可以把这个注解标注到类、方法或者字段上，以便你在测试的时候可以使用他们</li>
+</ul>
+<hr>
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>通过阅读注解类的源码可以发现，任何一个注解类都有如下特征：</p>
+<ul>
+<li><p>注解类会被@interface标记；</p>
+</li>
+<li><p>注解类的顶部会被@Documented、@Retention、@Target、@Inherited这四个注解标记（@Documented、@Inherited可选，@Retention、@Target必须要有）；</p>
+</li>
+</ul>
+<p><strong>@UiThread源码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Documented</span></div><div class="line"><span class="meta">@Retention</span>(CLASS)</div><div class="line"><span class="meta">@Target</span>(&#123;METHOD,CONSTRUCTOR,TYPE&#125;)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> UiThread &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>上文提到的四个注解：@Documented、@Retention、@Target、@Inherited就是元注解，它们的作用是负责注解其它注解，主要是描述注解的一些属性，任何注解都离不开元注解（包括元注解自身，通过元注解可以自定义注解），元注解的用户是JDK，JDK已经帮助我们实现了这四个注解的逻辑。这四个注解在JDK的java.lang.annotation包中。对每个元注解的详细说明如下：</p>
+<h4 id="Target："><a href="#Target：" class="headerlink" title="@Target："></a><strong>@Target：</strong></h4><ul>
+<li><p><strong>作用：</strong>用于描述注解的使用范围，即被描述的注解可以用在什么地方；</p>
+</li>
+<li><p><strong>取值：</strong></p>
+</li>
+</ul>
+<ol>
+<li><p>CONSTRUCTOR:构造器；</p>
+</li>
+<li><p>FIELD:实例；</p>
+</li>
+<li><p>LOCAL_VARIABLE:局部变量；</p>
+</li>
+<li><p>METHOD:方法；</p>
+</li>
+<li><p>PACKAGE:包；</p>
+</li>
+<li><p>PARAMETER:参数;</p>
+</li>
+<li><p>TYPE:类、接口(包括注解类型) 或enum声明</p>
+</li>
+</ol>
+<ul>
+<li><strong>示例：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">作者：张明云</div><div class="line">链接：https:<span class="comment">//zhuanlan.zhihu.com/p/21410338</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div><div class="line"></div><div class="line"><span class="comment">/***</span></div><div class="line"> *</div><div class="line"> * 实体注解接口</div><div class="line"> */</div><div class="line"><span class="meta">@Target</span>(value = &#123;ElementType.TYPE&#125;)</div><div class="line"><span class="meta">@Retention</span>(value = RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Entity &#123;</div><div class="line">    <span class="comment">/***</span></div><div class="line">     * 实体默认firstLevelCache属性为false</div><div class="line">     * <span class="doctag">@return</span> boolean</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">firstLevelCache</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</div><div class="line">    <span class="comment">/***</span></div><div class="line">     * 实体默认secondLevelCache属性为false</div><div class="line">     * <span class="doctag">@return</span> boolean</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">secondLevelCache</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</div><div class="line">    <span class="comment">/***</span></div><div class="line">     * 表名默认为空</div><div class="line">     * <span class="doctag">@return</span> String</div><div class="line">     */</div><div class="line">    <span class="function">String <span class="title">tableName</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</div><div class="line">    <span class="comment">/***</span></div><div class="line">     * 默认以""分割注解</div><div class="line">     */</div><div class="line">    <span class="function">String <span class="title">split</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Retention："><a href="#Retention：" class="headerlink" title="@Retention："></a><strong>@Retention：</strong></h4><ul>
+<li><p><strong>作用：</strong>表示需要在什么级别保存该注解信息，用于描述注解的生命周期，即被描述的注解在什么范围内有效；</p>
+</li>
+<li><p><strong>取值：</strong></p>
+</li>
+</ul>
+<ol>
+<li><p>SOURCE:在源文件中有效，即源文件保留；</p>
+</li>
+<li><p>CLASS:在class文件中有效，即class保留；</p>
+</li>
+<li><p>RUNTIME:在运行时有效，即运行时保留；</p>
+</li>
+</ol>
+<ul>
+<li><strong>示例：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/***</span></div><div class="line"> * 字段注解接口</div><div class="line"> */</div><div class="line"><span class="meta">@Target</span>(value = &#123;ElementType.FIELD&#125;)<span class="comment">//注解可以被添加在实例上</span></div><div class="line"><span class="meta">@Retention</span>(value = RetentionPolicy.RUNTIME)<span class="comment">//注解保存在JVM运行时刻,能够在运行时刻通过反射API来获取到注解的信息</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Column &#123;</div><div class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;<span class="comment">//注解的name属性</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Documented："><a href="#Documented：" class="headerlink" title="@Documented："></a><strong>@Documented：</strong></h4><ul>
+<li><p><strong>作用：</strong>用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化</p>
+</li>
+<li><p><strong>取值：</strong>它属于标记注解，没有成员；</p>
+</li>
+<li><p><strong>示例：</strong></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Documented</span></div><div class="line"><span class="meta">@Retention</span>(CLASS)</div><div class="line"><span class="meta">@Target</span>(&#123;METHOD,CONSTRUCTOR,TYPE&#125;)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> UiThread &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Inherited："><a href="#Inherited：" class="headerlink" title="@Inherited："></a><strong>@Inherited：</strong></h4><ul>
+<li><p><strong>作用：</strong>用于描述某个被标注的类型是可被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类</p>
+</li>
+<li><p><strong>取值：</strong>它属于标记注解，没有成员；</p>
+</li>
+<li><p><strong>示例：</strong></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**  </span></div><div class="line"> * <span class="doctag">@author</span> wangsheng </div><div class="line"> **/  </div><div class="line"><span class="meta">@Inherited</span>  </div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Greeting &#123;  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> FontColor&#123; BULE,RED,GREEN&#125;;  </div><div class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;  </div><div class="line">    <span class="function">FontColor <span class="title">fontColor</span><span class="params">()</span> <span class="keyword">default</span> FontColor.GREEN</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="如何自定义注解"><a href="#如何自定义注解" class="headerlink" title="如何自定义注解"></a>如何自定义注解</h3><p>使用@interface自定义注解时，自动继承了java.lang.annotation.Annotation接口，由编译程序自动完成其他细节。在定义注解时，不能继承其他的注解或接口。@interface用来声明一个注解，其中的每一个方法实际上是声明了一个配置参数。方法的名称就是参数的名称，返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）。可以通过default来声明参数的默认值。</p>
 
       
     </div>
@@ -838,7 +1009,7 @@ ava注解又称为标注，是Java从1.5开始支持">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是注解"><span class="nav-number">1.</span> <span class="nav-text">什么是注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特别说明："><span class="nav-number">1.1.</span> <span class="nav-text">特别说明：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解的作用"><span class="nav-number">2.</span> <span class="nav-text">注解的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解是如何工作的？"><span class="nav-number">3.</span> <span class="nav-text">注解是如何工作的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解和配置文件的区别"><span class="nav-number">4.</span> <span class="nav-text">注解和配置文件的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件："><span class="nav-number">4.1.</span> <span class="nav-text">配置文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解："><span class="nav-number">4.2.</span> <span class="nav-text">注解：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见注解"><span class="nav-number">5.</span> <span class="nav-text">常见注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API"><span class="nav-number">5.1.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最常见注解"><span class="nav-number">5.2.</span> <span class="nav-text">最常见注解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Annotation-Support包中的注解介绍："><span class="nav-number">6.</span> <span class="nav-text">Android Annotation Support包中的注解介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nullness注解："><span class="nav-number">6.1.</span> <span class="nav-text">Nullness注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资源类型注解："><span class="nav-number">6.2.</span> <span class="nav-text">资源类型注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型定义注解："><span class="nav-number">6.3.</span> <span class="nav-text">类型定义注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程注解："><span class="nav-number">6.4.</span> <span class="nav-text">线程注解：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是注解"><span class="nav-number">1.</span> <span class="nav-text">什么是注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特别说明："><span class="nav-number">1.1.</span> <span class="nav-text">特别说明：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解的作用"><span class="nav-number">2.</span> <span class="nav-text">注解的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解是如何工作的？"><span class="nav-number">3.</span> <span class="nav-text">注解是如何工作的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解和配置文件的区别"><span class="nav-number">4.</span> <span class="nav-text">注解和配置文件的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件："><span class="nav-number">4.1.</span> <span class="nav-text">配置文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解："><span class="nav-number">4.2.</span> <span class="nav-text">注解：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见注解"><span class="nav-number">5.</span> <span class="nav-text">常见注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API"><span class="nav-number">5.1.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最常见注解"><span class="nav-number">5.2.</span> <span class="nav-text">最常见注解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Annotation-Support包中的注解介绍："><span class="nav-number">6.</span> <span class="nav-text">Android Annotation Support包中的注解介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nullness注解："><span class="nav-number">6.1.</span> <span class="nav-text">Nullness注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资源类型注解："><span class="nav-number">6.2.</span> <span class="nav-text">资源类型注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型定义注解："><span class="nav-number">6.3.</span> <span class="nav-text">类型定义注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程注解："><span class="nav-number">6.4.</span> <span class="nav-text">线程注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GRB颜色值注解："><span class="nav-number">6.5.</span> <span class="nav-text">GRB颜色值注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值约束注解："><span class="nav-number">6.6.</span> <span class="nav-text">值约束注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限注解："><span class="nav-number">6.7.</span> <span class="nav-text">权限注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复写方法注解："><span class="nav-number">6.8.</span> <span class="nav-text">复写方法注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值注解："><span class="nav-number">6.9.</span> <span class="nav-text">返回值注解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试可见注解："><span class="nav-number">6.10.</span> <span class="nav-text">测试可见注解：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义注解"><span class="nav-number">7.</span> <span class="nav-text">自定义注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元注解"><span class="nav-number">8.</span> <span class="nav-text">元注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Target："><span class="nav-number">8.1.</span> <span class="nav-text">@Target：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Retention："><span class="nav-number">8.2.</span> <span class="nav-text">@Retention：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Documented："><span class="nav-number">8.3.</span> <span class="nav-text">@Documented：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inherited："><span class="nav-number">8.4.</span> <span class="nav-text">@Inherited：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何自定义注解"><span class="nav-number">9.</span> <span class="nav-text">如何自定义注解</span></a></li></ol></div>
             
           </div>
         </section>
