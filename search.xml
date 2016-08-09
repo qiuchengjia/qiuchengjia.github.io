@@ -365,8 +365,8 @@
 <li><p>以上所有类型的数组</p>
 </li>
 </ol>
-<p><strong>特别说明：</strong></p>
 <hr>
+<p><strong>特别说明：</strong></p>
 <ul>
 <li>注解类中的方法只能用public或者默认这两个访问权修饰，不写public就是默认，eg：</li>
 </ul>
@@ -380,6 +380,7 @@
 <ul>
 <li>注解元素必须有确定的值，要么在定义注解的默认值中指定，要么在使用注解时指定，非基本类型的注解元素的值不可为null。因此, 使用空字符串或0作为默认值是一种常用的做法</li>
 </ul>
+<hr>
 <h4 id="实例演示："><a href="#实例演示：" class="headerlink" title="实例演示："></a><strong>实例演示：</strong></h4><ul>
 <li><strong>ToDo.java：</strong>注解类</li>
 </ul>
