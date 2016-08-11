@@ -108,7 +108,7 @@
 <li>都是static类型的，因为static类型的属性会在类被加载之后被初始化，当一个Java类第一次被真正使用到的时候静态资源被初始化、Java类的加载和初始化过程都是线程安全的。所以，<strong>创建一个enum类型是线程安全的</strong></li>
 </ul>
 <h2 id="为什么用枚举实现的单例是最好的方式"><a href="#为什么用枚举实现的单例是最好的方式" class="headerlink" title="为什么用枚举实现的单例是最好的方式"></a>为什么用枚举实现的单例是最好的方式</h2><ul>
-<li>在<a href="">单例模式的七种写法</a>中，我们看到一共有七种实现单例的方式，其中，Effective Java作者Josh Bloch 提倡使用枚举的方式，既然大神说这种方式好，那我们就要知道它为什么好？</li>
+<li>在<a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/">单例模式的七种写法</a>中，我们看到一共有七种实现单例的方式，其中，Effective Java作者Josh Bloch 提倡使用枚举的方式，既然大神说这种方式好，那我们就要知道它为什么好？</li>
 </ul>
 ]]></content>
     </entry>
@@ -3559,6 +3559,8 @@
 <li><p><a href="http://openhome.cc/Gossip/index.html" target="_blank" rel="external">台湾博主</a> 台湾的一个博主，有很多资料，主要是有Java资料，不过是繁体字</p>
 </li>
 <li><p><a href="http://0opslab.com/" target="_blank" rel="external">方丈</a> Java,JS,linux,python等等</p>
+</li>
+<li><p><a href="http://www.hollischuang.com/" target="_blank" rel="external">hollis blog</a> 有Java，框架，操作系统，以及其他综合类的很多文章，非常不错</p>
 </li>
 </ul>
 <h3 id="技术网站"><a href="#技术网站" class="headerlink" title="技术网站"></a>技术网站</h3><ul>

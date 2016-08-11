@@ -69,7 +69,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java枚举类/</id>
     <published>2016-08-11T22:19:08.000Z</published>
-    <updated>2016-08-11T15:25:14.637Z</updated>
+    <updated>2016-08-11T15:44:14.927Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
 <li>在java语言中还没有引入枚举类型之前，表示枚举类型的常用模式是声明一组具有int常量。之前我们通常利用public final static 方法定义的代码如下，分别用1 表示春天，2表示夏天，3表示秋天，4表示冬天</li>
@@ -158,7 +158,7 @@
 <li>都是static类型的，因为static类型的属性会在类被加载之后被初始化，当一个Java类第一次被真正使用到的时候静态资源被初始化、Java类的加载和初始化过程都是线程安全的。所以，<strong>创建一个enum类型是线程安全的</strong></li>
 </ul>
 <h2 id="为什么用枚举实现的单例是最好的方式"><a href="#为什么用枚举实现的单例是最好的方式" class="headerlink" title="为什么用枚举实现的单例是最好的方式"></a>为什么用枚举实现的单例是最好的方式</h2><ul>
-<li>在<a href="">单例模式的七种写法</a>中，我们看到一共有七种实现单例的方式，其中，Effective Java作者Josh Bloch 提倡使用枚举的方式，既然大神说这种方式好，那我们就要知道它为什么好？</li>
+<li>在<a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/">单例模式的七种写法</a>中，我们看到一共有七种实现单例的方式，其中，Effective Java作者Josh Bloch 提倡使用枚举的方式，既然大神说这种方式好，那我们就要知道它为什么好？</li>
 </ul>
 ]]></content>
     
