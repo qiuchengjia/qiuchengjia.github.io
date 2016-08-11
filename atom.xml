@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-11T07:20:24.297Z</updated>
+  <updated>2016-08-11T07:22:34.756Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/11/JAVA/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1/"/>
     <id>http://www.qiuchengjia.cn/2016/08/11/JAVA/Java自动拆箱和装箱/</id>
     <published>2016-08-11T14:24:02.000Z</published>
-    <updated>2016-08-11T07:20:24.297Z</updated>
+    <updated>2016-08-11T07:22:34.756Z</updated>
     
     <content type="html"><![CDATA[<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1.png" alt=""></center>
 
@@ -43,7 +43,7 @@
 <tbody>
 <tr>
 <td>boolean</td>
-<td style="text-align:left">-–</td>
+<td style="text-align:left">^</td>
 <td style="text-align:left">true,false</td>
 <td style="text-align:left">false</td>
 <td style="text-align:left">Boolean</td>
@@ -99,9 +99,9 @@
 </tr>
 <tr>
 <td>void</td>
-<td style="text-align:left">-–</td>
-<td style="text-align:left">-–</td>
-<td style="text-align:left">-–</td>
+<td style="text-align:left">^</td>
+<td style="text-align:left">^</td>
+<td style="text-align:left">^</td>
 <td style="text-align:left">Void</td>
 </tr>
 </tbody>
@@ -228,7 +228,7 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;boolean&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;^&lt;/td&gt;
 &lt;td style=&quot;text-align:left&quot;&gt;true,false&lt;/td&gt;
 &lt;td style=&quot;text-align:left&quot;&gt;false&lt;/td&gt;
 &lt;td style=&quot;text-align:left&quot;&gt;Boolean&lt;/td&gt;
@@ -284,9 +284,9 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;void&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;^&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;^&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;^&lt;/td&gt;
 &lt;td style=&quot;text-align:left&quot;&gt;Void&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
