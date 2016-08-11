@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/</loc>
+    <lastmod>2016-08-11T14:49:10.715Z</lastmod>
+    <data>
+        <display>
+        <title>Java枚举类</title>
+        <pubTime>2016-08-11T22:19:08.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/08/11/JAVA/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1/</loc>
     <lastmod>2016-08-11T07:22:34.756Z</lastmod>
     <data>
@@ -1132,9 +1152,9 @@
         <title> 如何安装windows和ubuntu双系统</title>
         <pubTime>2015-05-31T21:21:25.000Z</pubTime>
         
-        <tag>ubuntu</tag>
-         
         <tag>linux</tag>
+         
+        <tag>ubuntu</tag>
          
         <tag>windows</tag>
          
@@ -1218,9 +1238,9 @@
         <title> ubuntu如何安装Mac OS X主题</title>
         <pubTime>2015-06-01T10:43:57.000Z</pubTime>
         
-        <tag>ubuntu</tag>
-         
         <tag>linux</tag>
+         
+        <tag>ubuntu</tag>
          
         <tag>MacOSX</tag>
          
