@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-09T12:29:19.076Z</updated>
+  <updated>2016-08-11T06:53:17.263Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,250 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java自动拆箱和装箱</title>
+    <link href="http://www.qiuchengjia.cn/2016/08/11/JAVA/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/11/JAVA/Java自动拆箱和装箱/</id>
+    <published>2016-08-11T14:24:02.000Z</published>
+    <updated>2016-08-11T06:53:17.263Z</updated>
+    
+    <content type="html"><![CDATA[<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1.png" alt=""></center>
+
+<h2 id="什么是自动拆箱和装箱"><a href="#什么是自动拆箱和装箱" class="headerlink" title="什么是自动拆箱和装箱"></a>什么是自动拆箱和装箱</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>自动装箱就是 Java 自动将原始数据类型转为对应的包装类对象 比如将 int 型的变量转成 Integer对象 自动拆箱反之(从 Java 1.5 开始引入)</li>
+</ul>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>自动装箱时，编译器调用 valueOf() 将原始数据类型值转为对象；同时自动拆箱时，编译器调用类似 intValue(), doubleValue() 这类方法将对象转换成原始类型值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th style="text-align:left">大小</th>
+<th style="text-align:left">数值范围</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">包装类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">true,false</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">Boolean</td>
+</tr>
+<tr>
+<td>byte</td>
+<td style="text-align:left">8bit</td>
+<td style="text-align:left">-2^7 – 2^7-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Byte</td>
+</tr>
+<tr>
+<td>char</td>
+<td style="text-align:left">16bit</td>
+<td style="text-align:left">\u0000 – \uffff</td>
+<td style="text-align:left">\u0000</td>
+<td style="text-align:left">Character</td>
+</tr>
+<tr>
+<td>short</td>
+<td style="text-align:left">16bit</td>
+<td style="text-align:left">-2^15 – 2^15-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td style="text-align:left">32bit</td>
+<td style="text-align:left">-2^31 – 2^31-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:left">64bit</td>
+<td style="text-align:left">-2^63 – 2^63-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td style="text-align:left">32bit</td>
+<td style="text-align:left">IEEE 754</td>
+<td style="text-align:left">0.0f</td>
+<td style="text-align:left">Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:left">64bit</td>
+<td style="text-align:left">IEEE 754</td>
+<td style="text-align:left">0.0d</td>
+<td style="text-align:left">Double</td>
+</tr>
+<tr>
+<td>void</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">Void</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基本类型与装箱基本类型的区别"><a href="#基本类型与装箱基本类型的区别" class="headerlink" title="基本类型与装箱基本类型的区别"></a>基本类型与装箱基本类型的区别</h3><ul>
+<li><p>基本类型只有值，而装箱基本类型则具有与它们的值不同的同一性。换句话说，对装箱基本类型运用 == 操作符几乎总是错的</p>
+</li>
+<li><p>基本类型只有功能完备的值，而装箱基本类型除了它对应基本类型的所有功能值外，还有一个非功能值 null，这导致了对于包装基本类型进行拆箱操作后所进行的操作存在 NPE 的风险</p>
+</li>
+<li><p>基本类型更加省空间和时间，如果对包装类型进行频繁的装箱和拆箱操作会影响性能</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="何时发生自动装箱与拆箱？"><a href="#何时发生自动装箱与拆箱？" class="headerlink" title="何时发生自动装箱与拆箱？"></a>何时发生自动装箱与拆箱？</h2><h3 id="赋值时"><a href="#赋值时" class="headerlink" title="赋值时"></a>赋值时</h3><ul>
+<li>在Java1.5之前，需要手动地进行类型转换，而现在所有的转换都是有编译器来完成</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//before autoboxing</span></div><div class="line">Integer iObject = Integer.valueOf(<span class="number">3</span>);</div><div class="line"><span class="keyword">int</span> iPrimitive = iObject.intValue()</div><div class="line"> </div><div class="line"><span class="comment">//after java5</span></div><div class="line">Integer iObject = <span class="number">3</span>;      <span class="comment">//autobxing - primitive to wrapper conversion</span></div><div class="line"><span class="keyword">int</span> iPrimitive = iObject; <span class="comment">//unboxing - object to primitive conversion</span></div></pre></td></tr></table></figure>
+<h3 id="方法调用时"><a href="#方法调用时" class="headerlink" title="方法调用时"></a>方法调用时</h3><ul>
+<li>当在进行方法调用时，可以传入原始数据值或对象，编译器同样会自动进行转换</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">show</span><span class="params">(Integer iParam)</span></span>&#123;</div><div class="line">   System.out.println(<span class="string">"autoboxing example - method invocation i: "</span> + iParam);</div><div class="line">   <span class="keyword">return</span> iParam;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//autoboxing and unboxing in method invocation</span></div><div class="line">show(<span class="number">3</span>); <span class="comment">//autoboxing</span></div><div class="line"><span class="keyword">int</span> result = show(<span class="number">3</span>); <span class="comment">//unboxing because return type of method is Integer</span></div></pre></td></tr></table></figure>
+<h2 id="自动装箱引起的性能问题"><a href="#自动装箱引起的性能问题" class="headerlink" title="自动装箱引起的性能问题"></a>自动装箱引起的性能问题</h2><ul>
+<li>如果有人告诉你：“只要修改一个字符，下面这段代码的运行速度就能提高5倍。”，你觉得可能么？</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span> t = System.currentTimeMillis();</div><div class="line">Long sum = <span class="number">0L</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum += i;</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"total:"</span> + sum);</div><div class="line">System.out.println(<span class="string">"processing time: "</span> + (System.currentTimeMillis() - t) + <span class="string">" ms"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>输出结果：</li>
+</ul>
+<blockquote>
+<p>total:2305843005992468481<br>processing time: 63556 ms</p>
+</blockquote>
+<ul>
+<li>将Long修改为long，再来看一下运行结果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span> t = System.currentTimeMillis();</div><div class="line"><span class="keyword">long</span> sum = <span class="number">0L</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum += i;</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"total:"</span> + sum);</div><div class="line">System.out.println(<span class="string">"processing time: "</span> + (System.currentTimeMillis() - t) + <span class="string">" ms"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>输出结果：</li>
+</ul>
+<blockquote>
+<p>total:2305843005992468481<br>processing time: 12229 ms</p>
+</blockquote>
+<ul>
+<li>事实证明，仅仅修改了一个字符，性能提高了不止一倍两倍。那，就究竟是什么原因导致的呢？<br>因为，+这个操作符不适用Integer对象，在进行数值相加操作之前会发生自动拆箱操作，转换成int，相加之后还会发生自动拆箱操作，装换成Integer对象。其内部变化如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sum = sum.longValue() + i;</div><div class="line">Long sum = <span class="keyword">new</span> Long(sum);</div></pre></td></tr></table></figure>
+<ul>
+<li>很明显，在上面的循环中会创建2147483647个”Long“类型实例，在这样庞大的循环中，会降低程序的性能并且加重了垃圾回收的工作量</li>
+</ul>
+<blockquote>
+<p><strong>说明：包含在包装器中的内容不会改变。即Long对象是不可变的</strong></p>
+</blockquote>
+<h2 id="重载与自动装箱"><a href="#重载与自动装箱" class="headerlink" title="重载与自动装箱"></a>重载与自动装箱</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;center&gt;&lt;img src=&quot;http://o99dg8ap9.bkt.clouddn.com/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
+
+&lt;h2 id=&quot;什么是自动拆箱和装箱&quot;&gt;&lt;a href=&quot;#什么是自动拆箱和装箱&quot; class=&quot;headerlink&quot; title=&quot;什么是自动拆箱和装箱&quot;&gt;&lt;/a&gt;什么是自动拆箱和装箱&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;自动装箱就是 Java 自动将原始数据类型转为对应的包装类对象 比如将 int 型的变量转成 Integer对象 自动拆箱反之(从 Java 1.5 开始引入)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;过程&quot;&gt;&lt;a href=&quot;#过程&quot; class=&quot;headerlink&quot; title=&quot;过程&quot;&gt;&lt;/a&gt;过程&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;自动装箱时，编译器调用 valueOf() 将原始数据类型值转为对象；同时自动拆箱时，编译器调用类似 intValue(), doubleValue() 这类方法将对象转换成原始类型值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;基本类型&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;大小&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;数值范围&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;默认值&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;包装类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;true,false&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;false&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Boolean&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;byte&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;8bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-2^7 – 2^7-1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Byte&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;char&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;16bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;\u0000 – \uffff&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;\u0000&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Character&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;short&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;16bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-2^15 – 2^15-1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Short&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;32bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-2^31 – 2^31-1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Integer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;long&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;64bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-2^63 – 2^63-1&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Long&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;32bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;IEEE 754&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;0.0f&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Float&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;double&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;64bit&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;IEEE 754&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;0.0d&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Double&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;void&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;-–&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Void&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;基本类型与装箱基本类型的区别&quot;&gt;&lt;a href=&quot;#基本类型与装箱基本类型的区别&quot; class=&quot;headerlink&quot; title=&quot;基本类型与装箱基本类型的区别&quot;&gt;&lt;/a&gt;基本类型与装箱基本类型的区别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基本类型只有值，而装箱基本类型则具有与它们的值不同的同一性。换句话说，对装箱基本类型运用 == 操作符几乎总是错的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基本类型只有功能完备的值，而装箱基本类型除了它对应基本类型的所有功能值外，还有一个非功能值 null，这导致了对于包装基本类型进行拆箱操作后所进行的操作存在 NPE 的风险&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基本类型更加省空间和时间，如果对包装类型进行频繁的装箱和拆箱操作会影响性能&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>Java注解</title>
@@ -464,7 +708,7 @@
     <title>Javadoc标签</title>
     <link href="http://www.qiuchengjia.cn/2016/08/04/JAVA/Javadoc%E6%A0%87%E7%AD%BE/"/>
     <id>http://www.qiuchengjia.cn/2016/08/04/JAVA/Javadoc标签/</id>
-    <published>2016-08-04T07:12:13.000Z</published>
+    <published>2016-08-04T15:12:13.000Z</published>
     <updated>2016-08-04T07:17:11.693Z</updated>
     
     <content type="html"><![CDATA[<h3 id="javadoc-标签"><a href="#javadoc-标签" class="headerlink" title="javadoc 标签"></a>javadoc 标签</h3><ul>
@@ -681,9 +925,9 @@
   
   <entry>
     <title>Java泛型</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/02/JAVA/Java%E6%B3%9B%E5%9E%8B/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/02/JAVA/Java泛型/</id>
-    <published>2016-08-02T12:52:08.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/08/03/JAVA/Java%E6%B3%9B%E5%9E%8B/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/03/JAVA/Java泛型/</id>
+    <published>2016-08-02T20:52:08.000Z</published>
     <updated>2016-08-04T06:43:39.725Z</updated>
     
     <content type="html"><![CDATA[<p>泛型（Generic Type）是Java中重要的一部分。在J2SE 5.0之后新增。在使用Java标准库中的内容的时候，经常会遇到泛型。这里将泛型总结一下</p>
@@ -932,9 +1176,9 @@
   
   <entry>
     <title>Java反射</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/29/JAVA/Java%E5%8F%8D%E5%B0%84/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/29/JAVA/Java反射/</id>
-    <published>2016-07-29T08:18:26.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/30/JAVA/Java%E5%8F%8D%E5%B0%84/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/30/JAVA/Java反射/</id>
+    <published>2016-07-29T16:18:26.000Z</published>
     <updated>2016-08-02T13:21:35.538Z</updated>
     
     <content type="html"><![CDATA[<h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><p>“<strong>反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。</strong>”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：</p>
@@ -1121,9 +1365,9 @@
   
   <entry>
     <title>Java垃圾收集机制</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/23/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/23/JVM/Java垃圾收集机制/</id>
-    <published>2016-07-23T14:57:23.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/24/JVM/Java垃圾收集机制/</id>
+    <published>2016-07-23T22:57:23.000Z</published>
     <updated>2016-07-24T02:19:22.833Z</updated>
     
     <content type="html"><![CDATA[<h3 id="对象引用"><a href="#对象引用" class="headerlink" title="对象引用"></a>对象引用</h3><p> Java中的垃圾回收一般是在Java堆中进行，因为堆中几乎存放了Java中所有的对象实例。谈到Java堆中的垃圾回收，自然要谈到引用。在JDK1.2之前，Java中的引用定义很很纯粹：如果reference类型的数据中存储的数值代表的是另外一块内存的起始地址，就称这块内存代表着一个引用。但在JDK1.2之后，Java对引用的概念进行了扩充，将其分为<strong>强引用（Strong Reference）、软引用（Soft Reference）、弱引用（Weak Reference）、虚引用（Phantom Reference）四种</strong>，引用强度依次减弱</p>
@@ -1326,9 +1570,9 @@
   
   <entry>
     <title>Javac编译与JIT编译</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/23/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/23/JVM/Javac编译与JIT编译/</id>
-    <published>2016-07-23T13:57:42.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/24/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/24/JVM/Javac编译与JIT编译/</id>
+    <published>2016-07-23T21:57:42.000Z</published>
     <updated>2016-07-23T14:47:58.266Z</updated>
     
     <content type="html"><![CDATA[<h3 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h3><ul>
@@ -1365,9 +1609,9 @@
   
   <entry>
     <title>Java语法糖</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/23/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/23/JVM/Java语法糖/</id>
-    <published>2016-07-23T13:17:40.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/24/JVM/Java语法糖/</id>
+    <published>2016-07-23T21:17:40.000Z</published>
     <updated>2016-07-23T13:26:43.759Z</updated>
     
     <content type="html"><![CDATA[<h3 id="语法糖来源"><a href="#语法糖来源" class="headerlink" title="语法糖来源"></a>语法糖来源</h3><ul>
@@ -1443,9 +1687,9 @@
   
   <entry>
     <title>多态性实现机制——静态分派与动态分派</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E5%A4%9A%E6%80%81%E6%80%A7%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E6%B4%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%88%86%E6%B4%BE/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/23/JVM/多态性实现机制——静态分派与动态分派/</id>
-    <published>2016-07-23T12:33:36.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/24/JVM/%E5%A4%9A%E6%80%81%E6%80%A7%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E6%B4%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%88%86%E6%B4%BE/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/24/JVM/多态性实现机制——静态分派与动态分派/</id>
+    <published>2016-07-23T20:33:36.000Z</published>
     <updated>2016-07-23T13:08:09.302Z</updated>
     
     <content type="html"><![CDATA[<h3 id="方法解析"><a href="#方法解析" class="headerlink" title="方法解析"></a>方法解析</h3><ul>
@@ -1557,9 +1801,9 @@
   
   <entry>
     <title>类加载机制</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/22/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/22/JVM/类加载机制/</id>
-    <published>2016-07-22T13:57:30.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/23/JVM/类加载机制/</id>
+    <published>2016-07-22T21:57:30.000Z</published>
     <updated>2016-07-22T15:34:38.931Z</updated>
     
     <content type="html"><![CDATA[<h3 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h3><ul>
@@ -1719,7 +1963,7 @@
 <ul>
 <li><p>假设上面的类变量value被定义为： public static final int value = 3；</p>
 </li>
-<li><p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将value赋值为3。回忆 <a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_blank" rel="external">上一篇博文</a> 中对象被动引用的第2个例子，便是这种情况。<strong>我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</strong></p>
+<li><p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将value赋值为3。回忆 <a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/">上一篇博文</a> 中对象被动引用的第2个例子，便是这种情况。<strong>我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</strong></p>
 </li>
 </ul>
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
@@ -1755,7 +1999,7 @@
 <p>  执行了super类静态语句块<br>    11</p>
 </blockquote>
 <ul>
-<li><p>另外，很明显这就是<a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_blank" rel="external">上篇博文</a>中的第1个例子的情况，这里我们便可以分析如下：static变量发生在静态解析阶段，也即是初始化之前，此时已经将字段的符号引用转化为了内存引用，也便将它与对应的类关联在了一起，由于在子类中没有查找到与m相匹配的字段，那么m便不会与子类关联在一起，因此并不会触发子类的初始化</p>
+<li><p>另外，很明显这就是<a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/">上篇博文</a>中的第1个例子的情况，这里我们便可以分析如下：static变量发生在静态解析阶段，也即是初始化之前，此时已经将字段的符号引用转化为了内存引用，也便将它与对应的类关联在了一起，由于在子类中没有查找到与m相匹配的字段，那么m便不会与子类关联在一起，因此并不会触发子类的初始化</p>
 </li>
 <li><p><strong>最后需要注意：理论上是按照上述顺序进行搜索解析，但在实际应用中，虚拟机的编译器实现可能要比上述规范要求的更严格一些。如果有一个同名字段同时出现在该类的接口和父类中，或同时在自己或父类的接口中出现，编译器可能会拒绝编译。</strong>如果对上面的代码做些修改，将Super改为接口，并将Child类继承Father类且实现Super接口，那么在编译时会报出如下错误：</p>
 </li>
@@ -1827,9 +2071,9 @@
   
   <entry>
     <title>类初始化</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/22/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/22/JVM/类初始化/</id>
-    <published>2016-07-22T13:26:33.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/23/JVM/类初始化/</id>
+    <published>2016-07-22T21:26:33.000Z</published>
     <updated>2016-07-22T13:43:52.826Z</updated>
     
     <content type="html"><![CDATA[<h3 id="主动引用"><a href="#主动引用" class="headerlink" title="主动引用"></a>主动引用</h3><p>类初始化是类加载过程的最后一个阶段，到初始化阶段，才真正开始执行类中的Java程序代码。<strong>虚拟机规范严格规定了有且只有四种情况必须立即对类进行初始化：</strong></p>
@@ -1922,9 +2166,9 @@
   
   <entry>
     <title>Class类文件结构</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/17/JVM/Class%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/17/JVM/Class类文件结构/</id>
-    <published>2016-07-17T14:36:36.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/18/JVM/Class%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/18/JVM/Class类文件结构/</id>
+    <published>2016-07-17T22:36:36.000Z</published>
     <updated>2016-07-18T05:14:59.162Z</updated>
     
     <content type="html"><![CDATA[<h3 id="平台无关性"><a href="#平台无关性" class="headerlink" title="平台无关性"></a>平台无关性</h3><ul>
@@ -2250,7 +2494,7 @@
     <title>NexT主题配置</title>
     <link href="http://www.qiuchengjia.cn/2016/07/16/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
     <id>http://www.qiuchengjia.cn/2016/07/16/博客/NexT主题配置/</id>
-    <published>2016-07-16T04:59:41.000Z</published>
+    <published>2016-07-16T12:59:41.000Z</published>
     <updated>2016-07-16T11:51:25.370Z</updated>
     
     <content type="html"><![CDATA[<h3 id="添加站内搜索"><a href="#添加站内搜索" class="headerlink" title="添加站内搜索"></a>添加站内搜索</h3><ul>
@@ -2291,9 +2535,9 @@
   
   <entry>
     <title>Java内存区域与内存溢出</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/15/JVM/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/15/JVM/Java内存区域与内存溢出/</id>
-    <published>2016-07-15T13:22:45.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/16/JVM/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/16/JVM/Java内存区域与内存溢出/</id>
+    <published>2016-07-15T21:22:45.000Z</published>
     <updated>2016-07-16T11:29:52.665Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h3><p><center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.png" alt=""></center><br><a id="more"></a></p>
@@ -2524,7 +2768,7 @@
     <title>有趣代码注释</title>
     <link href="http://www.qiuchengjia.cn/2016/07/12/%E9%80%9A%E7%94%A8/%E6%9C%89%E8%B6%A3%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A/"/>
     <id>http://www.qiuchengjia.cn/2016/07/12/通用/有趣代码注释/</id>
-    <published>2016-07-12T03:26:56.000Z</published>
+    <published>2016-07-12T11:26:56.000Z</published>
     <updated>2016-07-12T03:50:14.819Z</updated>
     
     <content type="html"><![CDATA[<h3 id="佛祖保佑"><a href="#佛祖保佑" class="headerlink" title="佛祖保佑"></a>佛祖保佑</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">                   _ooOoo_</div><div class="line">                  o8888888o</div><div class="line">                  88" . "88</div><div class="line">                  (| -_- |)</div><div class="line">                  O\  =  /O</div><div class="line">               ____/`---'\____</div><div class="line">             .'  \\|     |//  `.</div><div class="line">            /  \\|||  :  |||//  \</div><div class="line">           /  _||||| -:- |||||-  \</div><div class="line">           |   | \\\  -  /// |   |</div><div class="line">           | \_|  ''\---/''  |   |</div><div class="line">           \  .-\__  `-`  ___/-. /</div><div class="line">         ___`. .'  /--.--\  `. . __</div><div class="line">      ."" '&lt;  `.___\_&lt;|&gt;_/___.'  &gt;'"".</div><div class="line">     | | :  `- \`.;`\ _ /`;.`/ - ` : | |</div><div class="line">     \  \ `-.   \_ __\ /__ _/   .-` /  /</div><div class="line">======`-.____`-.___\_____/___.-`____.-'======</div><div class="line">                   `=---='</div><div class="line">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</div><div class="line">         佛祖保佑       永无BUG</div><div class="line">*/</div><div class="line"><span class="comment">//          佛曰:  </span></div><div class="line"><span class="comment">//                  写字楼里写字间，写字间里程序员；  </span></div><div class="line"><span class="comment">//                  程序人员写程序，又拿程序换酒钱。  </span></div><div class="line"><span class="comment">//                  酒醒只在网上坐，酒醉还来网下眠；  </span></div><div class="line"><span class="comment">//                  酒醉酒醒日复日，网上网下年复年。  </span></div><div class="line"><span class="comment">//                  但愿老死电脑间，不愿鞠躬老板前；  </span></div><div class="line"><span class="comment">//                  奔驰宝马贵者趣，公交自行程序员。  </span></div><div class="line"><span class="comment">//                  别人笑我忒疯癫，我笑自己命太贱；  </span></div><div class="line"><span class="comment">//                  不见满街漂亮妹，哪个归得程序员？</span></div></pre></td></tr></table></figure>
@@ -2575,7 +2819,7 @@
     <title>印象笔记快捷键</title>
     <link href="http://www.qiuchengjia.cn/2016/07/11/%E9%80%9A%E7%94%A8/%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <id>http://www.qiuchengjia.cn/2016/07/11/通用/印象笔记快捷键/</id>
-    <published>2016-07-11T06:35:00.000Z</published>
+    <published>2016-07-11T14:35:00.000Z</published>
     <updated>2016-07-11T06:43:15.502Z</updated>
     
     <content type="html"><![CDATA[<h3 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h3><center><img src="http://o99dg8ap9.bkt.clouddn.com/%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%E5%BF%AB%E6%8D%B7%E9%94%AE1.png" alt=""></center>
@@ -2603,9 +2847,9 @@
   
   <entry>
     <title> AS中使用xUtils报错找不到org.apache.http.client.methods.HttpRequestBase的类文件</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/10/AndroidStudio/AS%E4%B8%AD%E4%BD%BF%E7%94%A8xUtils%E6%8A%A5%E9%94%99%E6%89%BE%E4%B8%8D%E5%88%B0org-apache-http-client-methods-HttpRequestBase%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/10/AndroidStudio/AS中使用xUtils报错找不到org-apache-http-client-methods-HttpRequestBase的类文件/</id>
-    <published>2016-07-10T10:28:25.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/11/AndroidStudio/AS%E4%B8%AD%E4%BD%BF%E7%94%A8xUtils%E6%8A%A5%E9%94%99%E6%89%BE%E4%B8%8D%E5%88%B0org-apache-http-client-methods-HttpRequestBase%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/11/AndroidStudio/AS中使用xUtils报错找不到org-apache-http-client-methods-HttpRequestBase的类文件/</id>
+    <published>2016-07-10T18:28:25.000Z</published>
     <updated>2016-07-10T10:36:30.750Z</updated>
     
     <content type="html"><![CDATA[<h3 id="AndroidStudio出现的错误"><a href="#AndroidStudio出现的错误" class="headerlink" title="AndroidStudio出现的错误"></a>AndroidStudio出现的错误</h3><ul>
@@ -2660,14 +2904,14 @@
     <title>一千零一夜bgm</title>
     <link href="http://www.qiuchengjia.cn/2016/07/09/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9Cbgm/"/>
     <id>http://www.qiuchengjia.cn/2016/07/09/文学电影音乐诗歌和画/一千零一夜bgm/</id>
-    <published>2016-07-09T06:07:10.000Z</published>
+    <published>2016-07-09T14:07:10.000Z</published>
     <updated>2016-07-09T06:46:24.386Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
 <li>很喜欢梁文道老师的《一千零一夜》，里面的背景音乐听起来非常舒服，但是不知到叫什么名字，去网上找了也没找到，这个是我从视频里面截下来的</li>
 </ul>
 <ul>
-<li>有知道的同学可以联系我哦！ <a href="http://www.qiuchengjia.cn/about/" target="_blank" rel="external">联系方式</a></li>
+<li>有知道的同学可以联系我哦！ <a href="http://www.qiuchengjia.cn/about/">联系方式</a></li>
 </ul>
 <h3 id="一千零一夜"><a href="#一千零一夜" class="headerlink" title="一千零一夜"></a>一千零一夜</h3><center><img src="http://o99dg8ap9.bkt.clouddn.com/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9C.jpeg" alt=""></center>
 
@@ -2706,9 +2950,9 @@
   
   <entry>
     <title>Eclipse Android ADT Bundle下载地址和genymotion插件</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/05/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/05/Android/Eclipse-Android-ADT-Bundle下载地址和genymotion插件/</id>
-    <published>2016-07-05T09:30:40.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle下载地址和genymotion插件/</id>
+    <published>2016-07-05T17:30:40.000Z</published>
     <updated>2016-07-05T12:58:17.982Z</updated>
     
     <content type="html"><![CDATA[<h3 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h3><ul>
@@ -2763,9 +3007,9 @@
   
   <entry>
     <title>项目分类建立Config文件</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/03/%E9%A1%B9%E7%9B%AE/%E9%A1%B9%E7%9B%AE%E5%88%86%E7%B1%BB%E5%BB%BA%E7%AB%8BConfig%E6%96%87%E4%BB%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/03/项目/项目分类建立Config文件/</id>
-    <published>2016-07-03T14:08:32.000Z</published>
+    <link href="http://www.qiuchengjia.cn/2016/07/04/%E9%A1%B9%E7%9B%AE/%E9%A1%B9%E7%9B%AE%E5%88%86%E7%B1%BB%E5%BB%BA%E7%AB%8BConfig%E6%96%87%E4%BB%B6/"/>
+    <id>http://www.qiuchengjia.cn/2016/07/04/项目/项目分类建立Config文件/</id>
+    <published>2016-07-03T22:08:32.000Z</published>
     <updated>2016-07-04T14:59:27.784Z</updated>
     
     <content type="html"><![CDATA[<h3 id="分类Config"><a href="#分类Config" class="headerlink" title="分类Config"></a>分类Config</h3><ul>
@@ -2789,363 +3033,6 @@
       <category term="项目" scheme="http://www.qiuchengjia.cn/tags/%E9%A1%B9%E7%9B%AE/"/>
     
       <category term="Config" scheme="http://www.qiuchengjia.cn/tags/Config/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android api level对照表</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/03/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/03/Android/Android-api-level对照表/</id>
-    <published>2016-07-03T10:48:03.000Z</published>
-    <updated>2016-07-03T11:13:11.950Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Android-api-level对照表"><a href="#Android-api-level对照表" class="headerlink" title="Android api level对照表"></a>Android api level对照表</h3><table>
-<thead>
-<tr>
-<th>Platform Version</th>
-<th style="text-align:left">API Level</th>
-<th style="text-align:left">VERSION_CODE</th>
-<th style="text-align:center">Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Android 6.0</td>
-<td style="text-align:left">23</td>
-<td style="text-align:left">M</td>
-<td style="text-align:center">API Changes</td>
-</tr>
-<tr>
-<td>Android 5.1</td>
-<td style="text-align:left">22</td>
-<td style="text-align:left">LOLLIPOP_MR1</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 5.0</td>
-<td style="text-align:left">21</td>
-<td style="text-align:left">LOLLIPOP</td>
-<td style="text-align:center">.</td>
-</tr>
-<tr>
-<td>Android 4.4W</td>
-<td style="text-align:left">20</td>
-<td style="text-align:left">KITKAT_WATCH</td>
-<td style="text-align:center">KitKat for Wearables Only</td>
-</tr>
-<tr>
-<td>Android 4.4</td>
-<td style="text-align:left">19</td>
-<td style="text-align:left">KITKAT</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 4.3</td>
-<td style="text-align:left">18</td>
-<td style="text-align:left">JELLY_BEAN_MR2</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 4.2, 4.2.2</td>
-<td style="text-align:left">17</td>
-<td style="text-align:left">JELLY_BEAN_MR1</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 4.1, 4.1.1</td>
-<td style="text-align:left">16</td>
-<td style="text-align:left">JELLY_BEAN</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 4.0.3, 4.0.4</td>
-<td style="text-align:left">15</td>
-<td style="text-align:left">ICE_CREAM_SANDWICH_MR1</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 4.0, 4.0.1, 4.0.2</td>
-<td style="text-align:left">14</td>
-<td style="text-align:left">ICE_CREAM_SANDWICH</td>
-<td style="text-align:center">.    </td>
-</tr>
-<tr>
-<td>Android 3.2</td>
-<td style="text-align:left">13</td>
-<td style="text-align:left">HONEYCOMB_MR2</td>
-<td style="text-align:center">.    </td>
-</tr>
-<tr>
-<td>Android 3.1.x</td>
-<td style="text-align:left">12</td>
-<td style="text-align:left">HONEYCOMB_MR1</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 3.0.x</td>
-<td style="text-align:left">11</td>
-<td style="text-align:left">HONEYCOMB</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 2.3.4</td>
-<td style="text-align:left">.</td>
-<td style="text-align:left">.</td>
-<td style="text-align:center">.            </td>
-</tr>
-<tr>
-<td>Android 2.3.3</td>
-<td style="text-align:left">10</td>
-<td style="text-align:left">GINGERBREAD_MR1</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 2.3.2</td>
-<td style="text-align:left">.</td>
-<td style="text-align:left">.</td>
-<td style="text-align:center">.            </td>
-</tr>
-<tr>
-<td>Android 2.3.1</td>
-<td style="text-align:left">.</td>
-<td style="text-align:left">.</td>
-<td style="text-align:center">.            </td>
-</tr>
-<tr>
-<td>Android 2.3</td>
-<td style="text-align:left">9</td>
-<td style="text-align:left">GINGERBREAD</td>
-<td style="text-align:center">.    </td>
-</tr>
-<tr>
-<td>Android 2.2.x</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left">FROYO</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 2.1.x</td>
-<td style="text-align:left">7</td>
-<td style="text-align:left">ECLAIR_MR1</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 2.0.1</td>
-<td style="text-align:left">6</td>
-<td style="text-align:left">ECLAIR_0_1</td>
-<td style="text-align:center">.    </td>
-</tr>
-<tr>
-<td>Android 2.0</td>
-<td style="text-align:left">5</td>
-<td style="text-align:left">ECLAIR</td>
-<td style="text-align:center">.    </td>
-</tr>
-<tr>
-<td>Android 1.6</td>
-<td style="text-align:left">4</td>
-<td style="text-align:left">DONUT</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 1.5</td>
-<td style="text-align:left">3</td>
-<td style="text-align:left">CUPCAKE</td>
-<td style="text-align:center">Platform Highlights</td>
-</tr>
-<tr>
-<td>Android 1.1</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">BASE_1_1</td>
-<td style="text-align:center">.    </td>
-</tr>
-<tr>
-<td>Android 1.0</td>
-<td style="text-align:left">1</td>
-<td style="text-align:left">BASE</td>
-<td style="text-align:center">.</td>
-</tr>
-</tbody>
-</table>
-<a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Android-api-level对照表&quot;&gt;&lt;a href=&quot;#Android-api-level对照表&quot; class=&quot;headerlink&quot; title=&quot;Android api level对照表&quot;&gt;&lt;/a&gt;Android api level对照表&lt;/h3&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Platform Version&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;API Level&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;VERSION_CODE&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Notes&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 6.0&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;23&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;M&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;API Changes&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 5.1&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;22&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;LOLLIPOP_MR1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 5.0&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;21&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;LOLLIPOP&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.4W&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;20&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;KITKAT_WATCH&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;KitKat for Wearables Only&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.4&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;19&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;KITKAT&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.3&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;18&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;JELLY_BEAN_MR2&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.2, 4.2.2&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;17&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;JELLY_BEAN_MR1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.1, 4.1.1&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;16&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;JELLY_BEAN&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.0.3, 4.0.4&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;15&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;ICE_CREAM_SANDWICH_MR1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 4.0, 4.0.1, 4.0.2&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;14&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;ICE_CREAM_SANDWICH&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.    &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 3.2&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;13&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;HONEYCOMB_MR2&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.    &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 3.1.x&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;12&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;HONEYCOMB_MR1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 3.0.x&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;11&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;HONEYCOMB&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.3.4&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;.&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;.&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.            &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.3.3&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;10&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;GINGERBREAD_MR1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.3.2&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;.&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;.&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.            &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.3.1&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;.&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;.&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.            &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.3&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;9&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;GINGERBREAD&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.    &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.2.x&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;8&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;FROYO&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.1.x&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;7&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;ECLAIR_MR1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.0.1&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;6&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;ECLAIR_0_1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.    &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 2.0&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;5&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;ECLAIR&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.    &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 1.6&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;4&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;DONUT&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 1.5&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;3&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;CUPCAKE&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Platform Highlights&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 1.1&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;2&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;BASE_1_1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.    &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Android 1.0&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;1&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;BASE&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.qiuchengjia.cn/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://www.qiuchengjia.cn/tags/Android/"/>
     
   </entry>
   

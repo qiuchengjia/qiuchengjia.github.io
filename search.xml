@@ -4,6 +4,143 @@
   
     
     <entry>
+      <title><![CDATA[Java自动拆箱和装箱]]></title>
+      <url>http://www.qiuchengjia.cn/2016/08/11/JAVA/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1/</url>
+      <content type="html"><![CDATA[<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1.png" alt=""></center>
+
+<h2 id="什么是自动拆箱和装箱"><a href="#什么是自动拆箱和装箱" class="headerlink" title="什么是自动拆箱和装箱"></a>什么是自动拆箱和装箱</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>自动装箱就是 Java 自动将原始数据类型转为对应的包装类对象 比如将 int 型的变量转成 Integer对象 自动拆箱反之(从 Java 1.5 开始引入)</li>
+</ul>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>自动装箱时，编译器调用 valueOf() 将原始数据类型值转为对象；同时自动拆箱时，编译器调用类似 intValue(), doubleValue() 这类方法将对象转换成原始类型值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th style="text-align:left">大小</th>
+<th style="text-align:left">数值范围</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">包装类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">true,false</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">Boolean</td>
+</tr>
+<tr>
+<td>byte</td>
+<td style="text-align:left">8bit</td>
+<td style="text-align:left">-2^7 – 2^7-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Byte</td>
+</tr>
+<tr>
+<td>char</td>
+<td style="text-align:left">16bit</td>
+<td style="text-align:left">\u0000 – \uffff</td>
+<td style="text-align:left">\u0000</td>
+<td style="text-align:left">Character</td>
+</tr>
+<tr>
+<td>short</td>
+<td style="text-align:left">16bit</td>
+<td style="text-align:left">-2^15 – 2^15-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td style="text-align:left">32bit</td>
+<td style="text-align:left">-2^31 – 2^31-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:left">64bit</td>
+<td style="text-align:left">-2^63 – 2^63-1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td style="text-align:left">32bit</td>
+<td style="text-align:left">IEEE 754</td>
+<td style="text-align:left">0.0f</td>
+<td style="text-align:left">Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:left">64bit</td>
+<td style="text-align:left">IEEE 754</td>
+<td style="text-align:left">0.0d</td>
+<td style="text-align:left">Double</td>
+</tr>
+<tr>
+<td>void</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">-–</td>
+<td style="text-align:left">Void</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基本类型与装箱基本类型的区别"><a href="#基本类型与装箱基本类型的区别" class="headerlink" title="基本类型与装箱基本类型的区别"></a>基本类型与装箱基本类型的区别</h3><ul>
+<li><p>基本类型只有值，而装箱基本类型则具有与它们的值不同的同一性。换句话说，对装箱基本类型运用 == 操作符几乎总是错的</p>
+</li>
+<li><p>基本类型只有功能完备的值，而装箱基本类型除了它对应基本类型的所有功能值外，还有一个非功能值 null，这导致了对于包装基本类型进行拆箱操作后所进行的操作存在 NPE 的风险</p>
+</li>
+<li><p>基本类型更加省空间和时间，如果对包装类型进行频繁的装箱和拆箱操作会影响性能</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="何时发生自动装箱与拆箱？"><a href="#何时发生自动装箱与拆箱？" class="headerlink" title="何时发生自动装箱与拆箱？"></a>何时发生自动装箱与拆箱？</h2><h3 id="赋值时"><a href="#赋值时" class="headerlink" title="赋值时"></a>赋值时</h3><ul>
+<li>在Java1.5之前，需要手动地进行类型转换，而现在所有的转换都是有编译器来完成</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//before autoboxing</span></div><div class="line">Integer iObject = Integer.valueOf(<span class="number">3</span>);</div><div class="line"><span class="keyword">int</span> iPrimitive = iObject.intValue()</div><div class="line"> </div><div class="line"><span class="comment">//after java5</span></div><div class="line">Integer iObject = <span class="number">3</span>;      <span class="comment">//autobxing - primitive to wrapper conversion</span></div><div class="line"><span class="keyword">int</span> iPrimitive = iObject; <span class="comment">//unboxing - object to primitive conversion</span></div></pre></td></tr></table></figure>
+<h3 id="方法调用时"><a href="#方法调用时" class="headerlink" title="方法调用时"></a>方法调用时</h3><ul>
+<li>当在进行方法调用时，可以传入原始数据值或对象，编译器同样会自动进行转换</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">show</span><span class="params">(Integer iParam)</span></span>&#123;</div><div class="line">   System.out.println(<span class="string">"autoboxing example - method invocation i: "</span> + iParam);</div><div class="line">   <span class="keyword">return</span> iParam;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//autoboxing and unboxing in method invocation</span></div><div class="line">show(<span class="number">3</span>); <span class="comment">//autoboxing</span></div><div class="line"><span class="keyword">int</span> result = show(<span class="number">3</span>); <span class="comment">//unboxing because return type of method is Integer</span></div></pre></td></tr></table></figure>
+<h2 id="自动装箱引起的性能问题"><a href="#自动装箱引起的性能问题" class="headerlink" title="自动装箱引起的性能问题"></a>自动装箱引起的性能问题</h2><ul>
+<li>如果有人告诉你：“只要修改一个字符，下面这段代码的运行速度就能提高5倍。”，你觉得可能么？</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span> t = System.currentTimeMillis();</div><div class="line">Long sum = <span class="number">0L</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum += i;</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"total:"</span> + sum);</div><div class="line">System.out.println(<span class="string">"processing time: "</span> + (System.currentTimeMillis() - t) + <span class="string">" ms"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>输出结果：</li>
+</ul>
+<blockquote>
+<p>total:2305843005992468481<br>processing time: 63556 ms</p>
+</blockquote>
+<ul>
+<li>将Long修改为long，再来看一下运行结果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span> t = System.currentTimeMillis();</div><div class="line"><span class="keyword">long</span> sum = <span class="number">0L</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum += i;</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"total:"</span> + sum);</div><div class="line">System.out.println(<span class="string">"processing time: "</span> + (System.currentTimeMillis() - t) + <span class="string">" ms"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>输出结果：</li>
+</ul>
+<blockquote>
+<p>total:2305843005992468481<br>processing time: 12229 ms</p>
+</blockquote>
+<ul>
+<li>事实证明，仅仅修改了一个字符，性能提高了不止一倍两倍。那，就究竟是什么原因导致的呢？<br>因为，+这个操作符不适用Integer对象，在进行数值相加操作之前会发生自动拆箱操作，转换成int，相加之后还会发生自动拆箱操作，装换成Integer对象。其内部变化如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sum = sum.longValue() + i;</div><div class="line">Long sum = <span class="keyword">new</span> Long(sum);</div></pre></td></tr></table></figure>
+<ul>
+<li>很明显，在上面的循环中会创建2147483647个”Long“类型实例，在这样庞大的循环中，会降低程序的性能并且加重了垃圾回收的工作量</li>
+</ul>
+<blockquote>
+<p><strong>说明：包含在包装器中的内容不会改变。即Long对象是不可变的</strong></p>
+</blockquote>
+<h2 id="重载与自动装箱"><a href="#重载与自动装箱" class="headerlink" title="重载与自动装箱"></a>重载与自动装箱</h2>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java注解]]></title>
       <url>http://www.qiuchengjia.cn/2016/08/07/JAVA/Java%E6%B3%A8%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h3 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h3><ul>
@@ -516,7 +653,7 @@
     
     <entry>
       <title><![CDATA[Java泛型]]></title>
-      <url>http://www.qiuchengjia.cn/2016/08/02/JAVA/Java%E6%B3%9B%E5%9E%8B/</url>
+      <url>http://www.qiuchengjia.cn/2016/08/03/JAVA/Java%E6%B3%9B%E5%9E%8B/</url>
       <content type="html"><![CDATA[<p>泛型（Generic Type）是Java中重要的一部分。在J2SE 5.0之后新增。在使用Java标准库中的内容的时候，经常会遇到泛型。这里将泛型总结一下</p>
 <h3 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h3><ul>
 <li>讨论一个内容的时候，首先会来说什么是什么。在官方的文档中说到</li>
@@ -736,7 +873,7 @@
     
     <entry>
       <title><![CDATA[Java反射]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/29/JAVA/Java%E5%8F%8D%E5%B0%84/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/30/JAVA/Java%E5%8F%8D%E5%B0%84/</url>
       <content type="html"><![CDATA[<h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><p>“<strong>反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。</strong>”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：</p>
 <ul>
 <li><p>内省用于在运行时检测某个对象的类型和其包含的属性</p>
@@ -892,7 +1029,7 @@
     
     <entry>
       <title><![CDATA[Java垃圾收集机制]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/23/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/</url>
       <content type="html"><![CDATA[<h3 id="对象引用"><a href="#对象引用" class="headerlink" title="对象引用"></a>对象引用</h3><p> Java中的垃圾回收一般是在Java堆中进行，因为堆中几乎存放了Java中所有的对象实例。谈到Java堆中的垃圾回收，自然要谈到引用。在JDK1.2之前，Java中的引用定义很很纯粹：如果reference类型的数据中存储的数值代表的是另外一块内存的起始地址，就称这块内存代表着一个引用。但在JDK1.2之后，Java对引用的概念进行了扩充，将其分为<strong>强引用（Strong Reference）、软引用（Soft Reference）、弱引用（Weak Reference）、虚引用（Phantom Reference）四种</strong>，引用强度依次减弱</p>
 <ul>
 <li><p><strong>强引用：</strong>如“Object obj = new Object（）”，这类引用是Java程序中最普遍的。只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象</p>
@@ -1071,7 +1208,7 @@
     
     <entry>
       <title><![CDATA[Javac编译与JIT编译]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/23/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/24/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/</url>
       <content type="html"><![CDATA[<h3 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h3><ul>
 <li>不论是物理机还是虚拟机，大部分的程序代码从开始编译到最终转化成物理机的目标代码或虚拟机能执行的指令集之前，都会按照如下图所示的各个步骤进行：</li>
 </ul>
@@ -1090,7 +1227,7 @@
     
     <entry>
       <title><![CDATA[Java语法糖]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/23/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/</url>
       <content type="html"><![CDATA[<h3 id="语法糖来源"><a href="#语法糖来源" class="headerlink" title="语法糖来源"></a>语法糖来源</h3><ul>
 <li>语法糖（Syntactic Sugar），也称糖衣语法，是由英国计算机学家Peter.J.Landin发明的一个术语，指在计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是更方便程序员使用。<strong>Java中最常用的语法糖主要有泛型、变长参数、条件编译、自动拆装箱、内部类等。</strong>虚拟机并不支持这些语法，<strong>它们在编译阶段就被还原回了简单的基础语法结构，这个过程成为解语法糖</strong></li>
 </ul>
@@ -1140,7 +1277,7 @@
     
     <entry>
       <title><![CDATA[多态性实现机制——静态分派与动态分派]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/23/JVM/%E5%A4%9A%E6%80%81%E6%80%A7%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E6%B4%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%88%86%E6%B4%BE/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/24/JVM/%E5%A4%9A%E6%80%81%E6%80%A7%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E6%B4%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%88%86%E6%B4%BE/</url>
       <content type="html"><![CDATA[<h3 id="方法解析"><a href="#方法解析" class="headerlink" title="方法解析"></a>方法解析</h3><ul>
 <li><p>Class文件的编译过程中不包含传统编译中的连接步骤，一切方法调用在Class文件里面存储的都只是符号引用，而不是方法在实际运行时内存布局中的入口地址。这个特性给Java带来了更强大的动态扩展能力，使得可以在类运行期间才能确定某些目标方法的直接引用，称为动态连接，也有一部分方法的符号引用在类加载阶段或第一次使用时转化为直接引用，这种转化称为静态解析。这在前面的“Java内存区域与内存溢出”一文中有提到</p>
 </li>
@@ -1220,7 +1357,7 @@
     
     <entry>
       <title><![CDATA[类加载机制]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/22/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</url>
       <content type="html"><![CDATA[<h3 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h3><ul>
 <li>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括：加载、验证、准备、解析、初始化、使用和卸载七个阶段。它们开始的顺序如下图所示：<br><br><br><center><img src="http://o99dg8ap9.bkt.clouddn.com/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6.jpg" alt=""></center><br><br></li>
 <li><p>其中<strong>类加载的过程包括了加载、验证、准备、解析、初始化五个阶段。</strong>在这五个阶段中，加载、验证、准备和初始化这四个阶段发生的顺序是确定的，而解析阶段则不一定，它在某些情况下可以在初始化阶段之后开始，这是为了支持Java语言的运行时绑定（也成为动态绑定或晚期绑定）。另外注意这里的几个阶段是按顺序<strong>开始</strong>，而不是按顺序<strong>进行</strong>或<strong>完成</strong>，因为这些阶段通常都是互相交叉地混合进行的，通常在一个阶段执行的过程中调用或激活另一个阶段</p>
@@ -1378,7 +1515,7 @@
 <ul>
 <li><p>假设上面的类变量value被定义为： public static final int value = 3；</p>
 </li>
-<li><p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将value赋值为3。回忆 <a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_blank" rel="external">上一篇博文</a> 中对象被动引用的第2个例子，便是这种情况。<strong>我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</strong></p>
+<li><p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将value赋值为3。回忆 <a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/">上一篇博文</a> 中对象被动引用的第2个例子，便是这种情况。<strong>我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</strong></p>
 </li>
 </ul>
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
@@ -1414,7 +1551,7 @@
 <p>  执行了super类静态语句块<br>    11</p>
 </blockquote>
 <ul>
-<li><p>另外，很明显这就是<a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_blank" rel="external">上篇博文</a>中的第1个例子的情况，这里我们便可以分析如下：static变量发生在静态解析阶段，也即是初始化之前，此时已经将字段的符号引用转化为了内存引用，也便将它与对应的类关联在了一起，由于在子类中没有查找到与m相匹配的字段，那么m便不会与子类关联在一起，因此并不会触发子类的初始化</p>
+<li><p>另外，很明显这就是<a href="http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/">上篇博文</a>中的第1个例子的情况，这里我们便可以分析如下：static变量发生在静态解析阶段，也即是初始化之前，此时已经将字段的符号引用转化为了内存引用，也便将它与对应的类关联在了一起，由于在子类中没有查找到与m相匹配的字段，那么m便不会与子类关联在一起，因此并不会触发子类的初始化</p>
 </li>
 <li><p><strong>最后需要注意：理论上是按照上述顺序进行搜索解析，但在实际应用中，虚拟机的编译器实现可能要比上述规范要求的更严格一些。如果有一个同名字段同时出现在该类的接口和父类中，或同时在自己或父类的接口中出现，编译器可能会拒绝编译。</strong>如果对上面的代码做些修改，将Super改为接口，并将Child类继承Father类且实现Super接口，那么在编译时会报出如下错误：</p>
 </li>
@@ -1466,7 +1603,7 @@
     
     <entry>
       <title><![CDATA[类初始化]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/22/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/</url>
       <content type="html"><![CDATA[<h3 id="主动引用"><a href="#主动引用" class="headerlink" title="主动引用"></a>主动引用</h3><p>类初始化是类加载过程的最后一个阶段，到初始化阶段，才真正开始执行类中的Java程序代码。<strong>虚拟机规范严格规定了有且只有四种情况必须立即对类进行初始化：</strong></p>
 <ul>
 <li><p>遇到new、getstatic、putstatic、invokestatic这四条字节码指令时，如果类还没有进行过初始化，则需要先触发其初始化。生成这四条指令最常见的Java代码场景是：使用new关键字实例化对象时、读取或设置一个类的静态字段（static）时（被static修饰又被final修饰的，已在编译期把结果放入常量池的静态字段除外）、以及调用一个类的静态方法时</p>
@@ -1534,7 +1671,7 @@
     
     <entry>
       <title><![CDATA[Class类文件结构]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/17/JVM/Class%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/18/JVM/Class%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/</url>
       <content type="html"><![CDATA[<h3 id="平台无关性"><a href="#平台无关性" class="headerlink" title="平台无关性"></a>平台无关性</h3><ul>
 <li>如图，源码经过编译得到的字节码文件可以由运行Java虚拟机的机器运行，因此可以说字节码是Java语言跨平台的基石，同样也是其他语言跨平台的有效途径</li>
 </ul>
@@ -1854,7 +1991,7 @@
     
     <entry>
       <title><![CDATA[Java内存区域与内存溢出]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/15/JVM/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/16/JVM/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/</url>
       <content type="html"><![CDATA[<h3 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h3><p><center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.png" alt=""></center><br><a id="more"></a></p>
 <h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><ul>
 <li><p>当前线程所执行的字节码的行号指示器</p>
@@ -2118,7 +2255,7 @@
     
     <entry>
       <title><![CDATA[ AS中使用xUtils报错找不到org.apache.http.client.methods.HttpRequestBase的类文件]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/10/AndroidStudio/AS%E4%B8%AD%E4%BD%BF%E7%94%A8xUtils%E6%8A%A5%E9%94%99%E6%89%BE%E4%B8%8D%E5%88%B0org-apache-http-client-methods-HttpRequestBase%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/11/AndroidStudio/AS%E4%B8%AD%E4%BD%BF%E7%94%A8xUtils%E6%8A%A5%E9%94%99%E6%89%BE%E4%B8%8D%E5%88%B0org-apache-http-client-methods-HttpRequestBase%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h3 id="AndroidStudio出现的错误"><a href="#AndroidStudio出现的错误" class="headerlink" title="AndroidStudio出现的错误"></a>AndroidStudio出现的错误</h3><ul>
 <li>错误如下</li>
 </ul>
@@ -2146,7 +2283,7 @@
 <li>很喜欢梁文道老师的《一千零一夜》，里面的背景音乐听起来非常舒服，但是不知到叫什么名字，去网上找了也没找到，这个是我从视频里面截下来的</li>
 </ul>
 <ul>
-<li>有知道的同学可以联系我哦！ <a href="http://www.qiuchengjia.cn/about/" target="_blank" rel="external">联系方式</a></li>
+<li>有知道的同学可以联系我哦！ <a href="http://www.qiuchengjia.cn/about/">联系方式</a></li>
 </ul>
 <h3 id="一千零一夜"><a href="#一千零一夜" class="headerlink" title="一千零一夜"></a>一千零一夜</h3><center><img src="http://o99dg8ap9.bkt.clouddn.com/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9C.jpeg" alt=""></center>
 
@@ -2165,7 +2302,7 @@
     
     <entry>
       <title><![CDATA[Eclipse Android ADT Bundle下载地址和genymotion插件]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/05/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h3 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h3><ul>
 <li><p><a href="https://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">win32</a></p>
 </li>
@@ -2189,7 +2326,7 @@
     
     <entry>
       <title><![CDATA[项目分类建立Config文件]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/03/%E9%A1%B9%E7%9B%AE/%E9%A1%B9%E7%9B%AE%E5%88%86%E7%B1%BB%E5%BB%BA%E7%AB%8BConfig%E6%96%87%E4%BB%B6/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/04/%E9%A1%B9%E7%9B%AE/%E9%A1%B9%E7%9B%AE%E5%88%86%E7%B1%BB%E5%BB%BA%E7%AB%8BConfig%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h3 id="分类Config"><a href="#分类Config" class="headerlink" title="分类Config"></a>分类Config</h3><ul>
 <li>以前做项目的时候总是将所以的配置写在一个Config文件中，导致我修改配置的时候非常费劲，所以我现在使用分类Config文件的方法，虽然文件多点，但是修改的效率肯定是显著提升的</li>
 </ul>
@@ -2199,7 +2336,7 @@
     
     <entry>
       <title><![CDATA[Android api level对照表]]></title>
-      <url>http://www.qiuchengjia.cn/2016/07/03/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/</url>
+      <url>http://www.qiuchengjia.cn/2016/07/04/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/</url>
       <content type="html"><![CDATA[<h3 id="Android-api-level对照表"><a href="#Android-api-level对照表" class="headerlink" title="Android api level对照表"></a>Android api level对照表</h3><table>
 <thead>
 <tr>
@@ -2373,7 +2510,7 @@
     
     <entry>
       <title><![CDATA[AndroidStudio快捷键和使用技巧]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/29/AndroidStudio/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/30/AndroidStudio/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
       <content type="html"><![CDATA[<h3 id="最常用快捷键"><a href="#最常用快捷键" class="headerlink" title="最常用快捷键"></a>最常用快捷键</h3><table>
 <thead>
 <tr>
@@ -2777,7 +2914,7 @@
     
     <entry>
       <title><![CDATA[AndroidStudio指定git的忽略文件]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/29/Android/AndroidStudio%E6%8C%87%E5%AE%9Agit%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/30/Android/AndroidStudio%E6%8C%87%E5%AE%9Agit%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h3 id="AndroidStudio自动忽略"><a href="#AndroidStudio自动忽略" class="headerlink" title="AndroidStudio自动忽略"></a>AndroidStudio自动忽略</h3><ul>
 <li>现在的AndroidStudio已经很智能了，当创建项目的时候自动给我们创建了一个</li>
 </ul>
@@ -2797,7 +2934,7 @@
     
     <entry>
       <title><![CDATA[他妈的-尧十三]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/27/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%BB%96%E5%A6%88%E7%9A%84-%E5%B0%A7%E5%8D%81%E4%B8%89/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/28/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%BB%96%E5%A6%88%E7%9A%84-%E5%B0%A7%E5%8D%81%E4%B8%89/</url>
       <content type="html"><![CDATA[<blockquote class="blockquote-center">我多么希望，有一个门口，早晨，阳光照在草上。我们站着，扶着自己的门窗，门很低，但太阳是明亮的。草在结它的种子，风在摇它的叶子，我们站着，不说话，就十分美好  –顾城</blockquote>
 
 <h3 id="歌曲"><a href="#歌曲" class="headerlink" title="歌曲"></a>歌曲</h3><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=29771089&auto=0&height=66"><br></iframe>
@@ -2905,7 +3042,7 @@
     
     <entry>
       <title><![CDATA[Socket简易聊天工具]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/27/JAVA/Socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%B7%A5%E5%85%B7/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/28/JAVA/Socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%B7%A5%E5%85%B7/</url>
       <content type="html"><![CDATA[<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><ul>
 <li>代码运行如图，看起来还不错，哈哈哈</li>
 </ul>
@@ -2920,7 +3057,7 @@
     
     <entry>
       <title><![CDATA[git命令参考手册]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/26/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/git%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/27/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/git%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/</url>
       <content type="html"><![CDATA[<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
 <li><p><a href="https://git.oschina.net/progit/index.html" target="_blank" rel="external">Pro Git（中文版）</a></p>
 </li>
@@ -3167,73 +3304,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[优秀网站和博客]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><ul>
-<li><p><a href="http://www.lrdup.net/" target="_blank" rel="external">键盘上的舞者</a> 东哥博客，主要是ios，其他编程啊之类的东西都有，很不错的一个站点，极力推荐</p>
-</li>
-<li><p><a href="http://blog.csdn.net/whjkm" target="_blank" rel="external">Just do it!</a> 杰哥博客，极力推荐</p>
-</li>
-</ul>
-<ul>
-<li><p><a href="https://www.licoy.cn/resource-sharing/fun-station" target="_blank" rel="external">憧憬点滴记忆</a>  比较综合的一个博客，技术文章，资源，项目，音乐，WEB等等都有</p>
-</li>
-<li><p><a href="http://tutuge.me/" target="_blank" rel="external">土土哥的技术Blog</a> 阿里的大神，iOS，Android等</p>
-</li>
-<li><p><a href="http://openhome.cc/Gossip/index.html" target="_blank" rel="external">台湾博主</a> 台湾的一个博主，有很多资料，主要是有Java资料，不过是繁体字</p>
-</li>
-<li><p><a href="http://0opslab.com/" target="_blank" rel="external">方丈</a> Java,JS,linux,python等等</p>
-</li>
-</ul>
-<h3 id="技术网站"><a href="#技术网站" class="headerlink" title="技术网站"></a>技术网站</h3><ul>
-<li><p><a href="http://www.v2ex.com/?tab=tech" target="_blank" rel="external">v2ex</a> 国内的IT论坛</p>
-</li>
-<li><p><a href="http://stackoverflow.com/" target="_blank" rel="external">stackoverflow</a> 全球最大的IT论坛</p>
-</li>
-<li><p><a href="http://www.nowcoder.com/" target="_blank" rel="external">牛客网</a> 面试题网站</p>
-</li>
-<li><p><a href="https://www.livecoding.tv/" target="_blank" rel="external">livecoding</a> 代码直播平台</p>
-</li>
-<li><p><a href="https://handmadehero.org" target="_blank" rel="external">handMadeHero</a> 游戏开发视频网站</p>
-</li>
-<li><p><a href="https://next.36kr.com/posts/collections/61" target="_blank" rel="external">NEXT</a> H5界面制作工具集合</p>
-</li>
-<li><p><a href="http://www.rrxiu.net/" target="_blank" rel="external">人人秀</a> H5制作网站</p>
-</li>
-</ul>
-<h3 id="资料网站"><a href="#资料网站" class="headerlink" title="资料网站"></a>资料网站</h3><ul>
-<li><p><a href="http://www.runoob.com" target="_blank" rel="external">runoob</a> 编程语言参考手册，有语法，使用规范之类的，包含很多语言</p>
-</li>
-<li><p><a href="http://tool.oschina.net/apidocs/api" target="_blank" rel="external">常用 API</a> 常用API文档索引合集</p>
-</li>
-<li><p><a href="http://tool.oschina.net/" target="_blank" rel="external">在线工具</a> 常用的编程在线工具，录入正则表达式，API，RGB对照表之类的</p>
-</li>
-<li><p><a href="https://github.com/JustinSDK/JavaSE6Tutorial" target="_blank" rel="external">Java SE 6 技术手册</a></p>
-</li>
-<li><p><a href="http://www.easyicon.net/" target="_blank" rel="external">easyicon</a> icon图标搜索引擎，非常不错的东西</p>
-</li>
-</ul>
-<h3 id="影视网站"><a href="#影视网站" class="headerlink" title="影视网站"></a>影视网站</h3><ul>
-<li><a href="http://www.zhaifu.cc/bl/dianying/" target="_blank" rel="external">腐宅资源站</a> 各种电影电视剧动画资源</li>
-</ul>
-<h3 id="音乐网站"><a href="#音乐网站" class="headerlink" title="音乐网站"></a>音乐网站</h3><ul>
-<li><p><a href="http://www.mtyyw.com" target="_blank" rel="external">麦田音乐网</a> 主要是轻音乐，民谣，电台，歌单，摇滚，原声，影像，还有有文艺范的画，故事等等……</p>
-</li>
-<li><p><a href="https://music.douban.com/" target="_blank" rel="external">豆瓣音乐</a> 豆瓣，情怀，不解释</p>
-</li>
-<li><p><a href="http://www.top100.cn/" target="_blank" rel="external">巨鲸音乐</a> 看起来挺简洁，符合我的风格，先试试</p>
-</li>
-<li><p><a href="https://yahoo.streetvoice.com/" target="_blank" rel="external">奇摩音乐</a> 看起来还不错的样子~</p>
-</li>
-<li><p><a href="http://music.weibo.com/" target="_blank" rel="external">微博音乐</a> 草根比较多，应该还可以~</p>
-</li>
-</ul>
-<a id="more"></a>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[帮程序员和站长减压放松的10个良心网站]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/23/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/</url>
       <content type="html"><![CDATA[<h3 id="1-Calm"><a href="#1-Calm" class="headerlink" title="1.Calm"></a>1.<a href="http://www.calm.com/" target="_blank" rel="external">Calm</a></h3><center><img src="http://7xstki.com1.z0.glb.clouddn.com/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E6%94%BE%E6%9D%BE%E7%9A%84%E5%8D%81%E4%B8%AA%E7%BD%91%E7%AB%997.jpg" alt=""></center>
 
 <ul>
@@ -3311,8 +3383,73 @@
     </entry>
     
     <entry>
+      <title><![CDATA[优秀网站和博客]]></title>
+      <url>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</url>
+      <content type="html"><![CDATA[<h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><ul>
+<li><p><a href="http://www.lrdup.net/" target="_blank" rel="external">键盘上的舞者</a> 东哥博客，主要是ios，其他编程啊之类的东西都有，很不错的一个站点，极力推荐</p>
+</li>
+<li><p><a href="http://blog.csdn.net/whjkm" target="_blank" rel="external">Just do it!</a> 杰哥博客，极力推荐</p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://www.licoy.cn/resource-sharing/fun-station" target="_blank" rel="external">憧憬点滴记忆</a>  比较综合的一个博客，技术文章，资源，项目，音乐，WEB等等都有</p>
+</li>
+<li><p><a href="http://tutuge.me/" target="_blank" rel="external">土土哥的技术Blog</a> 阿里的大神，iOS，Android等</p>
+</li>
+<li><p><a href="http://openhome.cc/Gossip/index.html" target="_blank" rel="external">台湾博主</a> 台湾的一个博主，有很多资料，主要是有Java资料，不过是繁体字</p>
+</li>
+<li><p><a href="http://0opslab.com/" target="_blank" rel="external">方丈</a> Java,JS,linux,python等等</p>
+</li>
+</ul>
+<h3 id="技术网站"><a href="#技术网站" class="headerlink" title="技术网站"></a>技术网站</h3><ul>
+<li><p><a href="http://www.v2ex.com/?tab=tech" target="_blank" rel="external">v2ex</a> 国内的IT论坛</p>
+</li>
+<li><p><a href="http://stackoverflow.com/" target="_blank" rel="external">stackoverflow</a> 全球最大的IT论坛</p>
+</li>
+<li><p><a href="http://www.nowcoder.com/" target="_blank" rel="external">牛客网</a> 面试题网站</p>
+</li>
+<li><p><a href="https://www.livecoding.tv/" target="_blank" rel="external">livecoding</a> 代码直播平台</p>
+</li>
+<li><p><a href="https://handmadehero.org" target="_blank" rel="external">handMadeHero</a> 游戏开发视频网站</p>
+</li>
+<li><p><a href="https://next.36kr.com/posts/collections/61" target="_blank" rel="external">NEXT</a> H5界面制作工具集合</p>
+</li>
+<li><p><a href="http://www.rrxiu.net/" target="_blank" rel="external">人人秀</a> H5制作网站</p>
+</li>
+</ul>
+<h3 id="资料网站"><a href="#资料网站" class="headerlink" title="资料网站"></a>资料网站</h3><ul>
+<li><p><a href="http://www.runoob.com" target="_blank" rel="external">runoob</a> 编程语言参考手册，有语法，使用规范之类的，包含很多语言</p>
+</li>
+<li><p><a href="http://tool.oschina.net/apidocs/api" target="_blank" rel="external">常用 API</a> 常用API文档索引合集</p>
+</li>
+<li><p><a href="http://tool.oschina.net/" target="_blank" rel="external">在线工具</a> 常用的编程在线工具，录入正则表达式，API，RGB对照表之类的</p>
+</li>
+<li><p><a href="https://github.com/JustinSDK/JavaSE6Tutorial" target="_blank" rel="external">Java SE 6 技术手册</a></p>
+</li>
+<li><p><a href="http://www.easyicon.net/" target="_blank" rel="external">easyicon</a> icon图标搜索引擎，非常不错的东西</p>
+</li>
+</ul>
+<h3 id="影视网站"><a href="#影视网站" class="headerlink" title="影视网站"></a>影视网站</h3><ul>
+<li><a href="http://www.zhaifu.cc/bl/dianying/" target="_blank" rel="external">腐宅资源站</a> 各种电影电视剧动画资源</li>
+</ul>
+<h3 id="音乐网站"><a href="#音乐网站" class="headerlink" title="音乐网站"></a>音乐网站</h3><ul>
+<li><p><a href="http://www.mtyyw.com" target="_blank" rel="external">麦田音乐网</a> 主要是轻音乐，民谣，电台，歌单，摇滚，原声，影像，还有有文艺范的画，故事等等……</p>
+</li>
+<li><p><a href="https://music.douban.com/" target="_blank" rel="external">豆瓣音乐</a> 豆瓣，情怀，不解释</p>
+</li>
+<li><p><a href="http://www.top100.cn/" target="_blank" rel="external">巨鲸音乐</a> 看起来挺简洁，符合我的风格，先试试</p>
+</li>
+<li><p><a href="https://yahoo.streetvoice.com/" target="_blank" rel="external">奇摩音乐</a> 看起来还不错的样子~</p>
+</li>
+<li><p><a href="http://music.weibo.com/" target="_blank" rel="external">微博音乐</a> 草根比较多，应该还可以~</p>
+</li>
+</ul>
+<a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[NexT主题内置标签]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/17/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/18/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</url>
       <content type="html"><![CDATA[<ul>
 <li>具体用法参考NexT文档 <a href="http://theme-next.iissnan.com/tag-plugins.html" target="_blank" rel="external">传送门</a></li>
 </ul>
@@ -3349,7 +3486,7 @@
     
     <entry>
       <title><![CDATA[海明校验码]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81/</url>
       <content type="html"><![CDATA[<ul>
 <li>定义</li>
 </ul>
@@ -3370,7 +3507,7 @@
     
     <entry>
       <title><![CDATA[课程设计之二叉树遍历]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/</url>
       <content type="html"><![CDATA[<ul>
 <li><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><center><img src="http://7xstki.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1.gif" alt=""></center>
 </li>
@@ -3656,7 +3793,7 @@
     
     <entry>
       <title><![CDATA[ ACM常用数学公式汇总]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/ACM/ACM%E5%B8%B8%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B1%87%E6%80%BB/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/ACM/ACM%E5%B8%B8%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B1%87%E6%80%BB/</url>
       <content type="html"><![CDATA[<ul>
 <li><p>扇形面积<br>S=1/2×弧长×半径，S扇=（n/360）πR²</p>
 </li>
@@ -3745,7 +3882,7 @@
     
     <entry>
       <title><![CDATA[ STL之map和multimap总结]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E4%B9%8Bmap%E5%92%8Cmultimap%E6%80%BB%E7%BB%93/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bmap%E5%92%8Cmultimap%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<ul>
 <li>map和multimap都是有序关联容器，所有元素都会根据元素的键值自动被排序,包含具有唯一键的键值对。键使用比较函数Compare比较来进行排序。搜索，删除和插入操作具有对数复杂性。map和multimap通常实现为红黑树。multimap相对map来说能够允许重复值的存在</li>
 </ul>
@@ -3794,7 +3931,7 @@
     
     <entry>
       <title><![CDATA[ STL之set和multiset总结]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E4%B9%8Bset%E5%92%8Cmultiset%E6%80%BB%E7%BB%93/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bset%E5%92%8Cmultiset%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<ul>
 <li>使用set或multiset之前，必须加入头文件<set></set></li>
 <li>Set、multiset都是集合类，差别在与set中不允许有重复元素，multiset中允许有重复元素。</li>
@@ -3851,7 +3988,7 @@
     
     <entry>
       <title><![CDATA[C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/C++%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%90%84%E7%A7%8D%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%EF%BC%8Ccin%E3%80%81cin.get()%E3%80%81cin.getline()%E3%80%81getline()%E3%80%81gets()%E3%80%81getchar()/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/C++%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%90%84%E7%A7%8D%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%EF%BC%8Ccin%E3%80%81cin.get()%E3%80%81cin.getline()%E3%80%81getline()%E3%80%81gets()%E3%80%81getchar()/</url>
       <content type="html"><![CDATA[<ul>
 <li><p>输入原理简述：程序的输入都建有一个缓冲区，即输入缓冲区。每次输入过程是这样的，当一次键盘输入结束时会将输入的数据存入输入缓冲区</p>
 </li>
@@ -3891,7 +4028,7 @@
     
     <entry>
       <title><![CDATA[ STL之算法总结]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E4%B9%8B%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8B%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<ul>
 <li>STL算法部分主要由头文件<algorithm>,<numeric>,<functional>组成。<br>要使用 STL中的算法函数必须包含头文件<algorithm>，<br>对于数值算法须包含<numeric>，<functional>中则定义了一些模板类，用来声明函数对象。<br>STL中算法大致分为四类：<br>①非可变序列算法：指不直接修改其所操作的容器内容的算法。<br>②可变序列算法：指可以修改它们所操作的容器内容的算法。<br>③排序算法：包括对序列进行排序和合并的算法、搜索算法以及有序序列上的集合操作。<br>④数值算法：对容器内容进行数值计算。</functional></numeric></algorithm></functional></numeric></algorithm></li>
 </ul>
@@ -3940,7 +4077,7 @@
     
     <entry>
       <title><![CDATA[ STL之priority_queue（优先队列）]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E4%B9%8Bpriority-queue%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bpriority-queue%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/</url>
       <content type="html"><![CDATA[<ul>
 <li>构造，析构</li>
 </ul>
@@ -3969,7 +4106,7 @@
     
     <entry>
       <title><![CDATA[STL容器总结之stack和queue]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bstack%E5%92%8Cqueue/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bstack%E5%92%8Cqueue/</url>
       <content type="html"><![CDATA[<ul>
 <li>stack是一个比较简单的容器，它的使用也很简单，stack是LIFO容器，就是后进先出，最后添加进去的元素，第一个取出来</li>
 </ul>
@@ -3992,7 +4129,7 @@
     
     <entry>
       <title><![CDATA[STL容器总结之deque]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bdeque/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bdeque/</url>
       <content type="html"><![CDATA[<ul>
 <li>deque双向队列是一种双向开口的连续线性空间，可以高效的在头尾两端插入和删除元素，deque在接口上和vector非常相似，下面列出deque的常用成员函数</li>
 </ul>
@@ -4039,7 +4176,7 @@
     
     <entry>
       <title><![CDATA[STL容器总结之list]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Blist/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Blist/</url>
       <content type="html"><![CDATA[<ul>
 <li><p>在使用std::list&lt;&gt;链表时，难免会对数据进行添加删除操作。而遍历链表则有两种方式：通过索引访问，象数组一样处理；通过std::list&lt;&gt;::iterator链表遍历器进行访问<br>STL 中的list 就是一 双向链表，可高效地进行插入删除元素。<br>list不支持随机访问。所以没有 at(pos)和operator[]。</p>
 <p>list 对象list1, list2 分别有元素list1(1,2,3),list2(4,5,6) 。list&lt; int&gt;::iterator it;</p>
@@ -4078,7 +4215,7 @@
     
     <entry>
       <title><![CDATA[STL容器总结之Vector]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8BVector/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8BVector/</url>
       <content type="html"><![CDATA[<ul>
 <li>vector 是一种序列容器，是对大小可变数组的封装</li>
 </ul>
@@ -4122,7 +4259,7 @@
     
     <entry>
       <title><![CDATA[C++ string类型详解]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/C++/C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/C++/C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<ul>
 <li><p>string是非常强大的类型，很好的封装了字符串的操作，有些时候我们可以把string当做字符的容器，string也支持大多数容器操作，下面就列出string类型所支持的所有操作，本文并不是为了讲解string的用法和应用，而是希望作为string类型的参考文档，每个函数皆在注释后有详细说明，需要用时查阅即可</p>
 </li>
@@ -4177,7 +4314,7 @@
     
     <entry>
       <title><![CDATA[装机软件清单]]></title>
-      <url>http://www.qiuchengjia.cn/2016/06/01/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</url>
+      <url>http://www.qiuchengjia.cn/2016/06/02/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</url>
       <content type="html"><![CDATA[<h3 id="装机必备"><a href="#装机必备" class="headerlink" title="装机必备"></a>装机必备</h3><ul>
 <li><p>暴风影音</p>
 </li>
@@ -4234,7 +4371,7 @@
 </li>
 <li><p>eclipse</p>
 </li>
-<li><p>eclipseADT <a href="http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/" target="_blank" rel="external">传送门</a></p>
+<li><p>eclipseADT <a href="http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/">传送门</a></p>
 </li>
 <li><p>photoshop</p>
 </li>
@@ -4861,7 +4998,7 @@
     
     <entry>
       <title><![CDATA[ubuntu系统如何将firefox升级到最新版本]]></title>
-      <url>http://www.qiuchengjia.cn/2015/05/31/ubuntu/ubuntu%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%B0%86firefox%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</url>
+      <url>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%B0%86firefox%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</url>
       <content type="html"><![CDATA[<ul>
 <li><p>先去firefox官网上下载最新版本的firefox浏览器          <a href="http://firefox.com.cn/download/" target="_blank" rel="external">传送门</a></p>
 </li>
@@ -4887,7 +5024,7 @@
     
     <entry>
       <title><![CDATA[ linux如何安装搜狗输入法]]></title>
-      <url>http://www.qiuchengjia.cn/2015/05/31/linux/linux%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95/</url>
+      <url>http://www.qiuchengjia.cn/2015/06/01/linux/linux%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95/</url>
       <content type="html"><![CDATA[<ul>
 <li><p>首先卸载ibus输入法，卸载ibus输入法很容易，只要在终端输入sudo apt-get remove ibus命令即可卸载ibus，然后我们要安装新的搜狗输入法（其他的输入法一样这样安装）</p>
 </li>
@@ -4912,7 +5049,7 @@
     
     <entry>
       <title><![CDATA[ 如何安装windows和ubuntu双系统]]></title>
-      <url>http://www.qiuchengjia.cn/2015/05/31/ubuntu/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85windows%E5%92%8Cubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</url>
+      <url>http://www.qiuchengjia.cn/2015/06/01/ubuntu/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85windows%E5%92%8Cubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</url>
       <content type="html"><![CDATA[<ol>
 <li><p>我们首先去ubuntu官网上下载镜像，<a href="http://www.ubuntu.com/download" target="_blank" rel="external">http://www.ubuntu.com/download</a></p>
 </li>
@@ -4952,7 +5089,7 @@
     
     <entry>
       <title><![CDATA[ CPU是AMD的电脑如何安装android studio，以及studio的环境变量的配置]]></title>
-      <url>http://www.qiuchengjia.cn/2015/05/31/AndroidStudio/CPU%E6%98%AFAMD%E7%9A%84%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85android-studio%EF%BC%8C%E4%BB%A5%E5%8F%8Astudio%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+      <url>http://www.qiuchengjia.cn/2015/06/01/AndroidStudio/CPU%E6%98%AFAMD%E7%9A%84%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85android-studio%EF%BC%8C%E4%BB%A5%E5%8F%8Astudio%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h3 id="AMD的电脑"><a href="#AMD的电脑" class="headerlink" title="AMD的电脑"></a>AMD的电脑</h3><p>我的电脑的CPU是AMD的，当初买的时候没想那么多，可是到后来才知道有那么多的问题，最近遇到的一个最大的问题就是  Android studio的安装了，先前是studio一直安装不好，后来才发现环境变量配置错误，和以前安装jdk的环境变量的时候有一点点的区别，但就是这一点点的区别搞得我焦头烂额，后来试了很多种方法终于找出了错误，后来又出现了如下错误：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">emulator: ERROR: x86 emulation currently requires hardware acceleration!</div><div class="line"></div><div class="line">Please ensure Intel HAXM is properly installed and usable.</div><div class="line"></div><div class="line">CPU acceleration status: HAX kernel module is not installed!</div></pre></td></tr></table></figure>
 <p>到现在我才知道原来硬件是硬伤，所以就找解决的方法，接下来我就分两点把环境变量的配置和如何解决AMD没有HAXM的功能。</p>
