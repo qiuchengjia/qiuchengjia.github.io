@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-11T15:21:20.275Z</updated>
+  <updated>2016-08-11T15:26:59.202Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java单例模式的七种写法/</id>
     <published>2016-08-11T23:20:40.000Z</published>
-    <updated>2016-08-11T15:21:20.275Z</updated>
+    <updated>2016-08-11T15:26:59.202Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>等我明天实现</li>
@@ -74,7 +74,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java枚举类/</id>
     <published>2016-08-11T22:19:08.000Z</published>
-    <updated>2016-08-11T15:23:31.300Z</updated>
+    <updated>2016-08-11T15:25:14.637Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
 <li>在java语言中还没有引入枚举类型之前，表示枚举类型的常用模式是声明一组具有int常量。之前我们通常利用public final static 方法定义的代码如下，分别用1 表示春天，2表示夏天，3表示秋天，4表示冬天</li>
