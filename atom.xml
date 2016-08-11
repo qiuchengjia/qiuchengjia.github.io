@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-11T15:03:35.965Z</updated>
+  <updated>2016-08-11T15:04:34.545Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java反编译/</id>
     <published>2016-08-11T23:03:35.000Z</published>
-    <updated>2016-08-11T15:03:35.965Z</updated>
+    <updated>2016-08-11T15:04:34.545Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>]]></content>
     
@@ -30,6 +30,10 @@
     
     </summary>
     
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
     
   </entry>
   
