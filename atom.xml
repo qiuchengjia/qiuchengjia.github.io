@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-11T15:15:36.555Z</updated>
+  <updated>2016-08-11T15:21:20.275Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java单例模式的七种写法</title>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java单例模式的七种写法/</id>
+    <published>2016-08-11T23:20:40.000Z</published>
+    <updated>2016-08-11T15:21:20.275Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>等我明天实现</li>
+</ul>
+<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;等我明天实现&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>Java反编译</title>
@@ -3085,54 +3112,6 @@
     
     
       <category term="AndroidStudio" scheme="http://www.qiuchengjia.cn/tags/AndroidStudio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一千零一夜bgm</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/09/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9Cbgm/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/09/文学电影音乐诗歌和画/一千零一夜bgm/</id>
-    <published>2016-07-09T14:07:10.000Z</published>
-    <updated>2016-07-09T06:46:24.386Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li>很喜欢梁文道老师的《一千零一夜》，里面的背景音乐听起来非常舒服，但是不知到叫什么名字，去网上找了也没找到，这个是我从视频里面截下来的</li>
-</ul>
-<ul>
-<li>有知道的同学可以联系我哦！ <a href="http://www.qiuchengjia.cn/about/">联系方式</a></li>
-</ul>
-<h3 id="一千零一夜"><a href="#一千零一夜" class="headerlink" title="一千零一夜"></a>一千零一夜</h3><center><img src="http://o99dg8ap9.bkt.clouddn.com/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9C.jpeg" alt=""></center>
-
-<a id="more"></a>
-<h3 id="背景音乐"><a href="#背景音乐" class="headerlink" title="背景音乐"></a>背景音乐</h3><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://o99dg8ap9.bkt.clouddn.com/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9Cbgm.mp3"><br></iframe>    
-
-
-
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><ul>
-<li><a href="http://pan.baidu.com/s/1cmhGHg" target="_blank" rel="external">传送门</a></li>
-</ul>
-<h3 id="一千零一夜节目"><a href="#一千零一夜节目" class="headerlink" title="一千零一夜节目"></a>一千零一夜节目</h3><h4 id="江南逢李龟年"><a href="#江南逢李龟年" class="headerlink" title="江南逢李龟年"></a>江南逢李龟年</h4><iframe height="498" width="510" src="http://player.youku.com/embed/XMTUxNTA3ODg2MA==" frameborder="0" allowfullscreen><br></iframe>
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;很喜欢梁文道老师的《一千零一夜》，里面的背景音乐听起来非常舒服，但是不知到叫什么名字，去网上找了也没找到，这个是我从视频里面截下来的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;有知道的同学可以联系我哦！ &lt;a href=&quot;http://www.qiuchengjia.cn/about/&quot;&gt;联系方式&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;一千零一夜&quot;&gt;&lt;a href=&quot;#一千零一夜&quot; class=&quot;headerlink&quot; title=&quot;一千零一夜&quot;&gt;&lt;/a&gt;一千零一夜&lt;/h3&gt;&lt;center&gt;&lt;img src=&quot;http://o99dg8ap9.bkt.clouddn.com/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9C.jpeg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
-    
-    </summary>
-    
-      <category term="文学电影音乐诗歌和画" scheme="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
-    
-    
-      <category term="一千零一夜" scheme="http://www.qiuchengjia.cn/tags/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9C/"/>
-    
-      <category term="音乐" scheme="http://www.qiuchengjia.cn/tags/%E9%9F%B3%E4%B9%90/"/>
     
   </entry>
   
