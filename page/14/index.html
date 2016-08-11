@@ -333,6 +333,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" itemprop="url">
+                  Android中如何一次性finish掉以前打开的所有的activity
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T14:29:28Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" class="leancloud_visitors" data-flag-title="Android中如何一次性finish掉以前打开的所有的activity">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityManagerApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Activity&gt; destoryMap = <span class="keyword">new</span> HashMap&lt;&gt;();  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ActivityManagerApplication</span><span class="params">()</span> </span>&#123;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="comment">/** </div><div class="line">     * 添加到销毁队列 </div><div class="line">     * </div><div class="line">     * <span class="doctag">@param</span> activity 要销毁的activity </div><div class="line">     */</span>  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addDestoryActivity</span><span class="params">(Activity activity,String activityName)</span> </span>&#123;  </div><div class="line">        destoryMap.put(activityName,activity);  </div><div class="line">    &#125;  </div><div class="line">    <span class="comment">/** </div><div class="line">    *销毁指定Activity </div><div class="line">    */</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">destoryActivity</span><span class="params">(String activityName)</span> </span>&#123;  </div><div class="line">       Set&lt;String&gt; keySet=destoryMap.keySet();  </div><div class="line">        <span class="keyword">for</span> (String key:keySet)&#123;  </div><div class="line">            destoryMap.get(key).finish();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/01/Android/Android中的shape中的属性大全/" itemprop="url">
                    Android中的shape中的属性大全
                 </a>
@@ -867,148 +998,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/" itemprop="url">
-                  ubuntu下如何安装android studio
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-01T14:01:52Z" content="2015-06-01">
-              2015-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">ubuntu</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/ubuntu下如何安装android-studio/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/" class="leancloud_visitors" data-flag-title="ubuntu下如何安装android studio">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p> 在ubuntu下安装android studio有好几种方法，现在我就来介绍最简单的一种方法</p>
-<ul>
-<li><p>如果没有安装jdk的先安装jdk</p>
-</li>
-<li><p>到 <a href="http://www.androiddevtools.cn/">传送门</a> 下载最新的android studio版本，然后选择一个文件夹解压androidstudio，然后就可以在终端中进入bin 目录，输入 sudo ./studio.sh 就可以打开androidstudio了</p>
-</li>
-<li><p>创建快捷方式，先新建一个空白文件，然后将下列代码依照自己的安装路径复制进去</p>
-</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[Desktop Entry]  </div><div class="line">Name=AndroidStudio  </div><div class="line">Comment=AndroidStudio  </div><div class="line">Exec=/home/qiu/Work/Developer/AndroidStudio/androidstudio/bin/studio.sh  </div><div class="line">Icon=/home/qiu/Work/Developer/AndroidStudio/androidstudio/bin/studio.png  </div><div class="line">Terminal=<span class="literal">false</span>  </div><div class="line">Type=Application  </div><div class="line">Categories=Application；Development；</div></pre></td></tr></table></figure>
-<p>然后将文件的名字改成android.desktop，然后右键 — &gt; 属性—&gt;勾选允许作为程序可执行文件，然后就可以了，此种创建快捷方式的方法对于其他程序均适用</p>
-<center><img src="http://img.blog.csdn.net/20151217151413240?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1054,7 +1043,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-count">82</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

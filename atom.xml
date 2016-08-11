@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-11T14:52:59.055Z</updated>
+  <updated>2016-08-11T15:03:35.965Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -16,11 +16,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java反编译</title>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java反编译/</id>
+    <published>2016-08-11T23:03:35.000Z</published>
+    <updated>2016-08-11T15:03:35.965Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Java枚举类</title>
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java枚举类/</id>
     <published>2016-08-11T22:19:08.000Z</published>
-    <updated>2016-08-11T14:52:59.055Z</updated>
+    <updated>2016-08-11T14:55:57.210Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
 <li>在java语言中还没有引入枚举类型之前，表示枚举类型的常用模式是声明一组具有int常量。之前我们通常利用public final static 方法定义的代码如下，分别用1 表示春天，2表示夏天，3表示秋天，4表示冬天</li>
@@ -63,7 +81,7 @@
 <h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
 <li>以在背景中提到的类型安全为例，用枚举类型重写那段代码。代码如下：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Season &#123;</div><div class="line">    SPRING(<span class="number">1</span>), SUMMER(<span class="number">2</span>), AUTUMN(<span class="number">3</span>), WINTER(<span class="number">4</span>);</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(<span class="keyword">int</span> code)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.code = code;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCode</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> code;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseSeason</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 将英文的季节转换成中文季节</div><div class="line">     * <span class="doctag">@param</span> season</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getChineseSeason</span><span class="params">(Season season)</span></span>&#123;</div><div class="line">        StringBuffer result = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">switch</span>(season)&#123;</div><div class="line">            <span class="keyword">case</span> SPRING :</div><div class="line">                result.append(<span class="string">"[中文：春天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> </div><div class="line">                + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> AUTUMN :</div><div class="line">                result.append(<span class="string">"[中文：秋天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> </div><div class="line">                + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> SUMMER : </div><div class="line">                result.append(<span class="string">"[中文：夏天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> </div><div class="line">                + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> WINTER :</div><div class="line">                result.append(<span class="string">"[中文：冬天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> </div><div class="line">                + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span> :</div><div class="line">                result.append(<span class="string">"地球没有的季节 "</span> + season.name());</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>(Season s : Season.values())&#123;</div><div class="line">            System.out.println(getChineseSeason(s));<span class="comment">//这是正常的场景</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//System.out.println(getChineseSeason(5));</span></div><div class="line">        <span class="comment">//此处已经是编译不通过了，这就保证了类型安全</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] arg)</span></span>&#123;</div><div class="line">        UseSeason useSeason = <span class="keyword">new</span> UseSeason();</div><div class="line">        useSeason.doSomething();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Season &#123;</div><div class="line">    SPRING(<span class="number">1</span>), SUMMER(<span class="number">2</span>), AUTUMN(<span class="number">3</span>), WINTER(<span class="number">4</span>);</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(<span class="keyword">int</span> code)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.code = code;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCode</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> code;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseSeason</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 将英文的季节转换成中文季节</div><div class="line">     * <span class="doctag">@param</span> season</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getChineseSeason</span><span class="params">(Season season)</span></span>&#123;</div><div class="line">        StringBuffer result = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">switch</span>(season)&#123;</div><div class="line">            <span class="keyword">case</span> SPRING :</div><div class="line">                result.append(<span class="string">"[中文：春天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> AUTUMN :</div><div class="line">                result.append(<span class="string">"[中文：秋天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> SUMMER : </div><div class="line">                result.append(<span class="string">"[中文：夏天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> WINTER :</div><div class="line">                result.append(<span class="string">"[中文：冬天，枚举常量:"</span> + season.name() + <span class="string">"，数据:"</span> + season.getCode() + <span class="string">"]"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span> :</div><div class="line">                result.append(<span class="string">"地球没有的季节 "</span> + season.name());</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>(Season s : Season.values())&#123;</div><div class="line">            System.out.println(getChineseSeason(s));<span class="comment">//这是正常的场景</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//System.out.println(getChineseSeason(5));</span></div><div class="line">        <span class="comment">//此处已经是编译不通过了，这就保证了类型安全</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] arg)</span></span>&#123;</div><div class="line">        UseSeason useSeason = <span class="keyword">new</span> UseSeason();</div><div class="line">        useSeason.doSomething();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>输出</li>
 </ul>
@@ -3096,63 +3114,6 @@
       <category term="一千零一夜" scheme="http://www.qiuchengjia.cn/tags/%E4%B8%80%E5%8D%83%E9%9B%B6%E4%B8%80%E5%A4%9C/"/>
     
       <category term="音乐" scheme="http://www.qiuchengjia.cn/tags/%E9%9F%B3%E4%B9%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Eclipse Android ADT Bundle下载地址和genymotion插件</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E5%92%8Cgenymotion%E6%8F%92%E4%BB%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/06/Android/Eclipse-Android-ADT-Bundle下载地址和genymotion插件/</id>
-    <published>2016-07-05T17:30:40.000Z</published>
-    <updated>2016-07-05T12:58:17.982Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="官方"><a href="#官方" class="headerlink" title="官方"></a>官方</h3><ul>
-<li><p><a href="https://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">win32</a></p>
-</li>
-<li><p><a href="https://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip" target="_blank" rel="external">win64</a></p>
-</li>
-<li><p><a href="http://dl.google.com/android/adt/adt-bundle-mac-x86_64-20140702.zip" target="_blank" rel="external">MAC64</a></p>
-</li>
-<li><p><a href="http://dl.google.com/android/adt/adt-bundle-linux-x86-20140702.zip" target="_blank" rel="external">Linux 86</a></p>
-</li>
-<li><p><a href="http://dl.google.com/android/adt/adt-bundle-linux-x86_64-20140702.zip" target="_blank" rel="external">Linux 64</a></p>
-</li>
-</ul>
-<h3 id="百度云"><a href="#百度云" class="headerlink" title="百度云"></a>百度云</h3><ul>
-<li><a href="http://pan.baidu.com/s/1hsHdxjQ" target="_blank" rel="external">传送门</a></li>
-</ul>
-<h3 id="Eclipse添加genymotion插件"><a href="#Eclipse添加genymotion插件" class="headerlink" title="Eclipse添加genymotion插件"></a>Eclipse添加genymotion插件</h3><ul>
-<li><a href="http://pan.baidu.com/s/1mhV8gys" target="_blank" rel="external">传送门</a></li>
-</ul>
-<a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;官方&quot;&gt;&lt;a href=&quot;#官方&quot; class=&quot;headerlink&quot; title=&quot;官方&quot;&gt;&lt;/a&gt;官方&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip&quot;&gt;win32&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip&quot;&gt;win64&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://dl.google.com/android/adt/adt-bundle-mac-x86_64-20140702.zip&quot;&gt;MAC64&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://dl.google.com/android/adt/adt-bundle-linux-x86-20140702.zip&quot;&gt;Linux 86&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://dl.google.com/android/adt/adt-bundle-linux-x86_64-20140702.zip&quot;&gt;Linux 64&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;百度云&quot;&gt;&lt;a href=&quot;#百度云&quot; class=&quot;headerlink&quot; title=&quot;百度云&quot;&gt;&lt;/a&gt;百度云&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://pan.baidu.com/s/1hsHdxjQ&quot;&gt;传送门&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Eclipse添加genymotion插件&quot;&gt;&lt;a href=&quot;#Eclipse添加genymotion插件&quot; class=&quot;headerlink&quot; title=&quot;Eclipse添加genymotion插件&quot;&gt;&lt;/a&gt;Eclipse添加genymotion插件&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://pan.baidu.com/s/1mhV8gys&quot;&gt;传送门&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://www.qiuchengjia.cn/categories/Android/"/>
-    
-    
-      <category term="Eclipse" scheme="http://www.qiuchengjia.cn/tags/Eclipse/"/>
     
   </entry>
   
