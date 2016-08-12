@@ -69,7 +69,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java枚举类/</id>
     <published>2016-08-11T22:19:08.000Z</published>
-    <updated>2016-08-12T03:42:55.175Z</updated>
+    <updated>2016-08-12T03:54:55.168Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
 <li>在java语言中还没有引入枚举类型之前，表示枚举类型的常用模式是声明一组具有int常量。之前我们通常利用public final static 方法定义的代码如下，分别用1 表示春天，2表示夏天，3表示秋天，4表示冬天</li>
@@ -183,7 +183,13 @@
 <h3 id="枚举实例创建是thread-safe-线程安全的"><a href="#枚举实例创建是thread-safe-线程安全的" class="headerlink" title="枚举实例创建是thread-safe(线程安全的)"></a>枚举实例创建是thread-safe(线程安全的)</h3><ul>
 <li>当一个Java类第一次被真正使用到的时候静态资源被初始化、Java类的加载和初始化过程都是线程安全的。所以，创建一个enum类型是线程安全的</li>
 </ul>
-]]></content>
+<hr>
+<hr>
+<h2 id="Enum源码分析"><a href="#Enum源码分析" class="headerlink" title="Enum源码分析"></a>Enum源码分析</h2><blockquote>
+<p>Enum类是java.lang包中一个类，他是Java语言中所有枚举类型的公共基类</p>
+</blockquote>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Enum</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Enum</span>&lt;<span class="title">E</span>&gt;&gt; <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">E</span>&gt;, <span class="title">Serializable</span></span></div></pre></td></tr></table></figure>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4>]]></content>
     
     <summary type="html">
     
