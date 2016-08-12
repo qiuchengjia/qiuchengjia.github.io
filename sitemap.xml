@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
+    
+    <lastmod>2016-08-12T05:59:05.437Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/</loc>
     
     <lastmod>2016-08-12T05:32:20.116Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Java%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-Enum/</loc>
     
     <lastmod>2016-08-12T04:43:20.787Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
-    
-    <lastmod>2016-08-11T15:15:36.555Z</lastmod>
     
   </url>
   
