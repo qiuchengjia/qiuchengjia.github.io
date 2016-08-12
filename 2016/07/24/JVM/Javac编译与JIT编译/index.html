@@ -129,7 +129,7 @@
 
 如今，基于物理机、虚拟机等的语言">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91.jpg">
-<meta property="og:updated_time" content="2016-08-12T05:27:35.056Z">
+<meta property="og:updated_time" content="2016-08-12T05:29:06.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javac编译与JIT编译">
 <meta name="twitter:description" content="编译过程
@@ -502,6 +502,12 @@
 <li><p>由于方法计数器触发即时编译的过程与回边计数器触发即时编译的过程类似，因此这里仅给出方法调用计数器触发即时编译的流程：</p>
 </li>
 </ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>Javac字节码编译器与虚拟机内的JIT编译器的执行过程合起来其实就等同于一个传统的编译器所执行的编译过程</li>
+</ul>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><ul>
+<li><a href="http://blog.csdn.net/ns_code/article/details/18009455" target="_blank" rel="external">传送门</a></li>
+</ul>
 
       
     </div>
@@ -753,7 +759,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javac编译"><span class="nav-number">2.</span> <span class="nav-text">javac编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法、语法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法、语法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充符号表"><span class="nav-number">2.2.</span> <span class="nav-text">填充符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分析"><span class="nav-number">2.3.</span> <span class="nav-text">语义分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节码生成"><span class="nav-number">2.4.</span> <span class="nav-text">字节码生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JIT编译"><span class="nav-number">3.</span> <span class="nav-text">JIT编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#热点代码"><span class="nav-number">3.1.</span> <span class="nav-text">热点代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javac编译"><span class="nav-number">2.</span> <span class="nav-text">javac编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法、语法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法、语法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充符号表"><span class="nav-number">2.2.</span> <span class="nav-text">填充符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分析"><span class="nav-number">2.3.</span> <span class="nav-text">语义分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节码生成"><span class="nav-number">2.4.</span> <span class="nav-text">字节码生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JIT编译"><span class="nav-number">3.</span> <span class="nav-text">JIT编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#热点代码"><span class="nav-number">3.1.</span> <span class="nav-text">热点代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考博客"><span class="nav-number">5.</span> <span class="nav-text">参考博客</span></a></li></ol></div>
             
           </div>
         </section>
