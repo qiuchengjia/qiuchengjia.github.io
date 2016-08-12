@@ -1970,7 +1970,7 @@
     <link href="http://www.qiuchengjia.cn/2016/07/24/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/"/>
     <id>http://www.qiuchengjia.cn/2016/07/24/JVM/Javac编译与JIT编译/</id>
     <published>2016-07-23T21:57:42.000Z</published>
-    <updated>2016-08-12T05:09:06.621Z</updated>
+    <updated>2016-08-12T05:10:24.223Z</updated>
     
     <content type="html"><![CDATA[<h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><ul>
 <li>不论是物理机还是虚拟机，大部分的程序代码从开始编译到最终转化成物理机的目标代码或虚拟机能执行的指令集之前，都会按照如下图所示的各个步骤进行：</li>
@@ -1984,7 +1984,7 @@
 </li>
 </ul>
 <a id="more"></a>
-]]></content>
+<h2 id="javac编译"><a href="#javac编译" class="headerlink" title="javac编译"></a>javac编译</h2>]]></content>
     
     <summary type="html">
     
