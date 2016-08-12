@@ -683,10 +683,14 @@
 
       
         
-          
-          
-          
-
+          <h2 id="第一种（懒汉，线程不安全）："><a href="#第一种（懒汉，线程不安全）：" class="headerlink" title="第一种（懒汉，线程不安全）："></a>第一种（懒汉，线程不安全）：</h2><ul>
+<li>类初始化的时候并不创建，想用的时候创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第二种（懒汉，线程安全）："><a href="#第二种（懒汉，线程安全）：" class="headerlink" title="第二种（懒汉，线程安全）："></a>第二种（懒汉，线程安全）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这种写法能够在多线程中很好的工作，而且看起来它也具备很好的lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)，但是，遗憾的是，效率很低，99%情况下不需要同步</li>
+</ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/12/JAVA设计模式/Java单例模式的七种写法/" rel="contents">
               阅读全文 &raquo;
