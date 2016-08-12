@@ -140,12 +140,11 @@
     <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/Java%E5%91%BD%E4%BB%A4-javap/"/>
     <id>http://www.qiuchengjia.cn/2016/08/12/JAVA命令学习/Java命令-javap/</id>
     <published>2016-08-12T12:34:38.000Z</published>
-    <updated>2016-08-12T08:39:23.548Z</updated>
+    <updated>2016-08-12T08:41:37.735Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>javap是jdk自带的一个工具，可以对代码 <a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>，也可以查看java编译器生成的字节码</p>
 </blockquote>
-<p><br></p>
 <p>一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
 <li>javap命令分解一个class文件，它根据options来决定到底输出什么。如果没有使用options,那么javap将会输出包，类里的protected和public域以及类里的所有方法。javap将会把它们输出在标准输出上。来看这个例子，先编译(javac)下面这个类</li>
@@ -180,7 +179,6 @@
       &lt;blockquote&gt;
 &lt;p&gt;javap是jdk自带的一个工具，可以对代码 &lt;a href=&quot;http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/&quot;&gt;反编译&lt;/a&gt;，也可以查看java编译器生成的字节码&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 &lt;p&gt;一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作&lt;/p&gt;
 &lt;h2 id=&quot;实例&quot;&gt;&lt;a href=&quot;#实例&quot; class=&quot;headerlink&quot; title=&quot;实例&quot;&gt;&lt;/a&gt;实例&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;javap命令分解一个class文件，它根据options来决定到底输出什么。如果没有使用options,那么javap将会输出包，类里的protected和public域以及类里的所有方法。javap将会把它们输出在标准输出上。来看这个例子，先编译(javac)下面这个类&lt;/li&gt;
