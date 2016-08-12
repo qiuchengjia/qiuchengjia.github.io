@@ -549,10 +549,13 @@
 
       
         
-          
-          
-          
+          <center> javap是jdk自带的一个工具，可以对代码 <a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>，也可以查看java编译器生成的字节码</center>
 
+<p>一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
+<li>javap命令分解一个class文件，它根据options来决定到底输出什么。如果没有使用options,那么javap将会输出包，类里的protected和public域以及类里的所有方法。javap将会把它们输出在标准输出上。来看这个例子，先编译(javac)下面这个类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.awt.*;</div><div class="line"><span class="keyword">import</span> java.applet.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DocFooter</span> <span class="keyword">extends</span> <span class="title">Applet</span> </span>&#123;</div><div class="line">        String date;</div><div class="line">        String email;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">                resize(<span class="number">500</span>,<span class="number">100</span>);</div><div class="line">                date = getParameter(<span class="string">"LAST_UPDATED"</span>);</div><div class="line">                email = getParameter(<span class="string">"EMAIL"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(Graphics g)</span> </span>&#123;</div><div class="line">                g.drawString(date + <span class="string">" by "</span>,<span class="number">100</span>, <span class="number">15</span>);</div><div class="line">                g.drawString(email,<span class="number">290</span>,<span class="number">15</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/12/JAVA命令学习/Java命令-javap/" rel="contents">
               阅读全文 &raquo;

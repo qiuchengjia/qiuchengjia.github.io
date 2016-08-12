@@ -106,13 +106,28 @@
 
 
 
+<meta name="description" content="javap是jdk自带的一个工具，可以对代码 反编译，也可以查看java编译器生成的字节码
+
+一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作
+实例
+javap命令分解一个class文件，它根据options来决定到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java命令--javap">
 <meta property="og:url" content="http://www.qiuchengjia.cn/2016/08/12/JAVA命令学习/Java命令-javap/index.html">
 <meta property="og:site_name" content="戎码人生">
-<meta property="og:updated_time" content="2016-08-12T04:45:15.066Z">
+<meta property="og:description" content="javap是jdk自带的一个工具，可以对代码 反编译，也可以查看java编译器生成的字节码
+
+一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作
+实例
+javap命令分解一个class文件，它根据options来决定到">
+<meta property="og:updated_time" content="2016-08-12T08:35:53.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java命令--javap">
+<meta name="twitter:description" content="javap是jdk自带的一个工具，可以对代码 反编译，也可以查看java编译器生成的字节码
+
+一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作
+实例
+javap命令分解一个class文件，它根据options来决定到">
 
 
 
@@ -403,7 +418,36 @@
       
 
       
-        <a id="more"></a>
+        <center> javap是jdk自带的一个工具，可以对代码 <a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>，也可以查看java编译器生成的字节码</center>
+
+<p>一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
+<li>javap命令分解一个class文件，它根据options来决定到底输出什么。如果没有使用options,那么javap将会输出包，类里的protected和public域以及类里的所有方法。javap将会把它们输出在标准输出上。来看这个例子，先编译(javac)下面这个类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.awt.*;</div><div class="line"><span class="keyword">import</span> java.applet.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DocFooter</span> <span class="keyword">extends</span> <span class="title">Applet</span> </span>&#123;</div><div class="line">        String date;</div><div class="line">        String email;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">                resize(<span class="number">500</span>,<span class="number">100</span>);</div><div class="line">                date = getParameter(<span class="string">"LAST_UPDATED"</span>);</div><div class="line">                email = getParameter(<span class="string">"EMAIL"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(Graphics g)</span> </span>&#123;</div><div class="line">                g.drawString(date + <span class="string">" by "</span>,<span class="number">100</span>, <span class="number">15</span>);</div><div class="line">                g.drawString(email,<span class="number">290</span>,<span class="number">15</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>在命令行上键入javap DocFooter后，输出结果如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Compiled from <span class="string">"DocFooter.java"</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DocFooter</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">applet</span>.<span class="title">Applet</span> </span>&#123;</div><div class="line">  java.lang.String date;</div><div class="line">  java.lang.String email;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DocFooter</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(java.awt.Graphics)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果加入了-c，即javap -c DocFooter，那么输出结果如下</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">Compiled from "DocFooter.java"</div><div class="line">public class DocFooter extends java.applet.Applet &#123;</div><div class="line">  java.lang.String date;</div><div class="line"></div><div class="line">  java.lang.String email;</div><div class="line"></div><div class="line">  public DocFooter();</div><div class="line">    Code:</div><div class="line">       0: aload_0       </div><div class="line">       1: invokespecial #1                  // Method java/applet/Applet."&lt;init&gt;":()V</div><div class="line">       4: return        </div><div class="line"></div><div class="line">  public void init();</div><div class="line">    Code:</div><div class="line">       0: aload_0       </div><div class="line">       1: sipush        500</div><div class="line">       4: bipush        100</div><div class="line">       6: invokevirtual #2                  // Method resize:(II)V</div><div class="line">       9: aload_0       </div><div class="line">      10: aload_0       </div><div class="line">      11: ldc           #3                  // String LAST_UPDATED</div><div class="line">      13: invokevirtual #4                  // Method getParameter:(Ljava/lang/String;)Ljava/lang/String;</div><div class="line">      16: putfield      #5                  // Field date:Ljava/lang/String;</div><div class="line">      19: aload_0       </div><div class="line">      20: aload_0       </div><div class="line">      21: ldc           #6                  // String EMAIL</div><div class="line">      23: invokevirtual #4                  // Method getParameter:(Ljava/lang/String;)Ljava/lang/String;</div><div class="line">      26: putfield      #7                  // Field email:Ljava/lang/String;</div><div class="line">      29: return        </div><div class="line"></div><div class="line">  public void paint(java.awt.Graphics);</div><div class="line">    Code:</div><div class="line">       0: aload_1       </div><div class="line">       1: new           #8                  // class java/lang/StringBuilder</div><div class="line">       4: dup           </div><div class="line">       5: invokespecial #9                  // Method java/lang/StringBuilder."&lt;init&gt;":()V</div><div class="line">       8: aload_0       </div><div class="line">       9: getfield      #5                  // Field date:Ljava/lang/String;</div><div class="line">      12: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</div><div class="line">      15: ldc           #11                 // String  by </div><div class="line">      17: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</div><div class="line">      20: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</div><div class="line">      23: bipush        100</div><div class="line">      25: bipush        15</div><div class="line">      27: invokevirtual #13                 // Method java/awt/Graphics.drawString:(Ljava/lang/String;II)V</div><div class="line">      30: aload_1       </div><div class="line">      31: aload_0       </div><div class="line">      32: getfield      #7                  // Field email:Ljava/lang/String;</div><div class="line">      35: sipush        290</div><div class="line">      38: bipush        15</div><div class="line">      40: invokevirtual #13                 // Method java/awt/Graphics.drawString:(Ljava/lang/String;II)V</div><div class="line">      43: return        </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>上面输出的内容就是<strong>字节码</strong></li>
+</ul>
+<h2 id="用法摘要"><a href="#用法摘要" class="headerlink" title="用法摘要"></a>用法摘要</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-help 帮助</div><div class="line">-l 输出行和变量的表</div><div class="line">-<span class="keyword">public</span> 只输出<span class="keyword">public</span>方法和域</div><div class="line">-<span class="keyword">protected</span> 只输出<span class="keyword">public</span>和<span class="keyword">protected</span>类和成员</div><div class="line">-<span class="keyword">package</span> 只输出包，<span class="keyword">public</span>和<span class="keyword">protected</span>类和成员，这是默认的</div><div class="line">-p -<span class="keyword">private</span> 输出所有类和成员</div><div class="line">-s 输出内部类型签名</div><div class="line">-c 输出分解后的代码，例如，类中每一个方法内，包含java字节码的指令，</div><div class="line">-verbose 输出栈大小，方法参数的个数</div><div class="line">-constants 输出静态<span class="keyword">final</span>常量</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>javap可以用于反编译和查看编译器编译后的字节码。平时一般用javap -c比较多，该命令用于列出每个方法所执行的JVM指令，并显示每个方法的字节码的实际作用。可以通过字节码和源代码的对比，深入分析java的编译原理，了解和解决各种Java原理级别的问题</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="http://www.hollischuang.com/archives/1107" target="_blank" rel="external">Java命令学习系列（七）——javap</a></p>
+</li>
+<li><p><a href="http://www.colabug.com/thread-1450948-1-1.html" target="_blank" rel="external">Java命令学习系列（七）——javap</a></p>
+</li>
+</ul>
+
       
     </div>
 
@@ -654,7 +698,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法摘要"><span class="nav-number">2.</span> <span class="nav-text">用法摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
         </section>
