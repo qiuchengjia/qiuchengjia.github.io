@@ -129,7 +129,7 @@
 
 如今，基于物理机、虚拟机等的语言">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91.jpg">
-<meta property="og:updated_time" content="2016-08-12T05:21:00.077Z">
+<meta property="og:updated_time" content="2016-08-12T05:23:23.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javac编译与JIT编译">
 <meta name="twitter:description" content="编译过程
@@ -477,6 +477,31 @@
 <li><p>HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Complier，分别用在客户端和服务端，目前主流的HotSpot虚拟机中默认是采用解释器与其中一个编译器直接配合的方式工作</p>
 </li>
 </ul>
+<h3 id="热点代码"><a href="#热点代码" class="headerlink" title="热点代码"></a>热点代码</h3><p>运行过程中会被即时编译器编译的“热点代码”有两类：</p>
+<ul>
+<li><p>被多次调用的方法</p>
+</li>
+<li><p>被多次调用的循环体</p>
+</li>
+</ul>
+<p>两种情况，编译器都是以整个方法作为编译对象，这种编译也是虚拟机中标准的编译方式。要知道一段代码或方法是不是热点代码，是不是需要触发即时编译，需要进行Hot Spot Detection（热点探测）。目前主要的热点 判定方式有以下两种：</p>
+<ul>
+<li><p><strong>基于采样的热点探测：</strong>采用这种方法的虚拟机会周期性地检查各个线程的栈顶，如果发现某些方法经常出现在栈顶，那这段方法代码就是“热点代码”。这种探测方法的好处是实现简单高效，还可以很容易地获取方法调用关系，缺点是很难精确地确认一个方法的热度，容易因为受到线程阻塞或别的外界因素的影响而扰乱热点探测</p>
+</li>
+<li><p><strong>基于计数器的热点探测：</strong>采用这种方法的虚拟机会为每个方法，甚至是代码块建立计数器，统计方法的执行次数，如果执行次数超过一定的阀值，就认为它是“热点方法”。这种统计方法实现复杂一些，需要为每个方法建立并维护计数器，而且不能直接获取到方法的调用关系，但是它的统计结果相对更加精确严谨</p>
+</li>
+</ul>
+<p>在HotSpot虚拟机中使用的是第二种——基于计数器的热点探测方法，因此它为每个方法准备了两个计数器：方法调用计数器和回边计数器</p>
+<ul>
+<li><p>方法调用计数器用来统计方法调用的次数，在默认设置下，方法调用计数器统计的并不是方法被调用的绝对次数，而是一个相对的执行频率，即一段时间内方法被调用的次数</p>
+</li>
+<li><p>回边计数器用于统计一个方法中循环体代码执行的次数（准确地说，应该是回边的次数，因为并非所有的循环都是回边），在字节码中遇到控制流向后跳转的指令就称为“回边”</p>
+</li>
+<li><p>在确定虚拟机运行参数的前提下，这两个计数器都有一个确定的阀值，当计数器的值超过了阀值，就会触发JIT编译。触发了JIT编译后，在默认设置下，执行引擎并不会同步等待编译请求完成，而是继续进入解释器按照解释方式执行字节码，直到提交的请求被编译器编译完成为止（编译工作在后台线程中进行）。当编译工作完成后，下一次调用该方法或代码时，就会使用已编译的版本</p>
+</li>
+<li><p>由于方法计数器触发即时编译的过程与回边计数器触发即时编译的过程类似，因此这里仅给出方法调用计数器触发即时编译的流程：</p>
+</li>
+</ul>
 
       
     </div>
@@ -728,7 +753,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javac编译"><span class="nav-number">2.</span> <span class="nav-text">javac编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法、语法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法、语法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充符号表"><span class="nav-number">2.2.</span> <span class="nav-text">填充符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分析"><span class="nav-number">2.3.</span> <span class="nav-text">语义分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节码生成"><span class="nav-number">2.4.</span> <span class="nav-text">字节码生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JIT编译"><span class="nav-number">3.</span> <span class="nav-text">JIT编译</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javac编译"><span class="nav-number">2.</span> <span class="nav-text">javac编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法、语法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法、语法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充符号表"><span class="nav-number">2.2.</span> <span class="nav-text">填充符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分析"><span class="nav-number">2.3.</span> <span class="nav-text">语义分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节码生成"><span class="nav-number">2.4.</span> <span class="nav-text">字节码生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JIT编译"><span class="nav-number">3.</span> <span class="nav-text">JIT编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#热点代码"><span class="nav-number">3.1.</span> <span class="nav-text">热点代码</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
