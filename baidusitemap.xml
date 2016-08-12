@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/</loc>
+    <lastmod>2016-08-12T04:47:33.337Z</lastmod>
+    <data>
+        <display>
+        <title>Java枚举类</title>
+        <pubTime>2016-08-11T22:19:08.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/Java%E5%91%BD%E4%BB%A4-javap/</loc>
     <lastmod>2016-08-12T04:45:15.066Z</lastmod>
     <data>
@@ -57,26 +77,6 @@
            
              
               <breadCrumb title="JAVA源码分析" url="http://www.qiuchengjia.cn/categories/JAVA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/</loc>
-    <lastmod>2016-08-12T04:28:22.516Z</lastmod>
-    <data>
-        <display>
-        <title>Java枚举类</title>
-        <pubTime>2016-08-11T22:19:08.000Z</pubTime>
-        
-        <tag>JAVA</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
           
         </display>
     </data>
