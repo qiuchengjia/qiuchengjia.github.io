@@ -109,7 +109,7 @@
 <meta name="description" content="彪悍的人生不需要解释">
 <meta property="og:type" content="website">
 <meta property="og:title" content="戎码人生">
-<meta property="og:url" content="http://www.qiuchengjia.cn/categories/AndroidStudio/index.html">
+<meta property="og:url" content="http://www.qiuchengjia.cn/page/18/index.html">
 <meta property="og:site_name" content="戎码人生">
 <meta property="og:description" content="彪悍的人生不需要解释">
 <meta name="twitter:card" content="summary">
@@ -135,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
+  <link rel="canonical" href="http://www.qiuchengjia.cn/page/18/"/>
 
-  <title> 分类: AndroidStudio | 戎码人生 </title>
+  <title> 戎码人生 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -177,7 +177,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,152 +310,137 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        AndroidStudio
-        <small>分类</small>
-      </h2>
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/01/AndroidStudio/CPU是AMD的电脑如何安装android-studio，以及studio的环境变量的配置/" itemprop="url">
+                   CPU是AMD的电脑如何安装android studio，以及studio的环境变量的配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-31T18:04:43Z" content="2015-05-31">
+              2015-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
+                    <span itemprop="name">AndroidStudio</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/01/AndroidStudio/CPU是AMD的电脑如何安装android-studio，以及studio的环境变量的配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/AndroidStudio/CPU是AMD的电脑如何安装android-studio，以及studio的环境变量的配置/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/06/01/AndroidStudio/CPU是AMD的电脑如何安装android-studio，以及studio的环境变量的配置/" class="leancloud_visitors" data-flag-title=" CPU是AMD的电脑如何安装android studio，以及studio的环境变量的配置">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="AMD的电脑"><a href="#AMD的电脑" class="headerlink" title="AMD的电脑"></a>AMD的电脑</h3><p>我的电脑的CPU是AMD的，当初买的时候没想那么多，可是到后来才知道有那么多的问题，最近遇到的一个最大的问题就是  Android studio的安装了，先前是studio一直安装不好，后来才发现环境变量配置错误，和以前安装jdk的环境变量的时候有一点点的区别，但就是这一点点的区别搞得我焦头烂额，后来试了很多种方法终于找出了错误，后来又出现了如下错误：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">emulator: ERROR: x86 emulation currently requires hardware acceleration!</div><div class="line"></div><div class="line">Please ensure Intel HAXM is properly installed and usable.</div><div class="line"></div><div class="line">CPU acceleration status: HAX kernel module is not installed!</div></pre></td></tr></table></figure>
+<p>到现在我才知道原来硬件是硬伤，所以就找解决的方法，接下来我就分两点把环境变量的配置和如何解决AMD没有HAXM的功能。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/01/AndroidStudio/CPU是AMD的电脑如何安装android-studio，以及studio的环境变量的配置/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
     </div>
 
-    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/11/AndroidStudio/AS中使用xUtils报错找不到org-apache-http-client-methods-HttpRequestBase的类文件/" itemprop="url">
-              
-                <span itemprop="name"> AS中使用xUtils报错找不到org.apache.http.client.methods.HttpRequestBase的类文件</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-10T18:28:25Z"
-              content="2016-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/30/AndroidStudio/AndroidStudio快捷键和使用技巧/" itemprop="url">
-              
-                <span itemprop="name">AndroidStudio快捷键和使用技巧</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-29T21:44:57Z"
-              content="2016-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/" itemprop="url">
-              
-                <span itemprop="name">Android Studio SVN的使用</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-01T14:52:54Z"
-              content="2016-06-01" >
-          06-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/" itemprop="url">
-              
-                <span itemprop="name">Gneymotion无法启动和Oracle VM VirtualBox常见问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-01T14:44:14Z"
-              content="2016-06-01" >
-          06-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
+        <div class="post-eof"></div>
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/06/01/AndroidStudio/CPU是AMD的电脑如何安装android-studio，以及studio的环境变量的配置/" itemprop="url">
-              
-                <span itemprop="name"> CPU是AMD的电脑如何安装android studio，以及studio的环境变量的配置</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-05-31T18:04:43Z"
-              content="2015-05-31" >
-          05-31
-        </time>
-      </div>
-
-    </header>
+    </footer>
   </article>
 
 
@@ -461,6 +448,9 @@
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span>
+  </nav>
 
 
 
