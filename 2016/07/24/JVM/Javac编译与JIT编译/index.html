@@ -129,7 +129,7 @@
 
 如今，基于物理机、虚拟机等的语言">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91.jpg">
-<meta property="og:updated_time" content="2016-08-12T05:13:20.948Z">
+<meta property="og:updated_time" content="2016-08-12T05:14:56.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javac编译与JIT编译">
 <meta name="twitter:description" content="编译过程
@@ -445,7 +445,13 @@
 </ul>
 <a id="more"></a>
 <h2 id="javac编译"><a href="#javac编译" class="headerlink" title="javac编译"></a>javac编译</h2><ul>
-<li>在Java中提到“编译”，自然很容易想到Javac编译器将<em>.java文件编译成为</em>.class文件的过程，<strong>这里的Javac编译器称为前端编译器</strong>，其他的前端编译器还有诸如Eclipse JDT中的增量式编译器ECJ等。相对应的还有<strong>后端编译器</strong>，它在程序运行期间将字节码转变成机器码<strong>（现在的Java程序在运行时基本都是解释执行加编译执行）</strong>，如<strong>HotSpot虚拟机自带的JIT（Just In Time Compiler）编译器（分Client端和Server端）</strong>。另外，有时候还有可能会碰到静态提前编译器（AOT，Ahead Of Time Compiler）直接把*.java文件编译成本地机器代码，如GCJ、Excelsior JET等，这类编译器我们应该比较少遇到。</li>
+<li><p>在Java中提到“编译”，自然很容易想到Javac编译器将<em>.java文件编译成为</em>.class文件的过程，<strong>这里的Javac编译器称为前端编译器</strong>，其他的前端编译器还有诸如Eclipse JDT中的增量式编译器ECJ等。相对应的还有<strong>后端编译器</strong>，它在程序运行期间将字节码转变成机器码<strong>（现在的Java程序在运行时基本都是解释执行加编译执行）</strong>，如<strong>HotSpot虚拟机自带的JIT（Just In Time Compiler）编译器（分Client端和Server端）</strong>。另外，有时候还有可能会碰到静态提前编译器（AOT，Ahead Of Time Compiler）直接把*.java文件编译成本地机器代码，如GCJ、Excelsior JET等，这类编译器我们应该比较少遇到。</p>
+</li>
+<li><p>下面简要说下Javac编译（前端编译）的过程</p>
+</li>
+</ul>
+<h3 id="词法、语法分析"><a href="#词法、语法分析" class="headerlink" title="词法、语法分析"></a>词法、语法分析</h3><ul>
+<li>词法分析是将源代码的字符流转变为标记（Token）集合。单个字符是程序编写过程中的的最小元素，而标记则是编译过程的最小元素，关键字、变量名、字面量、运算符等都可以成为标记，比如整型标志int由三个字符构成，但是它只是一个标记，不可拆分</li>
 </ul>
 
       
@@ -698,7 +704,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javac编译"><span class="nav-number">2.</span> <span class="nav-text">javac编译</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javac编译"><span class="nav-number">2.</span> <span class="nav-text">javac编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法、语法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法、语法分析</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
