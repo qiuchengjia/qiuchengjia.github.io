@@ -15,7 +15,7 @@
       <content type="html"><![CDATA[<ul>
 <li>采用HTTPS方式提交代码到github和coding很方便，但是总是需要输入用户名和密码，以下这种方式可以解决</li>
 </ul>
-<h2 id="新建-git-credentials文件"><a href="#新建-git-credentials文件" class="headerlink" title="新建.git-credentials文件"></a><font color="#159957">新建.git-credentials文件</font></h2><p>在你的用户目录下新建一个文本文件, 名曰 <strong>.git-credentials</strong></p>
+<h2 id="新建-git-credentials文件"><a href="#新建-git-credentials文件" class="headerlink" title="新建.git-credentials文件"></a>新建.git-credentials文件</h2><p>在你的用户目录下新建一个文本文件, 名曰 <strong>.git-credentials</strong></p>
 <p><strong>用户目录:</strong></p>
 <ul>
 <li><p>windows: C:/Users/username</p>
@@ -25,11 +25,11 @@
 <li><p>linux:  /home/username</p>
 </li>
 </ul>
-<h2 id="输入用户名和密码"><a href="#输入用户名和密码" class="headerlink" title="输入用户名和密码"></a><font color="#159957">输入用户名和密码</font></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">https:<span class="comment">//username:password@github.com</span></div><div class="line">https:<span class="comment">//username:password@git.coding.net</span></div></pre></td></tr></table></figure>
+<h2 id="输入用户名和密码"><a href="#输入用户名和密码" class="headerlink" title="输入用户名和密码"></a>输入用户名和密码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">https:<span class="comment">//username:password@github.com</span></div><div class="line">https:<span class="comment">//username:password@git.coding.net</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>如何用hexo的话可以不用输入用户名和密码，执行hexo语句会弹出对话框提示输入</p>
 </blockquote>
-<h2 id="修改git配置"><a href="#修改git配置" class="headerlink" title="修改git配置"></a><font color="#159957">修改git配置</font></h2><ul>
+<h2 id="修改git配置"><a href="#修改git配置" class="headerlink" title="修改git配置"></a>修改git配置</h2><ul>
 <li>执行命令</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper store</div></pre></td></tr></table></figure>
@@ -38,7 +38,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[credential]</div><div class="line">     helper = store</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><font color="#159957">参考资料</font></h2><ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://www.jianshu.com/p/81ae6e77ff47" target="_blank" rel="external">解决向github提交代码是老要输入用户名密码</a></li>
 </ul>
 ]]></content>
