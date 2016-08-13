@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</loc>
+    <lastmod>2016-08-13T14:45:36.723Z</lastmod>
+    <data>
+        <display>
+        <title>Java可变参数</title>
+        <pubTime>2016-08-13T21:55:32.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/03/%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2016-08-13T11:54:22.860Z</lastmod>
     <data>
@@ -1120,9 +1140,9 @@
         <title>CentOS从php5.3升级到php5.5</title>
         <pubTime>2016-06-01T15:31:35.000Z</pubTime>
         
-        <tag>CentOS</tag>
-         
         <tag>linux</tag>
+         
+        <tag>CentOS</tag>
          
          
            
