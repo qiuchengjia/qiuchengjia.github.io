@@ -131,7 +131,7 @@ Hexo安装
 <meta property="og:image" content="http://7xstki.com1.z0.glb.clouddn.com/github%E5%9B%BE%E7%89%875.png">
 <meta property="og:image" content="http://7xstki.com1.z0.glb.clouddn.com/github%E5%9B%BE%E7%89%877.png">
 <meta property="og:image" content="http://7xstki.com1.z0.glb.clouddn.com/github%E5%9B%BE%E7%89%873.png">
-<meta property="og:updated_time" content="2016-08-13T06:04:59.871Z">
+<meta property="og:updated_time" content="2016-08-13T11:41:35.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo搭建个人博客">
 <meta name="twitter:description" content="首先我们应该学会看官方文档，文档是最好的资料 传送门
@@ -472,28 +472,28 @@ Hexo安装
 <li><p>首先我们需要安装Git <a href="https://git-scm.com/" target="_blank" rel="external">传送门</a>和 Node.js <a href="https://nodejs.org/en/" target="_blank" rel="external">传送门</a></p>
 </li>
 </ul>
-<h3 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><ul>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><ul>
 <li>打开dos命令行，安装需要的组件</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div><div class="line">npm install hexo --save</div><div class="line">#如果命令无法运行，可以尝试更换taobao的npm源</div><div class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></div></pre></td></tr></table></figure>
-<h3 id="Hexo初始化配置"><a href="#Hexo初始化配置" class="headerlink" title="Hexo初始化配置"></a>Hexo初始化配置</h3><ul>
+<h2 id="Hexo初始化配置"><a href="#Hexo初始化配置" class="headerlink" title="Hexo初始化配置"></a>Hexo初始化配置</h2><ul>
 <li>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line">cd &lt;folder&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="安装Hexo插件"><a href="#安装Hexo插件" class="headerlink" title="安装Hexo插件"></a>安装Hexo插件</h4><ul>
+<h3 id="安装Hexo插件"><a href="#安装Hexo插件" class="headerlink" title="安装Hexo插件"></a>安装Hexo插件</h3><ul>
 <li>如果想不出错，就将下面的插件都安装完</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-index --save</div><div class="line">npm install hexo-generator-archive --save</div><div class="line">npm install hexo-generator-category --save</div><div class="line">npm install hexo-generator-tag --save</div><div class="line">npm install hexo-server --save</div><div class="line">npm install hexo-deployer-git --save</div><div class="line">npm install hexo-deployer-heroku --save</div><div class="line">npm install hexo-deployer-rsync --save</div><div class="line">npm install hexo-deployer-openshift --save</div><div class="line">npm install hexo-renderer-marked@<span class="number">0.2</span> --save</div><div class="line">npm install hexo-renderer-stylus@<span class="number">0.2</span> --save</div><div class="line">npm install hexo-generator-feed@<span class="number">1</span> --save</div><div class="line">npm install hexo-generator-sitemap@<span class="number">1</span> --save</div></pre></td></tr></table></figure>
-<h4 id="本地查看效果"><a href="#本地查看效果" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><ul>
+<h3 id="本地查看效果"><a href="#本地查看效果" class="headerlink" title="本地查看效果"></a>本地查看效果</h3><ul>
 <li>执行下面语句，执行完即可登录localhost:4000查看效果</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><ul>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><ul>
 <li>安装 hexo-deployer-git</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<h4 id="配置SSH密钥"><a href="#配置SSH密钥" class="headerlink" title="配置SSH密钥"></a>配置SSH密钥</h4><ul>
+<h3 id="SSH方式"><a href="#SSH方式" class="headerlink" title="SSH方式"></a>SSH方式</h3><h4 id="配置SSH密钥"><a href="#配置SSH密钥" class="headerlink" title="配置SSH密钥"></a>配置SSH密钥</h4><ul>
 <li>我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ~/. ssh</div></pre></td></tr></table></figure>
@@ -516,8 +516,16 @@ Hexo安装
 <ul>
 <li>例如：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    type: git</div><div class="line">    repo: </div><div class="line">         coding: https:<span class="comment">//git.coding.net/qiuchengjia/qiuchengjia.git,master</span></div><div class="line">         github: https:<span class="comment">//github.com/qiuchengjia/qiuchengjia.github.io.git,master</span></div><div class="line">    message:</div></pre></td></tr></table></figure>
-<h4 id="部署进-github-或-coding"><a href="#部署进-github-或-coding" class="headerlink" title="部署进 github 或 coding"></a>部署进 github 或 coding</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    type: git</div><div class="line">    repo: </div><div class="line">         coding: git<span class="meta">@git</span>.coding.net:qiuchengjia/qiuchengjia.git,master</div><div class="line">         github: git<span class="meta">@github</span>.com:qiuchengjia/qiuchengjia.github.io.git,master</div><div class="line">    message:</div></pre></td></tr></table></figure>
+<h3 id="HTTPS方式"><a href="#HTTPS方式" class="headerlink" title="HTTPS方式"></a>HTTPS方式</h3><ul>
+<li>修改配置文件</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure>
+<ul>
+<li>例如：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    type: git</div><div class="line">    repo: </div><div class="line">         github: https:<span class="comment">//github.com/qiuchengjia/qiuchengjia.github.io.git,master</span></div><div class="line">         coding: https:<span class="comment">//git.coding.net/qiuchengjia/qiuchengjia.git,master</span></div><div class="line">    message:</div></pre></td></tr></table></figure>
+<h3 id="部署进-github-或-coding"><a href="#部署进-github-或-coding" class="headerlink" title="部署进 github 或 coding"></a>部署进 github 或 coding</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
 <ul>
 <li>还有一点注意事项，如果要添加 README.md 文件的话，我们可以在本地<br>写好，然后放入public文件夹下，如图：</li>
 </ul>
@@ -536,7 +544,7 @@ Hexo安装
 <center><img src="http://7xstki.com1.z0.glb.clouddn.com/github%E5%9B%BE%E7%89%873.png" alt=""></center>
 
 
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://my.oschina.net/ryaneLee/blog/638440" target="_blank" rel="external">小白独立搭建博客–Github Pages和Hexo简明教程</a></li>
 </ul>
 
@@ -792,7 +800,7 @@ Hexo安装
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo安装"><span class="nav-number">1.</span> <span class="nav-text">Hexo安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo初始化配置"><span class="nav-number">2.</span> <span class="nav-text">Hexo初始化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Hexo插件"><span class="nav-number">2.1.</span> <span class="nav-text">安装Hexo插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地查看效果"><span class="nav-number">2.2.</span> <span class="nav-text">本地查看效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置SSH密钥"><span class="nav-number">3.1.</span> <span class="nav-text">配置SSH密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一对新的SSH密钥-keys"><span class="nav-number">3.2.</span> <span class="nav-text">创建一对新的SSH密钥(keys)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在GitHub账户中添加你的公钥"><span class="nav-number">3.3.</span> <span class="nav-text">在GitHub账户中添加你的公钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试"><span class="nav-number">3.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置用户信息"><span class="nav-number">3.5.</span> <span class="nav-text">设置用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改配置文件"><span class="nav-number">3.6.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署进-github-或-coding"><span class="nav-number">3.7.</span> <span class="nav-text">部署进 github 或 coding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo安装"><span class="nav-number">1.</span> <span class="nav-text">Hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo初始化配置"><span class="nav-number">2.</span> <span class="nav-text">Hexo初始化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo插件"><span class="nav-number">2.1.</span> <span class="nav-text">安装Hexo插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地查看效果"><span class="nav-number">2.2.</span> <span class="nav-text">本地查看效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">3.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH方式"><span class="nav-number">3.1.</span> <span class="nav-text">SSH方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置SSH密钥"><span class="nav-number">3.1.1.</span> <span class="nav-text">配置SSH密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一对新的SSH密钥-keys"><span class="nav-number">3.1.2.</span> <span class="nav-text">创建一对新的SSH密钥(keys)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在GitHub账户中添加你的公钥"><span class="nav-number">3.1.3.</span> <span class="nav-text">在GitHub账户中添加你的公钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试"><span class="nav-number">3.1.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置用户信息"><span class="nav-number">3.1.5.</span> <span class="nav-text">设置用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改配置文件"><span class="nav-number">3.1.6.</span> <span class="nav-text">修改配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS方式"><span class="nav-number">3.2.</span> <span class="nav-text">HTTPS方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署进-github-或-coding"><span class="nav-number">3.3.</span> <span class="nav-text">部署进 github 或 coding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
         </section>
