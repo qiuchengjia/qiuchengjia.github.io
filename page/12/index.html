@@ -333,6 +333,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之list/" itemprop="url">
+                  STL容器总结之list
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T17:18:12Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/C++/STL容器总结之list/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL容器总结之list/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/C++/STL容器总结之list/" class="leancloud_visitors" data-flag-title="STL容器总结之list">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li><p>在使用std::list&lt;&gt;链表时，难免会对数据进行添加删除操作。而遍历链表则有两种方式：通过索引访问，象数组一样处理；通过std::list&lt;&gt;::iterator链表遍历器进行访问<br>STL 中的list 就是一 双向链表，可高效地进行插入删除元素。<br>list不支持随机访问。所以没有 at(pos)和operator[]。</p>
+<p>list 对象list1, list2 分别有元素list1(1,2,3),list2(4,5,6) 。list&lt; int&gt;::iterator it;</p>
+</li>
+</ul>
+<ul>
+<li><h3 id="构造，析构"><a href="#构造，析构" class="headerlink" title="构造，析构"></a>构造，析构</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">list</span>&lt;Elem&gt; c <span class="comment">//创建一个空的list  </span></div><div class="line">  </div><div class="line"><span class="built_in">list</span>&lt;Elem&gt; c1(c2) <span class="comment">//复制另一个同类型元素的list  </span></div><div class="line">  </div><div class="line"><span class="built_in">list</span>&lt;Elem&gt;c(n) <span class="comment">//创建n个元素的list，每个元素值由默认构造函数确定  </span></div><div class="line">  </div><div class="line"><span class="built_in">list</span>&lt;Elem&gt;c(n,elem) <span class="comment">//创建n个元素的list，每个元素的值为elem  </span></div><div class="line">  </div><div class="line"><span class="built_in">list</span>&lt;Elem&gt;c(begin,end) <span class="comment">//由迭代器创建list,迭代区间为[begin,end)  </span></div><div class="line">  </div><div class="line">c.~<span class="built_in">list</span>();             <span class="comment">// 销毁所有元素,释放内存</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/C++/STL容器总结之list/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之Vector/" itemprop="url">
                   STL容器总结之Vector
                 </a>
@@ -880,173 +1019,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/01/linux/linux下使用百度云以及酷我音乐/" itemprop="url">
-                   linux下使用百度云以及酷我音乐
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T15:49:11Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/linux/linux下使用百度云以及酷我音乐/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/linux/linux下使用百度云以及酷我音乐/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/01/linux/linux下使用百度云以及酷我音乐/" class="leancloud_visitors" data-flag-title=" linux下使用百度云以及酷我音乐">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160507214539611" rel="gallery_cirss3206004bl4nrxjwwg61k"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://img.blog.csdn.net/20160507214539611" itemprop="contentUrl"/>
-              </a>
-            
-          
-            
-              <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160507214545142" rel="gallery_cirss3206004bl4nrxjwwg61k"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://img.blog.csdn.net/20160507214545142" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <ul>
-<li>软件包不是官方的,是第三方作者基于linux写的，<a href="https://github.com/LiuLang">传送门</a></li>
-</ul>
-<ul>
-<li>下面来两张效果图,很简洁,这种feel很不错.</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20160507214539611" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20160507214545142" alt=""></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/linux/linux下使用百度云以及酷我音乐/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1087,7 +1064,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">85</span>
+              <span class="site-state-item-count">86</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1104,7 +1081,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">72</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
