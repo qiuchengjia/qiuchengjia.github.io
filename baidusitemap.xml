@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/03/%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2016-08-13T06:04:59.871Z</lastmod>
+    <data>
+        <display>
+        <title>hexo搭建个人博客</title>
+        <pubTime>2016-06-02T18:24:38.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2016-08-13T04:03:40.999Z</lastmod>
     <data>
@@ -179,28 +201,6 @@
            
              
               <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/03/%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2016-08-08T12:41:07.198Z</lastmod>
-    <data>
-        <display>
-        <title>hexo搭建个人博客</title>
-        <pubTime>2016-06-02T18:24:38.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
           
         </display>
     </data>

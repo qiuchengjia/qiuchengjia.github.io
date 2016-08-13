@@ -4351,6 +4351,10 @@
 <li>修改配置</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure>
+<ul>
+<li>例如：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    type: git</div><div class="line">    repo: </div><div class="line">         coding: https:<span class="comment">//git.coding.net/qiuchengjia/qiuchengjia.git,master</span></div><div class="line">         github: https:<span class="comment">//github.com/qiuchengjia/qiuchengjia.github.io.git,master</span></div><div class="line">    message:</div></pre></td></tr></table></figure>
 <h4 id="部署进-github-或-coding"><a href="#部署进-github-或-coding" class="headerlink" title="部署进 github 或 coding"></a>部署进 github 或 coding</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
 <ul>
 <li>还有一点注意事项，如果要添加 README.md 文件的话，我们可以在本地<br>写好，然后放入public文件夹下，如图：</li>
