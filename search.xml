@@ -4,8 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[https向github提交代码总是输入用户名和密码]]></title>
-      <url>http://www.qiuchengjia.cn/2016/08/14/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/https%E5%90%91github%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%80%BB%E6%98%AF%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81/</url>
+      <title><![CDATA[https方式向github提交代码总是输入用户名和密码]]></title>
+      <url>http://www.qiuchengjia.cn/2016/08/14/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/https%E6%96%B9%E5%BC%8F%E5%90%91github%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%80%BB%E6%98%AF%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81/</url>
       <content type="html"><![CDATA[<ul>
 <li>采用HTTPS方式提交代码到github和coding很方便，但是总是需要输入用户名和密码，以下这种方式可以解决</li>
 </ul>
