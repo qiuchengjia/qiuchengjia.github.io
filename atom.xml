@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-13T11:51:45.566Z</updated>
+  <updated>2016-08-13T11:53:59.569Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/08/14/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/https%E6%96%B9%E5%BC%8F%E5%90%91github%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%80%BB%E6%98%AF%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81/"/>
     <id>http://www.qiuchengjia.cn/2016/08/14/项目管理/https方式向github提交代码总是输入用户名和密码/</id>
     <published>2016-08-13T19:24:27.000Z</published>
-    <updated>2016-08-13T11:51:45.566Z</updated>
+    <updated>2016-08-13T11:53:59.569Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>采用HTTPS方式提交代码到github和coding很方便，但是总是需要输入用户名和密码，以下这种方式可以解决</li>
@@ -35,7 +35,7 @@
 <li><p>linux:  /home/username</p>
 </li>
 </ul>
-<h2 id="输入用户名和密码"><a href="#输入用户名和密码" class="headerlink" title="输入用户名和密码"></a>输入用户名和密码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https:<span class="comment">//username:password@github.com</span></div></pre></td></tr></table></figure>
+<h2 id="输入用户名和密码"><a href="#输入用户名和密码" class="headerlink" title="输入用户名和密码"></a>输入用户名和密码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">https:<span class="comment">//username:password@github.com</span></div><div class="line">https:<span class="comment">//username:password@git.coding.net</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>如何用hexo的话可以不用输入用户名和密码，执行hexo语句会弹出对话框提示输入</p>
 </blockquote>
@@ -68,7 +68,7 @@
 &lt;li&gt;&lt;p&gt;linux:  /home/username&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;输入用户名和密码&quot;&gt;&lt;a href=&quot;#输入用户名和密码&quot; class=&quot;headerlink&quot; title=&quot;输入用户名和密码&quot;&gt;&lt;/a&gt;输入用户名和密码&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;https:&lt;span class=&quot;comment&quot;&gt;//username:password@github.com&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;输入用户名和密码&quot;&gt;&lt;a href=&quot;#输入用户名和密码&quot; class=&quot;headerlink&quot; title=&quot;输入用户名和密码&quot;&gt;&lt;/a&gt;输入用户名和密码&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;https:&lt;span class=&quot;comment&quot;&gt;//username:password@github.com&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;https:&lt;span class=&quot;comment&quot;&gt;//username:password@git.coding.net&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如何用hexo的话可以不用输入用户名和密码，执行hexo语句会弹出对话框提示输入&lt;/p&gt;
 &lt;/blockquote&gt;
