@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-14T06:19:21.805Z</updated>
+  <updated>2016-08-14T07:19:18.825Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java方法签名</title>
+    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java方法签名/</id>
+    <published>2016-08-14T14:50:34.000Z</published>
+    <updated>2016-08-14T07:19:18.825Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="方法签名的意义"><a href="#方法签名的意义" class="headerlink" title="方法签名的意义"></a>方法签名的意义</h2><ul>
+<li>对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，<strong>方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">aaaa</span><span class="params">()</span></span>&#123;  </div><div class="line">      </div><div class="line">&#125;  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">aaaa</span><span class="params">()</span></span>&#123;  </div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="方法签名的格式"><a href="#方法签名的格式" class="headerlink" title="方法签名的格式"></a>方法签名的格式</h2><ul>
+<li>首先我们先看几个方法以及他们的方法签名：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;&#125;                   test1()<span class="function">V</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">(String str)</span>     <span class="title">test2</span><span class="params">(Ljava/lang/String;)</span>V</div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">test3</span><span class="params">()</span>&#123;&#125;                      test3()I</div></pre></td></tr></table></figure>
+<ul>
+<li>从以上三个例子，我们就可以很简单的看出一些小小的规律：<br>JVM为我们提供的方法签名实际上是由方法名(上文的例子为了简单没有写出全类名)、形参列表、返回值三部分构成的，基本形式就是：<br><strong>全类名.方法名(形参数据类型列表)返回值数据类型</strong></li>
+</ul>
+<ul>
+<li><strong>Java方法签名中特殊字符/字母含义</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>特殊字符</th>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">特殊说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V</td>
+<td style="text-align:left">void</td>
+<td style="text-align:left">一般用于表示方法的返回值</td>
+</tr>
+<tr>
+<td>Z</td>
+<td style="text-align:left">boolean     </td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align:left">byte     </td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align:left">char     </td>
+</tr>
+<tr>
+<td>S</td>
+<td style="text-align:left">short     </td>
+</tr>
+<tr>
+<td>I</td>
+<td style="text-align:left">int     </td>
+</tr>
+<tr>
+<td>J</td>
+<td style="text-align:left">long     </td>
+</tr>
+<tr>
+<td>F</td>
+<td style="text-align:left">float     </td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align:left">double     </td>
+</tr>
+<tr>
+<td>[</td>
+<td style="text-align:left">数组</td>
+<td style="text-align:left">以[开头，配合其他的特殊字符，表示对应数据类型的数组，几个[表示几维数组</td>
+</tr>
+<tr>
+<td>L</td>
+<td style="text-align:left">全类名;</td>
+<td style="text-align:left">引用类型    以 L 开头 ; 结尾，中间是引用类型的全类名</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一定要注意的是方法重载时，方法返回值没有什么意义，是由方法名和参数列表决定的</p>
+</blockquote>
+<h2 id="利用javap生成方法签名"><a href="#利用javap生成方法签名" class="headerlink" title="利用javap生成方法签名"></a>利用javap生成方法签名</h2><h3 id="类库类"><a href="#类库类" class="headerlink" title="类库类"></a>类库类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">$ javap -s java.lang.String  </div><div class="line">Compiled from <span class="string">"String.java"</span>  </div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">String</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>,<span class="title">java</span>.<span class="title">lang</span>.<span class="title">Comparable</span>,<span class="title">java</span>.<span class="title">lang</span>.<span class="title">CharSequence</span></span>&#123;  </div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.Comparator CASE_INSENSITIVE_ORDER;  </div><div class="line">  Signature: Ljava/util/Comparator;  </div><div class="line"><span class="keyword">public</span> java.lang.String();  </div><div class="line">  Signature: ()V  </div><div class="line"><span class="keyword">public</span> java.lang.String(java.lang.String);  </div><div class="line">  Signature: (Ljava/lang/String;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">char</span>[]);  </div><div class="line">  Signature: ([C)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">char</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([CII)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">int</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([III)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([BIII)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>);  </div><div class="line">  Signature: ([BI)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>, java.lang.String)   <span class="keyword">throws</span> java.io.UnsupportedEncodingException;  </div><div class="line">  Signature: ([BIILjava/lang/String;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>, java.nio.charset.Charset);  </div><div class="line">  Signature: ([BIILjava/nio/charset/Charset;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], java.lang.String)   <span class="keyword">throws</span> java.io.UnsupportedEncodingException;  </div><div class="line">  Signature: ([BLjava/lang/String;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], java.nio.charset.Charset);  </div><div class="line">  Signature: ([BLjava/nio/charset/Charset;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([BII)V  </div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="自定义类"><a href="#自定义类" class="headerlink" title="自定义类"></a>自定义类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.demo;  </div><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SigTest</span> </span>&#123;  </div><div class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String name = <span class="keyword">null</span>;  </div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getName</span><span class="params">(<span class="keyword">int</span>[] data,<span class="keyword">long</span> index)</span> </span>&#123;  </div><div class="line">         <span class="keyword">return</span> <span class="number">0</span>;  </div><div class="line">     &#125;  </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ javac SigTest.java </div><div class="line">$ javap -s -p com.demo.SigTest</div><div class="line">Compiled from <span class="string">"SigTest.java"</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">demo</span>.<span class="title">SigTest</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> java.lang.String name;</div><div class="line">  Signature: Ljava/lang/String;</div><div class="line"><span class="keyword">public</span> com.demo.SigTest();</div><div class="line">  Signature: ()<span class="function">V</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getName</span><span class="params">(<span class="keyword">int</span>[], <span class="keyword">long</span>)</span>;</div><div class="line">  Signature: ([IJ)I</div><div class="line"><span class="keyword">static</span> &#123;&#125;;</div><div class="line">  Signature: ()V</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>-s 表示打印签名信息</p>
+</li>
+<li><p>-p 表示打印所有函数和成员的签名信息，默认只打印public的签名信息</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;方法签名的意义&quot;&gt;&lt;a href=&quot;#方法签名的意义&quot; class=&quot;headerlink&quot; title=&quot;方法签名的意义&quot;&gt;&lt;/a&gt;方法签名的意义&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，&lt;strong&gt;方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;aaaa&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;aaaa&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>Java可变参数</title>
@@ -3405,49 +3518,6 @@
     
     
       <category term="JVM" scheme="http://www.qiuchengjia.cn/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NexT主题配置</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/16/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/16/博客/NexT主题配置/</id>
-    <published>2016-07-16T12:59:41.000Z</published>
-    <updated>2016-07-16T11:51:25.370Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="添加站内搜索"><a href="#添加站内搜索" class="headerlink" title="添加站内搜索"></a>添加站内搜索</h3><ul>
-<li><p>添加百度/谷歌/本地 自定义站点内容搜索</p>
-</li>
-<li><p>安装hexo-generator-search</p>
-</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-search --save</div></pre></td></tr></table></figure>
-<ul>
-<li>在站点的 _config.yml中增加</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">  path: search.xml</div><div class="line">  field: post</div></pre></td></tr></table></figure>
-<a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;添加站内搜索&quot;&gt;&lt;a href=&quot;#添加站内搜索&quot; class=&quot;headerlink&quot; title=&quot;添加站内搜索&quot;&gt;&lt;/a&gt;添加站内搜索&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;添加百度/谷歌/本地 自定义站点内容搜索&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装hexo-generator-search&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install hexo-generator-search --save&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;在站点的 _config.yml中增加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;search:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  path: search.xml&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  field: post&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="博客" scheme="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="hexo" scheme="http://www.qiuchengjia.cn/tags/hexo/"/>
     
   </entry>
   
