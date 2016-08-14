@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-08-14T07:19:18.825Z</updated>
+  <updated>2016-08-14T07:23:44.437Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,13 +20,12 @@
     <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/"/>
     <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java方法签名/</id>
     <published>2016-08-14T14:50:34.000Z</published>
-    <updated>2016-08-14T07:19:18.825Z</updated>
+    <updated>2016-08-14T07:23:44.437Z</updated>
     
     <content type="html"><![CDATA[<h2 id="方法签名的意义"><a href="#方法签名的意义" class="headerlink" title="方法签名的意义"></a>方法签名的意义</h2><ul>
 <li>对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，<strong>方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">aaaa</span><span class="params">()</span></span>&#123;  </div><div class="line">      </div><div class="line">&#125;  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">aaaa</span><span class="params">()</span></span>&#123;  </div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<a id="more"></a>
 <h2 id="方法签名的格式"><a href="#方法签名的格式" class="headerlink" title="方法签名的格式"></a>方法签名的格式</h2><ul>
 <li>首先我们先看几个方法以及他们的方法签名：</li>
 </ul>
@@ -95,6 +94,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <blockquote>
 <p>一定要注意的是方法重载时，方法返回值没有什么意义，是由方法名和参数列表决定的</p>
 </blockquote>
@@ -118,6 +118,74 @@
 &lt;li&gt;对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，&lt;strong&gt;方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;aaaa&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;aaaa&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;方法签名的格式&quot;&gt;&lt;a href=&quot;#方法签名的格式&quot; class=&quot;headerlink&quot; title=&quot;方法签名的格式&quot;&gt;&lt;/a&gt;方法签名的格式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;首先我们先看几个方法以及他们的方法签名：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;                   test1()&lt;span class=&quot;function&quot;&gt;V&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String str)&lt;/span&gt;     &lt;span class=&quot;title&quot;&gt;test2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Ljava/lang/String;)&lt;/span&gt;V&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test3&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;                      test3()I&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;从以上三个例子，我们就可以很简单的看出一些小小的规律：&lt;br&gt;JVM为我们提供的方法签名实际上是由方法名(上文的例子为了简单没有写出全类名)、形参列表、返回值三部分构成的，基本形式就是：&lt;br&gt;&lt;strong&gt;全类名.方法名(形参数据类型列表)返回值数据类型&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Java方法签名中特殊字符/字母含义&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;特殊字符&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;数据类型&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;特殊说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;void&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;一般用于表示方法的返回值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Z&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;boolean     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;byte     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;char     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;S&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;short     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;int     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;J&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;long     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;float     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;double     &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;数组&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;以[开头，配合其他的特殊字符，表示对应数据类型的数组，几个[表示几维数组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;全类名;&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;引用类型    以 L 开头 ; 结尾，中间是引用类型的全类名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
     
     </summary>
     
