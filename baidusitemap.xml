@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</loc>
+    <lastmod>2016-08-15T06:22:16.124Z</lastmod>
+    <data>
+        <display>
+        <title>装机软件清单</title>
+        <pubTime>2016-06-01T16:04:21.000Z</pubTime>
+        
+        <tag>装机软件清单</tag>
+         
+         
+           
+             
+              <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/</loc>
     <lastmod>2016-08-14T07:23:44.437Z</lastmod>
     <data>
@@ -336,26 +356,6 @@
            
              
               <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</loc>
-    <lastmod>2016-07-24T02:12:51.306Z</lastmod>
-    <data>
-        <display>
-        <title>装机软件清单</title>
-        <pubTime>2016-06-01T16:04:21.000Z</pubTime>
-        
-        <tag>装机软件清单</tag>
-         
-         
-           
-             
-              <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
           
         </display>
     </data>
