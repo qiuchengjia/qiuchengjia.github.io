@@ -4,6 +4,109 @@
   
     
     <entry>
+      <title><![CDATA[Java协变和逆变]]></title>
+      <url>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/</url>
+      <content type="html"><![CDATA[<h2 id="什么是协变和逆变"><a href="#什么是协变和逆变" class="headerlink" title="什么是协变和逆变"></a>什么是协变和逆变</h2><ul>
+<li><p>我们将围绕如下三个核心名词：协变性（covariance）、逆变性(contravariance)和无关性（invariant）。他们都是用来描述类型转换的性质的术语</p>
+</li>
+<li><p>到底什么是协变和逆变？先看例子：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Java</span></div><div class="line">Object[] objects = <span class="keyword">new</span> String[<span class="number">2</span>];</div><div class="line"><span class="comment">//C# </span></div><div class="line">object[] objects = <span class="keyword">new</span> string[<span class="number">2</span>];</div></pre></td></tr></table></figure>
+<ul>
+<li>这就是协变，C#和Java都是支持数组协变的语言，好像说了等于没说，别急，慢慢来</li>
+</ul>
+<p>我们都知道C#和Java中String类型都是继承自Object的，姑且记做<code>String ≦ Object</code>，表示String是Object的子类型，String的对象可以赋给Object的对象</p>
+<p>而Object的数组类型Object[]，我们可以理解成是由Object构造出来的一种新的类型,可以认为是一种<code>构造类型</code>，记f(Object)（可以类比下初中数学中函数的定义），那么我们可以这么来描述协变和逆变：</p>
+<ul>
+<li><p>当A ≦ B时,如果有f(A) ≦ f(B),那么f叫做协变(covariance)；</p>
+</li>
+<li><p>当A ≦ B时,如果有f(B) ≦ f(A),那么f叫做逆变(contravariance)；</p>
+</li>
+<li><p>如果上面两种关系都不成立则叫做不可变(invariant)</p>
+</li>
+</ul>
+<h3 id="协变"><a href="#协变" class="headerlink" title="协变"></a><strong>协变</strong></h3><p>其实顾名思义，协变和逆变表示的一种类型转变的关系：“构造类型”之间相对“子类型”之间的一种关系。只不过平时我（可能也包括大家）被网上的一些文章搞糊涂了。“协”表示一种自然而然的转换关系，比如上面的String[] ≦ Object[]，这就是大家学习面向对象编程语言中经常说的：</p>
+<blockquote>
+<p>子类变量能赋给父类变量，父类变量不能赋值给子类变量</p>
+</blockquote>
+<h3 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a><strong>逆变</strong></h3><ul>
+<li>而“逆”则不那么直观，平时用的也很少，后面讲<code>Java泛型中的协变和逆变</code>会看到例子</li>
+</ul>
+<a id="more"></a>
+<h3 id="不可变"><a href="#不可变" class="headerlink" title="不可变"></a><strong>不可变</strong></h3><ul>
+<li>不可变的例子就很多了，比如Java中List&lt; Object &gt;和List&lt; String &gt;之间就是不可变的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list1 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">List&lt;Object&gt; list2 = list1;</div></pre></td></tr></table></figure>
+<ul>
+<li>这两行代码在Java中肯定是编译不过的，反过来更不可能，C#中也是一样</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>那么<code>协变</code>和<code>逆变</code>作用：主要是语言设计的一种考量，目的是为了增加语言的灵活性和能力</li>
+</ul>
+<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><ul>
+<li>再说下面内容之前，提下这个大家都知道的原则：</li>
+</ul>
+<blockquote>
+<p>有使用父类型对象的地方都可以换成子类型对象</p>
+</blockquote>
+<ul>
+<li>假设有类Fruit和Apple,Apple ≦ Fruit，Fruit类有一个方法fun1，返回一个Object对象:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">fun1</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line">Fruit f = <span class="keyword">new</span> Fruit();</div><div class="line"><span class="comment">//...</span></div><div class="line"><span class="comment">//某地方用到了f对象</span></div><div class="line">Object obj = f.fun1();</div></pre></td></tr></table></figure>
+<ul>
+<li>那么现在Aplle对象覆盖fun1，假设可以返回一个String对象：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">fun1</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">&#125;</div><div class="line">Fruit f = <span class="keyword">new</span> Apple();</div><div class="line"><span class="comment">//...</span></div><div class="line"><span class="comment">//某地方用到了f对象</span></div><div class="line">Object obj = f.fun1();</div></pre></td></tr></table></figure>
+<ul>
+<li><p>那么任何使用Fruit对象的地方都能替换成Apple对象吗？显然是可以的</p>
+</li>
+<li><p>举得例子是返回值，如果是方法参数呢？调用父类方法fun2(String)的地方肯定可以被一个能够接受更宽类型的方法替代：fun2(Object)……</p>
+</li>
+</ul>
+<h2 id="协变返回值"><a href="#协变返回值" class="headerlink" title="协变返回值"></a>协变返回值</h2><ul>
+<li>在面向对象语言中，一个协变返回值方法是一个在子类覆盖该方法的时候，方法的返回值可以被一个“更窄”的类型所替代（C#并不支持这个技术，C++和Java JDK5.0后开始支持）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123; </div><div class="line">      <span class="function">Object <span class="title">getSomething</span><span class="params">()</span> </span>&#123; </div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">   &#125; </div><div class="line">&#125; </div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line">     <span class="function">String <span class="title">getSomething</span><span class="params">()</span> </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>虽然Java是面向对象的语言，但某种程度上支持<code>返回值协变</code>，Java子类覆盖父类方法的时候能够返回一个“更窄”的子类型，所以说Java是一门可以支持<code>返回值协变</code>的语言</li>
+</ul>
+<h2 id="参数逆变"><a href="#参数逆变" class="headerlink" title="参数逆变"></a>参数逆变</h2><ul>
+<li>类似<code>参数逆变</code>是指子类覆盖父类方法时接受一个“更宽”的父类型。在Java和C#中这都被当作了<code>方法重载</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123; </div><div class="line">          <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(String parameter)</span> </span>&#123; </div><div class="line">          &#125; </div><div class="line">&#125; </div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123; </div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Object parameter)</span> </span>&#123; </div><div class="line">         &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Java泛型中的协变和逆变"><a href="#Java泛型中的协变和逆变" class="headerlink" title="Java泛型中的协变和逆变"></a>Java泛型中的协变和逆变</h2><ul>
+<li>一般我们看Java泛型好像是不支持协变或逆变的，比如前面提到的<code>List&lt;Object&gt;</code>和<code>List&lt;String&gt;</code>之间是不可变的。但当我们在Java泛型中引入通配符这个概念的时候，Java 其实是支持协变和逆变的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不可变</span></div><div class="line">List&lt;Fruit&gt; fruits = <span class="keyword">new</span> ArrayList&lt;Apple&gt;();<span class="comment">// 编译不通过</span></div><div class="line"><span class="comment">// 协变</span></div><div class="line">List&lt;? extends Fruit&gt; wildcardFruits = <span class="keyword">new</span> ArrayList&lt;Apple&gt;();</div><div class="line"><span class="comment">// 协变-&gt;方法的返回值，对返回类型是协变的:Fruit-&gt;Apple</span></div><div class="line">Fruit fruit = wildcardFruits.get(<span class="number">0</span>);</div><div class="line"><span class="comment">// 不可变</span></div><div class="line">List&lt;Apple&gt; apples = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();<span class="comment">// 编译不通过</span></div><div class="line"><span class="comment">// 逆变</span></div><div class="line">List&lt;? <span class="keyword">super</span> Apple&gt; wildcardApples = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();</div><div class="line"><span class="comment">// 逆变-&gt;方法的参数，对输入类型是逆变的:Apple-&gt;Fruit</span></div><div class="line">wildcardApples.add(<span class="keyword">new</span> Apple());</div></pre></td></tr></table></figure>
+<ul>
+<li><p>可见在Java泛型中通过<code>extends</code>关键字可以提供协变的泛型类型转换，通过<code>supper</code>可以提供逆变的泛型类型转换</p>
+</li>
+<li><p>关于Java泛型中<code>supper</code>和<code>extends</code>关键字的作用网上有很多文章，这里不再赘述。只举一个《Java Core》里面<code>supper</code>使用的例子：下面的代码能够对实现<code>Comparable</code>接口的对象数组求最小值</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function">T <span class="title">min</span><span class="params">(T[] a)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (a == <span class="keyword">null</span> || a.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    T t = a[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (t.compareTo(a[i]) &gt; <span class="number">0</span>) &#123;</div><div class="line">            t = a[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这段代码对<code>Calendar</code>类是运行正常的，但对<code>GregorianCalendar</code>类则无法编译通过：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Calendar[] calendars = <span class="keyword">new</span> Calendar[<span class="number">2</span>];</div><div class="line">Calendar ret3 = CovariantAndContravariant.&lt;Calendar&gt; min(calendars);</div><div class="line">GregorianCalendar[] calendars2 = <span class="keyword">new</span> GregorianCalendar[<span class="number">2</span>];</div><div class="line">GregorianCalendar ret2 = CovariantAndContravariant.&lt;GregorianCalendar&gt; min(calendars2);<span class="comment">//编译不通过</span></div></pre></td></tr></table></figure>
+<ul>
+<li>如果想工作正常需要将方法签名修改为： </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Comparable&lt;? <span class="keyword">super</span> T&gt;&gt; <span class="function">T <span class="title">min</span><span class="params">(T[] a)</span></span></div></pre></td></tr></table></figure>
+<ul>
+<li>至于原因，大家看下源码和网上大量关于supper的作用应该就明白了，我这里希望能够给看了上面内容的同学提供另外一个思路……</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="https://www.zybuluo.com/zhanjindong/note/34147" target="_blank" rel="external">再谈对协变和逆变的理解</a></p>
+</li>
+<li><p><a href="http://www.2cto.com/kf/201304/205042.html" target="_blank" rel="external">Java 协变性 逆变性 学习笔记</a></p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java方法签名]]></title>
       <url>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/</url>
       <content type="html"><![CDATA[<h2 id="方法签名的意义"><a href="#方法签名的意义" class="headerlink" title="方法签名的意义"></a>方法签名的意义</h2><ul>
