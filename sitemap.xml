@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/</loc>
+    
+    <lastmod>2016-08-16T02:44:22.212Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2016-08-16T02:23:27.098Z</lastmod>
@@ -586,13 +593,6 @@
     <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%90%84%E7%A7%8D%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%EF%BC%8Ccin%E3%80%81cin.get()%E3%80%81cin.getline()%E3%80%81getline()%E3%80%81gets()%E3%80%81getchar()/</loc>
     
     <lastmod>2016-06-17T13:46:13.329Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/</loc>
-    
-    <lastmod>2016-06-17T13:45:43.325Z</lastmod>
     
   </url>
   
