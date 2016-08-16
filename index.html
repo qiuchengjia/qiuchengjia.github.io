@@ -421,8 +421,8 @@
 <ul>
 <li>这就是协变，C#和Java都是支持数组协变的语言，好像说了等于没说，别急，慢慢来</li>
 </ul>
-<p>我们都知道C#和Java中String类型都是继承自Object的，姑且记做<code>String ≦ Object</code>，表示String是Object的子类型，String的对象可以赋给Object的对象</p>
-<p>而Object的数组类型Object[]，我们可以理解成是由Object构造出来的一种新的类型,可以认为是一种<code>构造类型</code>，记f(Object)（可以类比下初中数学中函数的定义），那么我们可以这么来描述协变和逆变：</p>
+<p>我们都知道C#和Java中String类型都是继承自Object的，姑且记做<strong>String ≦ Object</strong>，表示String是Object的子类型，String的对象可以赋给Object的对象</p>
+<p>而Object的数组类型Object[]，我们可以理解成是由Object构造出来的一种新的类型,可以认为是一种<strong>构造类型</strong>，记f(Object)（可以类比下初中数学中函数的定义），那么我们可以这么来描述协变和逆变：</p>
 <ul>
 <li><p>当A ≦ B时,如果有f(A) ≦ f(B),那么f叫做协变(covariance)；</p>
 </li>
@@ -436,7 +436,7 @@
 <p>子类变量能赋给父类变量，父类变量不能赋值给子类变量</p>
 </blockquote>
 <h3 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a><strong>逆变</strong></h3><ul>
-<li>而“逆”则不那么直观，平时用的也很少，后面讲<code>Java泛型中的协变和逆变</code>会看到例子</li>
+<li>而“逆”则不那么直观，平时用的也很少，后面讲<strong>Java泛型中的协变和逆变</strong>会看到例子</li>
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/17/JAVA/Java协变和逆变/" rel="contents">

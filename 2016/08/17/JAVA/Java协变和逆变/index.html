@@ -128,7 +128,7 @@
 1234//JavaObject[] objects = new String[2];//C# object[] objects = new string[2];
 
 这就是协">
-<meta property="og:updated_time" content="2016-08-16T13:54:14.183Z">
+<meta property="og:updated_time" content="2016-08-16T14:03:32.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java协变和逆变">
 <meta name="twitter:description" content="什么是协变和逆变
@@ -367,7 +367,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-16T20:49:41Z" content="2016-08-16">
+            <time itemprop="dateCreated" datetime="2016-08-17T04:49:41+08:00" content="2016-08-16">
               2016-08-16
             </time>
           </span>
@@ -440,8 +440,8 @@
 <ul>
 <li>这就是协变，C#和Java都是支持数组协变的语言，好像说了等于没说，别急，慢慢来</li>
 </ul>
-<p>我们都知道C#和Java中String类型都是继承自Object的，姑且记做<code>String ≦ Object</code>，表示String是Object的子类型，String的对象可以赋给Object的对象</p>
-<p>而Object的数组类型Object[]，我们可以理解成是由Object构造出来的一种新的类型,可以认为是一种<code>构造类型</code>，记f(Object)（可以类比下初中数学中函数的定义），那么我们可以这么来描述协变和逆变：</p>
+<p>我们都知道C#和Java中String类型都是继承自Object的，姑且记做<strong>String ≦ Object</strong>，表示String是Object的子类型，String的对象可以赋给Object的对象</p>
+<p>而Object的数组类型Object[]，我们可以理解成是由Object构造出来的一种新的类型,可以认为是一种<strong>构造类型</strong>，记f(Object)（可以类比下初中数学中函数的定义），那么我们可以这么来描述协变和逆变：</p>
 <ul>
 <li><p>当A ≦ B时,如果有f(A) ≦ f(B),那么f叫做协变(covariance)；</p>
 </li>
@@ -455,7 +455,7 @@
 <p>子类变量能赋给父类变量，父类变量不能赋值给子类变量</p>
 </blockquote>
 <h3 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a><strong>逆变</strong></h3><ul>
-<li>而“逆”则不那么直观，平时用的也很少，后面讲<code>Java泛型中的协变和逆变</code>会看到例子</li>
+<li>而“逆”则不那么直观，平时用的也很少，后面讲<strong>Java泛型中的协变和逆变</strong>会看到例子</li>
 </ul>
 <a id="more"></a>
 <h3 id="不可变"><a href="#不可变" class="headerlink" title="不可变"></a><strong>不可变</strong></h3><ul>
@@ -466,7 +466,7 @@
 <li>这两行代码在Java中肯定是编译不过的，反过来更不可能，C#中也是一样</li>
 </ul>
 <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
-<li>那么<code>协变</code>和<code>逆变</code>作用：主要是语言设计的一种考量，目的是为了增加语言的灵活性和能力</li>
+<li>那么<strong>协变</strong>和<strong>逆变</strong>作用：主要是语言设计的一种考量，目的是为了增加语言的灵活性和能力</li>
 </ul>
 <h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><ul>
 <li>再说下面内容之前，提下这个大家都知道的原则：</li>
@@ -493,25 +493,25 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123; </div><div class="line">      <span class="function">Object <span class="title">getSomething</span><span class="params">()</span> </span>&#123; </div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">   &#125; </div><div class="line">&#125; </div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line">     <span class="function">String <span class="title">getSomething</span><span class="params">()</span> </span>&#123;</div><div class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>虽然Java是面向对象的语言，但某种程度上支持<code>返回值协变</code>，Java子类覆盖父类方法的时候能够返回一个“更窄”的子类型，所以说Java是一门可以支持<code>返回值协变</code>的语言</li>
+<li>虽然Java是面向对象的语言，但某种程度上支持<strong>返回值协变</strong>，Java子类覆盖父类方法的时候能够返回一个“更窄”的子类型，所以说Java是一门可以支持<strong>返回值协变</strong>的语言</li>
 </ul>
 <h2 id="参数逆变"><a href="#参数逆变" class="headerlink" title="参数逆变"></a>参数逆变</h2><ul>
-<li>类似<code>参数逆变</code>是指子类覆盖父类方法时接受一个“更宽”的父类型。在Java和C#中这都被当作了<code>方法重载</code></li>
+<li>类似<strong>参数逆变</strong>是指子类覆盖父类方法时接受一个“更宽”的父类型。在Java和C#中这都被当作了<strong>方法重载</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span> </span>&#123; </div><div class="line">          <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(String parameter)</span> </span>&#123; </div><div class="line">          &#125; </div><div class="line">&#125; </div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Super</span> </span>&#123; </div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Object parameter)</span> </span>&#123; </div><div class="line">         &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Java泛型中的协变和逆变"><a href="#Java泛型中的协变和逆变" class="headerlink" title="Java泛型中的协变和逆变"></a>Java泛型中的协变和逆变</h2><ul>
-<li>一般我们看Java泛型好像是不支持协变或逆变的，比如前面提到的<code>List&lt;Object&gt;</code>和<code>List&lt;String&gt;</code>之间是不可变的。但当我们在Java泛型中引入通配符这个概念的时候，Java 其实是支持协变和逆变的</li>
+<li>一般我们看Java泛型好像是不支持协变或逆变的，<strong>List”&lt;”Object&gt;</strong>和<strong>List”&lt;”String&gt;</strong>之间是不可变的。但当我们在Java泛型中引入通配符这个概念的时候，Java 其实是支持协变和逆变的</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不可变</span></div><div class="line">List&lt;Fruit&gt; fruits = <span class="keyword">new</span> ArrayList&lt;Apple&gt;();<span class="comment">// 编译不通过</span></div><div class="line"><span class="comment">// 协变</span></div><div class="line">List&lt;? extends Fruit&gt; wildcardFruits = <span class="keyword">new</span> ArrayList&lt;Apple&gt;();</div><div class="line"><span class="comment">// 协变-&gt;方法的返回值，对返回类型是协变的:Fruit-&gt;Apple</span></div><div class="line">Fruit fruit = wildcardFruits.get(<span class="number">0</span>);</div><div class="line"><span class="comment">// 不可变</span></div><div class="line">List&lt;Apple&gt; apples = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();<span class="comment">// 编译不通过</span></div><div class="line"><span class="comment">// 逆变</span></div><div class="line">List&lt;? <span class="keyword">super</span> Apple&gt; wildcardApples = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();</div><div class="line"><span class="comment">// 逆变-&gt;方法的参数，对输入类型是逆变的:Apple-&gt;Fruit</span></div><div class="line">wildcardApples.add(<span class="keyword">new</span> Apple());</div></pre></td></tr></table></figure>
 <ul>
-<li><p>可见在Java泛型中通过<code>extends</code>关键字可以提供协变的泛型类型转换，通过<code>supper</code>可以提供逆变的泛型类型转换</p>
+<li><p>可见在Java泛型中通过<strong>extends</strong>关键字可以提供协变的泛型类型转换，通过<strong>supper</strong>可以提供逆变的泛型类型转换</p>
 </li>
-<li><p>关于Java泛型中<code>supper</code>和<code>extends</code>关键字的作用网上有很多文章，这里不再赘述。只举一个《Java Core》里面<code>supper</code>使用的例子：下面的代码能够对实现<code>Comparable</code>接口的对象数组求最小值</p>
+<li><p>关于Java泛型中<strong>supper</strong>和<strong>extends</strong>关键字的作用网上有很多文章，这里不再赘述。只举一个《Java Core》里面<strong>supper</strong>使用的例子：下面的代码能够对实现<strong>Comparable</strong>接口的对象数组求最小值</p>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Comparable&lt;T&gt;&gt; <span class="function">T <span class="title">min</span><span class="params">(T[] a)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (a == <span class="keyword">null</span> || a.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    T t = a[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (t.compareTo(a[i]) &gt; <span class="number">0</span>) &#123;</div><div class="line">            t = a[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>这段代码对<code>Calendar</code>类是运行正常的，但对<code>GregorianCalendar</code>类则无法编译通过：</li>
+<li>这段代码对<strong>Calendar</strong>类是运行正常的，但对<strong>GregorianCalendar</strong>类则无法编译通过：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Calendar[] calendars = <span class="keyword">new</span> Calendar[<span class="number">2</span>];</div><div class="line">Calendar ret3 = CovariantAndContravariant.&lt;Calendar&gt; min(calendars);</div><div class="line">GregorianCalendar[] calendars2 = <span class="keyword">new</span> GregorianCalendar[<span class="number">2</span>];</div><div class="line">GregorianCalendar ret2 = CovariantAndContravariant.&lt;GregorianCalendar&gt; min(calendars2);<span class="comment">//编译不通过</span></div></pre></td></tr></table></figure>
 <ul>
