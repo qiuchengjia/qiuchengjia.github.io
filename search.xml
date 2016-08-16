@@ -4394,7 +4394,7 @@
 <li><p><a href="https://developer.android.com/training/index.html" target="_blank" rel="external">Android官方培训课程</a> 官方出品，必属精品。（需科学上网）</p>
 </li>
 </ul>
-<h3 id="杂志周刊"><a href="#杂志周刊" class="headerlink" title="杂志周刊"></a>杂志周刊</h3><ul>
+<h3 id="技术杂志周刊"><a href="#技术杂志周刊" class="headerlink" title="技术杂志周刊"></a>技术杂志周刊</h3><ul>
 <li><p><a href="http://gank.io/" target="_blank" rel="external">干货集中营</a> 每个工作日推送最近比较火的技术和好看的妹纸</p>
 </li>
 <li><p><a href="http://www.androidweekly.cn/" target="_blank" rel="external">Android开发技术周报</a> 每周看一看有什么新技术和好东西出现</p>
@@ -4425,6 +4425,18 @@
 <li><p><a href="https://github.com/MiCode/Notes" target="_blank" rel="external">MIUI 便签</a> MiCode 便签是小米便签的社区开源版, 由 MIUI 团队（ww.miui.com）发起并贡献第一批代码, 遵循 NOTICE 文件所描述的开源协议</p>
 </li>
 <li><p><a href="https://github.com/eoecn/android-app" target="_blank" rel="external">eoe 客户端</a>     eoe 社区Android客户端</p>
+</li>
+</ul>
+<h3 id="开源库"><a href="#开源库" class="headerlink" title="开源库"></a>开源库</h3><ul>
+<li><p><a href="http://alamkanak.github.io/android-libraries-and-resources/" target="_blank" rel="external">Android Libraries and Resources</a></p>
+</li>
+<li><p><a href="http://android-arsenal.com/" target="_blank" rel="external">Android Arsenal</a> (一个专门收集 android 开源库的网站, 网站经常更新)</p>
+</li>
+<li><p><a href="http://www.jcodecraeer.com/plus/list.php?tid=31" target="_blank" rel="external">泡在网上的日子</a></p>
+</li>
+<li><p><a href="https://github.com/Trinea/android-open-project" target="_blank" rel="external">Android 开源项目汇总</a> (Trinea 大神收集的)</p>
+</li>
+<li><p><a href="http://codekk.com/open-source-project-analysis" target="_blank" rel="external">Android 开源项目源码分析</a> (在懂得使用这些开源项目同时, 也应该了解当中的原理)</p>
 </li>
 </ul>
 <h3 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h3><ul>
