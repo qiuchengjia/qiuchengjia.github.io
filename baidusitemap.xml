@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/</loc>
-    <lastmod>2016-08-16T14:06:04.395Z</lastmod>
-    <data>
-        <display>
-        <title>Java协变和逆变</title>
-        <pubTime>2016-08-16T20:49:41.000Z</pubTime>
-        
-        <tag>JAVA</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2016-08-16T11:01:30.649Z</lastmod>
+    <lastmod>2016-08-16T14:47:23.064Z</lastmod>
     <data>
         <display>
         <title>优秀网站和博客</title>
@@ -39,6 +19,26 @@
            
              
               <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/</loc>
+    <lastmod>2016-08-16T14:06:04.395Z</lastmod>
+    <data>
+        <display>
+        <title>Java协变和逆变</title>
+        <pubTime>2016-08-16T20:49:41.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
           
         </display>
     </data>
