@@ -333,6 +333,144 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/12/JAVA源码分析/Java源码分析-Enum/" itemprop="url">
+                  Java源码分析--Enum
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-12T12:39:07Z" content="2016-08-12">
+              2016-08-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/12/JAVA源码分析/Java源码分析-Enum/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/JAVA源码分析/Java源码分析-Enum/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/12/JAVA源码分析/Java源码分析-Enum/" class="leancloud_visitors" data-flag-title="Java源码分析--Enum">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>Enum类是java.lang包中一个类，他是Java语言中所有枚举类型的公共基类</p>
+</blockquote>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Enum</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Enum</span>&lt;<span class="title">E</span>&gt;&gt; <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">E</span>&gt;, <span class="title">Serializable</span></span></div></pre></td></tr></table></figure>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><ul>
+<li>首先，<strong>抽象类不能被实例化</strong>，所以我们在<strong>java程序中不能使用new关键字来声明一个Enum</strong>，如果想要定义可以使用这样的语法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> enumName&#123;</div><div class="line">    value1,<span class="function">value2</div><div class="line">    <span class="title">method1</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    method2()&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/12/JAVA源码分析/Java源码分析-Enum/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/12/JAVA命令学习/Java命令-javap/" itemprop="url">
                   Java命令--javap
                 </a>
@@ -871,228 +1009,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/11/JAVA/Java自动拆箱和装箱/" itemprop="url">
-                  Java自动拆箱和装箱
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-11T14:24:02Z" content="2016-08-11">
-              2016-08-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/11/JAVA/Java自动拆箱和装箱/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/11/JAVA/Java自动拆箱和装箱/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/11/JAVA/Java自动拆箱和装箱/" class="leancloud_visitors" data-flag-title="Java自动拆箱和装箱">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1.png" alt=""></center>
-
-<h2 id="什么是自动拆箱和装箱"><a href="#什么是自动拆箱和装箱" class="headerlink" title="什么是自动拆箱和装箱"></a>什么是自动拆箱和装箱</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
-<li>自动装箱就是 Java 自动将原始数据类型转为对应的包装类对象 比如将 int 型的变量转成 Integer对象 自动拆箱反之(从 Java 1.5 开始引入)</li>
-</ul>
-<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
-<li>自动装箱时，编译器调用 valueOf() 将原始数据类型值转为对象；同时自动拆箱时，编译器调用类似 intValue(), doubleValue() 这类方法将对象转换成原始类型值</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th style="text-align:left">大小</th>
-<th style="text-align:left">数值范围</th>
-<th style="text-align:left">默认值</th>
-<th style="text-align:left">包装类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolean</td>
-<td style="text-align:left">^</td>
-<td style="text-align:left">true,false</td>
-<td style="text-align:left">false</td>
-<td style="text-align:left">Boolean</td>
-</tr>
-<tr>
-<td>byte</td>
-<td style="text-align:left">8bit</td>
-<td style="text-align:left">-2^7 – 2^7-1</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Byte</td>
-</tr>
-<tr>
-<td>char</td>
-<td style="text-align:left">16bit</td>
-<td style="text-align:left">\u0000 – \uffff</td>
-<td style="text-align:left">\u0000</td>
-<td style="text-align:left">Character</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:left">16bit</td>
-<td style="text-align:left">-2^15 – 2^15-1</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Short</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:left">32bit</td>
-<td style="text-align:left">-2^31 – 2^31-1</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Integer</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:left">64bit</td>
-<td style="text-align:left">-2^63 – 2^63-1</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">Long</td>
-</tr>
-<tr>
-<td>float</td>
-<td style="text-align:left">32bit</td>
-<td style="text-align:left">IEEE 754</td>
-<td style="text-align:left">0.0f</td>
-<td style="text-align:left">Float</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:left">64bit</td>
-<td style="text-align:left">IEEE 754</td>
-<td style="text-align:left">0.0d</td>
-<td style="text-align:left">Double</td>
-</tr>
-<tr>
-<td>void</td>
-<td style="text-align:left">^</td>
-<td style="text-align:left">^</td>
-<td style="text-align:left">^</td>
-<td style="text-align:left">Void</td>
-</tr>
-</tbody>
-</table>
-<h3 id="基本类型与装箱基本类型的区别"><a href="#基本类型与装箱基本类型的区别" class="headerlink" title="基本类型与装箱基本类型的区别"></a>基本类型与装箱基本类型的区别</h3><ul>
-<li><p>基本类型只有值，而装箱基本类型则具有与它们的值不同的同一性。换句话说，对装箱基本类型运用 == 操作符几乎总是错的</p>
-</li>
-<li><p>基本类型只有功能完备的值，而装箱基本类型除了它对应基本类型的所有功能值外，还有一个非功能值 null，这导致了对于包装基本类型进行拆箱操作后所进行的操作存在 NPE 的风险</p>
-</li>
-<li><p>基本类型更加省空间和时间，如果对包装类型进行频繁的装箱和拆箱操作会影响性能</p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/11/JAVA/Java自动拆箱和装箱/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1138,7 +1054,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">89</span>
+              <span class="site-state-item-count">90</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
