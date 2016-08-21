@@ -333,176 +333,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/18/博客/NexT主题内置标签/" itemprop="url">
-                  NexT主题内置标签
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-17T17:38:40Z" content="2016-06-17">
-              2016-06-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/博客/" itemprop="url" rel="index">
-                    <span itemprop="name">博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/18/博客/NexT主题内置标签/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/博客/NexT主题内置标签/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/18/博客/NexT主题内置标签/" class="leancloud_visitors" data-flag-title="NexT主题内置标签">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://7xstki.com1.z0.glb.clouddn.com/NexT%E4%B8%BB%E9%A2%98%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE.jpg" rel="gallery_cis4af3gg005g30nrcohbqxsw"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://7xstki.com1.z0.glb.clouddn.com/NexT%E4%B8%BB%E9%A2%98%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-            
-              <a class="post-gallery-img fancybox"
-                 href="http://theme-next.iissnan.com/uploads/tags/blockquote-center.png" rel="gallery_cis4af3gg005g30nrcohbqxsw"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://theme-next.iissnan.com/uploads/tags/blockquote-center.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <ul>
-<li>具体用法参考NexT文档 <a href="http://theme-next.iissnan.com/tag-plugins.html">传送门</a></li>
-</ul>
-<h3 id="文本居中的引用"><a href="#文本居中的引用" class="headerlink" title="文本居中的引用"></a>文本居中的引用</h3><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。 文本居中时，多行文本若长度不等，视觉上会显得不对称，因此建议在引用单行文本的场景下使用。 例如作为文章开篇引用 或者 结束语之前的总结引用</p>
-<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
-<li><p>HTML方式：使用这种方式时，给 img 添加属性 class=”blockquote-center” 即可</p>
-</li>
-<li><p>标签方式：使用 centerquote 或者 简写 cq</p>
-</li>
-</ul>
-<blockquote>
-<p>此标签要求 NexT 的版本在 0.4.5 或以上。 若你正在使用的版本比较低，可以选择使用 HTML 方式</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 其中 class="blockquote-center" 是必须的 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">class</span>=<span class="string">"blockquote-center"</span>&gt;</span>blah blah blah<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="comment">&lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span></div><div class="line">&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125;</div><div class="line"></div><div class="line">  <span class="comment">&lt;!-- 标签别名 --&gt;</span></div><div class="line">&#123;% cq %&#125; blah blah blah &#123;% endcq %&#125;</div></pre></td></tr></table></figure>
-<p>效果示例:</p>
-<center><img src="http://theme-next.iissnan.com/uploads/tags/blockquote-center.png" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/18/博客/NexT主题内置标签/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/06/17/数据结构和算法和组成原理/海明校验码/" itemprop="url">
                   海明校验码
                 </a>
@@ -1060,6 +890,149 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/06/SEO/hexo做SEO（添加sitemap和baidusitemap）/" itemprop="url">
+                  hexo做SEO（添加sitemap和baidusitemap）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T12:07:57Z" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/SEO/" itemprop="url" rel="index">
+                    <span itemprop="name">SEO</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/06/SEO/hexo做SEO（添加sitemap和baidusitemap）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/SEO/hexo做SEO（添加sitemap和baidusitemap）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/06/SEO/hexo做SEO（添加sitemap和baidusitemap）/" class="leancloud_visitors" data-flag-title="hexo做SEO（添加sitemap和baidusitemap）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>添加站点地图</li>
+</ul>
+<p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站</p>
+<ul>
+<li>安装插件</li>
+</ul>
+<p>打开hexo目录下的dos命令行，分别安装百度和google插件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-sitemap --save</div><div class="line">npm install hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
+<ul>
+<li>在博客目录的_config.yml中添加如下代码</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 自动生成sitemap</div><div class="line">sitemap:</div><div class="line">path: sitemap.xml</div><div class="line">baidusitemap:</div><div class="line">path: baidusitemap.xml</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/06/SEO/hexo做SEO（添加sitemap和baidusitemap）/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1105,7 +1078,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

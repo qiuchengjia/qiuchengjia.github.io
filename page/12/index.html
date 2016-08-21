@@ -333,126 +333,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/02/C++/STL之set和multiset总结/" itemprop="url">
-                   STL之set和multiset总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T18:28:58Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/C++/STL之set和multiset总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL之set和multiset总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/02/C++/STL之set和multiset总结/" class="leancloud_visitors" data-flag-title=" STL之set和multiset总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>使用set或multiset之前，必须加入头文件<set></li>
-<li>Set、multiset都是集合类，差别在与set中不允许有重复元素，multiset中允许有重复元素。</li>
-<li>sets和multiset内部以平衡二叉树实现</li>
-</ul>
-<ul>
-<li><h3 id="构造，析构"><a href="#构造，析构" class="headerlink" title="构造，析构"></a>构造，析构</h3></li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">set c  //创建空集合,不包含任何元素  </div><div class="line">  </div><div class="line">set c(op)  //以op为排序准则，产生一个空的set  </div><div class="line">  </div><div class="line">set c1(c2)  //复制c2中的元素到c1中  </div><div class="line">  </div><div class="line">set c(const value_type *first, const value_type* last)  </div><div class="line">//复制[first, last)之间元素构成新集合  </div><div class="line">  </div><div class="line">set c(const value_type *first, const value_type* last,op)  </div><div class="line">//以op为排序准则，复制[first, last)之间元素构成新集合。  </div><div class="line">  </div><div class="line">c.~set()  </div><div class="line">//销毁所有元素，释放内存  </div><div class="line">  </div><div class="line">multiset mc  //创建空集合,不包含任何元素  </div><div class="line">  </div><div class="line">multiset mc(op)  //以op为排序准则，产生一个空的set  </div><div class="line">  </div><div class="line">multiset c1(c2)  //复制c2中的元素到c1中  </div><div class="line">  </div><div class="line">multiset c(const value_type *first, const value_type* last)  </div><div class="line">//复制[first, last)之间元素构成新集合  </div><div class="line">  </div><div class="line">multiset c(const value_type *first, const value_type* last,op)  </div><div class="line">//以op为排序准则，复制[first, last)之间元素构成新集合。  </div><div class="line">  </div><div class="line">c.~set()  //销毁所有元素，释放内存</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/C++/STL之set和multiset总结/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/06/02/C++/C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()/" itemprop="url">
                   C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()
                 </a>
@@ -986,6 +866,147 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之deque/" itemprop="url">
+                  STL容器总结之deque
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T17:26:50Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/C++/STL容器总结之deque/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL容器总结之deque/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/C++/STL容器总结之deque/" class="leancloud_visitors" data-flag-title="STL容器总结之deque">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>deque双向队列是一种双向开口的连续线性空间，可以高效的在头尾两端插入和删除元素，deque在接口上和vector非常相似，下面列出deque的常用成员函数</li>
+</ul>
+<ul>
+<li><h3 id="构造，析构"><a href="#构造，析构" class="headerlink" title="构造，析构"></a>构造，析构</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">deque</span>&lt;Elem&gt; c <span class="comment">//创建一个空的deque  </span></div><div class="line">  </div><div class="line"><span class="built_in">deque</span>&lt;Elem&gt; c1(c2) <span class="comment">//赋值deque  </span></div><div class="line">  </div><div class="line"><span class="built_in">deque</span>&lt;Elem&gt; c(n) </div><div class="line"><span class="comment">//创建deque，含有n个数据，数据均有缺省结构函数产生  </span></div><div class="line">  </div><div class="line"><span class="built_in">deque</span>&lt;Elem&gt; c(n,Elem) <span class="comment">//创建一个含有n个Elem拷贝的deque  </span></div><div class="line">  </div><div class="line"><span class="built_in">deque</span>&lt;Elem&gt; c(begin,end) <span class="comment">//创建一个以[begin,end)区间的deque  </span></div><div class="line"><span class="comment">//利用int数组iArray，创建一个deque对象d  </span></div><div class="line"><span class="keyword">int</span> iArray[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;  </div><div class="line"><span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; d(iArray, iArray+<span class="number">7</span>);  </div><div class="line">  </div><div class="line">c~<span class="built_in">deque</span>&lt;Elem&gt;() <span class="comment">//销毁所有数据，并释放内存</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">c.assign(begin,end) <span class="comment">//将[begin,end)区间中的数据赋值给c  </span></div><div class="line">  </div><div class="line">c.assign(n,Elem) <span class="comment">//将n个Elem的拷贝赋值给c  </span></div><div class="line">  </div><div class="line">c.swap(c2) <span class="comment">//将c2和c的元素互换</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/C++/STL容器总结之deque/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1031,7 +1052,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

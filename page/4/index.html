@@ -333,137 +333,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/03/JAVA/Java泛型/" itemprop="url">
-                  Java泛型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-02T20:52:08Z" content="2016-08-02">
-              2016-08-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/03/JAVA/Java泛型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/JAVA/Java泛型/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/03/JAVA/Java泛型/" class="leancloud_visitors" data-flag-title="Java泛型">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>泛型（Generic Type）是Java中重要的一部分。在J2SE 5.0之后新增。在使用Java标准库中的内容的时候，经常会遇到泛型。这里将泛型总结一下</p>
-<h3 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h3><ul>
-<li>讨论一个内容的时候，首先会来说什么是什么。在官方的文档中说到</li>
-</ul>
-<blockquote>
-<p>A generic type is a generic class or interface that is parameterized over types.</p>
-</blockquote>
-<ul>
-<li>泛型又可以称作参数化类型，这是在Java SE新增添的特性。一对尖括号，中间包含类型信息。将类型独立成参数，在使用的时候才指定实际的类型</li>
-</ul>
-<p>如果没有泛型会怎么样？我们考虑以下几种情况：</p>
-<ol>
-<li><p>你实现了一个存储整数类型（Integer）的列表，这时候你又需要存储字符串（String）的列表，两种列表逻辑行为完全一样，只是存储的类型不同</p>
-</li>
-<li><p>为了保证列表的通用性，你将列表的类型改为了Object，这样就不用为类型修改代码了。但是每次从列表中取对象的时候都需要强制转换，而且很很容易出错</p>
-</li>
-</ol>
-<ul>
-<li>有了泛型之后，可以将逻辑相同类型不同的代码独立出来，由编译器负责进行<strong>类型转换</strong></li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/03/JAVA/Java泛型/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/07/30/JAVA/Java反射/" itemprop="url">
                   Java反射
                 </a>
@@ -1016,6 +885,155 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/24/JVM/多态性实现机制——静态分派与动态分派/" itemprop="url">
+                  多态性实现机制——静态分派与动态分派
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T20:33:36Z" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/24/JVM/多态性实现机制——静态分派与动态分派/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/JVM/多态性实现机制——静态分派与动态分派/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/24/JVM/多态性实现机制——静态分派与动态分派/" class="leancloud_visitors" data-flag-title="多态性实现机制——静态分派与动态分派">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="方法解析"><a href="#方法解析" class="headerlink" title="方法解析"></a>方法解析</h3><ul>
+<li><p>Class文件的编译过程中不包含传统编译中的连接步骤，一切方法调用在Class文件里面存储的都只是符号引用，而不是方法在实际运行时内存布局中的入口地址。这个特性给Java带来了更强大的动态扩展能力，使得可以在类运行期间才能确定某些目标方法的直接引用，称为动态连接，也有一部分方法的符号引用在类加载阶段或第一次使用时转化为直接引用，这种转化称为静态解析。这在前面的“Java内存区域与内存溢出”一文中有提到</p>
+</li>
+<li><p>静态解析成立的前提是：方法在程序真正执行前就有一个可确定的调用版本，并且这个方法的调用版本在运行期是不可改变的。换句话说，调用目标在编译器进行编译时就必须确定下来，这类方法的调用称为解析</p>
+</li>
+<li><p>在Java语言中，<strong>符合“编译器可知，运行期不可变”这个要求的方法主要有静态方法和私有方法两大类</strong>，前者与类型直接关联，后者在外部不可被访问，这两种方法都不可能通过继承或别的方式重写出其他的版本，<strong>因此它们都适合在类加载阶段进行解析</strong></p>
+</li>
+</ul>
+<p>Java虚拟机里共提供了四条方法调用字节指令，分别是：</p>
+<ul>
+<li><p>invokestatic：调用静态方法</p>
+</li>
+<li><p>invokespecial：调用实例构造器<init>方法、私有方法和父类方法</p>
+</li>
+<li><p>invokevirtual：调用所有的虚方法</p>
+</li>
+<li><p>invokeinterface：调用接口方法，会在运行时再确定一个实现此接口的对象</p>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/24/JVM/多态性实现机制——静态分派与动态分派/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1061,7 +1079,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
