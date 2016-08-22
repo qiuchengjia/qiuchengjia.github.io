@@ -4,6 +4,21 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/22/AndroidStudio/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A/</loc>
+    <lastmod>2016-08-22T06:02:01.217Z</lastmod>
+    <data>
+        <display>
+        <title>AndroidStudio自定义注释</title>
+        <pubTime>2016-08-22T14:02:01.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/02/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</loc>
     <lastmod>2016-08-21T12:46:00.750Z</lastmod>
     <data>
@@ -1260,9 +1275,9 @@
         <title>CentOS从php5.3升级到php5.5</title>
         <pubTime>2016-06-01T15:31:35.000Z</pubTime>
         
-        <tag>CentOS</tag>
-         
         <tag>linux</tag>
+         
+        <tag>CentOS</tag>
          
          
            
