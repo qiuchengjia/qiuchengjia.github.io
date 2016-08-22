@@ -6,7 +6,78 @@
     <entry>
       <title><![CDATA[AndroidStudio自定义注释]]></title>
       <url>http://www.qiuchengjia.cn/2016/08/22/AndroidStudio/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A/</url>
-      <content type="html"><![CDATA[<a id="more"></a>]]></content>
+      <content type="html"><![CDATA[<h2 id="设置类创建时自动生成头部注释"><a href="#设置类创建时自动生成头部注释" class="headerlink" title="设置类创建时自动生成头部注释"></a>设置类创建时自动生成头部注释</h2><ul>
+<li>比如每次创建一个类自动在头部生成一个这样的头部,作为一个类的说明信息</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A1.png" alt=""></center>
+
+<ul>
+<li>设置方法</li>
+</ul>
+<p>点击设置—&gt;Editor–&gt;File and code Templates –&gt;Includes—&gt;File Header<br>代码：其中时间是自动获取的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Description: </div><div class="line"> * Data：$&#123;DATE&#125;-$&#123;TIME&#125;</div><div class="line"> * Blog：www.qiuchengjia.cn</div><div class="line"> * Author: qiu</div><div class="line"> */</div></pre></td></tr></table></figure>
+<ul>
+<li>效果和步骤</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A3.gif" alt=""></center>
+
+<a id="more"></a>
+<h2 id="设置快速生成方法注释的两种方式"><a href="#设置快速生成方法注释的两种方式" class="headerlink" title="设置快速生成方法注释的两种方式"></a>设置快速生成方法注释的两种方式</h2><h3 id="在studio-中自定义模板"><a href="#在studio-中自定义模板" class="headerlink" title="在studio 中自定义模板"></a>在studio 中自定义模板</h3><ul>
+<li>在studio中自定义注释模板有一定的局限性，目前已知的studio的模板只能获取的时间，并不能获取返回值以及参数等信息，那是因为获取方法名的方法运行在方法内部才会生效,运行在方法外部是不能生效.<br>所以在方法外部用studio自定义模板的方式有一定的局限性</li>
+</ul>
+<ul>
+<li>模板</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Description:$Method$</div><div class="line"> * Blog: www.qiuchengjia.cn</div><div class="line"> * Data: $Date$ $Time$</div><div class="line"> * <span class="doctag">@author</span>: qiu</div><div class="line"> */</div></pre></td></tr></table></figure>
+<ul>
+<li>点击设置—&gt;Editor–&gt;live Templates –&gt;点击+号 先创建1个组 再创建一个模板<br>编辑注释内容–&gt;声明作用域</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A2.gif" alt=""></center>
+
+<h3 id="javaDoc自动生成注释"><a href="#javaDoc自动生成注释" class="headerlink" title="javaDoc自动生成注释"></a>javaDoc自动生成注释</h3><ul>
+<li>如果我们想获取到方法名，参数返回值的信息，想让这些信息全部自动生成的注释里面的话，我们可以借助插件JavaDoc实现，安装插件javaDoc 安装完之后重启studio</li>
+</ul>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A4.png" alt=""></center>
+
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><ul>
+<li>我这儿拿method的来举例。我给每个方法的注解加 一个 作者以及时间</li>
+</ul>
+<ul>
+<li><p><strong>@author qiu 博客：www.qiuchengjia.cn 时间：${.now?string[“yyyy-MM-dd”]}\n</strong></p>
+</li>
+<li><p><strong>原始配置</strong></p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**\n</div><div class="line"> * $&#123;name&#125;<span class="tag">&lt;<span class="name">#if</span> <span class="attr">isNotVoid</span>&gt;</span> $&#123;return&#125;<span class="tag">&lt;/<span class="name">#if</span>&gt;</span>.\n</div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">element.typeParameters</span>?<span class="attr">has_content</span>&gt;</span>         * \n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">element.typeParameters</span> <span class="attr">as</span> <span class="attr">typeParameter</span>&gt;</span></div><div class="line">         * @param <span class="tag">&lt;<span class="name">$&#123;typeParameter.name&#125;</span>&gt;</span> the type parameter\n</div><div class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">element.parameterList.parameters</span>?<span class="attr">has_content</span>&gt;</span></div><div class="line">         *\n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">element.parameterList.parameters</span> <span class="attr">as</span> <span class="attr">parameter</span>&gt;</span></div><div class="line">         * @param $&#123;parameter.name&#125; the $&#123;paramNames[parameter.name]&#125;\n</div><div class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">isNotVoid</span>&gt;</span></div><div class="line">         *\n</div><div class="line">         * @return the $&#123;return&#125;\n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">element.throwsList.referenceElements</span>?<span class="attr">has_content</span>&gt;</span></div><div class="line">         *\n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">element.throwsList.referenceElements</span> <span class="attr">as</span> <span class="attr">exception</span>&gt;</span></div><div class="line">         * @throws $&#123;exception.referenceName&#125; the $&#123;exceptionNames[exception.referenceName]&#125;\n</div><div class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></div><div class="line"> */</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>修改之后的配置</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**\n</div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">element.typeParameters</span>?<span class="attr">has_content</span>&gt;</span>         * \n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">element.typeParameters</span> <span class="attr">as</span> <span class="attr">typeParameter</span>&gt;</span></div><div class="line">         * @param <span class="tag">&lt;<span class="name">$&#123;typeParameter.name&#125;</span>&gt;</span> the type parameter\n</div><div class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">element.parameterList.parameters</span>?<span class="attr">has_content</span>&gt;</span></div><div class="line">         *\n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">element.parameterList.parameters</span> <span class="attr">as</span> <span class="attr">parameter</span>&gt;</span></div><div class="line">         * @param $&#123;parameter.name&#125; the $&#123;paramNames[parameter.name]&#125;\n</div><div class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">isNotVoid</span>&gt;</span></div><div class="line">         *\n</div><div class="line">         * @return the $&#123;return&#125;\n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">element.throwsList.referenceElements</span>?<span class="attr">has_content</span>&gt;</span></div><div class="line">         *\n</div><div class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">element.throwsList.referenceElements</span> <span class="attr">as</span> <span class="attr">exception</span>&gt;</span></div><div class="line">         * @throws $&#123;exception.referenceName&#125; the $&#123;exceptionNames[exception.referenceName]&#125;\n</div><div class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></div><div class="line">         </div><div class="line">	\n * @author qiu\n</div><div class="line">\n *  博客：www.qiuchengjia.cn   时间：$&#123;.now?string["yyyy-MM-dd"]&#125;\n</div><div class="line">    </div><div class="line"> */</div></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
+<li><p>把鼠标移动到方法中，然后shift + alt + G</p>
+</li>
+<li><p>如果是对这个类所有的方法都进行注释，就是shift + ctrl + alt + G</p>
+</li>
+<li><p>也可以通过alt+insert来进行选择</p>
+</li>
+<li><p>shift + alt + Z是撤销当前/选择</p>
+</li>
+<li><p>shift + ctrl + alt + Z是撤销所有注释</p>
+</li>
+</ul>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><ul>
+<li><p>如果你对JavaDoc生成的模板如果还不满意，你还可以修改JavaDoc的模板，具体修改位置是 设置–&gt;other—&gt;javadoc<br>里面有对应的模板，模板语言使用的是一种 freemarker的标记语言，如果有感兴趣的同学可自己开发扩展；</p>
+</li>
+<li><p><a href="https://github.com/setial/intellij-javadocs/wiki" target="_blank" rel="external">javadoc网址</a></p>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="http://blog.csdn.net/dreamlivemeng/article/details/51499675" target="_blank" rel="external"> Android studio JavaDoc的使用</a></p>
+</li>
+<li><p><a href="http://www.codingnote.net/2016/05/12/Android-Studio-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A-%E5%BF%AB%E9%80%9F%E8%BE%93%E5%85%A5%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" target="_blank" rel="external">(原创) Android Studio 自定义注释&amp;快速输入代码片段</a></p>
+</li>
+</ul>
+]]></content>
     </entry>
     
     <entry>
