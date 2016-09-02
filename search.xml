@@ -5095,11 +5095,11 @@
     <entry>
       <title><![CDATA[hexo博客添加域名实现双线部署（github和coding）]]></title>
       <url>http://www.qiuchengjia.cn/2016/06/07/SEO/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2%EF%BC%88github%E5%92%8Ccoding%EF%BC%89/</url>
-      <content type="html"><![CDATA[<ul>
-<li><p>首先申请一个域名</p>
-</li>
-<li><p>在hexo目录下的source目录下新建一个文件CNAME，不要带后缀，也就是没有文件类型，可以使用命令来创建</p>
-</li>
+      <content type="html"><![CDATA[<h2 id="域名申请"><a href="#域名申请" class="headerlink" title="域名申请"></a>域名申请</h2><ul>
+<li>首先申请一个域名</li>
+</ul>
+<h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><ul>
+<li>在hexo目录下的source目录下新建一个文件CNAME，不要带后缀，也就是没有文件类型，可以使用命令来创建</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd source</div><div class="line">touch CNAME</div></pre></td></tr></table></figure>
 <ul>
@@ -5109,7 +5109,7 @@
 <li><p>我建议到 <a href="https://www.dnspod.cn/" target="_blank" rel="external">dnspod</a> 进行解析管理，我们可以在这里实现国内用户走coding，国外用户<br>走github</p>
 </li>
 </ul>
-<ul>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ul>
 <li>首先进入coding pages页面，添加自己的域名</li>
 </ul>
 <center><img src="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D3.png" alt=""></center>

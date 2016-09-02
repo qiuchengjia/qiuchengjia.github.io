@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/07/SEO/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2%EF%BC%88github%E5%92%8Ccoding%EF%BC%89/</loc>
+    <lastmod>2016-09-02T05:26:21.227Z</lastmod>
+    <data>
+        <display>
+        <title>hexo博客添加域名实现双线部署（github和coding）</title>
+        <pubTime>2016-06-07T11:47:00.000Z</pubTime>
+        
+        <tag>SEO</tag>
+         
+        <tag>搜索引擎</tag>
+         
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="SEO" url="http://www.qiuchengjia.cn/categories/SEO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/02/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</loc>
     <lastmod>2016-08-24T14:31:25.839Z</lastmod>
     <data>
@@ -1323,30 +1347,6 @@
         <display>
         <title>hexo做SEO（添加sitemap和baidusitemap）</title>
         <pubTime>2016-06-06T12:07:57.000Z</pubTime>
-        
-        <tag>SEO</tag>
-         
-        <tag>搜索引擎</tag>
-         
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="SEO" url="http://www.qiuchengjia.cn/categories/SEO/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/07/SEO/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2%EF%BC%88github%E5%92%8Ccoding%EF%BC%89/</loc>
-    <lastmod>2016-06-17T14:01:12.239Z</lastmod>
-    <data>
-        <display>
-        <title>hexo博客添加域名实现双线部署（github和coding）</title>
-        <pubTime>2016-06-07T11:47:00.000Z</pubTime>
         
         <tag>SEO</tag>
          
