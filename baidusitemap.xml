@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/09/11/Android/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</loc>
+    <lastmod>2016-09-10T12:00:18.938Z</lastmod>
+    <data>
+        <display>
+        <title>Android学习之路</title>
+        <pubTime>2016-09-10T19:58:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/02/%E9%80%9A%E7%94%A8/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/</loc>
     <lastmod>2016-09-06T07:31:32.206Z</lastmod>
     <data>
@@ -1304,9 +1324,9 @@
         <title>CentOS从php5.3升级到php5.5</title>
         <pubTime>2016-06-01T15:31:35.000Z</pubTime>
         
-        <tag>CentOS</tag>
-         
         <tag>linux</tag>
+         
+        <tag>CentOS</tag>
          
          
            
@@ -1412,9 +1432,9 @@
         <title> 如何安装windows和ubuntu双系统</title>
         <pubTime>2015-05-31T21:21:25.000Z</pubTime>
         
-        <tag>linux</tag>
-         
         <tag>ubuntu</tag>
+         
+        <tag>linux</tag>
          
         <tag>windows</tag>
          
@@ -1498,9 +1518,9 @@
         <title> ubuntu如何安装Mac OS X主题</title>
         <pubTime>2015-06-01T10:43:57.000Z</pubTime>
         
-        <tag>linux</tag>
-         
         <tag>ubuntu</tag>
+         
+        <tag>linux</tag>
          
         <tag>MacOSX</tag>
          
