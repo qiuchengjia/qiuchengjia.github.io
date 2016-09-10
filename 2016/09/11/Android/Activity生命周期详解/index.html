@@ -115,7 +115,7 @@
 <meta property="og:description" content="生命周期
 官方图解">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/activity_lifecycle.png">
-<meta property="og:updated_time" content="2016-09-10T13:25:21.028Z">
+<meta property="og:updated_time" content="2016-09-10T13:26:21.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity生命周期详解">
 <meta name="twitter:description" content="生命周期
@@ -450,7 +450,7 @@
 <li><p>在AndroidManifest配置文件里声明android:configChanges属性<br>默认屏幕旋转会重新创建，当然可以通过在配置文件里加上如下代码：</p>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:configChanges="keyboardHidden|orientation|screenSize"（sdk&gt;13时需加上screenSize）</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">android:configChanges="keyboardHidden|orientation|screenSize"</div><div class="line">（sdk&gt;13时需加上screenSize）</div></pre></td></tr></table></figure>
 <p>这个时候再旋转屏幕便不会销毁Activity，这时候再旋转屏幕可以看到只会执行onConfigurationChanged方法，有什么在屏幕旋转的逻辑可以重写这个方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) &#123;</div><div class="line">        <span class="comment">// <span class="doctag">TODO:</span></span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">super</span>.onConfigurationChanged(newConfig);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="FirstActivity打开SecondActivity"><a href="#FirstActivity打开SecondActivity" class="headerlink" title="FirstActivity打开SecondActivity"></a>FirstActivity打开SecondActivity</h3><ul>
