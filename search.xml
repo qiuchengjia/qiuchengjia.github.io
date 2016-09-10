@@ -57,6 +57,17 @@
 <p>  Activity在onPause或者onStop状态下都有可能遇到由于突发事件系统需要回收内存，之后的onDestroy方法便不会再执行，这时候会执行： onCreate –&gt; onStart –&gt; onRestoreInstanceState –&gt; onResume</p>
 </li>
 </ul>
+<h2 id="保存-Activity-状态"><a href="#保存-Activity-状态" class="headerlink" title="保存 Activity 状态"></a>保存 Activity 状态</h2><ul>
+<li><p>当系统为了恢复内存而销毁某项 Activity 时，Activity 对象也会被销毁，因此系统在继续 Activity 时根本无法让其状态保持完好，而是必须在用户返回Activity时重建 Activity 对象。但用户并不知道系统销毁 Activity 后又对其进行了重建，因此他们很可能认为 Activity 状态毫无变化。 在这种情况下，您可以实现另一个回调方法对有关 Activity 状态的信息进行保存，以确保有关 Activity 状态的重要信息得到保留：onSaveInstanceState()</p>
+</li>
+<li><p>系统会先调用 onSaveInstanceState()，然后再使 Activity 变得易于销毁。系统会向该方法传递一个 Bundle，您可以在其中使用 putString() 和 putInt() 等方法以名称-值对形式保存有关 Activity 状态的信息。然后，如果系统终止您的应用进程，并且用户返回您的 Activity，则系统会重建该 Activity，并将 Bundle 同时传递给 onCreate() 和 onRestoreInstanceState()。您可以使用上述任一方法从 Bundle 提取您保存的状态并恢复该 Activity 状态。如果没有状态信息需要恢复，则传递给您的 Bundle 是空值（如果是首次创建该 Activity，就会出现这种情况）</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3.png" alt=""></center>
+
+<ul>
+<li>您只需旋转设备，让屏幕方向发生变化，就能有效地测试您的应用的状态恢复能力。 当屏幕方向变化时，系统会销毁并重建 Activity，以便应用可供新屏幕配置使用的备用资源。 单凭这一理由，您的 Activity 在重建时能否完全恢复其状态就显得非常重要，因为用户在使用应用时经常需要旋转屏幕</li>
+</ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><p><a href="http://stormzhang.com/android/2014/09/14/activity-lifecycle1/" target="_blank" rel="external">ACTIVITY生命周期详解一</a></p>
 </li>
