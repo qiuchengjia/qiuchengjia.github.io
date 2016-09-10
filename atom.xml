@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-10T12:08:27.568Z</updated>
+  <updated>2016-09-10T13:14:57.135Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,80 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Activity</title>
+    <link href="http://www.qiuchengjia.cn/2016/09/11/Android/Activity/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/11/Android/Activity/</id>
+    <published>2016-09-10T20:17:13.000Z</published>
+    <updated>2016-09-10T13:14:57.135Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ul>
+<li>官方图解</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/activity_lifecycle.png" alt=""></center>
+
+<h3 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h3><p>这张图列出了Activity生命周期最主要的一些方法，启动后依次执行：</p>
+<p>onCreate –&gt; onStart –&gt; onResume –&gt; onPause –&gt; onStop –&gt; onDestroy</p>
+<h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String TAG=<span class="string">"MainActivity"</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 首次创建Activity的时调用</div><div class="line">     * <span class="doctag">@param</span> savedInstanceState the saved instance state</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        Log.d(<span class="string">"TAG"</span>,<span class="string">"onCreate"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当Activity的布局改动时，即setContentView()或者addContentView()</div><div class="line">     * 方法执行完毕时就会调用该方法</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onContentChanged</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onContentChanged();</div><div class="line">        Log.d(TAG, <span class="string">"onContentChanged: "</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 在Activity即将对用户可见时调用</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStart();</div><div class="line">        Log.d(<span class="string">"TAG"</span>,<span class="string">"onStart"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 在 Activity 已停止并即将再次启动前调用</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onRestart();</div><div class="line">        Log.d(TAG, <span class="string">"onRestart: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 指onCreate方法彻底执行完毕的回调</div><div class="line">     * <span class="doctag">@param</span> savedInstanceState the saved instance state</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPostCreate(savedInstanceState);</div><div class="line">        Log.d(TAG, <span class="string">"onPostCreate: "</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 在Activity即将开始与用户交互时调用，此时，Activity 处于</div><div class="line">     * Activity 堆栈的顶层，并具有用户输入焦点</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        Log.d(TAG, <span class="string">"onResume"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostResume</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPostResume();</div><div class="line">        Log.d(TAG, <span class="string">"onPostResume: "</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 当系统即将开始继续另一个 Activity 时调用</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        Log.d(TAG, <span class="string">"onPause"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Activity 对用户不再可见时调用</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStop();</div><div class="line">        Log.d(TAG, <span class="string">"onStop: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 在 Activity 被销毁前调用</div><div class="line">     * <span class="doctag">@author</span> qiu  博客：www.qiuchengjia.cn 时间：2016-09-10</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        Log.d(TAG, <span class="string">"onDestroy: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onConfigurationChanged(newConfig);</div><div class="line">        Log.d(TAG, <span class="string">"onConfigurationChanged: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onSaveInstanceState(outState);</div><div class="line">        Log.d(TAG, <span class="string">"onSaveInstanceState: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span></span></div><div class="line">    <span class="params">(Bundle savedInstanceState)</span>&#123;</div><div class="line">        <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</div><div class="line">        Log.d(TAG, <span class="string">"onRestoreInstanceState: "</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>程序启动运行并结束上述生命周期的方法执行顺序是这样的：</li>
+</ul>
+<p>onCreate –&gt; onContentChanged –&gt; onStart –&gt; onPostCreate –&gt; onResume –&gt; onPostResume –&gt; onPause –&gt; onStop –&gt; onDestroy</p>
+<ul>
+<li>具体参考 <a href="https://developer.android.com/guide/components/activities.html?hl=zh-cn#Creating" target="_blank" rel="external">Activity</a> 和 <a href="http://stormzhang.com/android/2014/09/14/activity-lifecycle1/" target="_blank" rel="external">ACTIVITY生命周期详解一</a></li>
+</ul>
+<h2 id="生命周期具体场景"><a href="#生命周期具体场景" class="headerlink" title="生命周期具体场景"></a>生命周期具体场景</h2><h3 id="首次启动"><a href="#首次启动" class="headerlink" title="首次启动"></a>首次启动</h3><ul>
+<li>onCreate –&gt; onStart –&gt; onResume</li>
+</ul>
+<h3 id="按下返回按键"><a href="#按下返回按键" class="headerlink" title="按下返回按键"></a>按下返回按键</h3><ul>
+<li>onPause –&gt; onStop –&gt; onDestroy</li>
+</ul>
+<h3 id="按Home键"><a href="#按Home键" class="headerlink" title="按Home键"></a>按Home键</h3><ul>
+<li>onPause –&gt; onSaveInstanceState –&gt; onStop</li>
+</ul>
+<h3 id="再次打开"><a href="#再次打开" class="headerlink" title="再次打开"></a>再次打开</h3><ul>
+<li>onRestart –&gt; onStart –&gt; onResume</li>
+</ul>
+<h3 id="屏幕旋转"><a href="#屏幕旋转" class="headerlink" title="屏幕旋转"></a>屏幕旋转</h3><ul>
+<li>如果你不做任何配置</li>
+</ul>
+<p>启动Activity会执行如下方法：</p>
+<p>onCreate –&gt; onStart –&gt; onResume</p>
+<p>之后旋转屏幕，则Activity会被销毁并重新创建，之后便会执行如下方法：</p>
+<p>onPause –&gt; onSaveInstanceState –&gt; onStop –&gt; onDestroy –&gt; onCreate –&gt; onStart –&gt; onRestoreInstanceState –&gt; onResume</p>
+<ul>
+<li>在AndroidManifest配置文件里声明android:configChanges属性<br>默认屏幕旋转会重新创建，当然可以通过在配置文件里加上如下代码：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:configChanges="keyboardHidden|orientation|screenSize"（sdk&gt;13时需加上screenSize）</div></pre></td></tr></table></figure>
+<p>这个时候再旋转屏幕便不会销毁Activity，这时候再旋转屏幕可以看到只会执行onConfigurationChanged方法，有什么在屏幕旋转的逻辑可以重写这个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) &#123;</div><div class="line">        <span class="comment">// <span class="doctag">TODO:</span></span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">super</span>.onConfigurationChanged(newConfig);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="FirstActivity打开SecondActivity"><a href="#FirstActivity打开SecondActivity" class="headerlink" title="FirstActivity打开SecondActivity"></a>FirstActivity打开SecondActivity</h3><ul>
+<li><p>FirstActivity打开SecondActivity，这时候FirstActivity生命周期的方法是这样的： onPause –&gt; onSaveInstanceState –&gt; onStop, 这个时候在SecondActivity按返回键，FirstActivity会有以下几种情况：</p>
+</li>
+<li><p>正常情况下会执行： onRestart -&gt; onStart -&gt; onResume</p>
+</li>
+<li><p>当系统由于要回收内存而把 activity 销毁时</p>
+<p>  Activity在onPause或者onStop状态下都有可能遇到由于突发事件系统需要回收内存，之后的onDestroy方法便不会再执行，这时候会执行： onCreate –&gt; onStart –&gt; onRestoreInstanceState –&gt; onResume</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;生命周期&quot;&gt;&lt;a href=&quot;#生命周期&quot; class=&quot;headerlink&quot; title=&quot;生命周期&quot;&gt;&lt;/a&gt;生命周期&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;官方图解&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;&lt;img src=&quot;http://o99dg8ap9.bkt.c
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.qiuchengjia.cn/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://www.qiuchengjia.cn/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android学习之路</title>
@@ -3259,211 +3333,6 @@
     
     
       <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java垃圾收集机制</title>
-    <link href="http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/"/>
-    <id>http://www.qiuchengjia.cn/2016/07/24/JVM/Java垃圾收集机制/</id>
-    <published>2016-07-23T22:57:23.000Z</published>
-    <updated>2016-07-24T02:19:22.833Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="对象引用"><a href="#对象引用" class="headerlink" title="对象引用"></a>对象引用</h3><p> Java中的垃圾回收一般是在Java堆中进行，因为堆中几乎存放了Java中所有的对象实例。谈到Java堆中的垃圾回收，自然要谈到引用。在JDK1.2之前，Java中的引用定义很很纯粹：如果reference类型的数据中存储的数值代表的是另外一块内存的起始地址，就称这块内存代表着一个引用。但在JDK1.2之后，Java对引用的概念进行了扩充，将其分为<strong>强引用（Strong Reference）、软引用（Soft Reference）、弱引用（Weak Reference）、虚引用（Phantom Reference）四种</strong>，引用强度依次减弱</p>
-<ul>
-<li><p><strong>强引用：</strong>如“Object obj = new Object（）”，这类引用是Java程序中最普遍的。只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象</p>
-</li>
-<li><p><strong>软引用：</strong>它用来描述一些可能还有用，但并非必须的对象。在系统内存不够用时，这类引用关联的对象将被垃圾收集器回收。JDK1.2之后提供了SoftReference类来实现软引用</p>
-</li>
-<li><p><strong>弱引用：</strong>它也是用来描述非需对象的，但它的强度比软引用更弱些，被弱引用关联的对象只能生存岛下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供了WeakReference类来实现弱引用</p>
-</li>
-<li><p><strong>虚引用：</strong>最弱的一种引用关系，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的是希望能在这个对象被收集器回收时收到一个系统通知。JDK1.2之后提供了PhantomReference类来实现虚引用</p>
-</li>
-</ul>
-<a id="more"></a>
-<h3 id="垃圾对象的判定"><a href="#垃圾对象的判定" class="headerlink" title="垃圾对象的判定"></a>垃圾对象的判定</h3><p>Java堆中存放着几乎所有的对象实例，垃圾收集器对堆中的对象进行回收前，要先确定这些对象是否还有用，判定对象是否为垃圾对象有如下算法：</p>
-<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h4><ul>
-<li><p>给对象添加一个引用计数器，每当有一个地方引用它时，计数器值就加1，当引用失效时，计数器值就减1，任何时刻计数器都为0的对象就是不可能再被使用的</p>
-</li>
-<li><p>引用计数算法的实现简单，判定效率也很高，在大部分情况下它都是一个不错的选择，<strong>当Java语言并没有选择这种算法来进行垃圾回收，主要原因是它很难解决对象之间的相互循环引用问题</strong></p>
-</li>
-</ul>
-<h4 id="根搜索算法"><a href="#根搜索算法" class="headerlink" title="根搜索算法"></a>根搜索算法</h4><p><strong>Java和C#中都是采用根搜索算法来判定对象是否存活的。</strong>这种算法的基本思路是通过一系列名为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，就证明此对象是不可用的。在Java语言里，可作为GC Roots的兑现包括下面几种：</p>
-<ul>
-<li><p>虚拟机栈（栈帧中的本地变量表）中引用的对象</p>
-</li>
-<li><p>方法区中的类静态属性引用的对象</p>
-</li>
-<li><p>方法区中的常量引用的对象</p>
-</li>
-<li><p>本地方法栈中JNI（Native方法）的引用对象</p>
-</li>
-</ul>
-<p>实际上，在根搜索算法中，要真正宣告一个对象死亡，至少要经历两次标记过程：如果对象在进行根搜索后发现没有与GC Roots相连接的引用链，那它会被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行finalize（）方法。当对象没有覆盖finalize（）方法，或finalize（）方法已经被虚拟机调用过，虚拟机将这两种情况都视为没有必要执行。如果该对象被判定为有必要执行finalize（）方法，那么这个对象将会被放置在一个名为F-Queue队列中，并在稍后由一条由虚拟机自动建立的、低优先级的Finalizer线程去执行finalize（）方法。finalize（）方法是对象逃脱死亡命运的最后一次机会（因为一个对象的finalize（）方法最多只会被系统自动调用一次），稍后GC将对F-Queue中的对象进行第二次小规模的标记，如果要在finalize（）方法中成功拯救自己，只要在finalize（）方法中让该对象重引用链上的任何一个对象建立关联即可。而如果对象这时还没有关联到任何链上的引用，那它就会被回收掉</p>
-<h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><ul>
-<li>判定除了垃圾对象之后，便可以进行垃圾回收了。下面介绍一些垃圾收集算法，由于垃圾收集算法的实现涉及大量的程序细节，因此这里主要是阐明各算法的实现思想，而不去细论算法的具体实现</li>
-</ul>
-<h4 id="标记—清除算法"><a href="#标记—清除算法" class="headerlink" title="标记—清除算法"></a>标记—清除算法</h4><p>标记—清除算法是最基础的收集算法，它分为“标记”和“清除”两个阶段：首先标记出所需回收的对象，在标记完成后统一回收掉所有被标记的对象，它的标记过程其实就是前面的根搜索算法中判定垃圾对象的标记过程。标记—清除算法的执行情况如下图所示：</p>
-<ul>
-<li><p>回收前状态</p>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6.jpg" alt=""></center>
-</li>
-<li><p>回收后状态</p>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B61.jpg" alt=""></center>
-
-</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B62.jpg" alt=""></center>
-
-
-<p>该算法有如下缺点：</p>
-<ul>
-<li><p>标记和清除过程的效率都不高</p>
-</li>
-<li><p>标记清除后会产生大量不连续的内存碎片，空间碎片太多可能会导致，当程序在以后的运行过程中需要分配较大对象时无法找到足够的连续内存而不得不触发另一次垃圾收集动作</p>
-</li>
-</ul>
-<h4 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h4><p>复制算法是针对标记—清除算法的缺点，在其基础上进行改进而得到的，它讲课用内存按容量分为大小相等的两块，每次只使用其中的一块，当这一块的内存用完了，就将还存活着的对象复制到另外一块内存上面，然后再把已使用过的内存空间一次清理掉。复制算法有如下优点：</p>
-<ul>
-<li><p>每次只对一块内存进行回收，运行高效</p>
-</li>
-<li><p>只需移动栈顶指针，按顺序分配内存即可，实现简单</p>
-</li>
-<li><p>内存回收时不用考虑内存碎片的出现</p>
-</li>
-</ul>
-<p>它的缺点是：可一次性分配的最大内存缩小了一半</p>
-<p>复制算法的执行情况如下图所示：</p>
-<ul>
-<li>回收前状态：</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B63.jpg" alt=""></center>
-
-<ul>
-<li>回收后状态：</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B64.jpg" alt=""></center>
-
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B65.jpg" alt=""></center>
-
-<h4 id="标记—整理算法"><a href="#标记—整理算法" class="headerlink" title="标记—整理算法"></a>标记—整理算法</h4><p>复制算法比较适合于新生代，在老年代中，对象存活率比较高，如果执行较多的复制操作，效率将会变低，所以老年代一般会选用其他算法，如标记—整理算法。该算法标记的过程与标记—清除算法中的标记过程一样，但对标记后出的垃圾对象的处理情况有所不同，它不是直接对可回收对象进行清理，而是让所有的对象都向一端移动，然后直接清理掉端边界以外的内存。标记—整理算法的回收情况如下所示：</p>
-<ul>
-<li>回收前状态：</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B66.jpg" alt=""></center>
-
-<ul>
-<li>回收后状态：</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B67.jpg" alt=""></center>
-
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B62.jpg" alt=""></center>
-
-<h4 id="分代收集"><a href="#分代收集" class="headerlink" title="分代收集"></a>分代收集</h4><ul>
-<li><strong>当前商业虚拟机的垃圾收集 都采用分代收集</strong>，它根据对象的存活周期的不同将内存划分为几块，一般是把Java堆分为新生代和老年代。在新生代中，每次垃圾收集时都会发现有大量对象死去，只有少量存活，因此可选用复制算法来完成收集，而老年代中因为对象存活率高、没有额外空间对它进行分配担保，就必须使用标记—清除算法或标记—整理算法来进行回收</li>
-</ul>
-<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><ul>
-<li>垃圾收集器是内存回收算法的具体实现，Java虚拟机规范中对垃圾收集器应该如何实现并没有任何规定，因此不同厂商、不同版本的虚拟机所提供的垃圾收集器都可能会有很大的差别。Sun  HotSpot虚拟机1.6版包含了如下收集器：Serial、ParNew、Parallel Scavenge、CMS、Serial Old、Parallel Old。这些收集器以不同的组合形式配合工作来完成不同分代区的垃圾收集工作</li>
-</ul>
-<h3 id="垃圾回收分析"><a href="#垃圾回收分析" class="headerlink" title="垃圾回收分析"></a>垃圾回收分析</h3><p>在用代码分析之前，我们对内存的分配策略明确以下三点：</p>
-<ul>
-<li><p>对象优先在Eden分配</p>
-</li>
-<li><p>大对象直接进入老年代</p>
-</li>
-<li><p>长期存活的对象将进入老年代</p>
-</li>
-</ul>
-<p>对垃圾回收策略说明以下两点：</p>
-<ul>
-<li><p>新生代GC（Minor GC）：发生在新生代的垃圾收集动作，因为Java对象大多都具有朝生夕灭的特性，因此Minor GC非常频繁，一般回收速度也比较快</p>
-</li>
-<li><p>老年代GC（Major GC/Full GC）：发生在老年代的GC，出现了Major GC，经常会伴随至少一次Minor GC。由于老年代中的对象生命周期比较长，因此Major GC并不频繁，一般都是等待老年代满了后才进行Full GC，而且其速度一般会比Minor GC慢10倍以上。另外，如果分配了Direct Memory，在老年代中进行Full GC时，会顺便清理掉Direct Memory中的废弃对象</p>
-</li>
-</ul>
-<p>下面我们来看如下代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SlotGc</span></span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </div><div class="line">        <span class="keyword">byte</span>[] holder = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">32</span>*<span class="number">1024</span>*<span class="number">1024</span>];  </div><div class="line">        System.gc();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>代码很简单，就是向内存中填充了32MB的数据，然后通过虚拟机进行垃圾收集。在Javac编译后，我们执行如下指令：java -verbose:gc SlotGc来查看垃圾收集的结果，得到如下输出信息：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[GC <span class="number">208</span>K-&gt;<span class="number">134</span>K(<span class="number">5056</span>K), <span class="number">0.0017306</span> secs]</div><div class="line"></div><div class="line">[Full GC <span class="number">134</span>K-&gt;<span class="number">134</span>K(<span class="number">5056</span>K), <span class="number">0.0121194</span> secs]</div><div class="line"></div><div class="line">[Full GC <span class="number">32902</span>K-&gt;<span class="number">32902</span>K(<span class="number">37828</span>K), <span class="number">0.0094149</span> sec</div></pre></td></tr></table></figure>
-<ul>
-<li><p>注意第三行，“-&gt;”之前的数据表示垃圾回收前堆中存活对象所占用的内存大小，“-&gt;”之后的数据表示垃圾回收堆中存活对象所占用的内存大小，括号中的数据表示堆内存的总容量，0.0094149 sec 表示垃圾回收所用的时间。</p>
-</li>
-<li><p>从结果中可以看出，System.gc(（）运行后并没有回收掉这32MB的内存，这应该是意料之中的结果，因为变量holder还处在作用域内，虚拟机自然不会回收掉holder引用的对象所占用的内存。</p>
-</li>
-<li><p>我们把代码修改如下：</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SlotGc</span></span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </div><div class="line">        &#123;  </div><div class="line">        <span class="keyword">byte</span>[] holder = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">32</span>*<span class="number">1024</span>*<span class="number">1024</span>];  </div><div class="line">        &#125;  </div><div class="line">        System.gc();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>加入花括号后，holder的作用域被限制在了花括号之内，因此，在执行System.gc（）时，holder引用已经不能再被访问，逻辑上来讲，这次应该会回收掉holder引用的对象所占的内存。但查看垃圾回收情况时，输出信息如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[GC <span class="number">208</span>K-&gt;<span class="number">134</span>K(<span class="number">5056</span>K), <span class="number">0.0017100</span> secs]</div><div class="line"></div><div class="line">[Full GC <span class="number">134</span>K-&gt;<span class="number">134</span>K(<span class="number">5056</span>K), <span class="number">0.0125887</span> secs]</div><div class="line"></div><div class="line">[Full GC <span class="number">32902</span>K-&gt;<span class="number">32902</span>K(<span class="number">37828</span>K), <span class="number">0.0089226</span> secs]</div></pre></td></tr></table></figure>
-<ul>
-<li>很明显，这32MB的数据并没有被回收。下面我们再做如下修改：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SlotGc</span></span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </div><div class="line">        &#123;  </div><div class="line">        <span class="keyword">byte</span>[] holder = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">32</span>*<span class="number">1024</span>*<span class="number">1024</span>];  </div><div class="line">        holder = <span class="keyword">null</span>;  </div><div class="line">        &#125;  </div><div class="line">        System.gc();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这次得到的垃圾回收信息如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[GC <span class="number">208</span>K-&gt;<span class="number">134</span>K(<span class="number">5056</span>K), <span class="number">0.0017194</span> secs]</div><div class="line"></div><div class="line">[Full GC <span class="number">134</span>K-&gt;<span class="number">134</span>K(<span class="number">5056</span>K), <span class="number">0.0124656</span> secs]</div><div class="line"></div><div class="line">[Full GC <span class="number">32902</span>K-&gt;<span class="number">134</span>K(<span class="number">37828</span>K), <span class="number">0.0091637</span> secs]</div></pre></td></tr></table></figure>
-<ul>
-<li><p>说明这次holder引用的对象所占的内存被回收了。我们慢慢来分析</p>
-</li>
-<li><p><strong>首先明确一点：holder能否被回收的根本原因是局部变量表中的Slot是否还存有关于holder数组对象的引用</strong></p>
-</li>
-<li><p>在第一次修改中，虽然在holder作用域之外进行回收，但是在此之后，没有对局部变量表的读写操作，holder所占用的Slot还没有被其他变量所复用（回忆Java内存区域与内存溢出一文中关于Slot的讲解），所以作为GC Roots一部分的局部变量表仍保持者对它的关联。这种关联没有被及时打断，因此GC收集器不会将holder引用的对象内存回收掉。 在第二次修改中，在GC收集器工作前，手动将holder设置为null值，就把holder所占用的局部变量表中的Slot清空了，因此，这次GC收集器工作时将holder之前引用的对象内存回收掉了</p>
-</li>
-<li><p>当然，我们也可以用其他方法来将holder引用的对象内存回收掉，只要复用holder所占用的slot即可，比如在holder作用域之外执行一次读写操作</p>
-</li>
-<li><p>为对象赋null值并不是控制变量回收的最好方法，以恰当的变量作用域来控制变量回收时间才是最优雅的解决办法。另外，赋null值的操作在经过虚拟机JIT编译器优化后会被消除掉，经过JIT编译后，System.gc（）执行时就可以正确地回收掉内存，而无需赋null值</p>
-</li>
-</ul>
-<h3 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h3><p>Java虚拟机的内存管理与垃圾收集是虚拟机结构体系中最重要的组成部分，对程序（尤其服务器端）的性能和稳定性有着非常重要的影响。性能调优需要具体情况具体分析，而且实际分析时可能需要考虑的方面很多，这里仅就一些简单常用的情况作简要介绍</p>
-<ul>
-<li><p>我们可以通过给Java虚拟机分配超大堆（前提是物理机的内存足够大）来提升服务器的响应速度，但分配超大堆的前提是有把握把应用程序的Full GC频率控制得足够低，因为一次Full GC的时间造成比较长时间的停顿。控制Full GC频率的关键是保证应用中绝大多数对象的生存周期不应太长，尤其不能产生批量的、生命周期长的大对象，这样才能保证老年代的稳定</p>
-</li>
-<li><p>Direct Memory在堆内存外分配，而且二者均受限于物理机内存，且成负相关关系，因此分配超大堆时，如果用到了NIO机制分配使用了很多的Direct Memory，则有可能导致Direct Memory的OutOfMemoryError异常，这时可以通过-XX:MaxDirectMemorySize参数调整Direct Memory的大小</p>
-</li>
-<li><p>除了Java堆和永久代以及直接内存外，还要注意下面这些区域也会占用较多的内存，这些内存的总和会受到操作系统进程最大内存的限制：</p>
-</li>
-</ul>
-<ol>
-<li><p><strong>线程堆栈：</strong>可通过-Xss调整大小，内存不足时抛出StackOverflowError（纵向无法分配，即无法分配新的栈帧）或OutOfMemoryError（横向无法分配，即无法建立新的线程）</p>
-</li>
-<li><p><strong>Socket缓冲区：</strong>每个Socket连接都有Receive和Send两个缓冲区，分别占用大约37KB和25KB的内存。如果无法分配，可能会抛出IOException：Too many open files异常</p>
-</li>
-<li><p><strong>JNI代码：</strong>如果代码中使用了JNI调用本地库，那本地库使用的内存也不在堆中</p>
-</li>
-<li><p><strong>虚拟机和GC：</strong>虚拟机和GC的代码执行也要消耗一定的内存</p>
-</li>
-</ol>
-<h3 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h3><ul>
-<li><a href="http://blog.csdn.net/ns_code/article/details/18076173" target="_blank" rel="external">传送门</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;对象引用&quot;&gt;&lt;a href=&quot;#对象引用&quot; class=&quot;headerlink&quot; title=&quot;对象引用&quot;&gt;&lt;/a&gt;对象引用&lt;/h3&gt;&lt;p&gt; Java中的垃圾回收一般是在Java堆中进行，因为堆中几乎存放了Java中所有的对象实例。谈到Java堆中的垃圾回收，自然要谈到引用。在JDK1.2之前，Java中的引用定义很很纯粹：如果reference类型的数据中存储的数值代表的是另外一块内存的起始地址，就称这块内存代表着一个引用。但在JDK1.2之后，Java对引用的概念进行了扩充，将其分为&lt;strong&gt;强引用（Strong Reference）、软引用（Soft Reference）、弱引用（Weak Reference）、虚引用（Phantom Reference）四种&lt;/strong&gt;，引用强度依次减弱&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;强引用：&lt;/strong&gt;如“Object obj = new Object（）”，这类引用是Java程序中最普遍的。只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;软引用：&lt;/strong&gt;它用来描述一些可能还有用，但并非必须的对象。在系统内存不够用时，这类引用关联的对象将被垃圾收集器回收。JDK1.2之后提供了SoftReference类来实现软引用&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;弱引用：&lt;/strong&gt;它也是用来描述非需对象的，但它的强度比软引用更弱些，被弱引用关联的对象只能生存岛下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供了WeakReference类来实现弱引用&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;虚引用：&lt;/strong&gt;最弱的一种引用关系，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的是希望能在这个对象被收集器回收时收到一个系统通知。JDK1.2之后提供了PhantomReference类来实现虚引用&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="JVM" scheme="http://www.qiuchengjia.cn/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="http://www.qiuchengjia.cn/tags/JVM/"/>
     
   </entry>
   
