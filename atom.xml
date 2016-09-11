@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-11T09:51:10.087Z</updated>
+  <updated>2016-09-11T09:54:23.501Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/"/>
     <id>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service完全解析/</id>
     <published>2016-09-11T17:18:03.000Z</published>
-    <updated>2016-09-11T09:51:10.087Z</updated>
+    <updated>2016-09-11T09:54:23.501Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>Service 是一个可以在后台执行长时间运行操作而不使用用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 例如，服务可以处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序交互，而所有这一切均可在后台进行</li>
@@ -188,7 +188,7 @@
 <ul>
 <li>这里只是修改了MyService中onCreate()方法的代码。可以看到，我们首先创建了一个Notification对象，然后调用了它的setLatestEventInfo()方法来为通知初始化布局和数据，并在这里设置了点击通知后就打开MainActivity。然后调用startForeground()方法就可以让MyService变成一个前台Service，并会将通知的图片显示出来。<br>现在重新运行一下程序，并点击Start Service或Bind Service按钮，MyService就会以前台Service的模式启动了，并且在系统状态栏会弹出一个通栏图标，下拉状态栏后可以看到通知的详细内容，如下图所示：</li>
 </ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%904.jpg" alt=""></center>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%905.png" alt=""></center>
 
 ]]></content>
     
