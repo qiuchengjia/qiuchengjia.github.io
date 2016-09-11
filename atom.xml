@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-11T09:37:19.033Z</updated>
+  <updated>2016-09-11T09:51:10.087Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/"/>
     <id>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service完全解析/</id>
     <published>2016-09-11T17:18:03.000Z</published>
-    <updated>2016-09-11T09:37:19.033Z</updated>
+    <updated>2016-09-11T09:51:10.087Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>Service 是一个可以在后台执行长时间运行操作而不使用用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 例如，服务可以处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序交互，而所有这一切均可在后台进行</li>
@@ -121,7 +121,76 @@
 <ul>
 <li>另外需要注意，任何一个Service在整个应用程序范围内都是通用的，即MyService不仅可以和MainActivity建立关联，还可以和任何一个Activity建立关联，而且在建立关联时它们都可以获取到相同的MyBinder实例</li>
 </ul>
-<h2 id="如何销毁Service"><a href="#如何销毁Service" class="headerlink" title="如何销毁Service"></a>如何销毁Service</h2>]]></content>
+<h2 id="如何销毁Service"><a href="#如何销毁Service" class="headerlink" title="如何销毁Service"></a>如何销毁Service</h2><ul>
+<li>在Service的基本用法这一部分，我们介绍了销毁Service最简单的一种情况，点击Start Service按钮启动Service，再点击Stop Service按钮停止Service，这样MyService就被销毁了，可以看到打印日志如下所示：</li>
+</ul>
+<blockquote>
+<p>MyService onCreate() executed<br>MyService onStartCommand() executed<br>MyService onDestroy() executed</p>
+</blockquote>
+<ul>
+<li><p>那么如果我们是点击的Bind Service按钮呢？由于在绑定Service的时候指定的标志位是BIND_AUTO_CREATE，说明点击Bind Service按钮的时候Service也会被创建，这时应该怎么销毁Service呢？其实也很简单，点击一下Unbind Service按钮，将Activity和Service的关联解除就可以了</p>
+</li>
+<li><p>先点击一下Bind Service按钮，再点击一下Unbind Service按钮，打印日志如下所示：</p>
+</li>
+</ul>
+<blockquote>
+<p>MyService onCreate() executed<br>MyService startDownload() executed<br>MyService onDestroy() executed</p>
+</blockquote>
+<ul>
+<li><p>以上这两种销毁的方式都很好理解。那么如果我们既点击了Start Service按钮，又点击了Bind Service按钮会怎么样呢？这个时候你会发现，不管你是单独点击Stop Service按钮还是Unbind Service按钮，Service都不会被销毁，必要将两个按钮都点击一下，Service才会被销毁。也就是说，点击Stop Service按钮只会让Service停止，点击Unbind Service按钮只会让Service和Activity解除关联，一个Service必须要在既没有和任何Activity关联又处理停止状态的时候才会被销毁</p>
+</li>
+<li><p>为了证实一下，我们在Stop Service和Unbind Service按钮的点击事件里面加入一行打印日志：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;  </div><div class="line">    <span class="keyword">switch</span> (v.getId()) &#123;  </div><div class="line">    <span class="keyword">case</span> R.id.start_service:  </div><div class="line">        Intent startIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyService.class);  </div><div class="line">        startService(startIntent);  </div><div class="line">        <span class="keyword">break</span>;  </div><div class="line">    <span class="keyword">case</span> R.id.stop_service:  </div><div class="line">        Log.d(<span class="string">"MyService"</span>, <span class="string">"click Stop Service button"</span>);  </div><div class="line">        Intent stopIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyService.class);  </div><div class="line">        stopService(stopIntent);  </div><div class="line">        <span class="keyword">break</span>;  </div><div class="line">    <span class="keyword">case</span> R.id.bind_service:  </div><div class="line">        Intent bindIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyService.class);  </div><div class="line">        bindService(bindIntent, connection, BIND_AUTO_CREATE);  </div><div class="line">        <span class="keyword">break</span>;  </div><div class="line">    <span class="keyword">case</span> R.id.unbind_service:  </div><div class="line">        Log.d(<span class="string">"MyService"</span>, <span class="string">"click Unbind Service button"</span>);  </div><div class="line">        unbindService(connection);  </div><div class="line">        <span class="keyword">break</span>;  </div><div class="line">    <span class="keyword">default</span>:  </div><div class="line">        <span class="keyword">break</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>然后重新运行程序，先点击一下Start Service按钮，再点击一下Bind Service按钮，这样就将Service启动起来，并和Activity建立了关联。然后点击Stop Service按钮后Service并不会销毁，再点击一下Unbind Service按钮，Service就会销毁了，打印日志如下所示：</li>
+</ul>
+<blockquote>
+<p>MyService onCreate() executed<br>MyService onStartCommand() executed<br>MyService startDownload() executed<br>MyService click Stop Service button<br>MyService click Unbind Service button<br>MyService onDestroy() executed</p>
+</blockquote>
+<ul>
+<li>我们应该始终记得在Service的onDestroy()方法里去清理掉那些不再使用的资源，防止在Service被销毁后还会有一些不再使用的对象仍占用着内存</li>
+</ul>
+<h2 id="Service和Thread的关系"><a href="#Service和Thread的关系" class="headerlink" title="Service和Thread的关系"></a>Service和Thread的关系</h2><ul>
+<li><p>不少Android初学者都可能会有这样的疑惑，Service和Thread到底有什么关系呢？什么时候应该用Service，什么时候又应该用Thread？答案可能会有点让你吃惊，因为Service和Thread之间没有任何关系！<br>之所以有不少人会把它们联系起来，主要就是因为Service的后台概念。Thread我们大家都知道，是用于开启一个子线程，在这里去执行一些耗时操作就不会阻塞主线程的运行。而Service我们最初理解的时候，总会觉得它是用来处理一些后台任务的，一些比较耗时的操作也可以放在这里运行，这就会让人产生混淆了。但是，如果我告诉你Service其实是运行在主线程里的，你还会觉得它和Thread有什么关系吗？让我们看一下这个残酷的事实吧</p>
+</li>
+<li><p>在MainActivity的onCreate()方法里加入一行打印当前线程id的语句：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Log.d(<span class="string">"MyService"</span>, <span class="string">"MainActivity thread id is "</span> + Thread.currentThread().getId());</div></pre></td></tr></table></figure>
+<ul>
+<li>然后在MyService的onCreate()方法里也加入一行打印当前线程id的语句：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Log.d(<span class="string">"MyService"</span>, <span class="string">"MyService thread id is "</span> + Thread.currentThread().getId());</div></pre></td></tr></table></figure>
+<ul>
+<li>现在重新运行一下程序，并点击Start Service按钮，会看到如下打印日志：</li>
+</ul>
+<blockquote>
+<p>MyService MainActivity thread id is 1<br>MyService MyService thread id is 1</p>
+</blockquote>
+<ul>
+<li><p>可以看到，它们的线程id完全是一样的，由此证实了Service确实是运行在主线程里的，也就是说如果你在Service里编写了非常耗时的代码，程序必定会出现ANR的。<br>你可能会惊呼，这不是坑爹么！？那我要Service又有何用呢？其实大家不要把后台和子线程联系在一起就行了，这是两个完全不同的概念。Android的后台就是指，它的运行是完全不依赖UI的。即使Activity被销毁，或者程序被关闭，只要进程还在，Service就可以继续运行。比如说一些应用程序，始终需要与服务器之间始终保持着心跳连接，就可以使用Service来实现。你可能又会问，前面不是刚刚验证过Service是运行在主线程里的么？在这里一直执行着心跳连接，难道就不会阻塞主线程的运行吗？当然会，但是我们可以在Service中再创建一个子线程，然后在这里去处理耗时逻辑就没问题了。<br>额，既然在Service里也要创建一个子线程，那为什么不直接在Activity里创建呢？这是因为Activity很难对Thread进行控制，当Activity被销毁之后，就没有任何其它的办法可以再重新获取到之前创建的子线程的实例。而且在一个Activity中创建的子线程，另一个Activity无法对其进行操作。但是Service就不同了，所有的Activity都可以与Service进行关联，然后可以很方便地操作其中的方法，即使Activity被销毁了，之后只要重新与Service建立关联，就又能够获取到原有的Service中Binder的实例。因此，使用Service来处理后台任务，Activity就可以放心地finish，完全不需要担心无法对后台任务进行控制的情况。</p>
+</li>
+<li><p>一个比较标准的Service就可以写成：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span>  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;  </div><div class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </div><div class="line">            <span class="comment">// 开始执行后台任务  </span></div><div class="line">        &#125;  </div><div class="line">    &#125;).start();  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startDownload</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;  </div><div class="line">            <span class="meta">@Override</span>  </div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </div><div class="line">                <span class="comment">// 执行具体的下载任务  </span></div><div class="line">            &#125;  </div><div class="line">        &#125;).start();  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="创建前台Service"><a href="#创建前台Service" class="headerlink" title="创建前台Service"></a>创建前台Service</h2><ul>
+<li>Service几乎都是在后台运行的，一直以来它都是默默地做着辛苦的工作。但是Service的系统优先级还是比较低的，当系统出现内存不足情况时，就有可能会回收掉正在后台运行的Service。如果你希望Service可以一直保持运行状态，而不会由于系统内存不足的原因导致被回收，就可以考虑使用前台Service。前台Service和普通Service最大的区别就在于，它会一直有一个正在运行的图标在系统的状态栏显示，下拉状态栏后可以看到更加详细的信息，非常类似于通知的效果。当然有时候你也可能不仅仅是为了防止Service被回收才使用前台Service，有些项目由于特殊的需求会要求必须使用前台Service，比如说墨迹天气，它的Service在后台更新天气数据的同时，还会在系统状态栏一直显示当前天气的信息，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%903.png" alt=""></center>
+
+<ul>
+<li>那么我们就来看一下如何才能创建一个前台Service吧，其实并不复杂，修改MyService中的代码，如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyService"</span>;  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> MyBinder mBinder = <span class="keyword">new</span> MyBinder();  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        Log.d(TAG, <span class="string">"onCreate() executed"</span>);</div><div class="line">        Log.d(<span class="string">"MyService"</span>, <span class="string">"MyService thread id is "</span> +</div><div class="line">        Thread.currentThread().getId());</div><div class="line">        Notification.Builder builder = <span class="keyword">new</span> Notification.Builder(<span class="keyword">this</span>);</div><div class="line">        PendingIntent contentIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>,</div><div class="line">                <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class), <span class="number">0</span>);</div><div class="line">        builder.setContentIntent(contentIntent);</div><div class="line">        builder.setSmallIcon(R.mipmap.ic_launcher);</div><div class="line">        builder.setTicker(<span class="string">"Foreground Service Start"</span>);</div><div class="line">        builder.setContentTitle(<span class="string">"Foreground Service"</span>);</div><div class="line">        builder.setContentText(<span class="string">"Make this service run in the foreground."</span>);</div><div class="line">        Notification notification = builder.build();</div><div class="line">        startForeground(BIND_AUTO_CREATE,notification);</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    .........  </div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这里只是修改了MyService中onCreate()方法的代码。可以看到，我们首先创建了一个Notification对象，然后调用了它的setLatestEventInfo()方法来为通知初始化布局和数据，并在这里设置了点击通知后就打开MainActivity。然后调用startForeground()方法就可以让MyService变成一个前台Service，并会将通知的图片显示出来。<br>现在重新运行一下程序，并点击Start Service或Bind Service按钮，MyService就会以前台Service的模式启动了，并且在系统状态栏会弹出一个通栏图标，下拉状态栏后可以看到通知的详细内容，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%904.jpg" alt=""></center>
+
+]]></content>
     
     <summary type="html">
     
