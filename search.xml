@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[Android Broadcast广播机制分析]]></title>
+      <url>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>基于Android 6.0的源码剖析， 分析android广播的发送与接收流程</p>
+</blockquote>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>广播(Broadcast)机制用于进程/线程间通信，广播分为广播发送和广播接收两个过程，其中广播接收者BroadcastReceiver便是Android四大组件之一</p>
+<p><strong>BroadcastReceiver分为两类：</strong></p>
+<ul>
+<li><p>静态广播接收者：通过AndroidManifest.xml的标签来申明的BroadcastReceiver</p>
+</li>
+<li><p>动态广播接收者：通过AMS.registerReceiver()方式注册的BroadcastReceiver，动态注册更为灵活，可在不需要时通过unregisterReceiver()取消注册</p>
+</li>
+</ul>
+<p><strong>从广播发送方式可分为三类：</strong></p>
+<ul>
+<li><p>普通广播：通过Context.sendBroadcast()发送，可并行处理</p>
+</li>
+<li><p>有序广播：通过Context.sendOrderedBroadcast()发送，串行处理</p>
+</li>
+<li><p>Sticky广播：通过Context.sendStickyBroadcast()发送</p>
+</li>
+</ul>
+<h2 id="注册广播"><a href="#注册广播" class="headerlink" title="注册广播"></a>注册广播</h2><h3 id="registerReceiver"><a href="#registerReceiver" class="headerlink" title="registerReceiver"></a>registerReceiver</h3><a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android Service完全解析]]></title>
       <url>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/</url>
       <content type="html"><![CDATA[<ul>
