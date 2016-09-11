@@ -122,7 +122,7 @@
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%902.png">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%903.png">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png">
-<meta property="og:updated_time" content="2016-09-11T10:06:18.591Z">
+<meta property="og:updated_time" content="2016-09-11T10:40:20.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Service完全解析">
 <meta name="twitter:description" content="Service 是一个可以在后台执行长时间运行操作而不使用用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 例如，服务可以处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序交互，而所有这一切均可在后台进行
@@ -588,7 +588,16 @@
 </ul>
 <center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png" alt=""></center>
 
-
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="https://developer.android.com/guide/components/services.html#Basics" target="_blank" rel="external">Android官方文档之Service</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/2fb6eb14fdec" target="_blank" rel="external">Android 服务两种启动方式的区别</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/guolin_blog/article/details/11952435" target="_blank" rel="external"> Android Service完全解析，关于服务你所需知道的一切(上)</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/guolin_blog/article/details/9797169" target="_blank" rel="external"> Android Service完全解析，关于服务你所需知道的一切(下)</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -836,7 +845,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onStartCommand"><span class="nav-number">1.1.</span> <span class="nav-text">onStartCommand()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onBind"><span class="nav-number">1.2.</span> <span class="nav-text">onBind()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onCreate"><span class="nav-number">1.3.</span> <span class="nav-text">onCreate()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onDestroy"><span class="nav-number">1.4.</span> <span class="nav-text">onDestroy()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service的基本用法"><span class="nav-number">2.</span> <span class="nav-text">Service的基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service和Activity通信"><span class="nav-number">3.</span> <span class="nav-text">Service和Activity通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何销毁Service"><span class="nav-number">4.</span> <span class="nav-text">如何销毁Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service和Thread的关系"><span class="nav-number">5.</span> <span class="nav-text">Service和Thread的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建前台Service"><span class="nav-number">6.</span> <span class="nav-text">创建前台Service</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onStartCommand"><span class="nav-number">1.1.</span> <span class="nav-text">onStartCommand()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onBind"><span class="nav-number">1.2.</span> <span class="nav-text">onBind()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onCreate"><span class="nav-number">1.3.</span> <span class="nav-text">onCreate()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onDestroy"><span class="nav-number">1.4.</span> <span class="nav-text">onDestroy()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service的基本用法"><span class="nav-number">2.</span> <span class="nav-text">Service的基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service和Activity通信"><span class="nav-number">3.</span> <span class="nav-text">Service和Activity通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何销毁Service"><span class="nav-number">4.</span> <span class="nav-text">如何销毁Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service和Thread的关系"><span class="nav-number">5.</span> <span class="nav-text">Service和Thread的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建前台Service"><span class="nav-number">6.</span> <span class="nav-text">创建前台Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
         </section>

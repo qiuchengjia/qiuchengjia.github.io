@@ -174,7 +174,16 @@
 </ul>
 <center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png" alt=""></center>
 
-
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="https://developer.android.com/guide/components/services.html#Basics" target="_blank" rel="external">Android官方文档之Service</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/2fb6eb14fdec" target="_blank" rel="external">Android 服务两种启动方式的区别</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/guolin_blog/article/details/11952435" target="_blank" rel="external"> Android Service完全解析，关于服务你所需知道的一切(上)</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/guolin_blog/article/details/9797169" target="_blank" rel="external"> Android Service完全解析，关于服务你所需知道的一切(下)</a></p>
+</li>
+</ul>
 ]]></content>
     </entry>
     
