@@ -14,7 +14,22 @@
 <li><p>效果</p>
 </li>
 </ul>
-<p><center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center><br><a id="more"></a></p>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center>
+
+<ul>
+<li>加了个切换动画，效果还是不错的<del>其实游戏就是自定义了一个控件，下面我们开始自定义之旅</del></li>
+</ul>
+<a id="more"></a>
+<h2 id="游戏的设计"><a href="#游戏的设计" class="headerlink" title="游戏的设计"></a>游戏的设计</h2><p>首先我们分析下如何设计这款游戏：</p>
+<ol>
+<li><p>我们需要一个容器，可以放这些图片的块块，为了方便，我们准备使用RelativeLayout配合addRule实现</p>
+</li>
+<li><p>每个图片的块块，我们准备使用ImageView</p>
+</li>
+<li><p>点击交换，我们准备使用传统的TranslationAnimation来实现</p>
+</li>
+</ol>
+<p>有了初步的设计，感觉这游戏so easy~</p>
 ]]></content>
     </entry>
     

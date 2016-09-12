@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-12T12:09:03.176Z</updated>
+  <updated>2016-09-12T12:11:08.972Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.qiuchengjia.cn/2016/09/13/Android%E6%B8%B8%E6%88%8F/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F/"/>
     <id>http://www.qiuchengjia.cn/2016/09/13/Android游戏/Android美女拼图游戏/</id>
     <published>2016-09-12T19:35:17.000Z</published>
-    <updated>2016-09-12T12:09:03.176Z</updated>
+    <updated>2016-09-12T12:11:08.972Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><p><a href="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE.apk" target="_blank" rel="external">游戏下载试玩</a></p>
@@ -30,7 +30,22 @@
 <li><p>效果</p>
 </li>
 </ul>
-<p><center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center><br><a id="more"></a></p>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center>
+
+<ul>
+<li>加了个切换动画，效果还是不错的<del>其实游戏就是自定义了一个控件，下面我们开始自定义之旅</del></li>
+</ul>
+<a id="more"></a>
+<h2 id="游戏的设计"><a href="#游戏的设计" class="headerlink" title="游戏的设计"></a>游戏的设计</h2><p>首先我们分析下如何设计这款游戏：</p>
+<ol>
+<li><p>我们需要一个容器，可以放这些图片的块块，为了方便，我们准备使用RelativeLayout配合addRule实现</p>
+</li>
+<li><p>每个图片的块块，我们准备使用ImageView</p>
+</li>
+<li><p>点击交换，我们准备使用传统的TranslationAnimation来实现</p>
+</li>
+</ol>
+<p>有了初步的设计，感觉这游戏so easy~</p>
 ]]></content>
     
     <summary type="html">
@@ -43,7 +58,11 @@
 &lt;li&gt;&lt;p&gt;效果&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;center&gt;&lt;img src=&quot;http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;
+&lt;center&gt;&lt;img src=&quot;http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
+
+&lt;ul&gt;
+&lt;li&gt;加了个切换动画，效果还是不错的&lt;del&gt;其实游戏就是自定义了一个控件，下面我们开始自定义之旅&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
