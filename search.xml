@@ -11,8 +11,29 @@
 </li>
 <li><p><a href="https://github.com/qiuchengjia/Android-BeautyGame" target="_blank" rel="external">Github</a> 喜欢的同学可以Star一下，非常感谢</p>
 </li>
+<li><p>把图片切分很多份，点击交换拼成一张完整的；这样关卡也很容易设计，3<em>3；4</em>4；5<em>5；6</em>6；一直下去</p>
+</li>
+<li><p>效果</p>
+</li>
 </ul>
-]]></content>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center>
+
+<ul>
+<li>加了个切换动画，效果还是不错的，其实游戏就是自定义了一个控件，下面我们开始自定义之旅</li>
+</ul>
+<a id="more"></a>
+<h2 id="游戏的设计"><a href="#游戏的设计" class="headerlink" title="游戏的设计"></a>游戏的设计</h2><p>首先我们分析下如何设计这款游戏：</p>
+<ol>
+<li><p>我们需要一个容器，可以放这些图片的块块，为了方便，我们准备使用RelativeLayout配合addRule实现</p>
+</li>
+<li><p>每个图片的块块，我们准备使用ImageView</p>
+</li>
+<li><p>点击交换，我们准备使用传统的TranslationAnimation来实现</p>
+</li>
+</ol>
+<p>有了初步的设计，感觉这游戏so easy~</p>
+<h2 id="游戏布局的实现"><a href="#游戏布局的实现" class="headerlink" title="游戏布局的实现"></a>游戏布局的实现</h2><p>首先，我们准备实现能够把一张图片，切成n*n份，放在指定的位置；<br>我们只需要设置n这个数字，然后根据布局的宽或者高其中的小值，除以n，减去一些边距就可以得到我们ImageView的宽和高了~~</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3>]]></content>
     </entry>
     
     <entry>
