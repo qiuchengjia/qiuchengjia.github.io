@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-11T11:22:08.932Z</updated>
+  <updated>2016-09-12T12:09:03.176Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android美女拼图游戏</title>
+    <link href="http://www.qiuchengjia.cn/2016/09/13/Android%E6%B8%B8%E6%88%8F/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/13/Android游戏/Android美女拼图游戏/</id>
+    <published>2016-09-12T19:35:17.000Z</published>
+    <updated>2016-09-12T12:09:03.176Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p><a href="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE.apk" target="_blank" rel="external">游戏下载试玩</a></p>
+</li>
+<li><p>把图片切分很多份，点击交换拼成一张完整的；这样关卡也很容易设计，3<em>3；4</em>4；5<em>5；6</em>6；…一直下去….</p>
+</li>
+<li><p>效果</p>
+</li>
+</ul>
+<p><center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center><br><a id="more"></a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE.apk&quot;&gt;游戏下载试玩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;把图片切分很多份，点击交换拼成一张完整的；这样关卡也很容易设计，3&lt;em&gt;3；4&lt;/em&gt;4；5&lt;em&gt;5；6&lt;/em&gt;6；…一直下去….&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;效果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;center&gt;&lt;img src=&quot;http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android游戏" scheme="http://www.qiuchengjia.cn/categories/Android%E6%B8%B8%E6%88%8F/"/>
+    
+    
+      <category term="Android游戏" scheme="http://www.qiuchengjia.cn/tags/Android%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Broadcast广播机制分析</title>
@@ -2956,225 +2995,6 @@
 &lt;li&gt;&lt;p&gt;javadoc中的@author、@version、@param、@return、@deprecated、@hide、@throws、@exception、@see是标记，并不是注解；&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
-    
-    
-      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Javadoc标签</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/04/JAVA/Javadoc%E6%A0%87%E7%AD%BE/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/04/JAVA/Javadoc标签/</id>
-    <published>2016-08-04T15:12:13.000Z</published>
-    <updated>2016-08-04T07:17:11.693Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="javadoc-标签"><a href="#javadoc-标签" class="headerlink" title="javadoc 标签"></a>javadoc 标签</h3><ul>
-<li>javadoc工具软件识别以下标签：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>标签</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:center">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@author</td>
-<td style="text-align:left">标识一个类的作者</td>
-<td style="text-align:center">@author description</td>
-</tr>
-<tr>
-<td>@deprecated</td>
-<td style="text-align:left">指名一个过期的类或成员</td>
-<td style="text-align:center">@deprecated description</td>
-</tr>
-<tr>
-<td>{@docRoot}</td>
-<td style="text-align:left">指明当前文档根目录的路径</td>
-<td style="text-align:center">Directory Path</td>
-</tr>
-<tr>
-<td>@exception</td>
-<td style="text-align:left">标志一个类抛出的异常</td>
-<td style="text-align:center">@exception exception-name explanation</td>
-</tr>
-<tr>
-<td>{@inheritDoc}</td>
-<td style="text-align:left">从直接父类继承的注释</td>
-<td style="text-align:center">Inherits a comment from the immediate surperclass.</td>
-</tr>
-<tr>
-<td>{@link}</td>
-<td style="text-align:left">插入一个到另一个主题的链接</td>
-<td style="text-align:center">{@link name text}</td>
-</tr>
-<tr>
-<td>{@linkplain}</td>
-<td style="text-align:left">插入一个到另一个主题的链接，但是该链接显示纯文本字体</td>
-<td style="text-align:center">Inserts an in-line link to another topic.</td>
-</tr>
-<tr>
-<td>@param</td>
-<td style="text-align:left">说明一个方法的参数</td>
-<td style="text-align:center">@param parameter-name explanation</td>
-</tr>
-<tr>
-<td>@return</td>
-<td style="text-align:left">说明返回值类型</td>
-<td style="text-align:center">@return explanation</td>
-</tr>
-<tr>
-<td>@see</td>
-<td style="text-align:left">指定一个到另一个主题的链接</td>
-<td style="text-align:center">@see anchor</td>
-</tr>
-<tr>
-<td>@serial</td>
-<td style="text-align:left">说明一个序列化属性</td>
-<td style="text-align:center">@serial description</td>
-</tr>
-<tr>
-<td>@serialData</td>
-<td style="text-align:left">说明通过writeObject( ) 和 writeExternal( )方法写的数据</td>
-<td style="text-align:center">@serialData description</td>
-</tr>
-<tr>
-<td>@serialField</td>
-<td style="text-align:left">说明一个ObjectStreamField组件</td>
-<td style="text-align:center">@serialField name type description</td>
-</tr>
-<tr>
-<td>@since</td>
-<td style="text-align:left">标记当引入一个特定的变化时</td>
-<td style="text-align:center">@since release</td>
-</tr>
-<tr>
-<td>@throws</td>
-<td style="text-align:left">和 @exception标签一样.</td>
-<td style="text-align:center">The @throws tag has the same meaning as the @exception tag.</td>
-</tr>
-<tr>
-<td>{@value}</td>
-<td style="text-align:left">显示常量的值，该常量必须是static属性。</td>
-<td style="text-align:center">Displays the value of a constant, which must be a static field.</td>
-</tr>
-<tr>
-<td>@version</td>
-<td style="text-align:left">指定类的版本</td>
-<td style="text-align:center">@version info</td>
-</tr>
-</tbody>
-</table>
-<a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;javadoc-标签&quot;&gt;&lt;a href=&quot;#javadoc-标签&quot; class=&quot;headerlink&quot; title=&quot;javadoc 标签&quot;&gt;&lt;/a&gt;javadoc 标签&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;javadoc工具软件识别以下标签：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;标签&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;描述&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;示例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;@author&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;标识一个类的作者&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@author description&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@deprecated&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;指名一个过期的类或成员&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@deprecated description&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;{@docRoot}&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;指明当前文档根目录的路径&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Directory Path&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@exception&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;标志一个类抛出的异常&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@exception exception-name explanation&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;{@inheritDoc}&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;从直接父类继承的注释&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Inherits a comment from the immediate surperclass.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;{@link}&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;插入一个到另一个主题的链接&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;{@link name text}&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;{@linkplain}&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;插入一个到另一个主题的链接，但是该链接显示纯文本字体&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Inserts an in-line link to another topic.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@param&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;说明一个方法的参数&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@param parameter-name explanation&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@return&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;说明返回值类型&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@return explanation&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@see&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;指定一个到另一个主题的链接&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@see anchor&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@serial&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;说明一个序列化属性&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@serial description&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@serialData&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;说明通过writeObject( ) 和 writeExternal( )方法写的数据&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@serialData description&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@serialField&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;说明一个ObjectStreamField组件&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@serialField name type description&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@since&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;标记当引入一个特定的变化时&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@since release&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@throws&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;和 @exception标签一样.&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;The @throws tag has the same meaning as the @exception tag.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;{@value}&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;显示常量的值，该常量必须是static属性。&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Displays the value of a constant, which must be a static field.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;@version&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;指定类的版本&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;@version info&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
     
     </summary>
     

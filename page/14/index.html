@@ -333,6 +333,147 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之stack和queue/" itemprop="url">
+                  STL容器总结之stack和queue
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T17:42:28Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/C++/STL容器总结之stack和queue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL容器总结之stack和queue/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/C++/STL容器总结之stack和queue/" class="leancloud_visitors" data-flag-title="STL容器总结之stack和queue">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>stack是一个比较简单的容器，它的使用也很简单，stack是LIFO容器，就是后进先出，最后添加进去的元素，第一个取出来</li>
+</ul>
+<ul>
+<li><h3 id="stack初始化"><a href="#stack初始化" class="headerlink" title="stack初始化"></a>stack初始化</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; first;  </div><div class="line">  </div><div class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; second(first);  </div><div class="line">  </div><div class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>, <span class="built_in">std</span>;:<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; third; <span class="comment">//使用vector初始化stack</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="stack常用方法"><a href="#stack常用方法" class="headerlink" title="stack常用方法"></a>stack常用方法</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">empty();<span class="comment">//判断是否为空  </span></div><div class="line">  </div><div class="line">push(Elem e);<span class="comment">//栈顶压入一元素  </span></div><div class="line">  </div><div class="line">pop();<span class="comment">//弹出栈顶元素  </span></div><div class="line">  </div><div class="line">top();<span class="comment">//返回栈顶元素  </span></div><div class="line">  </div><div class="line">size();<span class="comment">//返回栈中元素个数</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/C++/STL容器总结之stack和queue/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之deque/" itemprop="url">
                   STL容器总结之deque
                 </a>
@@ -870,156 +1011,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/通用/装机软件清单/" itemprop="url">
-                  装机软件清单
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T16:04:21Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/通用/" itemprop="url" rel="index">
-                    <span itemprop="name">通用</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/通用/装机软件清单/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/通用/装机软件清单/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/02/通用/装机软件清单/" class="leancloud_visitors" data-flag-title="装机软件清单">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="装机必备"><a href="#装机必备" class="headerlink" title="装机必备"></a>装机必备</h3><ul>
-<li><p>暴风影音</p>
-</li>
-<li><p>蓝灯 <a href="http://pan.baidu.com/s/1c1AOJpm">传送门</a>，密码: v9im</p>
-</li>
-<li><p>赛风3</p>
-</li>
-<li><p>网易云音乐</p>
-</li>
-<li><p>TGP</p>
-</li>
-<li><p>FSCapture（截屏软件，附带截色笔等）</p>
-</li>
-<li><p>mcool（小众化的音乐软件，内存占用极小）</p>
-</li>
-<li><p>WPS</p>
-</li>
-<li><p>迅雷破解版 <a href="http://pan.baidu.com/s/1c2sjjhQ">传送门</a></p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/通用/装机软件清单/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1065,7 +1056,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1073,7 +1064,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1082,7 +1073,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
