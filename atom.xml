@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-21T09:51:56.713Z</updated>
+  <updated>2016-09-21T09:51:58.000Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title> Android ViewDragHelper完全解析 自定义ViewGroup神器</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/22/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/Android-ViewDragHelper%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90-%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup%E7%A5%9E%E5%99%A8/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/22/Android自定义控件/Android-ViewDragHelper完全解析-自定义ViewGroup神器/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/22/Android%E2%95%AB%E2%95%98%E2%95%A2%D0%B8%E2%95%A5%D1%85%E2%94%90%E2%95%AA%E2%95%9D%E2%96%A0/Android-ViewDragHelper%E2%95%90%D1%8A%E2%95%9A%D0%BB%E2%95%9C%D1%82%E2%95%AC%D0%8E-%E2%95%AB%E2%95%98%E2%95%A2%D0%B8%E2%95%A5%D1%85ViewGroup%E2%95%94%D1%91%E2%95%9E%D1%9E/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/22/Android╫╘╢и╥х┐╪╝■/Android-ViewDragHelper═ъ╚л╜т╬Ў-╫╘╢и╥хViewGroup╔ё╞ў/</id>
     <published>2016-09-21T16:57:22.000Z</published>
-    <updated>2016-09-21T09:51:56.713Z</updated>
+    <updated>2016-09-21T09:51:58.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><p>在自定义ViewGroup中，很多效果都包含用户手指去拖动其内部的某个View(eg:侧滑菜单等)，针对具体的需要去写好 <strong>onInterceptTouchEvent</strong> 和 <strong>onTouchEvent</strong> 这两个方法是一件很不容易的事，需要自己去处理：多手指的处理、加速度检测等等</p>
@@ -244,10 +244,10 @@
   
   <entry>
     <title>Android美女拼图游戏</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/13/Android%E6%B8%B8%E6%88%8F/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/13/Android游戏/Android美女拼图游戏/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/13/Android%E2%95%99%E2%95%AC%E2%95%A7%E2%95%96/Android%E2%94%9C%E2%94%94%E2%94%BC%D0%BE%E2%95%9E%E2%94%A4%E2%95%90%E2%95%9D%E2%95%99%E2%95%AC%E2%95%A7%E2%95%96/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/13/Android╙╬╧╖/Android├└┼о╞┤═╝╙╬╧╖/</id>
     <published>2016-09-12T19:35:17.000Z</published>
-    <updated>2016-09-12T12:59:04.971Z</updated>
+    <updated>2016-09-12T12:59:06.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><p><a href="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE.apk" target="_blank" rel="external">游戏下载试玩</a></p>
@@ -423,10 +423,10 @@
   
   <entry>
     <title>Android Broadcast广播机制分析</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast广播机制分析/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast%E2%95%A3%D1%83%E2%96%93%D0%B5%E2%95%97%C2%B7%E2%95%93%E2%95%9E%E2%95%96%E2%95%93%E2%95%AC%D0%8E/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast╣у▓е╗·╓╞╖╓╬Ў/</id>
     <published>2016-09-11T19:06:46.000Z</published>
-    <updated>2016-09-11T11:22:08.932Z</updated>
+    <updated>2016-09-11T11:22:10.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>基于Android 6.0的源码剖析， 分析android广播的发送与接收流程</p>
@@ -485,10 +485,10 @@
   
   <entry>
     <title>Android Service完全解析</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service完全解析/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service%E2%95%90%D1%8A%E2%95%9A%D0%BB%E2%95%9C%D1%82%E2%95%AC%D0%8E/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service═ъ╚л╜т╬Ў/</id>
     <published>2016-09-11T17:18:03.000Z</published>
-    <updated>2016-09-11T10:41:58.028Z</updated>
+    <updated>2016-09-11T10:42:00.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>Service 是一个可以在后台执行长时间运行操作而不使用用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。 此外，组件可以绑定到服务，以与之进行交互，甚至是执行进程间通信 (IPC)。 例如，服务可以处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序交互，而所有这一切均可在后台进行</li>
@@ -691,10 +691,10 @@
   
   <entry>
     <title>Activity生命周期详解</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/11/Android/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/11/Android/Activity生命周期详解/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/11/Android/Activity%E2%95%94%C2%B7%E2%94%9C%E2%84%96%E2%95%93%E2%96%84%E2%95%9E%E2%94%8C%E2%95%A7%D1%8A%E2%95%9C%D1%82/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/11/Android/Activity╔·├№╓▄╞┌╧ъ╜т/</id>
     <published>2016-09-10T20:17:13.000Z</published>
-    <updated>2016-09-10T13:37:52.260Z</updated>
+    <updated>2016-09-10T13:37:54.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ul>
 <li>官方图解</li>
@@ -786,10 +786,10 @@
   
   <entry>
     <title>Android学习之路</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/11/Android/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/11/Android/Android学习之路/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/11/Android/Android%E2%95%A4%D0%B7%E2%95%A7%E2%96%91%E2%95%93%D0%BE%E2%94%AC%E2%95%96/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/11/Android/Android╤з╧░╓о┬╖/</id>
     <published>2016-09-10T19:58:11.000Z</published>
-    <updated>2016-09-10T12:08:27.568Z</updated>
+    <updated>2016-09-10T12:08:28.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="学习路线图"><a href="#学习路线图" class="headerlink" title="学习路线图"></a>学习路线图</h2><ul>
 <li>一张图搞定，非常全面</li>
@@ -825,10 +825,10 @@
   
   <entry>
     <title>AndroidStudio自定义注释</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/22/AndroidStudio/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/22/AndroidStudio/AndroidStudio自定义注释/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/22/AndroidStudio/AndroidStudio%E2%95%AB%E2%95%98%E2%95%A2%D0%B8%E2%95%A5%D1%85%E2%95%AB%D0%B2%E2%95%A9%E2%95%90/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/22/AndroidStudio/AndroidStudio╫╘╢и╥х╫в╩═/</id>
     <published>2016-08-22T14:02:01.000Z</published>
-    <updated>2016-08-23T08:19:24.398Z</updated>
+    <updated>2016-08-23T08:19:26.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="设置类创建时自动生成头部注释"><a href="#设置类创建时自动生成头部注释" class="headerlink" title="设置类创建时自动生成头部注释"></a>设置类创建时自动生成头部注释</h2><ul>
 <li>比如每次创建一个类自动在头部生成一个这样的头部,作为一个类的说明信息</li>
@@ -939,10 +939,10 @@
   
   <entry>
     <title>密码</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/22/%E9%80%9A%E7%94%A8/%E5%AF%86%E7%A0%81/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/22/通用/密码/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/22/%E2%95%90%D0%B8%E2%95%99%E2%94%9C/%E2%94%9C%E2%96%84%E2%94%AC%D1%8B/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/22/═и╙├/├▄┬ы/</id>
     <published>2016-08-21T20:22:26.000Z</published>
-    <updated>2016-08-21T12:26:31.763Z</updated>
+    <updated>2016-08-21T12:26:32.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="合购VIP论坛"><a href="#合购VIP论坛" class="headerlink" title="合购VIP论坛"></a>合购VIP论坛</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">默认的密码是：www.hegouvip.com</div><div class="line"></div><div class="line">第一期解压密码 ：【http:<span class="comment">//www.hegouvip.com12yuemima】</span></div><div class="line">第二期解压密码 ：【hegouvipmima12yue】</div><div class="line">第三期解压密码 ：【<span class="number">52</span>hegouvipmima】</div><div class="line">第四期解压密码 ：【<span class="number">54</span>hegouvipdisiqimima】</div><div class="line">第五期解压密码 ：【http:<span class="comment">//www.hegouvip.comwoshidiwuqimima】</span></div><div class="line">第六期解压密码 ：【上合购VIP资源论坛下载就可以观看了】</div><div class="line">第七期解压密码 ：【http:<span class="comment">//www.hegouvip.com2014mashangchenggong】</span></div><div class="line">第八期解压密码 ：【<span class="number">2014</span>hegouvipdibaqijieyamima】</div><div class="line">第九期解压密码 ：【hegouvip2014dijiuqijieyamima】</div><div class="line">第十期解压密码 ：【dishiqimimahegouvip】</div><div class="line">第十一期解压密码：【dishiyiqihegoumima】</div></pre></td></tr></table></figure>
 <h2 id="HK共享吧"><a href="#HK共享吧" class="headerlink" title="HK共享吧"></a>HK共享吧</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">默认的密码是：www.mfhk8.com</div><div class="line"></div><div class="line">编号一的解压密码：kIioOK9*</div><div class="line">编号二的解压密码：www.mfhk8.com_!h0jn3G+t@</div><div class="line">编号三的解压密码：www.mfhk8.com_rz~NWjU)cZ</div><div class="line">编号四的解压密码：www.mfhk8.com_$dCb11$d2t</div><div class="line">编号五的解压密码：www.mfhk8.com_$dF71@$d4rd2t</div><div class="line">编号六的解压密码：www.mfhk8.com_HdFD1@$^&amp;4dd1t</div><div class="line">编号七的解压密码：www.mfhk8.com_DF32D~@$^&amp;3Qd1*</div><div class="line">编号八的解压密码：www.mfhk8.com_SF5*^2K~@$^f3e1##</div><div class="line">编号九的解压密码：www.mfhk8.com_S123aaaA*^jgjkf2f@!!~~</div><div class="line">编号十的解压密码：www.mfhk8.com_S123f3*#(fA*^fgj32f@!!~~!hfu@**!!h847</div><div class="line">编号十一的解压密码：www.mfhk8.com_8#!k53[]]r[E$DS</div></pre></td></tr></table></figure>
@@ -970,10 +970,10 @@
   
   <entry>
     <title>K歌之王</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/21/%E9%80%9A%E7%94%A8/K%E6%AD%8C%E4%B9%8B%E7%8E%8B/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/21/通用/K歌之王/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/21/%E2%95%90%D0%B8%E2%95%99%E2%94%9C/K%E2%95%95%D1%88%E2%95%93%D0%BE%E2%95%90%D1%97/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/21/═и╙├/K╕ш╓о═ї/</id>
     <published>2016-08-21T15:16:18.000Z</published>
-    <updated>2016-08-21T09:04:52.437Z</updated>
+    <updated>2016-08-21T09:04:54.000Z</updated>
     
     <content type="html"><![CDATA[<center><img src="http://o99dg8ap9.bkt.clouddn.com/K%E6%AD%8C%E4%B9%8B%E7%8E%8B.jpg" alt=""></center>
 
@@ -1512,10 +1512,10 @@
   
   <entry>
     <title>Java协变和逆变</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java协变和逆变/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E2%95%A8%D0%BD%E2%96%92%D1%84%E2%95%91%E2%95%90%E2%94%80%D1%86%E2%96%92%D1%84/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java╨н▒ф║═─ц▒ф/</id>
     <published>2016-08-16T20:49:41.000Z</published>
-    <updated>2016-08-16T14:06:04.395Z</updated>
+    <updated>2016-08-16T14:06:06.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="什么是协变和逆变"><a href="#什么是协变和逆变" class="headerlink" title="什么是协变和逆变"></a>什么是协变和逆变</h2><ul>
 <li><p>我们将围绕如下三个核心名词：协变性（covariance）、逆变性(contravariance)和无关性（invariant）。他们都是用来描述类型转换的性质的术语</p>
@@ -1657,10 +1657,10 @@
   
   <entry>
     <title>Java方法签名</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java方法签名/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E2%95%96%E2%95%9C%E2%95%96%D0%B8%E2%95%9F%D0%B9%E2%94%9C%E2%88%9A/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java╖╜╖и╟й├√/</id>
     <published>2016-08-14T14:50:34.000Z</published>
-    <updated>2016-08-14T07:23:44.437Z</updated>
+    <updated>2016-08-14T07:23:46.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="方法签名的意义"><a href="#方法签名的意义" class="headerlink" title="方法签名的意义"></a>方法签名的意义</h2><ul>
 <li>对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，<strong>方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的</strong></li>
@@ -1838,10 +1838,10 @@
   
   <entry>
     <title>Java可变参数</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java可变参数/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E2%94%90%E2%95%94%E2%96%92%D1%84%E2%96%93%E2%95%AC%E2%95%A9%C2%A4/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java┐╔▒ф▓╬╩¤/</id>
     <published>2016-08-13T21:55:32.000Z</published>
-    <updated>2016-08-14T06:19:21.805Z</updated>
+    <updated>2016-08-14T06:19:22.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="什么是可变参数"><a href="#什么是可变参数" class="headerlink" title="什么是可变参数"></a>什么是可变参数</h2><ul>
 <li>在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现</li>
@@ -1975,10 +1975,10 @@
   
   <entry>
     <title>https方式向github提交代码总是输入用户名和密码</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/14/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/https%E6%96%B9%E5%BC%8F%E5%90%91github%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%80%BB%E6%98%AF%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/14/项目管理/https方式向github提交代码总是输入用户名和密码/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/14/%E2%95%A7%D1%8E%E2%94%80%E2%94%90%E2%95%A3%E2%96%84%E2%94%94%D1%8D/https%E2%95%96%E2%95%9C%E2%95%A9%E2%95%9C%E2%95%A7%D0%84github%E2%95%A0%D1%81%E2%95%9C%E2%95%97%E2%94%A4%C2%B7%E2%94%AC%D1%8B%E2%95%AB%E2%96%84%E2%95%A9%E2%95%9F%E2%95%A9%D1%84%E2%95%9A%D1%8B%E2%95%99%E2%94%9C%E2%95%97%D0%B7%E2%94%9C%E2%88%9A%E2%95%91%E2%95%90%E2%94%9C%E2%96%84%E2%94%AC%D1%8B/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/14/╧ю─┐╣▄└э/https╖╜╩╜╧Єgithub╠с╜╗┤·┬ы╫▄╩╟╩ф╚ы╙├╗з├√║═├▄┬ы/</id>
     <published>2016-08-13T19:24:27.000Z</published>
-    <updated>2016-08-13T14:57:13.757Z</updated>
+    <updated>2016-08-13T14:57:14.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>采用HTTPS方式提交代码到github和coding很方便，但是总是需要输入用户名和密码，以下这种方式可以解决</li>
@@ -2050,10 +2050,10 @@
   
   <entry>
     <title>Java源码分析--Enum</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Java%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-Enum/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA源码分析/Java源码分析-Enum/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E2%95%98%E2%94%A4%E2%94%AC%D1%8B%E2%95%96%E2%95%93%E2%95%AC%D0%8E/Java%E2%95%98%E2%94%A4%E2%94%AC%D1%8B%E2%95%96%E2%95%93%E2%95%AC%D0%8E-Enum/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA╘┤┬ы╖╓╬Ў/Java╘┤┬ы╖╓╬Ў-Enum/</id>
     <published>2016-08-12T12:39:07.000Z</published>
-    <updated>2016-08-12T04:43:20.787Z</updated>
+    <updated>2016-08-12T04:43:22.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Enum类是java.lang包中一个类，他是Java语言中所有枚举类型的公共基类</p>
@@ -2170,10 +2170,10 @@
   
   <entry>
     <title>Java命令--javap</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/Java%E5%91%BD%E4%BB%A4-javap/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA命令学习/Java命令-javap/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E2%94%9C%E2%84%96%E2%94%B4%D1%8E%E2%95%A4%D0%B7%E2%95%A7%E2%96%91/Java%E2%94%9C%E2%84%96%E2%94%B4%D1%8E-javap/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA├№┴ю╤з╧░/Java├№┴ю-javap/</id>
     <published>2016-08-12T12:34:38.000Z</published>
-    <updated>2016-08-12T08:41:37.735Z</updated>
+    <updated>2016-08-12T08:41:38.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>javap是jdk自带的一个工具，可以对代码 <a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>，也可以查看java编译器生成的字节码</p>
@@ -2229,10 +2229,10 @@
   
   <entry>
     <title>Java单例模式的七种写法</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA设计模式/Java单例模式的七种写法/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E2%95%94%D1%88%E2%95%9D%E2%95%9E%E2%94%80%D0%B3%E2%95%A9%E2%95%9C/Java%E2%95%A1%D0%B5%E2%94%94%C2%A4%E2%94%80%D0%B3%E2%95%A9%E2%95%9C%E2%95%A1%E2%94%80%E2%95%9E%E2%96%80%E2%95%93%E2%95%93%E2%95%A8%E2%94%A4%E2%95%96%D0%B8/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA╔ш╝╞─г╩╜/Java╡е└¤─г╩╜╡─╞▀╓╓╨┤╖и/</id>
     <published>2016-08-11T23:37:17.000Z</published>
-    <updated>2016-08-12T08:17:27.287Z</updated>
+    <updated>2016-08-12T08:17:28.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="第一种（懒汉，线程不安全）："><a href="#第一种（懒汉，线程不安全）：" class="headerlink" title="第一种（懒汉，线程不安全）："></a>第一种（懒汉，线程不安全）：</h2><ul>
 <li>类初始化的时候并不创建，想用的时候创建</li>
@@ -2311,10 +2311,10 @@
   
   <entry>
     <title>Java反编译</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java反编译/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E2%95%96%E2%94%A4%E2%96%92%D1%80%E2%95%A5%D1%8B/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java╖┤▒р╥ы/</id>
     <published>2016-08-11T23:03:35.000Z</published>
-    <updated>2016-08-12T06:00:21.927Z</updated>
+    <updated>2016-08-12T06:00:22.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="什么是编译"><a href="#什么是编译" class="headerlink" title="什么是编译"></a>什么是编译</h2><ol>
 <li><p>利用编译程序从源语言编写的源程序产生目标程序的过程</p>
@@ -2479,10 +2479,10 @@
   
   <entry>
     <title>Java枚举类</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java枚举类/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E2%94%9C%E2%95%A2%E2%95%9B%E2%94%98%E2%94%94%D1%80/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java├╢╛┘└р/</id>
     <published>2016-08-11T22:19:08.000Z</published>
-    <updated>2016-08-12T04:47:33.337Z</updated>
+    <updated>2016-08-12T04:47:34.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
 <li>在java语言中还没有引入枚举类型之前，表示枚举类型的常用模式是声明一组具有int常量。之前我们通常利用public final static 方法定义的代码如下，分别用1 表示春天，2表示夏天，3表示秋天，4表示冬天</li>
@@ -2635,10 +2635,10 @@
   
   <entry>
     <title>Java自动拆箱和装箱</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/11/JAVA/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/11/JAVA/Java自动拆箱和装箱/</id>
+    <link href="http://www.qiuchengjia.cn/2016/08/11/JAVA/Java%E2%95%AB%E2%95%98%E2%95%A2%D0%BF%E2%96%93%D0%81%E2%95%A7%D1%84%E2%95%91%E2%95%90%E2%95%AB%E2%96%91%E2%95%A7%D1%84/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/11/JAVA/Java╫╘╢п▓Ё╧ф║═╫░╧ф/</id>
     <published>2016-08-11T14:24:02.000Z</published>
-    <updated>2016-08-11T07:22:34.756Z</updated>
+    <updated>2016-08-11T07:22:36.000Z</updated>
     
     <content type="html"><![CDATA[<center><img src="http://o99dg8ap9.bkt.clouddn.com/Java%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1.png" alt=""></center>
 
