@@ -333,146 +333,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/01/ubuntu/ubuntu╩ф╚ы├▄┬ы╡╟┬╜║є╙╓╠°╡╜╡╟┬╜╜ч├ц╜т╛Ў╖╜░╕/" itemprop="url">
-                   ubuntu输入密码登陆后又跳到登陆界面解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-01T14:11:07Z" content="2015-06-01">
-              2015-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">ubuntu</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/01/ubuntu/ubuntu╩ф╚ы├▄┬ы╡╟┬╜║є╙╓╠°╡╜╡╟┬╜╜ч├ц╜т╛Ў╖╜░╕/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/ubuntu╩ф╚ы├▄┬ы╡╟┬╜║є╙╓╠°╡╜╡╟┬╜╜ч├ц╜т╛Ў╖╜░╕/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/06/01/ubuntu/ubuntu╩ф╚ы├▄┬ы╡╟┬╜║є╙╓╠°╡╜╡╟┬╜╜ч├ц╜т╛Ў╖╜░╕/" class="leancloud_visitors" data-flag-title=" ubuntu输入密码登陆后又跳到登陆界面解决方案">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li><p>启动系统，输入正确的账号和密码，点击登录，屏幕一闪，然后又跳回登录界面。问题原因：主目录下的　.Xauthority　文件拥有者变成了root，从而以用户登陆的时候无法都取.Xauthority文件</p>
-</li>
-<li><p>说明：Xauthority，是startx脚本记录文件。Xserver启动时，读文件~/.Xauthority,读入对应其display 的记录。当一个需要显示的客户程序启动调用XOpenDisplay()也读这个文 件，并把找到的magic code 发送给 Xserver。当Xserver验证这个magic code正确以后，就同意连接啦。观察startx脚本也可以看到，每次startx 运行，都在调用xinit以前使用了xauth的add命令添加了一个新的记录到~/.Xauthority，用来这次运行X使用认证</p>
-</li>
-<li><p>解决方案：开机后在登陆界面按下shift + ctrl + F1进入tty命令行终端登陆，然后输入root，然后输入密码， 重装gdm </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo  apt-get remove gdm  </div><div class="line">sudo apt-get install gdm  </div><div class="line">dpkg  -reconfigure gdm  <span class="comment">//修改启动顺序</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/ubuntu/ubuntu╩ф╚ы├▄┬ы╡╟┬╜║є╙╓╠°╡╜╡╟┬╜╜ч├ц╜т╛Ў╖╜░╕/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/01/ubuntu/╚ч║╬│╣╡╫╔╛│¤ubuntu╔╧╡─╚э╝■/" itemprop="url">
+                <a class="post-title-link" href="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" itemprop="url">
                    如何彻底删除ubuntu上的软件
                 </a>
               
@@ -516,8 +377,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/01/ubuntu/╚ч║╬│╣╡╫╔╛│¤ubuntu╔╧╡─╚э╝■/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/╚ч║╬│╣╡╫╔╛│¤ubuntu╔╧╡─╚э╝■/" itemprop="commentsCount"></span>
+                <a href="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -527,7 +388,7 @@
 
           
           
-             <span id="/2015/06/01/ubuntu/╚ч║╬│╣╡╫╔╛│¤ubuntu╔╧╡─╚э╝■/" class="leancloud_visitors" data-flag-title=" 如何彻底删除ubuntu上的软件">
+             <span id="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" class="leancloud_visitors" data-flag-title=" 如何彻底删除ubuntu上的软件">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -559,7 +420,7 @@
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get autoremove,sudo apt-get clean</div><div class="line">dpkg -l |grep ^rc|awk '&#123;print $2&#125;' |sudo xargs dpkg -P</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/ubuntu/╚ч║╬│╣╡╫╔╛│¤ubuntu╔╧╡─╚э╝■/" rel="contents">
+            <a class="btn" href="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -610,7 +471,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/01/ubuntu/ubuntu╧┬╚ч║╬░▓╫░android-studio/" itemprop="url">
+                <a class="post-title-link" href="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/" itemprop="url">
                   ubuntu下如何安装android studio
                 </a>
               
@@ -654,8 +515,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/01/ubuntu/ubuntu╧┬╚ч║╬░▓╫░android-studio/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/ubuntu╧┬╚ч║╬░▓╫░android-studio/" itemprop="commentsCount"></span>
+                <a href="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/ubuntu下如何安装android-studio/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -665,7 +526,7 @@
 
           
           
-             <span id="/2015/06/01/ubuntu/ubuntu╧┬╚ч║╬░▓╫░android-studio/" class="leancloud_visitors" data-flag-title="ubuntu下如何安装android studio">
+             <span id="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/" class="leancloud_visitors" data-flag-title="ubuntu下如何安装android studio">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -701,7 +562,7 @@
 <p>然后将文件的名字改成android.desktop，然后右键 — &gt; 属性—&gt;勾选允许作为程序可执行文件，然后就可以了，此种创建快捷方式的方法对于其他程序均适用</p>
 <center><img src="http://img.blog.csdn.net/20151217151413240?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></center>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/ubuntu/ubuntu╧┬╚ч║╬░▓╫░android-studio/" rel="contents">
+            <a class="btn" href="/2015/06/01/ubuntu/ubuntu下如何安装android-studio/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -752,7 +613,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/01/ubuntu/ubuntu░▓╫░Genymotion/" itemprop="url">
+                <a class="post-title-link" href="/2015/06/01/ubuntu/ubuntu安装Genymotion/" itemprop="url">
                   ubuntu安装Genymotion
                 </a>
               
@@ -796,8 +657,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/01/ubuntu/ubuntu░▓╫░Genymotion/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/ubuntu░▓╫░Genymotion/" itemprop="commentsCount"></span>
+                <a href="/2015/06/01/ubuntu/ubuntu安装Genymotion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/ubuntu安装Genymotion/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -807,7 +668,7 @@
 
           
           
-             <span id="/2015/06/01/ubuntu/ubuntu░▓╫░Genymotion/" class="leancloud_visitors" data-flag-title="ubuntu安装Genymotion">
+             <span id="/2015/06/01/ubuntu/ubuntu安装Genymotion/" class="leancloud_visitors" data-flag-title="ubuntu安装Genymotion">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -832,7 +693,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20151217151146964?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" rel="gallery_cith946un005jqwaedsc0wcwk"
+                 href="http://img.blog.csdn.net/20151217151146964?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" rel="gallery_citibm7pl0057iaaecvhv8ldk"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20151217151146964?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" itemprop="contentUrl"/>
               </a>
@@ -864,7 +725,7 @@
 </blockquote>
 <center><img src="http://img.blog.csdn.net/20151217151146964?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></center>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/ubuntu/ubuntu░▓╫░Genymotion/" rel="contents">
+            <a class="btn" href="/2015/06/01/ubuntu/ubuntu安装Genymotion/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -915,7 +776,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/01/linux/Linux╚ч║╬╩╣╙├╠┌╤╢QQ/" itemprop="url">
+                <a class="post-title-link" href="/2015/06/01/linux/Linux如何使用腾讯QQ/" itemprop="url">
                   Linux如何使用腾讯QQ
                 </a>
               
@@ -959,8 +820,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/01/linux/Linux╚ч║╬╩╣╙├╠┌╤╢QQ/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/linux/Linux╚ч║╬╩╣╙├╠┌╤╢QQ/" itemprop="commentsCount"></span>
+                <a href="/2015/06/01/linux/Linux如何使用腾讯QQ/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/linux/Linux如何使用腾讯QQ/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -970,7 +831,7 @@
 
           
           
-             <span id="/2015/06/01/linux/Linux╚ч║╬╩╣╙├╠┌╤╢QQ/" class="leancloud_visitors" data-flag-title="Linux如何使用腾讯QQ">
+             <span id="/2015/06/01/linux/Linux如何使用腾讯QQ/" class="leancloud_visitors" data-flag-title="Linux如何使用腾讯QQ">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1004,7 +865,146 @@
 <p>如图，安装红色框中的那个，然后我们就可以使用qq了</p>
 <center><img src="http://img.blog.csdn.net/20151217150943755?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></center>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/linux/Linux╚ч║╬╩╣╙├╠┌╤╢QQ/" rel="contents">
+            <a class="btn" href="/2015/06/01/linux/Linux如何使用腾讯QQ/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/01/linux/Wing-IDE-for-Linux-的安装和破解/" itemprop="url">
+                  Wing IDE for Linux 的安装和破解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-01T13:23:46Z" content="2015-06-01">
+              2015-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/01/linux/Wing-IDE-for-Linux-的安装和破解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/linux/Wing-IDE-for-Linux-的安装和破解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/06/01/linux/Wing-IDE-for-Linux-的安装和破解/" class="leancloud_visitors" data-flag-title="Wing IDE for Linux 的安装和破解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Wing IDE是linux下python的集成开发环境，虽然python提供了命令行下的交互操作，但是对于实际的python程序开发的话，众多的python包导入、功能提示、调试就有很大的负担，Wing IDE 可以帮助解决。美中不足的是它也是一款收费软件</p>
+<ul>
+<li>安装</li>
+</ul>
+<p> 我们首先去 Wing IDE<br>    官网上下载软件，网址：<a href="http://wingware.com/downloads">传送门</a> ，然后我们通过ubuntu软件中心安装</p>
+<ul>
+<li><p>破解</p>
+<p>   破解之前需要下载一个脚本，下载地址：<a href="http://download.csdn.net/detail/sunmc1204953974/8689733">传送门</a></p>
+<p> 脚本源码：</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/01/linux/Wing-IDE-for-Linux-的安装和破解/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1079,7 +1079,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
