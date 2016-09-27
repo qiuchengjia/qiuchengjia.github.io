@@ -17,8 +17,8 @@
   
   <entry>
     <title>Android DiskLruCache和LruCache缓存完全解析</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android-DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android-DiskLruCache和LruCache缓存完全解析/</id>
+    <link href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%20DiskLruCache%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%A1%AC%E7%9B%98%E7%BC%93%E5%AD%98%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/</id>
     <published>2016-09-27T15:44:34.000Z</published>
     <updated>2016-09-27T07:59:30.419Z</updated>
     
@@ -106,11 +106,11 @@
   </entry>
   
   <entry>
-    <title>Android高效加载大图、多图</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%E9%AB%98%E6%95%88%E5%8A%A0%E8%BD%BD%E5%A4%A7%E5%9B%BE%E3%80%81%E5%A4%9A%E5%9B%BE/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android高效加载大图、多图/</id>
+    <title>Android高效加载大图、多图和LruCache缓存</title>
+    <link href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%E9%AB%98%E6%95%88%E5%8A%A0%E8%BD%BD%E5%A4%A7%E5%9B%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E5%92%8CLruCache%E7%BC%93%E5%AD%98/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android高效加载大图、多图和LruCache缓存/</id>
     <published>2016-09-27T14:40:43.000Z</published>
-    <updated>2016-09-27T06:55:17.053Z</updated>
+    <updated>2016-09-27T11:52:09.312Z</updated>
     
     <content type="html"><![CDATA[<h2 id="高效加载大图"><a href="#高效加载大图" class="headerlink" title="高效加载大图"></a>高效加载大图</h2><ul>
 <li>我们在编写Android程序的时候经常要用到许多图片，不同图片总是会有不同的形状、不同的大小，但在大多数情况下，这些图片都会大于我们程序所需要的大小。比如说系统图片库里展示的图片大都是用手机摄像头拍出来的，这些图片的分辨率会比我们手机屏幕的分辨率高得多。大家应该知道，我们编写的应用程序都是有一定内存限制的，程序占用了过高的内存就容易出现OOM(OutOfMemory)异常。我们可以通过下面的代码看出每个应用程序最高可用内存是多少</li>
@@ -153,6 +153,47 @@
 <li>下面的代码非常简单地将任意一张图片压缩成100*100的缩略图，并在ImageView上展示</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mImageView.setImageBitmap(  </div><div class="line">    decodeSampledBitmapFromResource(getResources(), R.id.myimage, <span class="number">100</span>, <span class="number">100</span>));</div></pre></td></tr></table></figure>
+<h2 id="LruCache缓存"><a href="#LruCache缓存" class="headerlink" title="LruCache缓存"></a>LruCache缓存</h2><ul>
+<li><p>在你应用程序的UI界面加载一张图片是一件很简单的事情，但是当你需要在界面上加载一大堆图片的时候，情况就变得复杂起来。在很多情况下，（比如使用ListView, GridView 或者 ViewPager 这样的组件），屏幕上显示的图片可以通过滑动屏幕等事件不断地增加，最终导致OOM</p>
+</li>
+<li><p>为了保证内存的使用始终维持在一个合理的范围，通常会把被移除屏幕的图片进行回收处理。此时垃圾回收器也会认为你不再持有这些图片的引用，从而对这些图片进行GC操作。用这种思路来解决问题是非常好的，可是为了能让程序快速运行，在界面上迅速地加载图片，你又必须要考虑到某些图片被回收之后，用户又将它重新滑入屏幕这种情况。这时重新去加载一遍刚刚加载过的图片无疑是性能的瓶颈，你需要想办法去避免这个情况的发生</p>
+</li>
+<li><p>这个时候，使用内存缓存技术可以很好的解决这个问题，它可以让组件快速地重新加载和处理图片。下面我们就来看一看如何使用内存缓存技术来对图片进行缓存，从而让你的应用程序在加载很多图片的时候可以提高响应速度和流畅性</p>
+</li>
+<li><p>内存缓存技术对那些大量占用应用程序宝贵内存的图片提供了快速访问的方法。其中最核心的类是LruCache (此类在android-support-v4的包中提供) 。这个类非常适合用来缓存图片，它的主要算法原理是把最近使用的对象用强引用存储在 LinkedHashMap 中，并且把最近最少使用的对象在缓存值达到预设定值之前从内存中移除</p>
+</li>
+<li><p>在过去，我们经常会使用一种非常流行的内存缓存技术的实现，即软引用或弱引用 (SoftReference or WeakReference)。但是现在已经不再推荐使用这种方式了，因为从 Android 2.3 (API Level 9)开始，垃圾回收器会更倾向于回收持有软引用或弱引用的对象，这让软引用和弱引用变得不再可靠。另外，Android 3.0 (API Level 11)中，图片的数据会存储在本地的内存当中，因而无法用一种可预见的方式将其释放，这就有潜在的风险造成应用程序的内存溢出并崩溃</p>
+</li>
+</ul>
+<p>为了能够选择一个合适的缓存大小给LruCache, 有以下多个因素应该放入考虑范围内，例如：</p>
+<ul>
+<li><p>你的设备可以为每个应用程序分配多大的内存？</p>
+</li>
+<li><p>设备屏幕上一次最多能显示多少张图片？有多少图片需要进行预加载，因为有可能很快也会显示在屏幕上？</p>
+</li>
+<li><p>你的设备的屏幕大小和分辨率分别是多少？一个超高分辨率的设备（例如 Galaxy Nexus) 比起一个较低分辨率的设备（例如 Nexus S），在持有相同数量图片的时候，需要更大的缓存空间</p>
+</li>
+<li><p>图片的尺寸和大小，还有每张图片会占据多少内存空间</p>
+</li>
+<li><p>图片被访问的频率有多高？会不会有一些图片的访问频率比其它图片要高？如果有的话，你也许应该让一些图片常驻在内存当中，或者使用多个LruCache 对象来区分不同组的图片</p>
+</li>
+<li><p>你能维持好数量和质量之间的平衡吗？有些时候，存储多个低像素的图片，而在后台去开线程加载高像素的图片会更加的有效</p>
+</li>
+</ul>
+<p>并没有一个指定的缓存大小可以满足所有的应用程序，这是由你决定的。你应该去分析程序内存的使用情况，然后制定出一个合适的解决方案。一个太小的缓存空间，有可能造成图片频繁地被释放和重新加载，这并没有好处。而一个太大的缓存空间，则有可能还是会引起 java.lang.OutOfMemory 的异常</p>
+<!-- more -->
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li>下面是一个使用 LruCache 来缓存图片的例子：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> LruCache&lt;String, Bitmap&gt; mMemoryCache;  </div><div class="line">  </div><div class="line"><span class="meta">@Override</span>  </div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">    <span class="comment">// 获取到可用内存的最大值，使用内存超出这个值会引起OutOfMemory异常。  </span></div><div class="line">    <span class="comment">// LruCache通过构造函数传入缓存值，以KB为单位。  </span></div><div class="line">    <span class="keyword">int</span> maxMemory = (<span class="keyword">int</span>) (Runtime.getRuntime().maxMemory() / <span class="number">1024</span>);  </div><div class="line">    <span class="comment">// 使用最大可用内存值的1/8作为缓存的大小。  </span></div><div class="line">    <span class="keyword">int</span> cacheSize = maxMemory / <span class="number">8</span>;  </div><div class="line">    mMemoryCache = <span class="keyword">new</span> LruCache&lt;String, Bitmap&gt;(cacheSize) &#123;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;  </div><div class="line">            <span class="comment">// 重写此方法来衡量每张图片的大小，默认返回图片数量。  </span></div><div class="line">            <span class="keyword">return</span> bitmap.getByteCount() / <span class="number">1024</span>;  </div><div class="line">        &#125;  </div><div class="line">    &#125;;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addBitmapToMemoryCache</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (getBitmapFromMemCache(key) == <span class="keyword">null</span>) &#123;  </div><div class="line">        mMemoryCache.put(key, bitmap);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmapFromMemCache</span><span class="params">(String key)</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> mMemoryCache.get(key);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在这个例子当中，使用了系统分配给应用程序的八分之一内存来作为缓存大小。在中高配置的手机当中，这大概会有4兆(32/8)的缓存空间。一个全屏幕的 GridView 使用4张 800x480分辨率的图片来填充，则大概会占用1.5兆的空间(800<em>480</em>4)。因此，这个缓存大小可以存储2.5页的图片。<br>当向 ImageView 中加载一张图片时,首先会在 LruCache 的缓存中进行检查。如果找到了相应的键值，则会立刻更新ImageView ，否则开启一个后台线程来加载这张图片</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadBitmap</span><span class="params">(<span class="keyword">int</span> resId, ImageView imageView)</span> </span>&#123;  </div><div class="line">    <span class="keyword">final</span> String imageKey = String.valueOf(resId);  </div><div class="line">    <span class="keyword">final</span> Bitmap bitmap = getBitmapFromMemCache(imageKey);  </div><div class="line">    <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;  </div><div class="line">        imageView.setImageBitmap(bitmap);  </div><div class="line">    &#125; <span class="keyword">else</span> &#123;  </div><div class="line">        imageView.setImageResource(R.drawable.image_placeholder);  </div><div class="line">        BitmapWorkerTask task = <span class="keyword">new</span> BitmapWorkerTask(imageView);  </div><div class="line">        task.execute(resId);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>BitmapWorkerTask 还要把新加载的图片的键值对放到缓存中</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BitmapWorkerTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Integer</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;  </div><div class="line">    <span class="comment">// 在后台加载图片。  </span></div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(Integer... params)</span> </span>&#123;  </div><div class="line">        <span class="keyword">final</span> Bitmap bitmap = decodeSampledBitmapFromResource(  </div><div class="line">                getResources(), params[<span class="number">0</span>], <span class="number">100</span>, <span class="number">100</span>);  </div><div class="line">        addBitmapToMemoryCache(String.valueOf(params[<span class="number">0</span>]), bitmap);  </div><div class="line">        <span class="keyword">return</span> bitmap;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
 <li><a href="http://blog.csdn.net/guolin_blog/article/details/9316683" target="_blank" rel="external">Android高效加载大图、多图解决方案，有效避免程序OOM</a></li>
 </ul>
