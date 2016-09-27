@@ -87,6 +87,116 @@
 <li>那么为了将这张图片下载下来，就可以这样写：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">downloadUrlToStream</span><span class="params">(String urlString, OutputStream outputStream)</span> </span>&#123;  </div><div class="line">    HttpURLConnection urlConnection = <span class="keyword">null</span>;  </div><div class="line">    BufferedOutputStream out = <span class="keyword">null</span>;  </div><div class="line">    BufferedInputStream in = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">try</span> &#123;  </div><div class="line">        <span class="keyword">final</span> URL url = <span class="keyword">new</span> URL(urlString);  </div><div class="line">        urlConnection = (HttpURLConnection) url.openConnection();  </div><div class="line">        in = <span class="keyword">new</span> BufferedInputStream(urlConnection.getInputStream(), <span class="number">8</span> * <span class="number">1024</span>);  </div><div class="line">        out = <span class="keyword">new</span> BufferedOutputStream(outputStream, <span class="number">8</span> * <span class="number">1024</span>);  </div><div class="line">        <span class="keyword">int</span> b;  </div><div class="line">        <span class="keyword">while</span> ((b = in.read()) != -<span class="number">1</span>) &#123;  </div><div class="line">            out.write(b);  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </div><div class="line">    &#125; <span class="keyword">catch</span> (<span class="keyword">final</span> IOException e) &#123;  </div><div class="line">        e.printStackTrace();  </div><div class="line">    &#125; <span class="keyword">finally</span> &#123;  </div><div class="line">        <span class="keyword">if</span> (urlConnection != <span class="keyword">null</span>) &#123;  </div><div class="line">            urlConnection.disconnect();  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">try</span> &#123;  </div><div class="line">            <span class="keyword">if</span> (out != <span class="keyword">null</span>) &#123;  </div><div class="line">                out.close();  </div><div class="line">            &#125;  </div><div class="line">            <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;  </div><div class="line">                in.close();  </div><div class="line">            &#125;  </div><div class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">final</span> IOException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这段代码相当基础，相信大家都看得懂，就是访问urlString中传入的网址，并通过outputStream写入到本地。有了这个方法之后，下面我们就可以使用DiskLruCache来进行写入了，写入的操作是借助DiskLruCache.Editor这个类完成的。类似地，这个类也是不能new的，需要调用DiskLruCache的edit()方法来获取实例，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Editor <span class="title">edit</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>可以看到，edit()方法接收一个参数key，这个key将会成为缓存文件的文件名，并且必须要和图片的URL是一一对应的。那么怎样才能让key和图片的URL能够一一对应呢？直接使用URL来作为key？不太合适，因为图片URL中可能包含一些特殊字符，这些字符有可能在命名文件时是不合法的。其实最简单的做法就是将图片的URL进行MD5编码，编码后的字符串肯定是唯一的，并且只会包含0-F这样的字符，完全符合文件的命名规则</p>
+</li>
+<li><p>那么我们就写一个方法用来将字符串进行MD5编码，代码如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hashKeyForDisk</span><span class="params">(String key)</span> </span>&#123;  </div><div class="line">    String cacheKey;  </div><div class="line">    <span class="keyword">try</span> &#123;  </div><div class="line">        <span class="keyword">final</span> MessageDigest mDigest = MessageDigest.getInstance(<span class="string">"MD5"</span>);  </div><div class="line">        mDigest.update(key.getBytes());  </div><div class="line">        cacheKey = bytesToHexString(mDigest.digest());  </div><div class="line">    &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;  </div><div class="line">        cacheKey = String.valueOf(key.hashCode());  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> cacheKey;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">bytesToHexString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;  </div><div class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();  </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bytes.length; i++) &#123;  </div><div class="line">        String hex = Integer.toHexString(<span class="number">0xFF</span> &amp; bytes[i]);  </div><div class="line">        <span class="keyword">if</span> (hex.length() == <span class="number">1</span>) &#123;  </div><div class="line">            sb.append(<span class="string">'0'</span>);  </div><div class="line">        &#125;  </div><div class="line">        sb.append(hex);  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> sb.toString();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>代码很简单，现在我们只需要调用一下hashKeyForDisk()方法，并把图片的URL传入到这个方法中，就可以得到对应的key了</p>
+</li>
+<li><p>因此，现在就可以这样写来得到一个DiskLruCache.Editor的实例：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">String key = hashKeyForDisk(imageUrl);  </div><div class="line">DiskLruCache.Editor editor = mDiskLruCache.edit(key);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>有了DiskLruCache.Editor的实例之后，我们可以调用它的newOutputStream()方法来创建一个输出流，然后把它传入到downloadUrlToStream()中就能实现下载并写入缓存的功能了。注意newOutputStream()方法接收一个index参数，由于前面在设置valueCount的时候指定的是1，所以这里index传0就可以了。在写入操作执行完之后，我们还需要调用一下commit()方法进行提交才能使写入生效，调用abort()方法的话则表示放弃此次写入</p>
+</li>
+<li><p>因此，一次完整写入操作的代码如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">try</span> &#123;  </div><div class="line">            String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">            String key = hashKeyForDisk(imageUrl);  </div><div class="line">            DiskLruCache.Editor editor = mDiskLruCache.edit(key);  </div><div class="line">            <span class="keyword">if</span> (editor != <span class="keyword">null</span>) &#123;  </div><div class="line">                OutputStream outputStream = editor.newOutputStream(<span class="number">0</span>);  </div><div class="line">                <span class="keyword">if</span> (downloadUrlToStream(imageUrl, outputStream)) &#123;  </div><div class="line">                    editor.commit();  </div><div class="line">                &#125; <span class="keyword">else</span> &#123;  </div><div class="line">                    editor.abort();  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">            mDiskLruCache.flush();  </div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;).start();</div></pre></td></tr></table></figure>
+<ul>
+<li><p>由于这里调用了downloadUrlToStream()方法来从网络上下载图片，所以一定要确保这段代码是在子线程当中执行的。注意在代码的最后我还调用了一下flush()方法，这个方法并不是每次写入都必须要调用的，但在这里却不可缺少，我会在后面说明它的作用</p>
+</li>
+<li><p>现在的话缓存应该是已经成功写入了，我们进入到SD卡上的缓存目录里看一下，如下图所示：</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%905.png" alt=""></center>
+
+<ul>
+<li>可以看到，这里有一个文件名很长的文件，和一个journal文件，那个文件名很长的文件自然就是缓存的图片了，因为是使用了MD5编码来进行命名的</li>
+</ul>
+<h2 id="读取缓存"><a href="#读取缓存" class="headerlink" title="读取缓存"></a>读取缓存</h2><ul>
+<li>缓存已经写入成功之后，接下来我们就该学习一下如何读取了。读取的方法要比写入简单一些，主要是借助DiskLruCache的get()方法实现的，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Snapshot <span class="title">get</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException</span></div></pre></td></tr></table></figure>
+<ul>
+<li>很明显，get()方法要求传入一个key来获取到相应的缓存数据，而这个key毫无疑问就是将图片URL进行MD5编码后的值了，因此读取缓存数据的代码就可以这样写：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">String key = hashKeyForDisk(imageUrl);  </div><div class="line">DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);</div></pre></td></tr></table></figure>
+<ul>
+<li>很奇怪的是，这里获取到的是一个DiskLruCache.Snapshot对象，这个对象我们该怎么利用呢？很简单，只需要调用它的getInputStream()方法就可以得到缓存文件的输入流了。同样地，getInputStream()方法也需要传一个index参数，这里传入0就好。有了文件的输入流之后，想要把缓存图片显示到界面上就轻而易举了。所以，一段完整的读取缓存，并将图片加载到界面上的代码如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;  </div><div class="line">    String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">    String key = hashKeyForDisk(imageUrl);  </div><div class="line">    DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);  </div><div class="line">    <span class="keyword">if</span> (snapShot != <span class="keyword">null</span>) &#123;  </div><div class="line">        InputStream is = snapShot.getInputStream(<span class="number">0</span>);  </div><div class="line">        Bitmap bitmap = BitmapFactory.decodeStream(is);  </div><div class="line">        mImage.setImageBitmap(bitmap);  </div><div class="line">    &#125;  </div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">    e.printStackTrace();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>我们使用了BitmapFactory的decodeStream()方法将文件流解析成Bitmap对象，然后把它设置到ImageView当中。如果运行一下程序，将会看到如下效果：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%906.png" alt=""></center>
+
+<ul>
+<li>OK，图片已经成功显示出来了。注意这是我们从本地缓存中加载的，而不是从网络上加载的，因此即使在你手机没有联网的情况下，这张图片仍然可以显示出来</li>
+</ul>
+<h2 id="移除缓存"><a href="#移除缓存" class="headerlink" title="移除缓存"></a>移除缓存</h2><ul>
+<li>学习完了写入缓存和读取缓存的方法之后，最难的两个操作你就都已经掌握了，那么接下来要学习的移除缓存对你来说也一定非常轻松了。移除缓存主要是借助DiskLruCache的remove()方法实现的，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException</span></div></pre></td></tr></table></figure>
+<ul>
+<li>相信你已经相当熟悉了，remove()方法中要求传入一个key，然后会删除这个key对应的缓存图片，示例代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;  </div><div class="line">    String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;    </div><div class="line">    String key = hashKeyForDisk(imageUrl);    </div><div class="line">    mDiskLruCache.remove(key);  </div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">    e.printStackTrace();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>用法虽然简单，但是你要知道，这个方法我们并不应该经常去调用它。因为你完全不需要担心缓存的数据过多从而占用SD卡太多空间的问题，DiskLruCache会根据我们在调用open()方法时设定的缓存最大值来自动删除多余的缓存。只有你确定某个key对应的缓存内容已经过期，需要从网络获取最新数据的时候才应该调用remove()方法来移除缓存</li>
+</ul>
+<h2 id="其它API"><a href="#其它API" class="headerlink" title="其它API"></a>其它API</h2><ul>
+<li>除了写入缓存、读取缓存、移除缓存之外，DiskLruCache还提供了另外一些比较常用的API，我们简单学习一下</li>
+</ul>
+<h3 id="size"><a href="#size" class="headerlink" title="size()"></a>size()</h3><ul>
+<li>这个方法会返回当前缓存路径下所有缓存数据的总字节数，以byte为单位，如果应用程序中需要在界面上显示当前缓存数据的总大小，就可以通过调用这个方法计算出来。比如网易新闻中就有这样一个功能，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png" alt=""></center>
+
+<h3 id="flush"><a href="#flush" class="headerlink" title="flush()"></a>flush()</h3><ul>
+<li>这个方法用于将内存中的操作记录同步到日志文件（也就是journal文件）当中。这个方法非常重要，因为DiskLruCache能够正常工作的前提就是要依赖于journal文件中的内容。前面在讲解写入缓存操作的时候我有调用过一次这个方法，但其实并不是每次写入缓存都要调用一次flush()方法的，频繁地调用并不会带来任何好处，只会额外增加同步journal文件的时间。比较标准的做法就是在Activity的onPause()方法中去调用一次flush()方法就可以了</li>
+</ul>
+<h3 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h3><ul>
+<li>这个方法用于将DiskLruCache关闭掉，是和open()方法对应的一个方法。关闭掉了之后就不能再调用DiskLruCache中任何操作缓存数据的方法，通常只应该在Activity的onDestroy()方法中去调用close()方法</li>
+</ul>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h3><ul>
+<li>这个方法用于将所有的缓存数据全部删除，比如说网易新闻中的那个手动清理缓存功能，其实只需要调用一下DiskLruCache的delete()方法就可以实现了</li>
+</ul>
+<h2 id="解读journal"><a href="#解读journal" class="headerlink" title="解读journal"></a>解读journal</h2><ul>
+<li>前面已经提到过，DiskLruCache能够正常工作的前提就是要依赖于journal文件中的内容，因此，能够读懂journal文件对于我们理解DiskLruCache的工作原理有着非常重要的作用。那么journal文件中的内容到底是什么样的呢？我们来打开瞧一瞧吧，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%908.png" alt=""></center>
+
+<ul>
+<li><p>由于现在只缓存了一张图片，所以journal中并没有几行日志，我们一行行进行分析。第一行是个固定的字符串“libcore.io.DiskLruCache”，标志着我们使用的是DiskLruCache技术。第二行是DiskLruCache的版本号，这个值是恒为1的。第三行是应用程序的版本号，我们在open()方法里传入的版本号是什么这里就会显示什么。第四行是valueCount，这个值也是在open()方法中传入的，通常情况下都为1。第五行是一个空行。前五行也被称为journal文件的头，这部分内容还是比较好理解的，但是接下来的部分就要稍微动点脑筋了</p>
+</li>
+<li><p>第六行是以一个DIRTY前缀开始的，后面紧跟着缓存图片的key。通常我们看到DIRTY这个字样都不代表着什么好事情，意味着这是一条脏数据。没错，每当我们调用一次DiskLruCache的edit()方法时，都会向journal文件中写入一条DIRTY记录，表示我们正准备写入一条缓存数据，但不知结果如何。然后调用commit()方法表示写入缓存成功，这时会向journal中写入一条CLEAN记录，意味着这条“脏”数据被“洗干净了”，调用abort()方法表示写入缓存失败，这时会向journal中写入一条REMOVE记录。也就是说，每一行DIRTY的key，后面都应该有一行对应的CLEAN或者REMOVE的记录，否则这条数据就是“脏”的，会被自动删除掉</p>
+</li>
+<li><p>如果你足够细心的话应该还会注意到，第七行的那条记录，除了CLEAN前缀和key之外，后面还有一个152313，这是什么意思呢？其实，DiskLruCache会在每一行CLEAN记录的最后加上该条缓存数据的大小，以字节为单位。152313也就是我们缓存的那张图片的字节数了，换算出来大概是148.74K，和缓存图片刚刚好一样大，如下图所示：</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%909.png" alt=""></center>
+
+<ul>
+<li><p>前面我们所学的size()方法可以获取到当前缓存路径下所有缓存数据的总字节数，其实它的工作原理就是把journal文件中所有CLEAN记录的字节数相加，求出的总合再把它返回而已</p>
+</li>
+<li><p>除了DIRTY、CLEAN、REMOVE之外，还有一种前缀是READ的记录，这个就非常简单了，每当我们调用get()方法去读取一条缓存数据时，就会向journal文件中写入一条READ记录。因此，像网易新闻这种图片和数据量都非常大的程序，journal文件中就可能会有大量的READ记录</p>
+</li>
+<li><p>那么你可能会担心了，如果我不停频繁操作的话，就会不断地向journal文件中写入数据，那这样journal文件岂不是会越来越大？这倒不必担心，DiskLruCache中使用了一个redundantOpCount变量来记录用户操作的次数，每执行一次写入、读取或移除缓存的操作，这个变量值都会加1，当变量值达到2000的时候就会触发重构journal的事件，这时会自动把journal中一些多余的、不必要的记录全部清除掉，保证journal文件的大小始终保持在一个合理的范围内</p>
+</li>
+</ul>
+<h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/28863651" target="_blank" rel="external"> Android DiskLruCache完全解析，硬盘缓存的最佳方案</a></li>
+</ul>
 ]]></content>
     </entry>
     
