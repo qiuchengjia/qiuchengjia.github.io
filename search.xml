@@ -6,47 +6,41 @@
     <entry>
       <title><![CDATA[Android DiskLruCache和LruCache缓存完全解析]]></title>
       <url>http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%20DiskLruCache%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%A1%AC%E7%9B%98%E7%BC%93%E5%AD%98%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88/</url>
-      <content type="html"><![CDATA[<h2 id="LruCache缓存"><a href="#LruCache缓存" class="headerlink" title="LruCache缓存"></a>LruCache缓存</h2><ul>
-<li><p>在你应用程序的UI界面加载一张图片是一件很简单的事情，但是当你需要在界面上加载一大堆图片的时候，情况就变得复杂起来。在很多情况下，（比如使用ListView, GridView 或者 ViewPager 这样的组件），屏幕上显示的图片可以通过滑动屏幕等事件不断地增加，最终导致OOM</p>
+      <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p>防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，而网上关于DiskLruCache的资料也少之又少，因此今天我准备专门写一篇博客来详细讲解DiskLruCache的用法，以及分析它的工作原理，这应该也是目前网上关于DiskLruCache最详细的资料了</p>
 </li>
-<li><p>为了保证内存的使用始终维持在一个合理的范围，通常会把被移除屏幕的图片进行回收处理。此时垃圾回收器也会认为你不再持有这些图片的引用，从而对这些图片进行GC操作。用这种思路来解决问题是非常好的，可是为了能让程序快速运行，在界面上迅速地加载图片，你又必须要考虑到某些图片被回收之后，用户又将它重新滑入屏幕这种情况。这时重新去加载一遍刚刚加载过的图片无疑是性能的瓶颈，你需要想办法去避免这个情况的发生</p>
-</li>
-<li><p>这个时候，使用内存缓存技术可以很好的解决这个问题，它可以让组件快速地重新加载和处理图片。下面我们就来看一看如何使用内存缓存技术来对图片进行缓存，从而让你的应用程序在加载很多图片的时候可以提高响应速度和流畅性</p>
-</li>
-<li><p>内存缓存技术对那些大量占用应用程序宝贵内存的图片提供了快速访问的方法。其中最核心的类是LruCache (此类在android-support-v4的包中提供) 。这个类非常适合用来缓存图片，它的主要算法原理是把最近使用的对象用强引用存储在 LinkedHashMap 中，并且把最近最少使用的对象在缓存值达到预设定值之前从内存中移除</p>
-</li>
-<li><p>在过去，我们经常会使用一种非常流行的内存缓存技术的实现，即软引用或弱引用 (SoftReference or WeakReference)。但是现在已经不再推荐使用这种方式了，因为从 Android 2.3 (API Level 9)开始，垃圾回收器会更倾向于回收持有软引用或弱引用的对象，这让软引用和弱引用变得不再可靠。另外，Android 3.0 (API Level 11)中，图片的数据会存储在本地的内存当中，因而无法用一种可预见的方式将其释放，这就有潜在的风险造成应用程序的内存溢出并崩溃</p>
+<li><p>那么我们先来看一下有哪些应用程序已经使用了DiskLruCache技术。在我所接触的应用范围里，Dropbox、Twitter、网易新闻等都是使用DiskLruCache来进行硬盘缓存的，其中Dropbox和Twitter大多数人应该都没用过，那么我们就从大家最熟悉的网易新闻开始着手分析，来对DiskLruCache有一个最初的认识吧</p>
 </li>
 </ul>
-<p>为了能够选择一个合适的缓存大小给LruCache, 有以下多个因素应该放入考虑范围内，例如：</p>
+<h2 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h2><ul>
+<li>相信所有人都知道，网易新闻中的数据都是从网络上获取的，包括了很多的新闻内容和新闻图片，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%901.png" alt=""></center>
+
 <ul>
-<li><p>你的设备可以为每个应用程序分配多大的内存？</p>
+<li><p>但是不知道大家有没有发现，这些内容和图片在从网络上获取到之后都会存入到本地缓存中，因此即使手机在没有网络的情况下依然能够加载出以前浏览过的新闻。而使用的缓存技术不用多说，自然是DiskLruCache了，那么首先第一个问题，这些数据都被缓存在了手机的什么位置呢？</p>
 </li>
-<li><p>设备屏幕上一次最多能显示多少张图片？有多少图片需要进行预加载，因为有可能很快也会显示在屏幕上？</p>
+<li><p>其实DiskLruCache并没有限制数据的缓存位置，可以自由地进行设定，但是通常情况下多数应用程序都会将缓存的位置选择为 /sdcard/Android/data/<application package="">/cache 这个路径。选择在这个位置有两点好处：第一，这是存储在SD卡上的，因此即使缓存再多的数据也不会对手机的内置存储空间有任何影响，只要SD卡空间足够就行。第二，这个路径被Android系统认定为应用程序的缓存路径，当程序被卸载的时候，这里的数据也会一起被清除掉，这样就不会出现删除程序之后手机上还有很多残留数据的问题</application></p>
 </li>
-<li><p>你的设备的屏幕大小和分辨率分别是多少？一个超高分辨率的设备（例如 Galaxy Nexus) 比起一个较低分辨率的设备（例如 Nexus S），在持有相同数量图片的时候，需要更大的缓存空间</p>
-</li>
-<li><p>图片的尺寸和大小，还有每张图片会占据多少内存空间</p>
-</li>
-<li><p>图片被访问的频率有多高？会不会有一些图片的访问频率比其它图片要高？如果有的话，你也许应该让一些图片常驻在内存当中，或者使用多个LruCache 对象来区分不同组的图片</p>
-</li>
-<li><p>你能维持好数量和质量之间的平衡吗？有些时候，存储多个低像素的图片，而在后台去开线程加载高像素的图片会更加的有效</p>
+<li><p>那么这里还是以网易新闻为例，它的客户端的包名是com.netease.newsreader.activity，因此数据缓存地址就应该是 /sdcard/Android/data/com.netease.newsreader.activity/cache ，我们进入到这个目录中看一下，结果如下图所示：</p>
 </li>
 </ul>
-<p>并没有一个指定的缓存大小可以满足所有的应用程序，这是由你决定的。你应该去分析程序内存的使用情况，然后制定出一个合适的解决方案。一个太小的缓存空间，有可能造成图片频繁地被释放和重新加载，这并没有好处。而一个太大的缓存空间，则有可能还是会引起 java.lang.OutOfMemory 的异常</p>
-<a id="more"></a>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
-<li>下面是一个使用 LruCache 来缓存图片的例子：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> LruCache&lt;String, Bitmap&gt; mMemoryCache;  </div><div class="line">  </div><div class="line"><span class="meta">@Override</span>  </div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">    <span class="comment">// 获取到可用内存的最大值，使用内存超出这个值会引起OutOfMemory异常。  </span></div><div class="line">    <span class="comment">// LruCache通过构造函数传入缓存值，以KB为单位。  </span></div><div class="line">    <span class="keyword">int</span> maxMemory = (<span class="keyword">int</span>) (Runtime.getRuntime().maxMemory() / <span class="number">1024</span>);  </div><div class="line">    <span class="comment">// 使用最大可用内存值的1/8作为缓存的大小。  </span></div><div class="line">    <span class="keyword">int</span> cacheSize = maxMemory / <span class="number">8</span>;  </div><div class="line">    mMemoryCache = <span class="keyword">new</span> LruCache&lt;String, Bitmap&gt;(cacheSize) &#123;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;  </div><div class="line">            <span class="comment">// 重写此方法来衡量每张图片的大小，默认返回图片数量。  </span></div><div class="line">            <span class="keyword">return</span> bitmap.getByteCount() / <span class="number">1024</span>;  </div><div class="line">        &#125;  </div><div class="line">    &#125;;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addBitmapToMemoryCache</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (getBitmapFromMemCache(key) == <span class="keyword">null</span>) &#123;  </div><div class="line">        mMemoryCache.put(key, bitmap);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmapFromMemCache</span><span class="params">(String key)</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> mMemoryCache.get(key);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%902.png" alt=""></center>
+
 <ul>
-<li>在这个例子当中，使用了系统分配给应用程序的八分之一内存来作为缓存大小。在中高配置的手机当中，这大概会有4兆(32/8)的缓存空间。一个全屏幕的 GridView 使用4张 800x480分辨率的图片来填充，则大概会占用1.5兆的空间(800<em>480</em>4)。因此，这个缓存大小可以存储2.5页的图片。<br>当向 ImageView 中加载一张图片时,首先会在 LruCache 的缓存中进行检查。如果找到了相应的键值，则会立刻更新ImageView ，否则开启一个后台线程来加载这张图片</li>
+<li>可以看到有很多个文件夹，因为网易新闻对多种类型的数据都进行了缓存，这里简单起见我们只分析图片缓存就好，所以进入到bitmap文件夹当中。然后你将会看到一堆文件名很长的文件，这些文件命名没有任何规则，完全看不懂是什么意思，但如果你一直向下滚动，将会看到一个名为journal的文件，如下图所示：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadBitmap</span><span class="params">(<span class="keyword">int</span> resId, ImageView imageView)</span> </span>&#123;  </div><div class="line">    <span class="keyword">final</span> String imageKey = String.valueOf(resId);  </div><div class="line">    <span class="keyword">final</span> Bitmap bitmap = getBitmapFromMemCache(imageKey);  </div><div class="line">    <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;  </div><div class="line">        imageView.setImageBitmap(bitmap);  </div><div class="line">    &#125; <span class="keyword">else</span> &#123;  </div><div class="line">        imageView.setImageResource(R.drawable.image_placeholder);  </div><div class="line">        BitmapWorkerTask task = <span class="keyword">new</span> BitmapWorkerTask(imageView);  </div><div class="line">        task.execute(resId);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%904.png" alt=""></center>
+
 <ul>
-<li>BitmapWorkerTask 还要把新加载的图片的键值对放到缓存中</li>
+<li>那么这些文件到底都是什么呢？看到这里相信有些朋友已经是一头雾水了，这里我简单解释一下。上面那些文件名很长的文件就是一张张缓存的图片，每个文件都对应着一张图片，而journal文件是DiskLruCache的一个日志文件，程序对每张图片的操作记录都存放在这个文件中，基本上看到journal这个文件就标志着该程序使用DiskLruCache技术了</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BitmapWorkerTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Integer</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;  </div><div class="line">    <span class="comment">// 在后台加载图片。  </span></div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(Integer... params)</span> </span>&#123;  </div><div class="line">        <span class="keyword">final</span> Bitmap bitmap = decodeSampledBitmapFromResource(  </div><div class="line">                getResources(), params[<span class="number">0</span>], <span class="number">100</span>, <span class="number">100</span>);  </div><div class="line">        addBitmapToMemoryCache(String.valueOf(params[<span class="number">0</span>]), bitmap);  </div><div class="line">        <span class="keyword">return</span> bitmap;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
+<li><p>好了，对DiskLruCache有了最初的认识之后，下面我们来学习一下DiskLruCache的用法吧。由于DiskLruCache并不是由Google官方编写的，所以这个类并没有被包含在Android API当中，我们需要将这个类从网上下载下来，然后手动添加到项目当中。DiskLruCache的源码在Google Source上，地址如下：</p>
+</li>
+<li><p><a href="https://android.googlesource.com/platform/libcore/+/jb-mr2-release/luni/src/main/java/libcore/io/DiskLruCache.java" target="_blank" rel="external">android.googlesource.com/platform/libcore/+/jb-mr2-release/luni/src/main/java/libcore/io/DiskLruCache.java</a></p>
+</li>
+</ul>
 ]]></content>
     </entry>
     
