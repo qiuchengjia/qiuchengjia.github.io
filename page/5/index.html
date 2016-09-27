@@ -333,6 +333,150 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/12/JAVA/Java枚举类/" itemprop="url">
+                  Java枚举类
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-11T22:19:08Z" content="2016-08-11">
+              2016-08-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/12/JAVA/Java枚举类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/JAVA/Java枚举类/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/12/JAVA/Java枚举类/" class="leancloud_visitors" data-flag-title="Java枚举类">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>在java语言中还没有引入枚举类型之前，表示枚举类型的常用模式是声明一组具有int常量。之前我们通常利用public final static 方法定义的代码如下，分别用1 表示春天，2表示夏天，3表示秋天，4表示冬天</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Season</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SPRING = <span class="number">1</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SUMMER = <span class="number">2</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> AUTUMN = <span class="number">3</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WINTER = <span class="number">4</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这种方法称作int枚举模式。可这种模式有什么问题呢，我们都用了那么久了，应该没问题的。通常我们写出来的代码都会考虑它的安全性、易用性和可读性。 首先我们来考虑一下它的类型安全性。当然这种模式不是类型安全的。比如说我们设计一个函数，要求传入春夏秋冬的某个值。但是使用int类型，我们无法保证传入的值为合法。代码如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getChineseSeason</span><span class="params">(<span class="keyword">int</span> season)</span></span>&#123;</div><div class="line">        StringBuffer result = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">switch</span>(season)&#123;</div><div class="line">            <span class="keyword">case</span> Season.SPRING :</div><div class="line">                result.append(<span class="string">"春天"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> Season.SUMMER :</div><div class="line">                result.append(<span class="string">"夏天"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> Season.AUTUMN :</div><div class="line">                result.append(<span class="string">"秋天"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> Season.WINTER :</div><div class="line">                result.append(<span class="string">"冬天"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span> :</div><div class="line">                result.append(<span class="string">"地球没有的季节"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="keyword">this</span>.getChineseSeason(Season.SPRING));<span class="comment">//这是正常的场景</span></div><div class="line"></div><div class="line">        System.out.println(<span class="keyword">this</span>.getChineseSeason(<span class="number">5</span>));</div><div class="line">        <span class="comment">//这个却是不正常的场景，这就导致了类型不安全问题</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>程序getChineseSeason(Season.SPRING)是我们预期的使用方法。可getChineseSeason(5)显然就不是了，而且编译很通过，在运行时会出现什么情况，我们就不得而知了。这显然就不符合Java程序的类型安全</p>
+</li>
+<li><p>接下来我们来考虑一下这种模式的可读性。使用枚举的大多数场合，我都需要方便得到枚举类型的字符串表达式。如果将int枚举常量打印出来，我们所见到的就是一组数字，这是没什么太大的用处。我们可能会想到使用String常量代替int常量。虽然它为这些常量提供了可打印的字符串，但是它会导致性能问题，因为它依赖于字符串的比较操作，所以这种模式也是我们不期望的。 从类型安全性和程序可读性两方面考虑，int和String枚举模式的缺点就显露出来了。幸运的是，从Java1.5发行版本开始，就提出了另一种可以替代的解决方案，可以避免int和String枚举模式的缺点，并提供了许多额外的好处。那就是枚举类型（enum type）。接下来的章节将介绍枚举类型的定义、特征、应用场景和优缺点</p>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/12/JAVA/Java枚举类/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/11/JAVA/Java自动拆箱和装箱/" itemprop="url">
                   Java自动拆箱和装箱
                 </a>
@@ -1048,159 +1192,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/30/JAVA/Java反射/" itemprop="url">
-                  Java反射
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-29T16:18:26Z" content="2016-07-29">
-              2016-07-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/30/JAVA/Java反射/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/JAVA/Java反射/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/30/JAVA/Java反射/" class="leancloud_visitors" data-flag-title="Java反射">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><p>“<strong>反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。</strong>”这个概念常常会和内省（Introspection）混淆，以下是这两个术语在Wikipedia中的解释：</p>
-<ul>
-<li><p>内省用于在运行时检测某个对象的类型和其包含的属性</p>
-</li>
-<li><p>反射用于在运行时检测和修改某个对象的结构及其行为</p>
-</li>
-</ul>
-<p>从它们的定义可以看出，内省是反射的一个子集。有些语言支持内省，但并不支持反射，如C++</p>
-<ul>
-<li>内省示例：instanceof 运算符用于检测某个对象是否属于特定的类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Dog) &#123;</div><div class="line">    Dog d = (Dog) obj;</div><div class="line">    d.bark();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>反射示例：Class.forName()方法可以通过类或接口的名称（一个字符串或完全限定名）来获取对应的Class对象。forName方法会触发类的初始化</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用反射</span></div><div class="line">Class&lt;?&gt; c = Class.forName(<span class="string">"classpath.and.classname"</span>);</div><div class="line">Object dog = c.newInstance();</div><div class="line">Method m = c.getDeclaredMethod(<span class="string">"bark"</span>, <span class="keyword">new</span> Class&lt;?&gt;[<span class="number">0</span>]);</div><div class="line">m.invoke(dog);</div></pre></td></tr></table></figure>
-<ul>
-<li>在Java中，反射更接近于内省，因为你无法改变一个对象的结构。虽然一些API可以用来修改方法和属性的可见性，但并不能修改结构
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/30/JAVA/Java反射/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1241,7 +1237,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">101</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
