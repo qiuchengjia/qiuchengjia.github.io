@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-28T08:25:58.847Z</updated>
+  <updated>2016-09-28T08:29:11.543Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title> Android瀑布流照片墙实现，体验不规则排列的美感</title>
+    <link href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%80%91%E5%B8%83%E6%B5%81%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%93%E9%AA%8C%E4%B8%8D%E8%A7%84%E5%88%99%E6%8E%92%E5%88%97%E7%9A%84%E7%BE%8E%E6%84%9F/"/>
+    <id>http://www.qiuchengjia.cn/2016/09/29/Android项目实战/Android瀑布流照片墙实现，体验不规则排列的美感/</id>
+    <published>2016-09-28T16:28:51.000Z</published>
+    <updated>2016-09-28T08:29:11.543Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+    
+    </summary>
+    
+      <category term="Android项目实战" scheme="http://www.qiuchengjia.cn/categories/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
+    
+    
+      <category term="Android项目实战" scheme="http://www.qiuchengjia.cn/tags/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Android照片墙应用实现，再多的图片也不怕崩溃</title>
@@ -344,7 +368,7 @@
     <link href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%E9%AB%98%E6%95%88%E5%8A%A0%E8%BD%BD%E5%A4%A7%E5%9B%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E5%92%8CLruCache%E7%BC%93%E5%AD%98/"/>
     <id>http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android高效加载大图、多图和LruCache缓存/</id>
     <published>2016-09-27T14:40:43.000Z</published>
-    <updated>2016-09-27T11:52:09.312Z</updated>
+    <updated>2016-09-28T08:28:28.299Z</updated>
     
     <content type="html"><![CDATA[<h2 id="高效加载大图"><a href="#高效加载大图" class="headerlink" title="高效加载大图"></a>高效加载大图</h2><ul>
 <li>我们在编写Android程序的时候经常要用到许多图片，不同图片总是会有不同的形状、不同的大小，但在大多数情况下，这些图片都会大于我们程序所需要的大小。比如说系统图片库里展示的图片大都是用手机摄像头拍出来的，这些图片的分辨率会比我们手机屏幕的分辨率高得多。大家应该知道，我们编写的应用程序都是有一定内存限制的，程序占用了过高的内存就容易出现OOM(OutOfMemory)异常。我们可以通过下面的代码看出每个应用程序最高可用内存是多少</li>
@@ -428,6 +452,9 @@
 <li>BitmapWorkerTask 还要把新加载的图片的键值对放到缓存中</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BitmapWorkerTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Integer</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;  </div><div class="line">    <span class="comment">// 在后台加载图片。  </span></div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(Integer... params)</span> </span>&#123;  </div><div class="line">        <span class="keyword">final</span> Bitmap bitmap = decodeSampledBitmapFromResource(  </div><div class="line">                getResources(), params[<span class="number">0</span>], <span class="number">100</span>, <span class="number">100</span>);  </div><div class="line">        addBitmapToMemoryCache(String.valueOf(params[<span class="number">0</span>]), bitmap);  </div><div class="line">        <span class="keyword">return</span> bitmap;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>掌握了以上两种方法，不管是要在程序中加载超大图片，还是要加载大量图片，都不用担心OOM的问题了!不过仅仅是理论地介绍不知道大家能不能完全理解，在后面的文章中我会演示如何在实际程序中灵活运用上述技巧来避免程序OOM，感兴趣的朋友请继续阅读 <a href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83/">Android照片墙应用实现，再多的图片也不怕崩溃</a></li>
+</ul>
 <h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
 <li><a href="http://blog.csdn.net/guolin_blog/article/details/9316683" target="_blank" rel="external">Android高效加载大图、多图解决方案，有效避免程序OOM</a></li>
 </ul>
@@ -2666,88 +2693,6 @@
     
     
       <category term="JAVA命令学习" scheme="http://www.qiuchengjia.cn/tags/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java单例模式的七种写法</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA设计模式/Java单例模式的七种写法/</id>
-    <published>2016-08-11T23:37:17.000Z</published>
-    <updated>2016-09-26T11:54:28.077Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="第一种（懒汉，线程不安全）："><a href="#第一种（懒汉，线程不安全）：" class="headerlink" title="第一种（懒汉，线程不安全）："></a>第一种（懒汉，线程不安全）：</h2><ul>
-<li>类初始化的时候并不创建，想用的时候创建</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="第二种（懒汉，线程安全）："><a href="#第二种（懒汉，线程安全）：" class="headerlink" title="第二种（懒汉，线程安全）："></a>第二种（懒汉，线程安全）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这种写法能够在多线程中很好的工作，而且看起来它也具备很好的lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)，但是，遗憾的是，效率很低，99%情况下不需要同步</li>
-</ul>
-<a id="more"></a>
-<h2 id="第三种（饿汉）："><a href="#第三种（饿汉）：" class="headerlink" title="第三种（饿汉）："></a>第三种（饿汉）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这种方式基于classloder机制，避免了多线程的同步(classloder在加载类的时候是同步的)问题，不过，instance在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用getInstance方法， 但是也不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化instance显然没有达到lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)的效果</li>
-</ul>
-<h2 id="第四种（饿汉，变种）："><a href="#第四种（饿汉，变种）：" class="headerlink" title="第四种（饿汉，变种）："></a>第四种（饿汉，变种）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> Singleton instance = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">static</span> &#123;  </div><div class="line">    instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>表面上看起来差别挺大，其实更第三种方式差不多，都是在类初始化即实例化instance</li>
-</ul>
-<h2 id="第五种（静态内部类）："><a href="#第五种（静态内部类）：" class="headerlink" title="第五种（静态内部类）："></a>第五种（静态内部类）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> SingletonHolder.INSTANCE;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这种方式同样利用了classloder的机制来保证初始化instance时只有一个线程，它跟第三种和第四种方式不同的是（很细微的差别）：第三种和第四种方式是只要Singleton类被装载了，那么instance就会被实例化（没有达到lazy loading效果），而这种方式是Singleton类被装载了，instance不一定被初始化。因为SingletonHolder类没有被主动使用，只有显示通过调用getInstance方法时，才会显示装载SingletonHolder类，从而实例化instance。想象一下，如果实例化instance很消耗资源，我想让他延迟加载，另外一方面，我不希望在Singleton类加载时就实例化，因为我不能确保Singleton类还可能在其他的地方被主动使用从而被加载，那么这个时候实例化instance显然是不合适的。这个时候，这种方式相比第三和第四种方式就显得很合理</li>
-</ul>
-<h2 id="第六种（枚举）："><a href="#第六种（枚举）：" class="headerlink" title="第六种（枚举）："></a>第六种（枚举）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;  </div><div class="line">    INSTANCE;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whateverMethod</span><span class="params">()</span> </span>&#123;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这种方式是Effective Java作者Josh Bloch 提倡的方式，它不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象，可谓是很坚强的壁垒啊，在<a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/">Java枚举类</a>中有详细介绍枚举的线程安全问题和序列化问题，不过，个人认为由于1.5中才加入enum特性，用这种方式写不免让人感觉生疏，在实际工作中，我也很少看见有人这么写过</li>
-</ul>
-<h2 id="第七种（双重校验锁）："><a href="#第七种（双重校验锁）：" class="headerlink" title="第七种（双重校验锁）："></a>第七种（双重校验锁）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;  </div><div class="line">        <span class="keyword">synchronized</span> (Singleton.class) &#123;  </div><div class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;  </div><div class="line">            singleton = <span class="keyword">new</span> Singleton();  </div><div class="line">        &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> singleton;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有两个问题需要注意：</p>
-<ol>
-<li><p>如果单例由不同的类装载器装入，那便有可能存在多个单例类的实例。假定不是远端存取，例如一些servlet容器对每个servlet使用完全不同的类装载器，这样的话如果有两个servlet访问一个单例类，它们就都会有各自的实例</p>
-</li>
-<li><p>如果Singleton实现了java.io.Serializable接口，那么这个类的实例就可能被序列化和复原。不管怎样，如果你序列化一个单例类的对象，接下来复原多个那个对象，那你就会有多个单例类的实例</p>
-</li>
-</ol>
-<ul>
-<li>对第一个问题修复的办法是：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Class <span class="title">getClass</span><span class="params">(String classname)</span>  </span></div><div class="line"><span class="keyword">throws</span> ClassNotFoundException &#123;  </div><div class="line">    ClassLoader classLoader = Thread.currentThread().getContextClassLoader();</div><div class="line">    <span class="keyword">if</span>(classLoader == <span class="keyword">null</span>)     </div><div class="line">          classLoader = Singleton.class.getClassLoader();     </div><div class="line">          <span class="keyword">return</span> (classLoader.loadClass(classname));     </div><div class="line">       &#125;     </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>对第二个问题修复的办法是：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;     </div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();     </div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;     </div><div class="line"></div><div class="line">   &#125;     </div><div class="line">   <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> </span>&#123;     </div><div class="line">            <span class="keyword">return</span> INSTANCE;     </div><div class="line">      &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>对我来说，我比较喜欢第三种和第五种方式，简单易懂，而且在JVM层实现了线程安全（如果不是多个类加载器环境），一般的情况下，我会使用第三种方式，只有在要明确实现lazy loading效果时才会使用第五种方式，另外，如果涉及到反序列化创建对象时我会试着使用枚举的方式来实现单例，不过，我一直会保证我的程序是线程安全的，而且我永远不会使用第一种和第二种方式，如果有其他特殊的需求，我可能会使用第七种方式，毕竟，JDK1.5已经没有双重检查锁定的问题了</p>
-</li>
-<li><p>不过一般来说，第一种不算单例，第四种和第三种就是一种，如果算的话，第五种也可以分开写了。所以说，一般单例都是五种写法。懒汉，恶汉，双重校验锁，枚举和静态内部类</p>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><p><a href="http://www.hollischuang.com/archives/205" target="_blank" rel="external">[转+注]单例模式的七种写法</a></p>
-</li>
-<li><p><a href="http://cantellow.iteye.com/blog/838473" target="_blank" rel="external">单例模式的七种写法</a></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;第一种（懒汉，线程不安全）：&quot;&gt;&lt;a href=&quot;#第一种（懒汉，线程不安全）：&quot; class=&quot;headerlink&quot; title=&quot;第一种（懒汉，线程不安全）：&quot;&gt;&lt;/a&gt;第一种（懒汉，线程不安全）：&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;类初始化的时候并不创建，想用的时候创建&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (instance == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;第二种（懒汉，线程安全）：&quot;&gt;&lt;a href=&quot;#第二种（懒汉，线程安全）：&quot; class=&quot;headerlink&quot; title=&quot;第二种（懒汉，线程安全）：&quot;&gt;&lt;/a&gt;第二种（懒汉，线程安全）：&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (instance == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;这种写法能够在多线程中很好的工作，而且看起来它也具备很好的lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)，但是，遗憾的是，效率很低，99%情况下不需要同步&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="JAVA设计模式" scheme="http://www.qiuchengjia.cn/categories/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="JAVA设计模式" scheme="http://www.qiuchengjia.cn/tags/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   

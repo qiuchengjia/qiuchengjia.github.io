@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="戎码人生">
 <meta property="og:description" content="高效加载大图
 我们在编写Android程序的时候经常要用到许多图片，不同图片总是会有不同的形状、不同的大小，但在大多数情况下，这些图片都会大于我们程序所需要的大小。比如说系统图片库里展示的图片大都是用手机摄像头拍出来的，这些图片的分辨率会比我们手机屏幕的分辨率高得多。大家应该知道，我们编写的应用程序都是有一定内存限制的，程序占用了过高的内存就容易出现OOM(OutOfMemory)异常。我们可以通">
-<meta property="og:updated_time" content="2016-09-27T11:52:09.312Z">
+<meta property="og:updated_time" content="2016-09-28T08:28:28.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android高效加载大图、多图和LruCache缓存">
 <meta name="twitter:description" content="高效加载大图
@@ -491,6 +491,9 @@
 <li>BitmapWorkerTask 还要把新加载的图片的键值对放到缓存中</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BitmapWorkerTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Integer</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;  </div><div class="line">    <span class="comment">// 在后台加载图片。  </span></div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(Integer... params)</span> </span>&#123;  </div><div class="line">        <span class="keyword">final</span> Bitmap bitmap = decodeSampledBitmapFromResource(  </div><div class="line">                getResources(), params[<span class="number">0</span>], <span class="number">100</span>, <span class="number">100</span>);  </div><div class="line">        addBitmapToMemoryCache(String.valueOf(params[<span class="number">0</span>]), bitmap);  </div><div class="line">        <span class="keyword">return</span> bitmap;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>掌握了以上两种方法，不管是要在程序中加载超大图片，还是要加载大量图片，都不用担心OOM的问题了!不过仅仅是理论地介绍不知道大家能不能完全理解，在后面的文章中我会演示如何在实际程序中灵活运用上述技巧来避免程序OOM，感兴趣的朋友请继续阅读 <a href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83/">Android照片墙应用实现，再多的图片也不怕崩溃</a></li>
+</ul>
 <h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
 <li><a href="http://blog.csdn.net/guolin_blog/article/details/9316683" target="_blank" rel="external">Android高效加载大图、多图解决方案，有效避免程序OOM</a></li>
 </ul>
@@ -612,7 +615,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
