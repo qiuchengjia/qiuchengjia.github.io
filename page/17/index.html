@@ -333,6 +333,152 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" itemprop="url">
+                  CentOS从php5.3升级到php5.5
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T15:31:35Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/linux/CentOS从php5-3升级到php5-5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" class="leancloud_visitors" data-flag-title="CentOS从php5.3升级到php5.5">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>首先检查php版本</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php  --version</div></pre></td></tr></table></figure>
+<ul>
+<li>增加 yum repository 以便下载php</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http:<span class="comment">//mirror.webtatic.com/yum/el6/latest.rpm</span></div></pre></td></tr></table></figure>
+<ul>
+<li>安装php5.5</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install php55w php55w-opcache</div></pre></td></tr></table></figure>
+<ul>
+<li>为了升级取代原来5.3档案</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install yum-plugin-replace  </div><div class="line">  </div><div class="line">yum replace php-common --replace-with=php55w-common</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/" itemprop="url">
                   Excel数据大量导入MySQL--MySQL数据换行符回车符替换处理
                 </a>
@@ -413,7 +559,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" rel="gallery_citmmpcxg0046n9aeg9gh0ylu"
+                 href="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" rel="gallery_citmndoj90051tnae7256s916"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" itemprop="contentUrl"/>
               </a>
@@ -851,7 +997,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20150410180333267" rel="gallery_citmmpcr9000nn9aewv3kcdgr"
+                 href="http://img.blog.csdn.net/20150410180333267" rel="gallery_citmndoal000ntnae9v1gbppv"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20150410180333267" itemprop="contentUrl"/>
               </a>
@@ -872,137 +1018,6 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> &gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ScrollView</span> </div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:scrollbars</span>=<span class="string">"none"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">RelativeLayout</span> </div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">com.hengye.library.view.util.ListViewNoScroll</span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/titlebar_course_table_listview"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:divider</span>=<span class="string">"@null"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;/<span class="name">com.hengye.library.view.util.ListViewNoScroll</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">FrameLayout</span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/titlebar_course_table_framelayout"</span> </div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RelativeLayout</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"200dp"</span></div><div class="line">                <span class="attr">android:layout_marginLeft</span>=<span class="string">"200dp"</span></div><div class="line">                <span class="attr">android:background</span>=<span class="string">"@drawable/ic_course_bg_huang_multi"</span></div><div class="line">                <span class="attr">android:visibility</span>=<span class="string">"gone"</span>&gt;</span></div><div class="line"></div><div class="line">                <span class="tag">&lt;<span class="name">TextView</span></div><div class="line">                    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">                    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">                    <span class="attr">android:text</span>=<span class="string">"中国近现代史纲要@3-102"</span></div><div class="line">                    <span class="attr">android:textColor</span>=<span class="string">"@color/white"</span></div><div class="line">                    <span class="attr">android:gravity</span>=<span class="string">"center"</span>/&gt;</span>  </div><div class="line">            <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span>       </div><div class="line">        <span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span>         </div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/01/Android/Android仿超级课程表的课程界面设计/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" itemprop="url">
-                  Android中如何一次性finish掉以前打开的所有的activity
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T14:29:28Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" class="leancloud_visitors" data-flag-title="Android中如何一次性finish掉以前打开的所有的activity">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityManagerApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Activity&gt; destoryMap = <span class="keyword">new</span> HashMap&lt;&gt;();  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ActivityManagerApplication</span><span class="params">()</span> </span>&#123;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="comment">/** </div><div class="line">     * 添加到销毁队列 </div><div class="line">     * </div><div class="line">     * <span class="doctag">@param</span> activity 要销毁的activity </div><div class="line">     */</span>  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addDestoryActivity</span><span class="params">(Activity activity,String activityName)</span> </span>&#123;  </div><div class="line">        destoryMap.put(activityName,activity);  </div><div class="line">    &#125;  </div><div class="line">    <span class="comment">/** </div><div class="line">    *销毁指定Activity </div><div class="line">    */</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">destoryActivity</span><span class="params">(String activityName)</span> </span>&#123;  </div><div class="line">       Set&lt;String&gt; keySet=destoryMap.keySet();  </div><div class="line">        <span class="keyword">for</span> (String key:keySet)&#123;  </div><div class="line">            destoryMap.get(key).finish();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1077,7 +1092,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1085,7 +1100,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1094,7 +1109,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
