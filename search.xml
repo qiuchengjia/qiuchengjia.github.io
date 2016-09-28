@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[Android DiskLruCache和LruCache缓存完全解析]]></title>
+      <title><![CDATA[Android DiskLruCache完全解析，硬盘缓存的最佳方案]]></title>
       <url>http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%20DiskLruCache%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%A1%AC%E7%9B%98%E7%BC%93%E5%AD%98%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><p>防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，而网上关于DiskLruCache的资料也少之又少，因此今天我准备专门写一篇博客来详细讲解DiskLruCache的用法，以及分析它的工作原理，这应该也是目前网上关于DiskLruCache最详细的资料了</p>

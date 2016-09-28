@@ -109,7 +109,7 @@
 <meta name="description" content="概述
 防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android DiskLruCache和LruCache缓存完全解析">
+<meta property="og:title" content="Android DiskLruCache完全解析，硬盘缓存的最佳方案">
 <meta property="og:url" content="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/index.html">
 <meta property="og:site_name" content="戎码人生">
 <meta property="og:description" content="概述
@@ -122,9 +122,9 @@
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%908.png">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%909.png">
-<meta property="og:updated_time" content="2016-09-27T12:28:24.303Z">
+<meta property="og:updated_time" content="2016-09-28T08:10:07.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android DiskLruCache和LruCache缓存完全解析">
+<meta name="twitter:title" content="Android DiskLruCache完全解析，硬盘缓存的最佳方案">
 <meta name="twitter:description" content="概述
 防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，">
 <meta name="twitter:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%901.png">
@@ -150,7 +150,7 @@
 
   <link rel="canonical" href="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/"/>
 
-  <title> Android DiskLruCache和LruCache缓存完全解析 | 戎码人生 </title>
+  <title> Android DiskLruCache完全解析，硬盘缓存的最佳方案 | 戎码人生 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -343,7 +343,7 @@
             
             
               
-                Android DiskLruCache和LruCache缓存完全解析
+                Android DiskLruCache完全解析，硬盘缓存的最佳方案
               
             
           </h1>
@@ -396,7 +396,7 @@
 
           
           
-             <span id="/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/" class="leancloud_visitors" data-flag-title="Android DiskLruCache和LruCache缓存完全解析">
+             <span id="/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/" class="leancloud_visitors" data-flag-title="Android DiskLruCache完全解析，硬盘缓存的最佳方案">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -678,7 +678,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/"
-           data-title="Android DiskLruCache和LruCache缓存完全解析" data-url="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/">
+           data-title="Android DiskLruCache完全解析，硬盘缓存的最佳方案" data-url="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/">
       </div>
     
   </div>
