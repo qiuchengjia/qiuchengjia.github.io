@@ -116,7 +116,7 @@
 照片墙这种功能现在应该算是挺常见了，在很多应用中你都可以经常看到照片墙的身影。它的设计思路其实也非常简单，用一个GridView控件当作“墙”，然后随着GridView的滚动将一张张照片贴在“墙”上，这些照片可以是手机本地中存储的，也可以是从网上下载的。制作类似于这种的功能的应用，有一个非常重要的问题需要考虑，就是图片资源何时应该释放。因为随着GridView的滚动，加载的图片可能会越来越多">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/%20Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%831.gif">
 <meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83.png">
-<meta property="og:updated_time" content="2016-09-28T08:30:47.635Z">
+<meta property="og:updated_time" content="2016-09-29T04:21:23.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android照片墙应用实现，再多的图片也不怕崩溃">
 <meta name="twitter:description" content="概述
@@ -474,9 +474,8 @@
 </ul>
 <center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83.png" alt=""></center>
 
-<ul>
-<li>本篇文章的重点在于如何对图片进行更好的回收，因此照片墙只是简单地使用GridView进行了展示，想要看更酷更炫的照片墙效果的朋友，可以参考后面的一篇文章 <a href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%80%91%E5%B8%83%E6%B5%81%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%93%E9%AA%8C%E4%B8%8D%E8%A7%84%E5%88%99%E6%8E%92%E5%88%97%E7%9A%84%E7%BE%8E%E6%84%9F/">Android瀑布流照片墙实现，体验不规则排列的美感</a></li>
-</ul>
+
+
 <h2 id="源码和apk下载"><a href="#源码和apk下载" class="headerlink" title="源码和apk下载"></a>源码和apk下载</h2><ul>
 <li><p><a href="http://oe7guoyyy.bkt.clouddn.com/%20Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83.zip" target="_blank" rel="external">源码</a></p>
 </li>
@@ -523,10 +522,6 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/29/Android项目实战/Android瀑布流照片墙实现，体验不规则排列的美感/" rel="prev" title=" Android瀑布流照片墙实现，体验不规则排列的美感">
-                 Android瀑布流照片墙实现，体验不规则排列的美感 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,7 +599,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

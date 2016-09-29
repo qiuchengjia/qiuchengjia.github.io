@@ -3,72 +3,9 @@
 
 
     
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2016-09-28T11:55:49.654Z</lastmod>
-    <data>
-        <display>
-        <title>优秀网站和博客</title>
-        <pubTime>2016-06-23T20:43:45.000Z</pubTime>
-        
-        <tag>博客</tag>
-         
-        <tag>网站</tag>
-         
-         
-           
-             
-              <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%20DiskLruCache%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%A1%AC%E7%9B%98%E7%BC%93%E5%AD%98%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2016-09-28T08:33:29.051Z</lastmod>
-    <data>
-        <display>
-        <title>Android DiskLruCache完全解析，硬盘缓存的最佳方案</title>
-        <pubTime>2016-09-27T15:44:34.000Z</pubTime>
-        
-        <tag>Android进阶之路</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android进阶之路" url="http://www.qiuchengjia.cn/categories/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E5%AE%8C%E7%BE%8E%E7%BB%93%E5%90%88LruCache%E5%92%8CDiskLruCache/</loc>
-    <lastmod>2016-09-28T08:31:31.187Z</lastmod>
-    <data>
-        <display>
-        <title>Android照片墙完整版，完美结合LruCache和DiskLruCache</title>
-        <pubTime>2016-09-28T16:31:13.000Z</pubTime>
-        
-        <tag>Android项目实战</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android项目实战" url="http://www.qiuchengjia.cn/categories/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
   <url>
     <loc>http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83/</loc>
-    <lastmod>2016-09-28T08:30:47.635Z</lastmod>
+    <lastmod>2016-09-29T04:21:23.350Z</lastmod>
     <data>
         <display>
         <title>Android照片墙应用实现，再多的图片也不怕崩溃</title>
@@ -87,19 +24,42 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%80%91%E5%B8%83%E6%B5%81%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%93%E9%AA%8C%E4%B8%8D%E8%A7%84%E5%88%99%E6%8E%92%E5%88%97%E7%9A%84%E7%BE%8E%E6%84%9F/</loc>
-    <lastmod>2016-09-28T08:29:11.543Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%20DiskLruCache%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%A1%AC%E7%9B%98%E7%BC%93%E5%AD%98%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2016-09-29T04:20:50.665Z</lastmod>
     <data>
         <display>
-        <title> Android瀑布流照片墙实现，体验不规则排列的美感</title>
-        <pubTime>2016-09-28T16:28:51.000Z</pubTime>
+        <title>Android DiskLruCache完全解析，硬盘缓存的最佳方案</title>
+        <pubTime>2016-09-27T15:44:34.000Z</pubTime>
         
-        <tag>Android项目实战</tag>
+        <tag>Android进阶之路</tag>
          
          
            
              
-              <breadCrumb title="Android项目实战" url="http://www.qiuchengjia.cn/categories/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
+              <breadCrumb title="Android进阶之路" url="http://www.qiuchengjia.cn/categories/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2016-09-28T11:55:49.654Z</lastmod>
+    <data>
+        <display>
+        <title>优秀网站和博客</title>
+        <pubTime>2016-06-23T20:43:45.000Z</pubTime>
+        
+        <tag>博客</tag>
+         
+        <tag>网站</tag>
+         
+         
+           
+             
+              <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
           
         </display>
     </data>
@@ -211,6 +171,52 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E7%9A%84shape%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E5%A4%A7%E5%85%A8/</loc>
+    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
+    <data>
+        <display>
+        <title> Android中的shape中的属性大全</title>
+        <pubTime>2016-06-01T14:22:57.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>shape</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%BB%BF%E8%B6%85%E7%BA%A7%E8%AF%BE%E7%A8%8B%E8%A1%A8%E7%9A%84%E8%AF%BE%E7%A8%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
+    <data>
+        <display>
+        <title>Android仿超级课程表的课程界面设计</title>
+        <pubTime>2016-06-01T14:31:01.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>超级课程表</tag>
+         
+        <tag>UI</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/30/Android/AndroidStudio%E6%8C%87%E5%AE%9Agit%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2016-09-26T11:54:28.097Z</lastmod>
     <data>
@@ -255,118 +261,12 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%BB%BF%E8%B6%85%E7%BA%A7%E8%AF%BE%E7%A8%8B%E8%A1%A8%E7%9A%84%E8%AF%BE%E7%A8%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
-    <data>
-        <display>
-        <title>Android仿超级课程表的课程界面设计</title>
-        <pubTime>2016-06-01T14:31:01.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>超级课程表</tag>
-         
-        <tag>UI</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E7%9A%84shape%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E5%A4%A7%E5%85%A8/</loc>
-    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
-    <data>
-        <display>
-        <title> Android中的shape中的属性大全</title>
-        <pubTime>2016-06-01T14:22:57.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>shape</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Service%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2016-09-26T11:54:28.093Z</lastmod>
     <data>
         <display>
         <title>Android Service完全解析</title>
         <pubTime>2016-09-11T17:18:03.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Gneymotion%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%92%8COracle-VM-VirtualBox%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
-    <data>
-        <display>
-        <title>Gneymotion无法启动和Oracle VM VirtualBox常见问题</title>
-        <pubTime>2016-06-01T14:44:14.000Z</pubTime>
-        
-        <tag>genymotion</tag>
-         
-         
-           
-             
-              <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/11/Android/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
-    <data>
-        <display>
-        <title>Activity生命周期详解</title>
-        <pubTime>2016-09-10T20:17:13.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/04/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/</loc>
-    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
-    <data>
-        <display>
-        <title>Android api level对照表</title>
-        <pubTime>2016-07-03T18:48:03.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -421,12 +321,72 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Gneymotion%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%92%8COracle-VM-VirtualBox%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <data>
+        <display>
+        <title>Gneymotion无法启动和Oracle VM VirtualBox常见问题</title>
+        <pubTime>2016-06-01T14:44:14.000Z</pubTime>
+        
+        <tag>genymotion</tag>
+         
+         
+           
+             
+              <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/09/11/Android/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <data>
+        <display>
+        <title>Activity生命周期详解</title>
+        <pubTime>2016-09-10T20:17:13.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90/</loc>
     <lastmod>2016-09-26T11:54:28.089Z</lastmod>
     <data>
         <display>
         <title>Android Broadcast广播机制分析</title>
         <pubTime>2016-09-11T19:06:46.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/07/04/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/</loc>
+    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <data>
+        <display>
+        <title>Android api level对照表</title>
+        <pubTime>2016-07-03T18:48:03.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -881,12 +841,12 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>Java垃圾收集机制</title>
-        <pubTime>2016-07-23T22:57:23.000Z</pubTime>
+        <title>Java语法糖</title>
+        <pubTime>2016-07-23T21:17:40.000Z</pubTime>
         
         <tag>JVM</tag>
          
@@ -1121,6 +1081,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
+    <data>
+        <display>
+        <title>Java垃圾收集机制</title>
+        <pubTime>2016-07-23T22:57:23.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
@@ -1134,26 +1114,6 @@
            
              
               <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/</loc>
-    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
-    <data>
-        <display>
-        <title>Java语法糖</title>
-        <pubTime>2016-07-23T21:17:40.000Z</pubTime>
-        
-        <tag>JVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
           
         </display>
     </data>

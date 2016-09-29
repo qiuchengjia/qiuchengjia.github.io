@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-09-28T08:31:31.187Z</updated>
+  <updated>2016-09-29T04:21:23.350Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -16,59 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Android照片墙完整版，完美结合LruCache和DiskLruCache</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E5%AE%8C%E7%BE%8E%E7%BB%93%E5%90%88LruCache%E5%92%8CDiskLruCache/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/29/Android项目实战/Android照片墙完整版，完美结合LruCache和DiskLruCache/</id>
-    <published>2016-09-28T16:31:13.000Z</published>
-    <updated>2016-09-28T08:31:31.187Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-    
-    </summary>
-    
-      <category term="Android项目实战" scheme="http://www.qiuchengjia.cn/categories/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-    
-      <category term="Android项目实战" scheme="http://www.qiuchengjia.cn/tags/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> Android瀑布流照片墙实现，体验不规则排列的美感</title>
-    <link href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%80%91%E5%B8%83%E6%B5%81%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%93%E9%AA%8C%E4%B8%8D%E8%A7%84%E5%88%99%E6%8E%92%E5%88%97%E7%9A%84%E7%BE%8E%E6%84%9F/"/>
-    <id>http://www.qiuchengjia.cn/2016/09/29/Android项目实战/Android瀑布流照片墙实现，体验不规则排列的美感/</id>
-    <published>2016-09-28T16:28:51.000Z</published>
-    <updated>2016-09-28T08:29:11.543Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-    
-    </summary>
-    
-      <category term="Android项目实战" scheme="http://www.qiuchengjia.cn/categories/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-    
-      <category term="Android项目实战" scheme="http://www.qiuchengjia.cn/tags/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android照片墙应用实现，再多的图片也不怕崩溃</title>
     <link href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83/"/>
     <id>http://www.qiuchengjia.cn/2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/</id>
     <published>2016-09-28T16:11:33.000Z</published>
-    <updated>2016-09-28T08:30:47.635Z</updated>
+    <updated>2016-09-29T04:21:23.350Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><p>照片墙这种功能现在应该算是挺常见了，在很多应用中你都可以经常看到照片墙的身影。它的设计思路其实也非常简单，用一个GridView控件当作“墙”，然后随着GridView的滚动将一张张照片贴在“墙”上，这些照片可以是手机本地中存储的，也可以是从网上下载的。制作类似于这种的功能的应用，有一个非常重要的问题需要考虑，就是图片资源何时应该释放。因为随着GridView的滚动，加载的图片可能会越来越多，如果没有一种合理的机制对图片进行释放，那么当图片达到一定上限时，程序就必然会崩溃</p>
@@ -132,9 +84,8 @@
 </ul>
 <center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83.png" alt=""></center>
 
-<ul>
-<li>本篇文章的重点在于如何对图片进行更好的回收，因此照片墙只是简单地使用GridView进行了展示，想要看更酷更炫的照片墙效果的朋友，可以参考后面的一篇文章 <a href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%80%91%E5%B8%83%E6%B5%81%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BD%93%E9%AA%8C%E4%B8%8D%E8%A7%84%E5%88%99%E6%8E%92%E5%88%97%E7%9A%84%E7%BE%8E%E6%84%9F/">Android瀑布流照片墙实现，体验不规则排列的美感</a></li>
-</ul>
+
+
 <h2 id="源码和apk下载"><a href="#源码和apk下载" class="headerlink" title="源码和apk下载"></a>源码和apk下载</h2><ul>
 <li><p><a href="http://oe7guoyyy.bkt.clouddn.com/%20Android%E7%85%A7%E7%89%87%E5%A2%99%E5%BA%94%E7%94%A8%E5%AE%9E%E7%8E%B0%EF%BC%8C%E5%86%8D%E5%A4%9A%E7%9A%84%E5%9B%BE%E7%89%87%E4%B9%9F%E4%B8%8D%E6%80%95%E5%B4%A9%E6%BA%83.zip" target="_blank" rel="external">源码</a></p>
 </li>
@@ -173,7 +124,7 @@
     <link href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%20DiskLruCache%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E7%A1%AC%E7%9B%98%E7%BC%93%E5%AD%98%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/</id>
     <published>2016-09-27T15:44:34.000Z</published>
-    <updated>2016-09-28T08:33:29.051Z</updated>
+    <updated>2016-09-29T04:20:50.665Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li><p>防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，而网上关于DiskLruCache的资料也少之又少，因此今天我准备专门写一篇博客来详细讲解DiskLruCache的用法，以及分析它的工作原理，这应该也是目前网上关于DiskLruCache最详细的资料了</p>
@@ -362,7 +313,7 @@
 </li>
 <li><p>那么你可能会担心了，如果我不停频繁操作的话，就会不断地向journal文件中写入数据，那这样journal文件岂不是会越来越大？这倒不必担心，DiskLruCache中使用了一个redundantOpCount变量来记录用户操作的次数，每执行一次写入、读取或移除缓存的操作，这个变量值都会加1，当变量值达到2000的时候就会触发重构journal的事件，这时会自动把journal中一些多余的、不必要的记录全部清除掉，保证journal文件的大小始终保持在一个合理的范围内</p>
 </li>
-<li><p>好了，这样的话我们就算是把DiskLruCache的用法以及简要的工作原理分析完了。至于DiskLruCache的源码还是比较简单的， 限于篇幅原因就不在这里展开了，感兴趣的朋友可以自己去摸索。下一篇文章中，我会带着大家通过一个项目实战的方式来更加深入地理解DiskLruCache的用法。感兴趣的朋友请继续阅读 <a href="http://www.qiuchengjia.cn/2016/09/29/Android%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/Android%E7%85%A7%E7%89%87%E5%A2%99%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E5%AE%8C%E7%BE%8E%E7%BB%93%E5%90%88LruCache%E5%92%8CDiskLruCache/">Android照片墙完整版，完美结合LruCache和DiskLruCache</a></p>
+<li><p>好了，这样的话我们就算是把DiskLruCache的用法以及简要的工作原理分析完了。至于DiskLruCache的源码还是比较简单的， 限于篇幅原因就不在这里展开了，感兴趣的朋友可以自己去摸索。下一篇文章中，我会带着大家通过一个项目实战的方式来更加深入地理解DiskLruCache的用法</p>
 </li>
 </ul>
 <h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
@@ -2663,6 +2614,147 @@
     
     
       <category term="JAVA源码分析" scheme="http://www.qiuchengjia.cn/tags/JAVA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java命令--javap</title>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/Java%E5%91%BD%E4%BB%A4-javap/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA命令学习/Java命令-javap/</id>
+    <published>2016-08-12T12:34:38.000Z</published>
+    <updated>2016-09-26T11:54:28.077Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>javap是jdk自带的一个工具，可以对代码 <a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a>，也可以查看java编译器生成的字节码</p>
+</blockquote>
+<p>一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
+<li>javap命令分解一个class文件，它根据options来决定到底输出什么。如果没有使用options,那么javap将会输出包，类里的protected和public域以及类里的所有方法。javap将会把它们输出在标准输出上。来看这个例子，先编译(javac)下面这个类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.awt.*;</div><div class="line"><span class="keyword">import</span> java.applet.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DocFooter</span> <span class="keyword">extends</span> <span class="title">Applet</span> </span>&#123;</div><div class="line">        String date;</div><div class="line">        String email;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">                resize(<span class="number">500</span>,<span class="number">100</span>);</div><div class="line">                date = getParameter(<span class="string">"LAST_UPDATED"</span>);</div><div class="line">                email = getParameter(<span class="string">"EMAIL"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(Graphics g)</span> </span>&#123;</div><div class="line">                g.drawString(date + <span class="string">" by "</span>,<span class="number">100</span>, <span class="number">15</span>);</div><div class="line">                g.drawString(email,<span class="number">290</span>,<span class="number">15</span>);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>在命令行上键入javap DocFooter后，输出结果如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Compiled from <span class="string">"DocFooter.java"</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DocFooter</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">applet</span>.<span class="title">Applet</span> </span>&#123;</div><div class="line">  java.lang.String date;</div><div class="line">  java.lang.String email;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DocFooter</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(java.awt.Graphics)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果加入了-c，即javap -c DocFooter，那么输出结果如下</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">Compiled from "DocFooter.java"</div><div class="line">public class DocFooter extends java.applet.Applet &#123;</div><div class="line">  java.lang.String date;</div><div class="line"></div><div class="line">  java.lang.String email;</div><div class="line"></div><div class="line">  public DocFooter();</div><div class="line">    Code:</div><div class="line">       0: aload_0       </div><div class="line">       1: invokespecial #1                  // Method java/applet/Applet."&lt;init&gt;":()V</div><div class="line">       4: return        </div><div class="line"></div><div class="line">  public void init();</div><div class="line">    Code:</div><div class="line">       0: aload_0       </div><div class="line">       1: sipush        500</div><div class="line">       4: bipush        100</div><div class="line">       6: invokevirtual #2                  // Method resize:(II)V</div><div class="line">       9: aload_0       </div><div class="line">      10: aload_0       </div><div class="line">      11: ldc           #3                  // String LAST_UPDATED</div><div class="line">      13: invokevirtual #4                  // Method getParameter:(Ljava/lang/String;)Ljava/lang/String;</div><div class="line">      16: putfield      #5                  // Field date:Ljava/lang/String;</div><div class="line">      19: aload_0       </div><div class="line">      20: aload_0       </div><div class="line">      21: ldc           #6                  // String EMAIL</div><div class="line">      23: invokevirtual #4                  // Method getParameter:(Ljava/lang/String;)Ljava/lang/String;</div><div class="line">      26: putfield      #7                  // Field email:Ljava/lang/String;</div><div class="line">      29: return        </div><div class="line"></div><div class="line">  public void paint(java.awt.Graphics);</div><div class="line">    Code:</div><div class="line">       0: aload_1       </div><div class="line">       1: new           #8                  // class java/lang/StringBuilder</div><div class="line">       4: dup           </div><div class="line">       5: invokespecial #9                  // Method java/lang/StringBuilder."&lt;init&gt;":()V</div><div class="line">       8: aload_0       </div><div class="line">       9: getfield      #5                  // Field date:Ljava/lang/String;</div><div class="line">      12: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</div><div class="line">      15: ldc           #11                 // String  by </div><div class="line">      17: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</div><div class="line">      20: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</div><div class="line">      23: bipush        100</div><div class="line">      25: bipush        15</div><div class="line">      27: invokevirtual #13                 // Method java/awt/Graphics.drawString:(Ljava/lang/String;II)V</div><div class="line">      30: aload_1       </div><div class="line">      31: aload_0       </div><div class="line">      32: getfield      #7                  // Field email:Ljava/lang/String;</div><div class="line">      35: sipush        290</div><div class="line">      38: bipush        15</div><div class="line">      40: invokevirtual #13                 // Method java/awt/Graphics.drawString:(Ljava/lang/String;II)V</div><div class="line">      43: return        </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>上面输出的内容就是<strong>字节码</strong></li>
+</ul>
+<h2 id="用法摘要"><a href="#用法摘要" class="headerlink" title="用法摘要"></a>用法摘要</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-help 帮助</div><div class="line">-l 输出行和变量的表</div><div class="line">-<span class="keyword">public</span> 只输出<span class="keyword">public</span>方法和域</div><div class="line">-<span class="keyword">protected</span> 只输出<span class="keyword">public</span>和<span class="keyword">protected</span>类和成员</div><div class="line">-<span class="keyword">package</span> 只输出包，<span class="keyword">public</span>和<span class="keyword">protected</span>类和成员，这是默认的</div><div class="line">-p -<span class="keyword">private</span> 输出所有类和成员</div><div class="line">-s 输出内部类型签名</div><div class="line">-c 输出分解后的代码，例如，类中每一个方法内，包含java字节码的指令，</div><div class="line">-verbose 输出栈大小，方法参数的个数</div><div class="line">-constants 输出静态<span class="keyword">final</span>常量</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>javap可以用于反编译和查看编译器编译后的字节码。平时一般用javap -c比较多，该命令用于列出每个方法所执行的JVM指令，并显示每个方法的字节码的实际作用。可以通过字节码和源代码的对比，深入分析java的编译原理，了解和解决各种Java原理级别的问题</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="http://www.hollischuang.com/archives/1107" target="_blank" rel="external">Java命令学习系列（七）——javap</a></p>
+</li>
+<li><p><a href="http://www.colabug.com/thread-1450948-1-1.html" target="_blank" rel="external">Java命令学习系列（七）——javap</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;javap是jdk自带的一个工具，可以对代码 &lt;a href=&quot;http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/&quot;&gt;反编译&lt;/a&gt;，也可以查看java编译器生成的字节码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一般情况下，很少有人使用javap对class文件进行反编译，因为有很多成熟的反编译工具可以使用，比如jad。但是，javap还可以查看java编译器为我们生成的字节码。通过它，可以对照源代码和字节码，从而了解很多编译器内部的工作&lt;/p&gt;
+&lt;h2 id=&quot;实例&quot;&gt;&lt;a href=&quot;#实例&quot; class=&quot;headerlink&quot; title=&quot;实例&quot;&gt;&lt;/a&gt;实例&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;javap命令分解一个class文件，它根据options来决定到底输出什么。如果没有使用options,那么javap将会输出包，类里的protected和public域以及类里的所有方法。javap将会把它们输出在标准输出上。来看这个例子，先编译(javac)下面这个类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.awt.*;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.applet.*;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DocFooter&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Applet&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        String date;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        String email;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                resize(&lt;span class=&quot;number&quot;&gt;500&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                date = getParameter(&lt;span class=&quot;string&quot;&gt;&quot;LAST_UPDATED&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                email = getParameter(&lt;span class=&quot;string&quot;&gt;&quot;EMAIL&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Graphics g)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                g.drawString(date + &lt;span class=&quot;string&quot;&gt;&quot; by &quot;&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                g.drawString(email,&lt;span class=&quot;number&quot;&gt;290&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="JAVA命令学习" scheme="http://www.qiuchengjia.cn/categories/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="JAVA命令学习" scheme="http://www.qiuchengjia.cn/tags/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java单例模式的七种写法</title>
+    <link href="http://www.qiuchengjia.cn/2016/08/12/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/"/>
+    <id>http://www.qiuchengjia.cn/2016/08/12/JAVA设计模式/Java单例模式的七种写法/</id>
+    <published>2016-08-11T23:37:17.000Z</published>
+    <updated>2016-09-26T11:54:28.077Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第一种（懒汉，线程不安全）："><a href="#第一种（懒汉，线程不安全）：" class="headerlink" title="第一种（懒汉，线程不安全）："></a>第一种（懒汉，线程不安全）：</h2><ul>
+<li>类初始化的时候并不创建，想用的时候创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第二种（懒汉，线程安全）："><a href="#第二种（懒汉，线程安全）：" class="headerlink" title="第二种（懒汉，线程安全）："></a>第二种（懒汉，线程安全）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </div><div class="line">        instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这种写法能够在多线程中很好的工作，而且看起来它也具备很好的lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)，但是，遗憾的是，效率很低，99%情况下不需要同步</li>
+</ul>
+<a id="more"></a>
+<h2 id="第三种（饿汉）："><a href="#第三种（饿汉）：" class="headerlink" title="第三种（饿汉）："></a>第三种（饿汉）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这种方式基于classloder机制，避免了多线程的同步(classloder在加载类的时候是同步的)问题，不过，instance在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用getInstance方法， 但是也不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化instance显然没有达到lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)的效果</li>
+</ul>
+<h2 id="第四种（饿汉，变种）："><a href="#第四种（饿汉，变种）：" class="headerlink" title="第四种（饿汉，变种）："></a>第四种（饿汉，变种）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> Singleton instance = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">static</span> &#123;  </div><div class="line">    instance = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.instance;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>表面上看起来差别挺大，其实更第三种方式差不多，都是在类初始化即实例化instance</li>
+</ul>
+<h2 id="第五种（静态内部类）："><a href="#第五种（静态内部类）：" class="headerlink" title="第五种（静态内部类）："></a>第五种（静态内部类）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">return</span> SingletonHolder.INSTANCE;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这种方式同样利用了classloder的机制来保证初始化instance时只有一个线程，它跟第三种和第四种方式不同的是（很细微的差别）：第三种和第四种方式是只要Singleton类被装载了，那么instance就会被实例化（没有达到lazy loading效果），而这种方式是Singleton类被装载了，instance不一定被初始化。因为SingletonHolder类没有被主动使用，只有显示通过调用getInstance方法时，才会显示装载SingletonHolder类，从而实例化instance。想象一下，如果实例化instance很消耗资源，我想让他延迟加载，另外一方面，我不希望在Singleton类加载时就实例化，因为我不能确保Singleton类还可能在其他的地方被主动使用从而被加载，那么这个时候实例化instance显然是不合适的。这个时候，这种方式相比第三和第四种方式就显得很合理</li>
+</ul>
+<h2 id="第六种（枚举）："><a href="#第六种（枚举）：" class="headerlink" title="第六种（枚举）："></a>第六种（枚举）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;  </div><div class="line">    INSTANCE;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whateverMethod</span><span class="params">()</span> </span>&#123;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这种方式是Effective Java作者Josh Bloch 提倡的方式，它不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象，可谓是很坚强的壁垒啊，在<a href="http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/">Java枚举类</a>中有详细介绍枚举的线程安全问题和序列化问题，不过，个人认为由于1.5中才加入enum特性，用这种方式写不免让人感觉生疏，在实际工作中，我也很少看见有人这么写过</li>
+</ul>
+<h2 id="第七种（双重校验锁）："><a href="#第七种（双重校验锁）：" class="headerlink" title="第七种（双重校验锁）："></a>第七种（双重校验锁）：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;  </div><div class="line">        <span class="keyword">synchronized</span> (Singleton.class) &#123;  </div><div class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;  </div><div class="line">            singleton = <span class="keyword">new</span> Singleton();  </div><div class="line">        &#125;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> singleton;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有两个问题需要注意：</p>
+<ol>
+<li><p>如果单例由不同的类装载器装入，那便有可能存在多个单例类的实例。假定不是远端存取，例如一些servlet容器对每个servlet使用完全不同的类装载器，这样的话如果有两个servlet访问一个单例类，它们就都会有各自的实例</p>
+</li>
+<li><p>如果Singleton实现了java.io.Serializable接口，那么这个类的实例就可能被序列化和复原。不管怎样，如果你序列化一个单例类的对象，接下来复原多个那个对象，那你就会有多个单例类的实例</p>
+</li>
+</ol>
+<ul>
+<li>对第一个问题修复的办法是：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Class <span class="title">getClass</span><span class="params">(String classname)</span>  </span></div><div class="line"><span class="keyword">throws</span> ClassNotFoundException &#123;  </div><div class="line">    ClassLoader classLoader = Thread.currentThread().getContextClassLoader();</div><div class="line">    <span class="keyword">if</span>(classLoader == <span class="keyword">null</span>)     </div><div class="line">          classLoader = Singleton.class.getClassLoader();     </div><div class="line">          <span class="keyword">return</span> (classLoader.loadClass(classname));     </div><div class="line">       &#125;     </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>对第二个问题修复的办法是：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;     </div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();     </div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;     </div><div class="line"></div><div class="line">   &#125;     </div><div class="line">   <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> </span>&#123;     </div><div class="line">            <span class="keyword">return</span> INSTANCE;     </div><div class="line">      &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>对我来说，我比较喜欢第三种和第五种方式，简单易懂，而且在JVM层实现了线程安全（如果不是多个类加载器环境），一般的情况下，我会使用第三种方式，只有在要明确实现lazy loading效果时才会使用第五种方式，另外，如果涉及到反序列化创建对象时我会试着使用枚举的方式来实现单例，不过，我一直会保证我的程序是线程安全的，而且我永远不会使用第一种和第二种方式，如果有其他特殊的需求，我可能会使用第七种方式，毕竟，JDK1.5已经没有双重检查锁定的问题了</p>
+</li>
+<li><p>不过一般来说，第一种不算单例，第四种和第三种就是一种，如果算的话，第五种也可以分开写了。所以说，一般单例都是五种写法。懒汉，恶汉，双重校验锁，枚举和静态内部类</p>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="http://www.hollischuang.com/archives/205" target="_blank" rel="external">[转+注]单例模式的七种写法</a></p>
+</li>
+<li><p><a href="http://cantellow.iteye.com/blog/838473" target="_blank" rel="external">单例模式的七种写法</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;第一种（懒汉，线程不安全）：&quot;&gt;&lt;a href=&quot;#第一种（懒汉，线程不安全）：&quot; class=&quot;headerlink&quot; title=&quot;第一种（懒汉，线程不安全）：&quot;&gt;&lt;/a&gt;第一种（懒汉，线程不安全）：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;类初始化的时候并不创建，想用的时候创建&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (instance == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;第二种（懒汉，线程安全）：&quot;&gt;&lt;a href=&quot;#第二种（懒汉，线程安全）：&quot; class=&quot;headerlink&quot; title=&quot;第二种（懒汉，线程安全）：&quot;&gt;&lt;/a&gt;第二种（懒汉，线程安全）：&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (instance == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; instance;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;这种写法能够在多线程中很好的工作，而且看起来它也具备很好的lazy loading(只在需要的时候加载必要的数据，这样可以避免即时加载所带来的不必要的系统开销)，但是，遗憾的是，效率很低，99%情况下不需要同步&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="JAVA设计模式" scheme="http://www.qiuchengjia.cn/categories/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA设计模式" scheme="http://www.qiuchengjia.cn/tags/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   

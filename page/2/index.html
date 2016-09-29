@@ -333,302 +333,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/22/Android自定义控件/Android-ViewDragHelper完全解析-自定义ViewGroup神器/" itemprop="url">
-                   Android ViewDragHelper完全解析 自定义ViewGroup神器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T16:57:22Z" content="2016-09-21">
-              2016-09-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android自定义控件/" itemprop="url" rel="index">
-                    <span itemprop="name">Android自定义控件</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/22/Android自定义控件/Android-ViewDragHelper完全解析-自定义ViewGroup神器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/22/Android自定义控件/Android-ViewDragHelper完全解析-自定义ViewGroup神器/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/22/Android自定义控件/Android-ViewDragHelper完全解析-自定义ViewGroup神器/" class="leancloud_visitors" data-flag-title=" Android ViewDragHelper完全解析 自定义ViewGroup神器">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li><p>在自定义ViewGroup中，很多效果都包含用户手指去拖动其内部的某个View(eg:侧滑菜单等)，针对具体的需要去写好 <strong>onInterceptTouchEvent</strong> 和 <strong>onTouchEvent</strong> 这两个方法是一件很不容易的事，需要自己去处理：多手指的处理、加速度检测等等</p>
-</li>
-<li><p>好在官方在v4的支持包中提供了ViewDragHelper这样一个类来帮助我们方便的编写自定义ViewGroup。简单看一下它的注释：</p>
-</li>
-</ul>
-<blockquote>
-<p>ViewDragHelper is a utility class for writing custom ViewGroups. It offers a number<br>of useful operations and state tracking for allowing a user to drag and reposition<br>views within their parent ViewGroup.</p>
-</blockquote>
-<ul>
-<li>本篇博客将重点介绍ViewDragHelper的使用，并且最终去实现一个类似DrawerLayout的一个自定义的ViewGroup。（ps:官方的DrawerLayout就是用此类实现）</li>
-</ul>
-<h2 id="入门小示例"><a href="#入门小示例" class="headerlink" title="入门小示例"></a>入门小示例</h2><p>首先我们通过一个简单的例子来看看其快捷的用法，分为以下几个步骤：</p>
-<ol>
-<li><p>创建实例</p>
-</li>
-<li><p>触摸相关的方法的调用</p>
-</li>
-<li><p>ViewDragHelper.Callback实例的编写</p>
-</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/Android自定义控件/Android-ViewDragHelper完全解析-自定义ViewGroup神器/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/Android游戏/Android美女拼图游戏/" itemprop="url">
-                  Android美女拼图游戏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T19:35:17Z" content="2016-09-12">
-              2016-09-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android游戏/" itemprop="url" rel="index">
-                    <span itemprop="name">Android游戏</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/13/Android游戏/Android美女拼图游戏/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/Android游戏/Android美女拼图游戏/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/13/Android游戏/Android美女拼图游戏/" class="leancloud_visitors" data-flag-title="Android美女拼图游戏">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li><p><a href="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE.apk">游戏下载试玩</a></p>
-</li>
-<li><p><a href="https://github.com/qiuchengjia/Android-BeautyGame">Github</a> 喜欢的同学可以Star一下，非常感谢</p>
-</li>
-<li><p>把图片切分很多份，点击交换拼成一张完整的；这样关卡也很容易设计，3<em>3；4</em>4；5<em>5；6</em>6；一直下去</p>
-</li>
-<li><p>效果</p>
-</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE1.gif" alt=""></center>
-
-<ul>
-<li>加了个切换动画，效果还是不错的，其实游戏就是自定义了一个控件，下面我们开始自定义之旅</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/13/Android游戏/Android美女拼图游戏/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/12/Android/Android-Broadcast广播机制分析/" itemprop="url">
                   Android Broadcast广播机制分析
                 </a>
@@ -1030,6 +734,289 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/11/Android/Android学习之路/" itemprop="url">
+                  Android学习之路
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-10T19:58:11Z" content="2016-09-10">
+              2016-09-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/11/Android/Android学习之路/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/11/Android/Android学习之路/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/11/Android/Android学习之路/" class="leancloud_visitors" data-flag-title="Android学习之路">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="学习路线图"><a href="#学习路线图" class="headerlink" title="学习路线图"></a>学习路线图</h2><ul>
+<li>一张图搞定，非常全面</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF.png" alt=""></center>
+
+
+<h2 id="扩展资料"><a href="#扩展资料" class="headerlink" title="扩展资料"></a>扩展资料</h2><ul>
+<li><a href="http://gold.xitu.io/entry/57566aca530fd30068150da3">Android 开发书籍推荐 &amp; 学习路线图 &amp; 资料汇整</a></li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/11/Android/Android学习之路/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/22/AndroidStudio/AndroidStudio自定义注释/" itemprop="url">
+                  AndroidStudio自定义注释
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-22T14:02:01Z" content="2016-08-22">
+              2016-08-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
+                    <span itemprop="name">AndroidStudio</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/22/AndroidStudio/AndroidStudio自定义注释/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/AndroidStudio/AndroidStudio自定义注释/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/22/AndroidStudio/AndroidStudio自定义注释/" class="leancloud_visitors" data-flag-title="AndroidStudio自定义注释">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="设置类创建时自动生成头部注释"><a href="#设置类创建时自动生成头部注释" class="headerlink" title="设置类创建时自动生成头部注释"></a>设置类创建时自动生成头部注释</h2><ul>
+<li>比如每次创建一个类自动在头部生成一个这样的头部,作为一个类的说明信息</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A1.png" alt=""></center>
+
+<ul>
+<li>设置方法</li>
+</ul>
+<p>点击设置—&gt;Editor–&gt;File and code Templates –&gt;Includes—&gt;File Header<br>代码：其中时间是自动获取的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * Description: </div><div class="line"> * Data：$&#123;DATE&#125;-$&#123;TIME&#125;</div><div class="line"> * Blog：www.qiuchengjia.cn</div><div class="line"> * Author: qiu</div><div class="line"> */</span></div></pre></td></tr></table></figure>
+<ul>
+<li>效果和步骤</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/AndroidStudio%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E9%87%8A3.gif" alt=""></center>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/22/AndroidStudio/AndroidStudio自定义注释/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1075,7 +1062,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
