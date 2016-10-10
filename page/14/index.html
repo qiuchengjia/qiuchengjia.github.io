@@ -333,6 +333,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/C++/STL之map和multimap总结/" itemprop="url">
+                   STL之map和multimap总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T18:40:49Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/C++/STL之map和multimap总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL之map和multimap总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/C++/STL之map和multimap总结/" class="leancloud_visitors" data-flag-title=" STL之map和multimap总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>map和multimap都是有序关联容器，所有元素都会根据元素的键值自动被排序,包含具有唯一键的键值对。键使用比较函数Compare比较来进行排序。搜索，删除和插入操作具有对数复杂性。map和multimap通常实现为红黑树。multimap相对map来说能够允许重复值的存在</li>
+</ul>
+<ul>
+<li><h3 id="构造，赋值，析构"><a href="#构造，赋值，析构" class="headerlink" title="构造，赋值，析构"></a>构造，赋值，析构</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">map</span> c <span class="comment">//默认构造函数；创建一个空map/multimap  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="built_in">map</span> <span class="title">c</span><span class="params">(op)</span> <span class="comment">//创建一个空map/multimap，并以op原则作为排序准则  </span></div><div class="line">  </div><div class="line"><span class="built_in">map</span> <span class="title">c</span><span class="params">(c2)</span> <span class="comment">//复制构造函数；创建一个新的map/multimap</span></div><div class="line"><span class="comment">//作为c2的副本（所有元素都被复制）  </span></div><div class="line">  </div><div class="line"><span class="built_in">map</span> c </span>= c2 <span class="comment">//复制构造函数；创建一个新的map</span></div><div class="line"><span class="comment">//作为c2的副本（所有元素都被复制）  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="built_in">map</span> <span class="title">c</span><span class="params">(rv)</span> <span class="comment">//移动构造函数；使用右值对象rv创建一个新map/multimap  </span></div><div class="line">  </div><div class="line"><span class="built_in">map</span> c </span>= rv <span class="comment">//移动构造函数；使用右值对象rv创建一个新map/multimap  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="built_in">map</span> <span class="title">c</span><span class="params">(beg,end)</span> <span class="comment">//创建一个map/multimap，并使用</span></div><div class="line"><span class="comment">//beg到end范围内的值进行初始化  </span></div><div class="line">  </div><div class="line"><span class="built_in">map</span> <span class="title">c</span><span class="params">(beg,end,op)</span> <span class="comment">//创建一个map/multimap，</span></div><div class="line"><span class="comment">//并使用beg到end范围内以op原则排序后的值进行初始化  </span></div><div class="line">  </div><div class="line"><span class="built_in">map</span> <span class="title">c</span><span class="params">(initlist)</span> </div><div class="line"><span class="comment">//创建一个map/multimap，并使用初始化列表进行初始化  </span></div><div class="line">  </div><div class="line"><span class="built_in">map</span> c </span>= initlist </div><div class="line"><span class="comment">//创建一个map/multimap，并使用初始化列表进行初始化  </span></div><div class="line">  </div><div class="line">c.~<span class="built_in">map</span>() <span class="comment">//销毁所有元素并释放内存</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/C++/STL之map和multimap总结/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/C++/STL之set和multiset总结/" itemprop="url">
                    STL之set和multiset总结
                 </a>
@@ -845,147 +982,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之stack和queue/" itemprop="url">
-                  STL容器总结之stack和queue
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T17:42:28Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/C++/STL容器总结之stack和queue/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL容器总结之stack和queue/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/02/C++/STL容器总结之stack和queue/" class="leancloud_visitors" data-flag-title="STL容器总结之stack和queue">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>stack是一个比较简单的容器，它的使用也很简单，stack是LIFO容器，就是后进先出，最后添加进去的元素，第一个取出来</li>
-</ul>
-<ul>
-<li><h3 id="stack初始化"><a href="#stack初始化" class="headerlink" title="stack初始化"></a>stack初始化</h3></li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; first;  </div><div class="line">  </div><div class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; second(first);  </div><div class="line">  </div><div class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>, <span class="built_in">std</span>;:<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; third; <span class="comment">//使用vector初始化stack</span></div></pre></td></tr></table></figure>
-<ul>
-<li><h3 id="stack常用方法"><a href="#stack常用方法" class="headerlink" title="stack常用方法"></a>stack常用方法</h3></li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">empty();<span class="comment">//判断是否为空  </span></div><div class="line">  </div><div class="line">push(Elem e);<span class="comment">//栈顶压入一元素  </span></div><div class="line">  </div><div class="line">pop();<span class="comment">//弹出栈顶元素  </span></div><div class="line">  </div><div class="line">top();<span class="comment">//返回栈顶元素  </span></div><div class="line">  </div><div class="line">size();<span class="comment">//返回栈中元素个数</span></div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/C++/STL容器总结之stack和queue/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1031,7 +1027,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1039,7 +1035,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1048,7 +1044,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

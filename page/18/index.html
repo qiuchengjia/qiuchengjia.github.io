@@ -333,6 +333,157 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/01/Android/Android仿超级课程表的课程界面设计/" itemprop="url">
+                  Android仿超级课程表的课程界面设计
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T14:31:01Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/01/Android/Android仿超级课程表的课程界面设计/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/Android/Android仿超级课程表的课程界面设计/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/01/Android/Android仿超级课程表的课程界面设计/" class="leancloud_visitors" data-flag-title="Android仿超级课程表的课程界面设计">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="http://img.blog.csdn.net/20150410180333267" rel="gallery_ciu40et34000ktsae0u5pjyb4"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://img.blog.csdn.net/20150410180333267" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p><center><img src="http://img.blog.csdn.net/20150410180333267" width="480px" height="700px"/></center></p>
+<ul>
+<li>接下来先分析页面布局，从上往下看，第一行是显示标题，第二行是显示时间和周几，使用线性布局，第一列是用来显示节次的，宽度跟后面显示周几的7列不一样，可以用DP来设定；后面7列宽度可以用权重来分配，行的高度也用DP设定。<br>接着往下看就是课程表了，第一列用来显示节次，每节次的宽度跟上面行显示月份的格子一致，高度应该与显示周几的格子宽度保持一致，在运行时根据手机屏幕宽度计算显示周几格子的实际宽度来设置，并且想到后面如果要自定义多少节次的话，那么节次这一列布局使用了ListView。<br>那么显示一门课程的格子如何实现呢？为了以后不跟实现课表背景图片冲突，这里用到了FrameLayout,一门课程用RelativeLayout实现，背景必须用9图，否则不能随意变更宽高度，通过运行时往FrameLayout里添加RelativeLayout,设置一门课程显示的位置,利用周几和起始节来决定,设置RelativeLayout的marginLeft和marginTop;高度由节次来决定。<br>但是一般来说课程表是12节，一般手机屏幕都是显示不完的，必须滑动展示，但是节次里用了ListView，已经包含了ScrollView，而课程是在FrameLayout里实现的，那么必须屏蔽掉ListView的ScrollView，把ListView和FrameLayout用ScrollView包括进来，否则拖动屏幕的时候FrameLayout不会随着滑动</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> &gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ScrollView</span> </div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:scrollbars</span>=<span class="string">"none"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">RelativeLayout</span> </div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">com.hengye.library.view.util.ListViewNoScroll</span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/titlebar_course_table_listview"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:divider</span>=<span class="string">"@null"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;/<span class="name">com.hengye.library.view.util.ListViewNoScroll</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">FrameLayout</span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/titlebar_course_table_framelayout"</span> </div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RelativeLayout</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"200dp"</span></div><div class="line">                <span class="attr">android:layout_marginLeft</span>=<span class="string">"200dp"</span></div><div class="line">                <span class="attr">android:background</span>=<span class="string">"@drawable/ic_course_bg_huang_multi"</span></div><div class="line">                <span class="attr">android:visibility</span>=<span class="string">"gone"</span>&gt;</span></div><div class="line"></div><div class="line">                <span class="tag">&lt;<span class="name">TextView</span></div><div class="line">                    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">                    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">                    <span class="attr">android:text</span>=<span class="string">"中国近现代史纲要@3-102"</span></div><div class="line">                    <span class="attr">android:textColor</span>=<span class="string">"@color/white"</span></div><div class="line">                    <span class="attr">android:gravity</span>=<span class="string">"center"</span>/&gt;</span>  </div><div class="line">            <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span>       </div><div class="line">        <span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span>         </div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/01/Android/Android仿超级课程表的课程界面设计/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/01/Android/Android中如何一次性finish掉以前打开的所有的activity/" itemprop="url">
                   Android中如何一次性finish掉以前打开的所有的activity
                 </a>
@@ -860,144 +1011,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" itemprop="url">
-                   如何彻底删除ubuntu上的软件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-01T14:07:24Z" content="2015-06-01">
-              2015-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">ubuntu</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" class="leancloud_visitors" data-flag-title=" 如何彻底删除ubuntu上的软件">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>找到此软件名称,然后</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get purge ......</div><div class="line">(点点为为程序名称),purge参数为彻底删除文件</div></pre></td></tr></table></figure>
-<ul>
-<li>然后使用下面两条命令来清除残余的配置文件</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get autoremove,sudo apt-get clean</div><div class="line">dpkg -l |grep ^rc|awk '&#123;print $2&#125;' |sudo xargs dpkg -P</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/ubuntu/如何彻底删除ubuntu上的软件/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1043,7 +1056,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1051,7 +1064,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1060,7 +1073,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
