@@ -76,8 +76,14 @@
 <p>java -jar 签到服务器.jar</p>
 </blockquote>
 <h3 id="客户端的使用方法"><a href="#客户端的使用方法" class="headerlink" title="客户端的使用方法"></a>客户端的使用方法</h3><ul>
-<li>安装 JDK 之后双击可执行</li>
+<li><p>windows 下安装 JDK 之后双击可执行</p>
+</li>
+<li><p>linux 下使用命令</p>
+</li>
 </ul>
+<blockquote>
+<p>java -jar linux客户端.jar</p>
+</blockquote>
 ]]></content>
     </entry>
     
