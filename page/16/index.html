@@ -333,6 +333,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/C++/C++string类型详解/" itemprop="url">
+                  C++ string类型详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T16:16:30Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/C++/C++string类型详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/C++string类型详解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/C++/C++string类型详解/" class="leancloud_visitors" data-flag-title="C++ string类型详解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li><p>string是非常强大的类型，很好的封装了字符串的操作，有些时候我们可以把string当做字符的容器，string也支持大多数容器操作，下面就列出string类型所支持的所有操作，本文并不是为了讲解string的用法和应用，而是希望作为string类型的参考文档，每个函数皆在注释后有详细说明，需要用时查阅即可</p>
+</li>
+<li><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span>();<span class="comment">//空串  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(size_type length,<span class="keyword">char</span> ch);</div><div class="line"><span class="comment">//以length为长度的ch的拷贝（即length个ch）  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(<span class="keyword">const</span> <span class="keyword">char</span> *str);<span class="comment">//以str为初值 (长度任意)  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(<span class="keyword">const</span> <span class="keyword">char</span> *str,size_type length);</div><div class="line"><span class="comment">//同上，长度不限，但注意不要越界，以免发生不可预知问题  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(<span class="built_in">string</span> &amp;str, size_type index, size_type length);  </div><div class="line"><span class="comment">//以index为索引开始的子串，长度为length, 或者小于length  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(input_iterator begin, input_iterator end);</div><div class="line"><span class="comment">//以从start到end的元素为初值</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/C++/C++string类型详解/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/通用/装机软件清单/" itemprop="url">
                   装机软件清单
                 </a>
@@ -703,7 +839,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160507214539611" rel="gallery_ciu40etba0059tsae4v489ijq"
+                 href="http://img.blog.csdn.net/20160507214539611" rel="gallery_ciu6qdtlq005tzoaeyek0wj9q"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20160507214539611" itemprop="contentUrl"/>
               </a>
@@ -711,7 +847,7 @@
           
             
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160507214545142" rel="gallery_ciu40etba0059tsae4v489ijq"
+                 href="http://img.blog.csdn.net/20160507214545142" rel="gallery_ciu6qdtlq005tzoaeyek0wj9q"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20160507214545142" itemprop="contentUrl"/>
               </a>
@@ -903,144 +1039,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/01/矩阵/矩阵旋转/" itemprop="url">
-                  矩阵旋转
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T15:38:12Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/矩阵/" itemprop="url" rel="index">
-                    <span itemprop="name">矩阵</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/矩阵/矩阵旋转/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/矩阵/矩阵旋转/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/01/矩阵/矩阵旋转/" class="leancloud_visitors" data-flag-title="矩阵旋转">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>顺时针翻转九十度</li>
-</ul>
-<p>举例：4*3矩阵A1，旋转90度，变成3×4矩阵A2</p>
-<center><img src="http://img.blog.csdn.net/20140619150155343?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhpZmVuZ3N1bg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></center>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">算法：</div><div class="line">m=<span class="number">4</span>，n=<span class="number">3</span>，i，j</div><div class="line"><span class="keyword">for</span>：i=<span class="number">0</span>, i&lt;n, i++</div><div class="line">    <span class="keyword">for</span>：j=<span class="number">0</span>, j&lt;m, j++</div></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20140619150208125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhpZmVuZ3N1bg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><font color='RED'> // 从下到上，从左到右读取A1的每一个元素</font></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/矩阵/矩阵旋转/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1086,7 +1084,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
