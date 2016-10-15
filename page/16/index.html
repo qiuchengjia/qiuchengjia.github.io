@@ -333,6 +333,148 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/C++/STL容器总结之Vector/" itemprop="url">
+                  STL容器总结之Vector
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T16:45:37Z" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/C++/STL容器总结之Vector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/C++/STL容器总结之Vector/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/02/C++/STL容器总结之Vector/" class="leancloud_visitors" data-flag-title="STL容器总结之Vector">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>vector 是一种序列容器，是对大小可变数组的封装</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20160406151211233" alt=""></p>
+<p>数组中的元素是连续存储的，所以除了能够通过迭代器访问外，还可以通过常规的指针偏移量访问元素。换句话说，可以将指向 vector 元素的指针传入以指向数组元素的指针作为参数的函数。</p>
+<p>vector 会在需要时自动调整所占内存的大小。与对应的静态数组相比，vector 所占的内存通常要更多，因为它还分配了额外的内存以应对将来可能的扩张。于是，vector 就不必在每次插入元素时都重新分配一次内存了，除非这块预留的内存用尽。已分配内存的总大小可以通过 capacity() 函数查询。所占的额外的内存可以通过调用 shrink_to_fit() 返还给系统。</p>
+<p>从性能方面考虑，内存重分配操作的代价通常很大。如果事先知道元素个数，可以使用 reserve() 函数消除重新分配操作。<br>针对 vector 的各种常见操作的复杂度（效率）如下：<br>随机访问 - 常数 O(1)<br>在尾部增删元素 - 平摊（amortized）常数 O(1)<br>增删元素 - 至 vector 尾部的线性距离 O(n)</p>
+<ul>
+<li><h3 id="头文件及构造，析构，复制"><a href="#头文件及构造，析构，复制" class="headerlink" title="头文件及构造，析构，复制"></a>头文件及构造，析构，复制</h3></li>
+</ul>
+<p>头文件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span>       <span class="comment">//头文件包含    </span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  <span class="comment">//或者using std::vector;</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/C++/STL容器总结之Vector/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/C++/C++string类型详解/" itemprop="url">
                   C++ string类型详解
                 </a>
@@ -839,7 +981,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160507214539611" rel="gallery_ciu6qdtlq005tzoaeyek0wj9q"
+                 href="http://img.blog.csdn.net/20160507214539611" rel="gallery_ciuaz2xp8005thcae7obe4lmt"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20160507214539611" itemprop="contentUrl"/>
               </a>
@@ -847,7 +989,7 @@
           
             
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160507214545142" rel="gallery_ciu6qdtlq005tzoaeyek0wj9q"
+                 href="http://img.blog.csdn.net/20160507214545142" rel="gallery_ciuaz2xp8005thcae7obe4lmt"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20160507214545142" itemprop="contentUrl"/>
               </a>
@@ -871,145 +1013,6 @@
 <p><img src="http://img.blog.csdn.net/20160507214545142" alt=""></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/01/linux/linux下使用百度云以及酷我音乐/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/01/矩阵/矩阵-原地转置-面试题/" itemprop="url">
-                  矩阵--原地转置--面试题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T15:42:41Z" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/矩阵/" itemprop="url" rel="index">
-                    <span itemprop="name">矩阵</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/矩阵/矩阵-原地转置-面试题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/矩阵/矩阵-原地转置-面试题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/01/矩阵/矩阵-原地转置-面试题/" class="leancloud_visitors" data-flag-title="矩阵--原地转置--面试题">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li><p>问题描述<br>  微软面试题：将一个MxN的矩阵存储在一个一维数组中，编程实现矩阵的转置<br>  要求：空间复杂度为O(1)</p>
-</li>
-<li><p>思路分析<br>  下面以一个4x2的矩阵A={1,2,3,4,5,6,7,8}进行分析，转置过程如下图：</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20140606173801500?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGlzb25nbGlzb25nbGlzb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p>图中右下角的红色数字表示在一维数组中的下标。矩阵的转置其实就是数组中元素的移动，具体的移动过程如下图：</p>
-<center><img src="http://img.blog.csdn.net/20140606173842187?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGlzb25nbGlzb25nbGlzb25n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/矩阵/矩阵-原地转置-面试题/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1084,7 +1087,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

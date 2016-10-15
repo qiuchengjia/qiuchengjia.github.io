@@ -4,6 +4,88 @@
   
     
     <entry>
+      <title><![CDATA[ubuntu安装lampp]]></title>
+      <url>http://www.qiuchengjia.cn/2016/10/16/ubuntu/ubuntu%E5%AE%89%E8%A3%85lampp/</url>
+      <content type="html"><![CDATA[<h2 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h2><ul>
+<li><p><a href="https://www.apachefriends.org/zh_cn/index.html" target="_blank" rel="external">下载地址</a></p>
+</li>
+<li><p>在终端中使用 root 权限，然后进入你刚刚下载的文件的那个目录</p>
+</li>
+<li><p>修改权限，将刚刚下载的文件变成可执行</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod <span class="number">777</span> *.run</div></pre></td></tr></table></figure>
+<ul>
+<li>然后进行安装</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">./ 你刚刚下载的文件名.run</div><div class="line"></div><div class="line"><span class="comment">//例如</span></div><div class="line">./xampp-linux-x64-<span class="number">5.6</span>.23-<span class="number">0</span>-installer.run</div></pre></td></tr></table></figure>
+<ul>
+<li>文件安装后的默认保存路径是 /opt/lampp</li>
+</ul>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<li><p>Apache文档根目录：/opt/lampp/htdocs/</p>
+</li>
+<li><p>Apache配置文件：/opt/lampp/etc/httpd.conf</p>
+</li>
+<li><p>MySQL配置文件：/opt/lampp/etc/my.cnf</p>
+</li>
+<li><p>PHP配置文件：/opt/lampp/etc/php.ini</p>
+</li>
+<li><p>ProFTPD配置文件：/opt/lampp/etc/proftpd.conf</p>
+</li>
+<li><p>PHPMyadmin配置文件：/opt/lampp/phpmyadmin/config.inc.php</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h2><ul>
+<li>调出控制界面</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd /opt/lampp/share/xampp-control-panel</div><div class="line">$ sudo ./xampp-control-panel</div></pre></td></tr></table></figure>
+<ul>
+<li>启动/停止/重启Apache：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">启动：/opt/lampp/lampp start</div><div class="line">停止：/opt/lampp/lampp stop</div><div class="line">重启：/opt/lampp/lampp restart</div></pre></td></tr></table></figure>
+<ul>
+<li>安全设置：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/lampp/lampp  security</div></pre></td></tr></table></figure>
+<ul>
+<li>使用php版本/查看版本：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">使用php4：/opt/lampp/lampp php4</div><div class="line">使用php5：/opt/lampp/lampp php5</div><div class="line">查看php版本：/opt/lampp/lampp phpstatus</div></pre></td></tr></table></figure>
+<ul>
+<li>只启动和停止Apache：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">启动：/opt/lampp/lampp stopapache</div><div class="line">停止：/opt/lampp/lampp startapache</div></pre></td></tr></table></figure>
+<ul>
+<li>只启动和停止MySQL：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">启动：/opt/lampp/lampp startmysql</div><div class="line">停止：/opt/lampp/lampp stopmysql</div></pre></td></tr></table></figure>
+<ul>
+<li>只启动和停止ProFTPD服务器：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">启动：/opt/lampp/lampp startftp</div><div class="line">停止：/opt/lampp/lampp stopftp</div></pre></td></tr></table></figure>
+<ul>
+<li>启动和停止Apache的SSL支持：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">启动：/opt/lampp/lampp startssl</div><div class="line">停止：/opt/lampp/lampp stopssl</div></pre></td></tr></table></figure>
+<ul>
+<li>随系统自启动：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ln –s /opt/lampp/lampp/etc/rc.d/rc3.d/S99lampp</div><div class="line"></div><div class="line">ln –s /opt/lampp/lampp/etc/rc.d/rc4.d/S99lampp</div><div class="line"></div><div class="line">ln –s /opt/lampp/lampp/etc/rc.d/rc5.d/S99lampp</div></pre></td></tr></table></figure>
+<ul>
+<li>取消自启动：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln –s /opt/lampp/lampp K01lampp</div></pre></td></tr></table></figure>
+<ul>
+<li>卸载XAMPP：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm –rf /opt/lampp</div></pre></td></tr></table></figure>
+<h2 id="XAMPP-Couldn’t-start-MySQL-解决方案-启动不了mysql服务）"><a href="#XAMPP-Couldn’t-start-MySQL-解决方案-启动不了mysql服务）" class="headerlink" title="XAMPP: Couldn’t start MySQL!解决方案 (启动不了mysql服务）"></a>XAMPP: Couldn’t start MySQL!解决方案 (启动不了mysql服务）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod <span class="number">777</span> -R /opt/lampp/var</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Socket多客户端简易签到系统]]></title>
       <url>http://www.qiuchengjia.cn/2016/10/13/JAVA%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Socket%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%80%E6%98%93%E7%AD%BE%E5%88%B0%E7%B3%BB%E7%BB%9F/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><center><img src="http://o99dg8ap9.bkt.clouddn.com/Socket%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%80%E6%98%93%E7%AD%BE%E5%88%B0%E7%B3%BB%E7%BB%9F.png" alt=""></center>
