@@ -333,8 +333,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/16/ubuntu/Ubuntu环境下SSH的安装及使用/" itemprop="url">
-                  Ubuntu环境下SSH的安装及使用
+                <a class="post-title-link" href="/2016/10/16/ubuntu/Ubuntu下使用SSH和FileZilla远程登陆/" itemprop="url">
+                  Ubuntu下使用SSH和FileZilla远程登陆
                 </a>
               
             
@@ -377,8 +377,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/ubuntu/Ubuntu环境下SSH的安装及使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/ubuntu/Ubuntu环境下SSH的安装及使用/" itemprop="commentsCount"></span>
+                <a href="/2016/10/16/ubuntu/Ubuntu下使用SSH和FileZilla远程登陆/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/ubuntu/Ubuntu下使用SSH和FileZilla远程登陆/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/2016/10/16/ubuntu/Ubuntu环境下SSH的安装及使用/" class="leancloud_visitors" data-flag-title="Ubuntu环境下SSH的安装及使用">
+             <span id="/2016/10/16/ubuntu/Ubuntu下使用SSH和FileZilla远程登陆/" class="leancloud_visitors" data-flag-title="Ubuntu下使用SSH和FileZilla远程登陆">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,13 +411,21 @@
 
       
         
-          <ul>
+          <h2 id="File-Zilla下载安装"><a href="#File-Zilla下载安装" class="headerlink" title="File Zilla下载安装"></a>File Zilla下载安装</h2><ul>
+<li>File Zilla是一个开源的，跨平台的Linux FTP客户端。File Zilla有一个标签式的用户界面，允许用户查看正在传输的文件的所有细节。File Zilla是通过网络传输较大文件的完美方式，它允许恢复大于4GB的文件。它的拖放功能使其能够更轻松地通过FTP传输文件</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8SSH%E5%92%8CFileZilla%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86.jpg" alt=""></center>
+
+<ul>
+<li><a href="https://filezilla-project.org/download.php?show_all=1">下载地址</a></li>
+</ul>
+<h2 id="SSH概述"><a href="#SSH概述" class="headerlink" title="SSH概述"></a>SSH概述</h2><ul>
 <li><p>SSH是指Secure Shell,是一种安全的传输协议，Ubuntu客户端可以通过SSH访问远程服务器 </p>
 </li>
 <li><p>SSH分客户端openssh-client和openssh-server<br>如果你只是想登陆别的机器的SSH只需要安装openssh-client（ubuntu有默认安装，如果没有则sudoapt-get install openssh-client），如果要使本机开放SSH服务就需要安装openssh-server</p>
 </li>
 </ul>
-<h2 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h2><ul>
+<h2 id="安装SSH客户端"><a href="#安装SSH客户端" class="headerlink" title="安装SSH客户端"></a>安装SSH客户端</h2><ul>
 <li>Ubuntu缺省已经安装了ssh client</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ssh  或者 sudo apt-get installopenssh-client</div><div class="line"> ssh-keygen</div></pre></td></tr></table></figure>
@@ -429,14 +437,14 @@
 <li><p>说明：如果sudo apt-get insall ssh出错，无法安装可使用sudo apt-get install openssh-client进行安装</p>
 </li>
 </ul>
-<h2 id="登陆远程服务器"><a href="#登陆远程服务器" class="headerlink" title="登陆远程服务器"></a>登陆远程服务器</h2><ul>
+<h2 id="SSH登陆远程服务器"><a href="#SSH登陆远程服务器" class="headerlink" title="SSH登陆远程服务器"></a>SSH登陆远程服务器</h2><ul>
 <li><p>假定服务器ip为192.168.1.1，ssh服务的端口号为22，服务器上有个用户为root</p>
 </li>
 <li><p>用ssh登录服务器的命令为：</p>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;ssh –p <span class="number">22</span> root@<span class="number">192.168</span>.1.1</div><div class="line">&gt;输入root用户的密码</div></pre></td></tr></table></figure>
-<h2 id="安装服务端"><a href="#安装服务端" class="headerlink" title="安装服务端"></a>安装服务端</h2><ul>
+<h2 id="安装SSH服务端"><a href="#安装SSH服务端" class="headerlink" title="安装SSH服务端"></a>安装SSH服务端</h2><ul>
 <li>Ubuntu缺省没有安装SSH Server，使用以下命令安装：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install openssh-server</div></pre></td></tr></table></figure>
@@ -455,7 +463,7 @@
 <li>事实上如果没什么特别需求，到这里 OpenSSH Server 就算安装好了。但是进一步设置一下，可以让 OpenSSH 登录时间更短，并且更加安全。这一切都是通过修改 openssh 的配置文件 sshd_config 实现的</li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/16/ubuntu/Ubuntu环境下SSH的安装及使用/" rel="contents">
+            <a class="btn" href="/2016/10/16/ubuntu/Ubuntu下使用SSH和FileZilla远程登陆/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
