@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2016-10-19T02:26:51.983Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.qiuchengjia.cn/about/index.html</loc>
     
     <lastmod>2016-10-17T04:10:02.217Z</lastmod>
@@ -51,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2016-09-28T11:55:49.654Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%E9%AB%98%E6%95%88%E5%8A%A0%E8%BD%BD%E5%A4%A7%E5%9B%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E5%92%8CLruCache%E7%BC%93%E5%AD%98/</loc>
     
     <lastmod>2016-09-28T08:28:28.299Z</lastmod>
@@ -86,13 +86,6 @@
   </url>
   
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/30/Android/AndroidStudio%E6%8C%87%E5%AE%9Agit%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</loc>
-    
-    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%80%E6%AC%A1%E6%80%A7finish%E6%8E%89%E4%BB%A5%E5%89%8D%E6%89%93%E5%BC%80%E7%9A%84%E6%89%80%E6%9C%89%E7%9A%84activity/</loc>
     
     <lastmod>2016-09-26T11:54:28.097Z</lastmod>
@@ -100,7 +93,7 @@
   </url>
   
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%BB%BF%E8%B6%85%E7%BA%A7%E8%AF%BE%E7%A8%8B%E8%A1%A8%E7%9A%84%E8%AF%BE%E7%A8%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E7%9A%84shape%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E5%A4%A7%E5%85%A8/</loc>
     
     <lastmod>2016-09-26T11:54:28.097Z</lastmod>
     
@@ -114,7 +107,14 @@
   </url>
   
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E7%9A%84shape%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E5%A4%A7%E5%85%A8/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%BB%BF%E8%B6%85%E7%BA%A7%E8%AF%BE%E7%A8%8B%E8%A1%A8%E7%9A%84%E8%AF%BE%E7%A8%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</loc>
+    
+    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/30/Android/AndroidStudio%E6%8C%87%E5%AE%9Agit%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2016-09-26T11:54:28.097Z</lastmod>
     
@@ -156,14 +156,14 @@
   </url>
   
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/11/AndroidStudio/AS%E4%B8%AD%E4%BD%BF%E7%94%A8xUtils%E6%8A%A5%E9%94%99%E6%89%BE%E4%B8%8D%E5%88%B0org-apache-http-client-methods-HttpRequestBase%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/04/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/</loc>
     
     <lastmod>2016-09-26T11:54:28.089Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/04/Android/Android-api-level%E5%AF%B9%E7%85%A7%E8%A1%A8/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/11/AndroidStudio/AS%E4%B8%AD%E4%BD%BF%E7%94%A8xUtils%E6%8A%A5%E9%94%99%E6%89%BE%E4%B8%8D%E5%88%B0org-apache-http-client-methods-HttpRequestBase%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2016-09-26T11:54:28.089Z</lastmod>
     
