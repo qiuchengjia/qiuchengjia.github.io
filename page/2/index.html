@@ -333,6 +333,146 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/" itemprop="url">
+                  Android照片墙应用实现，再多的图片也不怕崩溃
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T16:11:33Z" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android项目实战/" itemprop="url" rel="index">
+                    <span itemprop="name">Android项目实战</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/" class="leancloud_visitors" data-flag-title="Android照片墙应用实现，再多的图片也不怕崩溃">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p>照片墙这种功能现在应该算是挺常见了，在很多应用中你都可以经常看到照片墙的身影。它的设计思路其实也非常简单，用一个GridView控件当作“墙”，然后随着GridView的滚动将一张张照片贴在“墙”上，这些照片可以是手机本地中存储的，也可以是从网上下载的。制作类似于这种的功能的应用，有一个非常重要的问题需要考虑，就是图片资源何时应该释放。因为随着GridView的滚动，加载的图片可能会越来越多，如果没有一种合理的机制对图片进行释放，那么当图片达到一定上限时，程序就必然会崩溃</p>
+</li>
+<li><p>今天我们照片墙应用的实现，重点也是放在了如何防止由于图片过多导致程序崩溃上面。主要的核心算法使用了Android中提供的LruCache类，这个类是3.1版本中提供的，如果你是在更早的Android版本中开发，则需要导入android-support-v4的jar包</p>
+</li>
+<li><p>关于LruCache用法的详细讲解，可以参<a href="http://www.qiuchengjia.cn/2016/09/27/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/Android%E9%AB%98%E6%95%88%E5%8A%A0%E8%BD%BD%E5%A4%A7%E5%9B%BE%E3%80%81%E5%A4%9A%E5%9B%BE%E5%92%8CLruCache%E7%BC%93%E5%AD%98/">Android高效加载大图、多图和LruCache缓存</a></p>
+</li>
+<li><p>那我们开始动手吧，新建一个Android项目，起名叫PhotoWallDemo，这里我使用的是Android 4.4的API</p>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/" itemprop="url">
                   Android DiskLruCache完全解析，硬盘缓存的最佳方案
                 </a>
@@ -890,157 +1030,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/12/Android/Android-Broadcast广播机制分析/" itemprop="url">
-                  Android Broadcast广播机制分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T19:06:46Z" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/12/Android/Android-Broadcast广播机制分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/Android/Android-Broadcast广播机制分析/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/12/Android/Android-Broadcast广播机制分析/" class="leancloud_visitors" data-flag-title="Android Broadcast广播机制分析">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>基于Android 6.0的源码剖析， 分析android广播的发送与接收流程</p>
-</blockquote>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>广播(Broadcast)机制用于进程/线程间通信，广播分为广播发送和广播接收两个过程，其中广播接收者BroadcastReceiver便是Android四大组件之一</p>
-<p><strong>BroadcastReceiver分为两类：</strong></p>
-<ul>
-<li><p>静态广播接收者：通过AndroidManifest.xml的标签来申明的BroadcastReceiver</p>
-</li>
-<li><p>动态广播接收者：通过AMS.registerReceiver()方式注册的BroadcastReceiver，动态注册更为灵活，可在不需要时通过unregisterReceiver()取消注册</p>
-</li>
-</ul>
-<p><strong>从广播发送方式可分为三类：</strong></p>
-<ul>
-<li><p>普通广播：通过Context.sendBroadcast()发送，可并行处理</p>
-</li>
-<li><p>有序广播：通过Context.sendOrderedBroadcast()发送，串行处理</p>
-</li>
-<li><p>Sticky广播：通过Context.sendStickyBroadcast()发送</p>
-</li>
-</ul>
-<h2 id="注册广播"><a href="#注册广播" class="headerlink" title="注册广播"></a>注册广播</h2><h3 id="registerReceiver"><a href="#registerReceiver" class="headerlink" title="registerReceiver"></a>registerReceiver</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/12/Android/Android-Broadcast广播机制分析/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1086,7 +1075,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">106</span>
+              <span class="site-state-item-count">107</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

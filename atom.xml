@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-10-15T09:36:59.498Z</updated>
+  <updated>2016-10-23T08:22:43.441Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP刷CSDN访问量</title>
+    <link href="http://www.qiuchengjia.cn/2016/10/24/PHP/PHP%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F/"/>
+    <id>http://www.qiuchengjia.cn/2016/10/24/PHP/PHP刷CSDN访问量/</id>
+    <published>2016-10-23T16:18:50.000Z</published>
+    <updated>2016-10-23T08:22:43.441Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PHP刷"><a href="#PHP刷" class="headerlink" title="PHP刷"></a>PHP刷</h2><ul>
+<li><p>搭建PHP运行环境</p>
+</li>
+<li><p>然后写下如下PHP代码，假设保存为csdn.php：</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">header(<span class="string">"Content-Type: text/html;charset=utf-8"</span>);</div><div class="line"></div><div class="line">$url = <span class="keyword">array</span>();</div><div class="line">$url[<span class="number">0</span>] = <span class="string">"http://blog.csdn.net/qiuchengjia/article/details/52901693"</span>;</div><div class="line"></div><div class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">    <span class="comment">// 随机文章</span></div><div class="line">    $rand = rand(<span class="number">0</span>,count($url) - <span class="number">1</span>);</div><div class="line">    <span class="comment">// 初始化</span></div><div class="line">    $ch = curl_init();</div><div class="line">    <span class="comment">//设置选项，包括URL</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url[$rand]);</div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</div><div class="line">    <span class="comment">//执行并获取HTML文档内容</span></div><div class="line">    $output = curl_exec($ch);</div><div class="line">    <span class="comment">//释放curl句柄</span></div><div class="line">    curl_close($ch);</div><div class="line">    <span class="comment">//打印获得的数据</span></div><div class="line">    <span class="comment">// print_r($output);</span></div><div class="line">    <span class="comment">// echo $output;</span></div><div class="line">    <span class="comment">// 延迟10秒</span></div><div class="line">    usleep(<span class="number">10000000</span>);</div><div class="line">&#125;</div><div class="line"> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>最后在终端运行，或者浏览器打开这个PHP脚本</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ php csdn.php &amp;</div></pre></td></tr></table></figure>
+<ul>
+<li>然后终端会出现一个进程的PID，假如是9999，如果不想刷了，kill掉它就行了</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ kill <span class="number">9999</span></div></pre></td></tr></table></figure>
+<ul>
+<li>如果找不到PID，可以用命令来找</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ps aux | grep php</div></pre></td></tr></table></figure>
+<ul>
+<li>至于浏览器的，关闭浏览器就行了</li>
+</ul>
+<a id="more"></a>
+<h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
+<li><a href="https://github.com/fengyuanzemin/blog-markdown/blob/master/%E5%A6%82%E4%BD%95%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F.md" target="_blank" rel="external">如何刷CSDN访问量</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;PHP刷&quot;&gt;&lt;a href=&quot;#PHP刷&quot; class=&quot;headerlink&quot; title=&quot;PHP刷&quot;&gt;&lt;/a&gt;PHP刷&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;搭建PHP运行环境&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后写下如下PHP代码，假设保存为csdn.php：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;header(&lt;span class=&quot;string&quot;&gt;&quot;Content-Type: text/html;charset=utf-8&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$url = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$url[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&quot;http://blog.csdn.net/qiuchengjia/article/details/52901693&quot;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 随机文章&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    $rand = rand(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,count($url) - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 初始化&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    $ch = curl_init();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//设置选项，包括URL&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    curl_setopt($ch, CURLOPT_URL, $url[$rand]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    curl_setopt($ch, CURLOPT_RETURNTRANSFER, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    curl_setopt($ch, CURLOPT_HEADER, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//执行并获取HTML文档内容&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    $output = curl_exec($ch);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//释放curl句柄&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    curl_close($ch);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//打印获得的数据&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// print_r($output);&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// echo $output;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 延迟10秒&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    usleep(&lt;span class=&quot;number&quot;&gt;10000000&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;最后在终端运行，或者浏览器打开这个PHP脚本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ php csdn.php &amp;amp;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;然后终端会出现一个进程的PID，假如是9999，如果不想刷了，kill掉它就行了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ kill &lt;span class=&quot;number&quot;&gt;9999&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;如果找不到PID，可以用命令来找&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ ps aux | grep php&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;至于浏览器的，关闭浏览器就行了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下使用SSH和FileZilla远程登陆</title>
@@ -2741,143 +2806,6 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
-    
-    
-      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java可变参数</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java可变参数/</id>
-    <published>2016-08-13T21:55:32.000Z</published>
-    <updated>2016-09-26T11:54:28.077Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什么是可变参数"><a href="#什么是可变参数" class="headerlink" title="什么是可变参数"></a>什么是可变参数</h2><ul>
-<li>在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String[] args)</span></span>;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>//方法签名<br>([Ljava/lang/String;)V // public void foo(String[] args)</p>
-</blockquote>
-<h3 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h3><p>在定义方法时，在最后一个形参后加上三点“…“，就表示该形参可以接受多个参数值，多个参数值被当成数组传入。上述定义有几个要点需要注意：</p>
-<ul>
-<li><p>可变参数只能作为函数的最后一个参数，但其前面可以有也可以没有任何其他参数</p>
-</li>
-<li><p>由于可变参数必须是最后一个参数，所以一个函数最多只能有一个可变参数</p>
-</li>
-<li><p>Java的可变参数，会被编译器转型为一个数组</p>
-</li>
-<li><p>变长参数在编译为字节码后，在方法签名中就是以数组形态出现的。这两个方法的签名是一致的，不能作为方法的重载。如果同时出现，是不能编译通过的。可变参数可以兼容数组，反之则不成立</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String...varargs)</span></span>&#123;&#125;</div><div class="line"></div><div class="line">foo(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>);</div><div class="line"></div><div class="line"><span class="comment">//上述过程和下面的调用是等价的</span></div><div class="line">foo(<span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>&#125;);</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li>J2SE 1.5中新增了“泛型”的机制，可以在一定条件下把一个类型参数化。例如，可以在编写一个类的时候，把一个方法的形参的类型用一个标识符（如T）来代表， 至于这个标识符到底表示什么类型，则在生成这个类的实例的时候再行指定。这一机制可以用来提供更充分的代码重用和更严格的编译时类型检查。不过泛型机制却不能和个数可变的形参配合使用。如果把一个能和不确定个实参相匹配的形参的类型，用一个标识符来代表，那么编译器会给出一个“generic array creation”的错误</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(String arg : args) &#123;<span class="comment">//当作数组用foreach遍历</span></div><div class="line">            System.out.println(arg);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//Compile error</span></div><div class="line">    <span class="comment">//The variable argument type Object of the method must be the last parameter</span></div><div class="line">    <span class="comment">//public void error1(String... args, Object o) &#123;&#125;</span></div><div class="line">    <span class="comment">//public void error2(String... args, Integer... i) &#123;&#125;</span></div><div class="line"></div><div class="line">        <span class="comment">//Compile error</span></div><div class="line">        <span class="comment">//Duplicate method test(String...) in type Varargs</span></div><div class="line">        <span class="comment">//public void test(String[] args)&#123;&#125;</span></div></pre></td></tr></table></figure>
-<h2 id="可变参数方法的调用"><a href="#可变参数方法的调用" class="headerlink" title="可变参数方法的调用"></a>可变参数方法的调用</h2><ul>
-<li>调用可变参数方法，可以给出零到任意多个参数，编译器会将可变参数转化为一个数组。也可以直接传递一个数组，示例如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(String arg : args) &#123;</div><div class="line">            System.out.println(arg);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        test();<span class="comment">//0个参数</span></div><div class="line">        test(<span class="string">"a"</span>);<span class="comment">//1个参数</span></div><div class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//多个参数</span></div><div class="line">        test(<span class="keyword">new</span> String[] &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>&#125;);<span class="comment">//直接传递数组</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><h3 id="优先匹配固定参数"><a href="#优先匹配固定参数" class="headerlink" title="优先匹配固定参数"></a>优先匹配固定参数</h3><ul>
-<li>调用一个被重载的方法时，如果此调用既能够和固定参数的重载方法匹配，也能够与可变长参数的重载方法匹配，则选择固定参数的方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 1"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String arg1, String arg2)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 2"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//version 2 优先匹配固定参数的重载方法</span></div><div class="line">                test();<span class="comment">//version 1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="匹配多个可变参数"><a href="#匹配多个可变参数" class="headerlink" title="匹配多个可变参数"></a>匹配多个可变参数</h3><ul>
-<li>调用一个被重载的方法时，如果此调用既能够和两个可变长参数的重载方法匹配，则编译出错</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 1"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String arg1, String... arg2)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 2"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//Compile error</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2><h3 id="避免带有变长参数的方法重载"><a href="#避免带有变长参数的方法重载" class="headerlink" title="避免带有变长参数的方法重载"></a>避免带有变长参数的方法重载</h3><ul>
-<li>即便编译器可以按照优先匹配固定参数的方式确定具体的调用方法，但在阅读代码的依然容易掉入陷阱。要慎重考虑变长参数的方法重载</li>
-</ul>
-<h3 id="别让null值和空值威胁到变长方法"><a href="#别让null值和空值威胁到变长方法" class="headerlink" title="别让null值和空值威胁到变长方法"></a>别让null值和空值威胁到变长方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;  </div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(String str,Integer... is)</span></span>&#123;       </div><div class="line">     &#125;  </div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(String str,String... strs)</span></span>&#123;          </div><div class="line">     &#125;  </div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">           Client client = <span class="keyword">new</span> Client();  </div><div class="line">           client.methodA(<span class="string">"China"</span>, <span class="number">0</span>);  </div><div class="line">           client.methodA(<span class="string">"China"</span>, <span class="string">"People"</span>);  </div><div class="line">           client.methodA(<span class="string">"China"</span>);  <span class="comment">//compile error</span></div><div class="line">           client.methodA(<span class="string">"China"</span>,<span class="keyword">null</span>);  <span class="comment">//compile error</span></div><div class="line">     &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>修改如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">     Client client = <span class="keyword">new</span> Client();  </div><div class="line">     String[] strs = <span class="keyword">null</span>;  </div><div class="line">     client.methodA(<span class="string">"China"</span>,strs);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>让编译器知道这个null值是String类型的，编译即可顺利通过，也就减少了错误的发生</li>
-</ul>
-<h3 id="覆写变长方法也要循规蹈矩"><a href="#覆写变长方法也要循规蹈矩" class="headerlink" title="覆写变长方法也要循规蹈矩"></a>覆写变长方法也要循规蹈矩</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VarArgsTest2</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        <span class="comment">// 向上转型</span></div><div class="line">        Base base = <span class="keyword">new</span> Sub();</div><div class="line">        base.print(<span class="string">"hello"</span>);</div><div class="line">        <span class="comment">// 不转型</span></div><div class="line">        Sub sub = <span class="keyword">new</span> Sub();</div><div class="line">        sub.print(<span class="string">"hello"</span>);<span class="comment">//compile error</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 基类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Base......test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 子类，覆写父类方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Sub......test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>第一个能编译通过，这是为什么呢？事实上，base对象把子类对象sub做了向上转型，形参列表是由父类决定的，当然能通过。而看看子类直接调用的情况，这时编译器看到子类覆写了父类的print方法，因此肯定使用子类重新定义的print方法，尽管参数列表不匹配也不会跑到父类再去匹配下，因为找到了就不再找了，因此有了类型不匹配的错误</p>
-</li>
-<li><p>这是个特例，覆写的方法参数列表竟然可以与父类不相同，这违背了覆写的定义，并且会引发莫名其妙的错误</p>
-</li>
-</ul>
-<hr>
-<p>这里，总结下覆写必须满足的条件：</p>
-<ul>
-<li><p>覆写方法不能缩小访问权限</p>
-</li>
-<li><p>参数列表必须与被覆写方法相同（包括显示形式）</p>
-</li>
-<li><p>返回类型必须与被覆写方法的相同或是其子类</p>
-</li>
-<li><p>覆写方法不能抛出新的异常，或者超出父类范围的异常，但是可以抛出更少、更有限的异常，或者不抛出异常</p>
-</li>
-</ul>
-<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="使用-Object…-作为变长参数"><a href="#使用-Object…-作为变长参数" class="headerlink" title="使用 Object… 作为变长参数"></a>使用 Object… 作为变长参数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(Object... args)</span> </span>&#123;</div><div class="line">    System.out.println(args.length);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>&#125;); <span class="comment">//3</span></div><div class="line">foo(<span class="number">100</span>, <span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg1"</span>&#125;); <span class="comment">//2</span></div><div class="line"></div><div class="line">foo(<span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;); <span class="comment">//3</span></div><div class="line">foo(<span class="number">100</span>, <span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;); <span class="comment">//2</span></div><div class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">//3</span></div><div class="line">foo(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;); <span class="comment">//1</span></div></pre></td></tr></table></figure>
-<ul>
-<li>int[] 无法转型为 Object[], 因而被当作一个单纯的<strong>数组对象</strong> ; Integer[] 可以转型为 Object[], 可以作为一个<strong>对象数组</strong></li>
-</ul>
-<h3 id="反射方法调用时的注意事项"><a href="#反射方法调用时的注意事项" class="headerlink" title="反射方法调用时的注意事项"></a>反射方法调用时的注意事项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... varargs)</span></span>&#123;</div><div class="line">        System.out.println(args.length);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        String[] varArgs = <span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg2"</span>&#125;;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            Method method = Test.class.getMethod(<span class="string">"foo"</span>, String[].class);</div><div class="line">            method.invoke(<span class="keyword">null</span>, varArgs);</div><div class="line">            method.invoke(<span class="keyword">null</span>, (Object[])varArgs);</div><div class="line">            method.invoke(<span class="keyword">null</span>, (Object)varArgs);</div><div class="line">            method.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[]&#123;varArgs&#125;);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e)&#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>上面的四个调用中，前两个都会在运行时抛出java.lang.IllegalArgumentException: wrong number of arguments异常，后两个则正常调用</p>
-</li>
-<li><p>反射是运行时获取的，在运行时看来，可变长参数和数组是一致的，因而方法签名为：</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法签名</span></div><div class="line">([Ljava/lang/String;)V <span class="comment">// public void foo(String[] varargs)</span></div></pre></td></tr></table></figure>
-<ul>
-<li>再来看一下 Method 对象的方法声明：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">Object <span class="title">invoke</span><span class="params">(Object obj, Object... args)</span></span></div></pre></td></tr></table></figure>
-<ul>
-<li>args 虽然是一个可变长度的参数，但是 args 的长度是受限于该方法对象代表的真实方法的参数列表长度的，而从运行时签名来看，([Ljava/lang/String;)V 实际上只有一个形参，即 String[] varargs，因而 invoke(Object obj, Object… args) 中可变参数 args 的<strong>实参长度只能为1</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Object invoke(Object obj, Object... args)</span></div><div class="line"><span class="comment">//String[] varArgs = new String[]&#123;"arg1", "arg2"&#125;;</span></div><div class="line">method.invoke(<span class="keyword">null</span>, varArgs); <span class="comment">//varArgs长度为2，错误</span></div><div class="line">method.invoke(<span class="keyword">null</span>, (Object[])varArgs); <span class="comment">//将String[]转换为Object[],长度为2的，错误</span></div><div class="line">method.invoke(<span class="keyword">null</span>, (Object)varArgs);<span class="comment">//将整个String[] 转为Object，长度为1，符合</span></div><div class="line">method.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[]&#123;varArgs&#125;);<span class="comment">//Object[]长度为1，正确。上一个和这个是等价的</span></div></pre></td></tr></table></figure>
-<h2 id="什么时候使用可变长参数？"><a href="#什么时候使用可变长参数？" class="headerlink" title="什么时候使用可变长参数？"></a>什么时候使用可变长参数？</h2><ul>
-<li><a href="http://stackoverflow.com/questions/766559/when-do-you-use-varargs-in-java" target="_blank" rel="external">Stack Overflow</a> 上有个关于变长参数使用的问题。简单地说，<br>在不确定方法需要处理的对象的数量时可以使用可变长参数，会使得方法调用更简单，无需手动创建数组 new T[]{…} </li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><p><a href="http://blog.jrwang.me/2015/java-varargs/" target="_blank" rel="external">Java 中的变长参数</a></p>
-</li>
-<li><p><a href="http://dylangao.com/2014/01/06/java-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8/" target="_blank" rel="external">Java 可变参数列表</a></p>
-</li>
-<li><p><a href="http://www.cnblogs.com/lanxuezaipiao/p/3190673.html" target="_blank" rel="external">Java中可变长参数的使用及注意事项</a></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;什么是可变参数&quot;&gt;&lt;a href=&quot;#什么是可变参数&quot; class=&quot;headerlink&quot; title=&quot;什么是可变参数&quot;&gt;&lt;/a&gt;什么是可变参数&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String... args)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;//方法签名&lt;br&gt;([Ljava/lang/String;)V // public void foo(String[] args)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;定义方法&quot;&gt;&lt;a href=&quot;#定义方法&quot; class=&quot;headerlink&quot; title=&quot;定义方法&quot;&gt;&lt;/a&gt;定义方法&lt;/h3&gt;&lt;p&gt;在定义方法时，在最后一个形参后加上三点“…“，就表示该形参可以接受多个参数值，多个参数值被当成数组传入。上述定义有几个要点需要注意：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;可变参数只能作为函数的最后一个参数，但其前面可以有也可以没有任何其他参数&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;由于可变参数必须是最后一个参数，所以一个函数最多只能有一个可变参数&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Java的可变参数，会被编译器转型为一个数组&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;变长参数在编译为字节码后，在方法签名中就是以数组形态出现的。这两个方法的签名是一致的，不能作为方法的重载。如果同时出现，是不能编译通过的。可变参数可以兼容数组，反之则不成立&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String...varargs)&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;foo(&lt;span class=&quot;string&quot;&gt;&quot;arg1&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;arg2&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;arg3&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//上述过程和下面的调用是等价的&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;foo(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String[]&amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;arg1&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;arg2&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;arg3&quot;&lt;/span&gt;&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

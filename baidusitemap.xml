@@ -3,6 +3,21 @@
 
 
     
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/10/24/PHP/PHP%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F/</loc>
+    <lastmod>2016-10-23T08:22:43.441Z</lastmod>
+    <data>
+        <display>
+        <title>PHP刷CSDN访问量</title>
+        <pubTime>2016-10-23T16:18:50.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E4%BC%98%E7%A7%80%E7%BD%91%E7%AB%99%E5%92%8C%E5%8D%9A%E5%AE%A2/</loc>
@@ -187,6 +202,28 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/ACM/ACM%E5%B8%B8%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2016-09-26T11:54:28.101Z</lastmod>
+    <data>
+        <display>
+        <title> ACM常用数学公式汇总</title>
+        <pubTime>2016-06-01T18:48:36.000Z</pubTime>
+        
+        <tag>ACM</tag>
+         
+        <tag>数学公式</tag>
+         
+         
+           
+             
+              <breadCrumb title="ACM" url="http://www.qiuchengjia.cn/categories/ACM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Style.xml%E7%9A%84%E5%A6%99%E7%94%A8/</loc>
     <lastmod>2016-09-26T11:54:28.101Z</lastmod>
     <data>
@@ -209,21 +246,21 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/ACM/ACM%E5%B8%B8%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B1%87%E6%80%BB/</loc>
-    <lastmod>2016-09-26T11:54:28.101Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%80%E6%AC%A1%E6%80%A7finish%E6%8E%89%E4%BB%A5%E5%89%8D%E6%89%93%E5%BC%80%E7%9A%84%E6%89%80%E6%9C%89%E7%9A%84activity/</loc>
+    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
     <data>
         <display>
-        <title> ACM常用数学公式汇总</title>
-        <pubTime>2016-06-01T18:48:36.000Z</pubTime>
+        <title>Android中如何一次性finish掉以前打开的所有的activity</title>
+        <pubTime>2016-06-01T14:29:28.000Z</pubTime>
         
-        <tag>ACM</tag>
+        <tag>Android</tag>
          
-        <tag>数学公式</tag>
+        <tag>Activity</tag>
          
          
            
              
-              <breadCrumb title="ACM" url="http://www.qiuchengjia.cn/categories/ACM/"/>
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
           
         </display>
     </data>
@@ -273,30 +310,6 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%BB%BF%E8%B6%85%E7%BA%A7%E8%AF%BE%E7%A8%8B%E8%A1%A8%E7%9A%84%E8%AF%BE%E7%A8%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2016-09-26T11:54:28.097Z</lastmod>
-    <data>
-        <display>
-        <title>Android仿超级课程表的课程界面设计</title>
-        <pubTime>2016-06-01T14:31:01.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>超级课程表</tag>
-         
-        <tag>UI</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/30/Android/AndroidStudio%E6%8C%87%E5%AE%9Agit%E7%9A%84%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2016-09-26T11:54:28.097Z</lastmod>
     <data>
@@ -319,16 +332,18 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%B8%AD%E5%A6%82%E4%BD%95%E4%B8%80%E6%AC%A1%E6%80%A7finish%E6%8E%89%E4%BB%A5%E5%89%8D%E6%89%93%E5%BC%80%E7%9A%84%E6%89%80%E6%9C%89%E7%9A%84activity/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/Android/Android%E4%BB%BF%E8%B6%85%E7%BA%A7%E8%AF%BE%E7%A8%8B%E8%A1%A8%E7%9A%84%E8%AF%BE%E7%A8%8B%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2016-09-26T11:54:28.097Z</lastmod>
     <data>
         <display>
-        <title>Android中如何一次性finish掉以前打开的所有的activity</title>
-        <pubTime>2016-06-01T14:29:28.000Z</pubTime>
+        <title>Android仿超级课程表的课程界面设计</title>
+        <pubTime>2016-06-01T14:31:01.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>Activity</tag>
+        <tag>超级课程表</tag>
+         
+        <tag>UI</tag>
          
          
            
@@ -374,6 +389,46 @@
            
              
               <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Gneymotion%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%92%8COracle-VM-VirtualBox%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <data>
+        <display>
+        <title>Gneymotion无法启动和Oracle VM VirtualBox常见问题</title>
+        <pubTime>2016-06-01T14:44:14.000Z</pubTime>
+        
+        <tag>genymotion</tag>
+         
+         
+           
+             
+              <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <data>
+        <display>
+        <title>Android Broadcast广播机制分析</title>
+        <pubTime>2016-09-11T19:06:46.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
           
         </display>
     </data>
@@ -441,19 +496,19 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/12/Android/Android-Broadcast%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2016/09/13/Android%E6%B8%B8%E6%88%8F/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
     <data>
         <display>
-        <title>Android Broadcast广播机制分析</title>
-        <pubTime>2016-09-11T19:06:46.000Z</pubTime>
+        <title>Android美女拼图游戏</title>
+        <pubTime>2016-09-12T19:35:17.000Z</pubTime>
         
-        <tag>Android</tag>
+        <tag>Android游戏</tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://www.qiuchengjia.cn/categories/Android/"/>
+              <breadCrumb title="Android游戏" url="http://www.qiuchengjia.cn/categories/Android%E6%B8%B8%E6%88%8F/"/>
           
         </display>
     </data>
@@ -461,14 +516,14 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Gneymotion%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%92%8COracle-VM-VirtualBox%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2016-09-26T11:54:28.089Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2016/06/30/AndroidStudio/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
     <data>
         <display>
-        <title>Gneymotion无法启动和Oracle VM VirtualBox常见问题</title>
-        <pubTime>2016-06-01T14:44:14.000Z</pubTime>
+        <title>AndroidStudio快捷键和使用技巧</title>
+        <pubTime>2016-06-29T21:44:57.000Z</pubTime>
         
-        <tag>genymotion</tag>
+        <tag>AndroidStudio</tag>
          
          
            
@@ -505,90 +560,6 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/13/Android%E6%B8%B8%E6%88%8F/Android%E7%BE%8E%E5%A5%B3%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
-    <data>
-        <display>
-        <title>Android美女拼图游戏</title>
-        <pubTime>2016-09-12T19:35:17.000Z</pubTime>
-        
-        <tag>Android游戏</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android游戏" url="http://www.qiuchengjia.cn/categories/Android%E6%B8%B8%E6%88%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/09/22/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/Android-ViewDragHelper%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90-%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup%E7%A5%9E%E5%99%A8/</loc>
-    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
-    <data>
-        <display>
-        <title> Android ViewDragHelper完全解析 自定义ViewGroup神器</title>
-        <pubTime>2016-09-21T16:57:22.000Z</pubTime>
-        
-        <tag>Android自定义控件</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android自定义控件" url="http://www.qiuchengjia.cn/categories/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8B%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
-    <data>
-        <display>
-        <title> STL之算法总结</title>
-        <pubTime>2016-06-01T17:59:21.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>STL</tag>
-         
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/30/AndroidStudio/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
-    <data>
-        <display>
-        <title>AndroidStudio快捷键和使用技巧</title>
-        <pubTime>2016-06-29T21:44:57.000Z</pubTime>
-        
-        <tag>AndroidStudio</tag>
-         
-         
-           
-             
-              <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bdeque/</loc>
     <lastmod>2016-09-26T11:54:28.085Z</lastmod>
     <data>
@@ -601,32 +572,6 @@
         <tag>STL</tag>
          
         <tag>deque</tag>
-         
-         
-           
-             
-              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bstack%E5%92%8Cqueue/</loc>
-    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
-    <data>
-        <display>
-        <title>STL容器总结之stack和queue</title>
-        <pubTime>2016-06-01T17:42:28.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>STL</tag>
-         
-        <tag>stack</tag>
-         
-        <tag>queue</tag>
          
          
            
@@ -663,21 +608,43 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Android-Studio-SVN%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8B%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2016-09-26T11:54:28.085Z</lastmod>
     <data>
         <display>
-        <title>Android Studio SVN的使用</title>
-        <pubTime>2016-06-01T14:52:54.000Z</pubTime>
+        <title> STL之算法总结</title>
+        <pubTime>2016-06-01T17:59:21.000Z</pubTime>
         
-        <tag>AndroidStudio</tag>
+        <tag>C++</tag>
          
-        <tag>SVN</tag>
+        <tag>STL</tag>
+         
+        <tag>算法</tag>
          
          
            
              
-              <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
+              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/09/22/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/Android-ViewDragHelper%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90-%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup%E7%A5%9E%E5%99%A8/</loc>
+    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
+    <data>
+        <display>
+        <title> Android ViewDragHelper完全解析 自定义ViewGroup神器</title>
+        <pubTime>2016-09-21T16:57:22.000Z</pubTime>
+        
+        <tag>Android自定义控件</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android自定义控件" url="http://www.qiuchengjia.cn/categories/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
           
         </display>
     </data>
@@ -705,6 +672,77 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E5%AE%B9%E5%99%A8%E6%80%BB%E7%BB%93%E4%B9%8Bstack%E5%92%8Cqueue/</loc>
+    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
+    <data>
+        <display>
+        <title>STL容器总结之stack和queue</title>
+        <pubTime>2016-06-01T17:42:28.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>STL</tag>
+         
+        <tag>stack</tag>
+         
+        <tag>queue</tag>
+         
+         
+           
+             
+              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Android-Studio-SVN%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2016-09-26T11:54:28.085Z</lastmod>
+    <data>
+        <display>
+        <title>Android Studio SVN的使用</title>
+        <pubTime>2016-06-01T14:52:54.000Z</pubTime>
+        
+        <tag>AndroidStudio</tag>
+         
+        <tag>SVN</tag>
+         
+         
+           
+             
+              <breadCrumb title="AndroidStudio" url="http://www.qiuchengjia.cn/categories/AndroidStudio/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bset%E5%92%8Cmultiset%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
+    <data>
+        <display>
+        <title> STL之set和multiset总结</title>
+        <pubTime>2016-06-01T18:28:58.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>STL</tag>
+         
+        <tag>set</tag>
+         
+        <tag>multiset</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/08/07/JAVA/Java%E6%B3%A8%E8%A7%A3/</loc>
     <lastmod>2016-09-26T11:54:28.081Z</lastmod>
     <data>
@@ -718,6 +756,96 @@
            
              
               <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bpriority-queue%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/</loc>
+    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
+    <data>
+        <display>
+        <title> STL之priority_queue（优先队列）</title>
+        <pubTime>2016-06-01T17:46:11.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>STL</tag>
+         
+        <tag>priority_queue</tag>
+         
+        <tag>优先队列</tag>
+         
+         
+           
+             
+              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/</loc>
+    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
+    <data>
+        <display>
+        <title>Java枚举类</title>
+        <pubTime>2016-08-11T22:19:08.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
+    <data>
+        <display>
+        <title>C++ string类型详解</title>
+        <pubTime>2016-06-01T16:16:30.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+        <tag>STL</tag>
+         
+        <tag>string</tag>
+         
+         
+           
+             
+              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%90%84%E7%A7%8D%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%EF%BC%8Ccin%E3%80%81cin.get()%E3%80%81cin.getline()%E3%80%81getline()%E3%80%81gets()%E3%80%81getchar()/</loc>
+    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
+    <data>
+        <display>
+        <title>C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()</title>
+        <pubTime>2016-06-01T18:21:27.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+         
+           
+             
+              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
           
         </display>
     </data>
@@ -767,90 +895,6 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/03/JAVA/Java%E6%B3%9B%E5%9E%8B/</loc>
-    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
-    <data>
-        <display>
-        <title>Java泛型</title>
-        <pubTime>2016-08-02T20:52:08.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/</loc>
-    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
-    <data>
-        <display>
-        <title>Java枚举类</title>
-        <pubTime>2016-08-11T22:19:08.000Z</pubTime>
-        
-        <tag>JAVA</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bset%E5%92%8Cmultiset%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
-    <data>
-        <display>
-        <title> STL之set和multiset总结</title>
-        <pubTime>2016-06-01T18:28:58.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>STL</tag>
-         
-        <tag>set</tag>
-         
-        <tag>multiset</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bpriority-queue%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/</loc>
-    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
-    <data>
-        <display>
-        <title> STL之priority_queue（优先队列）</title>
-        <pubTime>2016-06-01T17:46:11.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>STL</tag>
-         
-        <tag>priority_queue</tag>
-         
-        <tag>优先队列</tag>
-         
-         
-           
-             
-              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/02/C++/STL%E4%B9%8Bmap%E5%92%8Cmultimap%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2016-09-26T11:54:28.081Z</lastmod>
     <data>
@@ -877,83 +921,34 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%90%84%E7%A7%8D%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%EF%BC%8Ccin%E3%80%81cin.get()%E3%80%81cin.getline()%E3%80%81getline()%E3%80%81gets()%E3%80%81getchar()/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/08/03/JAVA/Java%E6%B3%9B%E5%9E%8B/</loc>
     <lastmod>2016-09-26T11:54:28.081Z</lastmod>
     <data>
         <display>
-        <title>C++基础：各种输入方法总结，cin、cin.get()、cin.getline()、getline()、gets()、getchar()</title>
-        <pubTime>2016-06-01T18:21:27.000Z</pubTime>
+        <title>Java泛型</title>
+        <pubTime>2016-08-02T20:52:08.000Z</pubTime>
         
-        <tag>C++</tag>
-         
          
            
-             
-              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
-          
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/02/C++/C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2016-09-26T11:54:28.081Z</lastmod>
-    <data>
-        <display>
-        <title>C++ string类型详解</title>
-        <pubTime>2016-06-01T16:16:30.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-        <tag>STL</tag>
-         
-        <tag>string</tag>
-         
-         
-           
-             
-              <breadCrumb title="C++" url="http://www.qiuchengjia.cn/categories/C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>Java反编译</title>
-        <pubTime>2016-08-11T23:03:35.000Z</pubTime>
+        <title>Java语法糖</title>
+        <pubTime>2016-07-23T21:17:40.000Z</pubTime>
         
-        <tag>JAVA</tag>
+        <tag>JVM</tag>
          
          
            
              
-              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/Java%E5%91%BD%E4%BB%A4-javap/</loc>
-    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
-    <data>
-        <display>
-        <title>Java命令--javap</title>
-        <pubTime>2016-08-12T12:34:38.000Z</pubTime>
-        
-        <tag>JAVA命令学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA命令学习" url="http://www.qiuchengjia.cn/categories/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
+              <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
           
         </display>
     </data>
@@ -974,46 +969,6 @@
            
              
               <breadCrumb title="JAVA源码分析" url="http://www.qiuchengjia.cn/categories/JAVA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/</loc>
-    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
-    <data>
-        <display>
-        <title>Java单例模式的七种写法</title>
-        <pubTime>2016-08-11T23:37:17.000Z</pubTime>
-        
-        <tag>JAVA设计模式</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA设计模式" url="http://www.qiuchengjia.cn/categories/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/30/JAVA/Java%E5%8F%8D%E5%B0%84/</loc>
-    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
-    <data>
-        <display>
-        <title>Java反射</title>
-        <pubTime>2016-07-29T16:18:26.000Z</pubTime>
-        
-        <tag>JAVA</tag>
-         
-         
-           
-             
-              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
           
         </display>
     </data>
@@ -1061,19 +1016,19 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/%E5%A4%9A%E6%80%81%E6%80%A7%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E6%B4%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%88%86%E6%B4%BE/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/08/21/JAVA/Java-Import/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>多态性实现机制——静态分派与动态分派</title>
-        <pubTime>2016-07-23T20:33:36.000Z</pubTime>
+        <title>Java Import</title>
+        <pubTime>2016-08-21T14:16:38.000Z</pubTime>
         
-        <tag>JVM</tag>
+        <tag>JAVA</tag>
          
          
            
              
-              <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
           
         </display>
     </data>
@@ -1087,6 +1042,26 @@
         <display>
         <title>Javadoc标签</title>
         <pubTime>2016-08-04T15:12:13.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="http://www.qiuchengjia.cn/categories/JAVA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/</loc>
+    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
+    <data>
+        <display>
+        <title>Java协变和逆变</title>
+        <pubTime>2016-08-16T20:49:41.000Z</pubTime>
         
         <tag>JAVA</tag>
          
@@ -1121,12 +1096,12 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Java%E8%AF%AD%E6%B3%95%E7%B3%96/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>Java语法糖</title>
-        <pubTime>2016-07-23T21:17:40.000Z</pubTime>
+        <title>类初始化</title>
+        <pubTime>2016-07-22T21:26:33.000Z</pubTime>
         
         <tag>JVM</tag>
          
@@ -1141,12 +1116,32 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/21/JAVA/Java-Import/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/%E5%A4%9A%E6%80%81%E6%80%A7%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E5%88%86%E6%B4%BE%E4%B8%8E%E5%8A%A8%E6%80%81%E5%88%86%E6%B4%BE/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>Java Import</title>
-        <pubTime>2016-08-21T14:16:38.000Z</pubTime>
+        <title>多态性实现机制——静态分派与动态分派</title>
+        <pubTime>2016-07-23T20:33:36.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA/Java%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
+    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
+    <data>
+        <display>
+        <title>Java反编译</title>
+        <pubTime>2016-08-11T23:03:35.000Z</pubTime>
         
         <tag>JAVA</tag>
          
@@ -1161,19 +1156,19 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/23/JVM/%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/Java%E5%91%BD%E4%BB%A4-javap/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>类初始化</title>
-        <pubTime>2016-07-22T21:26:33.000Z</pubTime>
+        <title>Java命令--javap</title>
+        <pubTime>2016-08-12T12:34:38.000Z</pubTime>
         
-        <tag>JVM</tag>
+        <tag>JAVA命令学习</tag>
          
          
            
              
-              <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
+              <breadCrumb title="JAVA命令学习" url="http://www.qiuchengjia.cn/categories/JAVA%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
@@ -1201,12 +1196,12 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/17/JAVA/Java%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/07/30/JAVA/Java%E5%8F%8D%E5%B0%84/</loc>
     <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>Java协变和逆变</title>
-        <pubTime>2016-08-16T20:49:41.000Z</pubTime>
+        <title>Java反射</title>
+        <pubTime>2016-07-29T16:18:26.000Z</pubTime>
         
         <tag>JAVA</tag>
          
@@ -1221,21 +1216,19 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85sublime%E6%B1%89%E5%8C%96%E7%89%88%E5%8F%8A%E5%AE%8C%E7%BE%8E%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/</loc>
-    <lastmod>2016-09-26T11:54:28.073Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2016/08/12/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E7%A7%8D%E5%86%99%E6%B3%95/</loc>
+    <lastmod>2016-09-26T11:54:28.077Z</lastmod>
     <data>
         <display>
-        <title>Linux下安装sublime汉化版及完美输入中文</title>
-        <pubTime>2015-06-01T14:18:09.000Z</pubTime>
+        <title>Java单例模式的七种写法</title>
+        <pubTime>2016-08-11T23:37:17.000Z</pubTime>
         
-        <tag>linux</tag>
-         
-        <tag>SublimeText</tag>
+        <tag>JAVA设计模式</tag>
          
          
            
              
-              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
+              <breadCrumb title="JAVA设计模式" url="http://www.qiuchengjia.cn/categories/JAVA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
           
         </display>
     </data>
@@ -1253,6 +1246,28 @@
         <tag>linux</tag>
          
         <tag>qq</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85sublime%E6%B1%89%E5%8C%96%E7%89%88%E5%8F%8A%E5%AE%8C%E7%BE%8E%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/</loc>
+    <lastmod>2016-09-26T11:54:28.073Z</lastmod>
+    <data>
+        <display>
+        <title>Linux下安装sublime汉化版及完美输入中文</title>
+        <pubTime>2015-06-01T14:18:09.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>SublimeText</tag>
          
          
            
@@ -1307,26 +1322,6 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/linux/linux%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95/</loc>
-    <lastmod>2016-09-26T11:54:28.073Z</lastmod>
-    <data>
-        <display>
-        <title> linux如何安装搜狗输入法</title>
-        <pubTime>2015-05-31T21:54:44.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2016/07/16/JVM/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/</loc>
     <lastmod>2016-09-26T11:54:28.073Z</lastmod>
     <data>
@@ -1367,6 +1362,26 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/linux/linux%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95/</loc>
+    <lastmod>2016-09-26T11:54:28.073Z</lastmod>
+    <data>
+        <display>
+        <title> linux如何安装搜狗输入法</title>
+        <pubTime>2015-05-31T21:54:44.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/07/24/JVM/Javac%E7%BC%96%E8%AF%91%E4%B8%8EJIT%E7%BC%96%E8%AF%91/</loc>
     <lastmod>2016-09-26T11:54:28.073Z</lastmod>
     <data>
@@ -1380,6 +1395,52 @@
            
              
               <breadCrumb title="JVM" url="http://www.qiuchengjia.cn/categories/JVM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/linux/linux%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E4%BA%91%E4%BB%A5%E5%8F%8A%E9%85%B7%E6%88%91%E9%9F%B3%E4%B9%90/</loc>
+    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <data>
+        <display>
+        <title> linux下使用百度云以及酷我音乐</title>
+        <pubTime>2016-06-01T15:49:11.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>百度云</tag>
+         
+        <tag>酷我音乐</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/01/linux/CentOS%E4%BB%8Ephp5-3%E5%8D%87%E7%BA%A7%E5%88%B0php5-5/</loc>
+    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS从php5.3升级到php5.5</title>
+        <pubTime>2016-06-01T15:31:35.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>CentOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
           
         </display>
     </data>
@@ -1409,21 +1470,67 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/linux/CentOS%E4%BB%8Ephp5-3%E5%8D%87%E7%BA%A7%E5%88%B0php5-5/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/07/SEO/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2%EF%BC%88github%E5%92%8Ccoding%EF%BC%89/</loc>
     <lastmod>2016-09-26T11:54:28.069Z</lastmod>
     <data>
         <display>
-        <title>CentOS从php5.3升级到php5.5</title>
-        <pubTime>2016-06-01T15:31:35.000Z</pubTime>
+        <title>hexo博客添加域名实现双线部署（github和coding）</title>
+        <pubTime>2016-06-07T11:47:00.000Z</pubTime>
         
-        <tag>CentOS</tag>
+        <tag>SEO</tag>
          
-        <tag>linux</tag>
+        <tag>hexo</tag>
+         
+        <tag>搜索引擎</tag>
          
          
            
              
-              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
+              <breadCrumb title="SEO" url="http://www.qiuchengjia.cn/categories/SEO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/06/SEO/hexo%E5%81%9ASEO%EF%BC%88%E6%B7%BB%E5%8A%A0sitemap%E5%92%8Cbaidusitemap%EF%BC%89/</loc>
+    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <data>
+        <display>
+        <title>hexo做SEO（添加sitemap和baidusitemap）</title>
+        <pubTime>2016-06-06T12:07:57.000Z</pubTime>
+        
+        <tag>SEO</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>搜索引擎</tag>
+         
+         
+           
+             
+              <breadCrumb title="SEO" url="http://www.qiuchengjia.cn/categories/SEO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/%E5%A6%82%E4%BD%95%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4ubuntu%E4%B8%8A%E7%9A%84%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <data>
+        <display>
+        <title> 如何彻底删除ubuntu上的软件</title>
+        <pubTime>2015-06-01T14:07:24.000Z</pubTime>
+        
+        <tag>ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
           
         </display>
     </data>
@@ -1453,26 +1560,6 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E5%90%8E%E5%8F%88%E8%B7%B3%E5%88%B0%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
-    <data>
-        <display>
-        <title> ubuntu输入密码登陆后又跳到登陆界面解决方案</title>
-        <pubTime>2015-06-01T14:11:07.000Z</pubTime>
-        
-        <tag>ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85windows%E5%92%8Cubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2016-09-26T11:54:28.069Z</lastmod>
     <data>
@@ -1485,6 +1572,26 @@
         <tag>ubuntu</tag>
          
         <tag>windows</tag>
+         
+         
+           
+             
+              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E5%90%8E%E5%8F%88%E8%B7%B3%E5%88%B0%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <data>
+        <display>
+        <title> ubuntu输入密码登陆后又跳到登陆界面解决方案</title>
+        <pubTime>2015-06-01T14:11:07.000Z</pubTime>
+        
+        <tag>ubuntu</tag>
          
          
            
@@ -1517,12 +1624,12 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/%E5%A6%82%E4%BD%95%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4ubuntu%E4%B8%8A%E7%9A%84%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%B0%86firefox%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</loc>
+    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
     <data>
         <display>
-        <title> 如何彻底删除ubuntu上的软件</title>
-        <pubTime>2015-06-01T14:07:24.000Z</pubTime>
+        <title>ubuntu系统如何将firefox升级到最新版本</title>
+        <pubTime>2015-05-31T22:30:22.000Z</pubTime>
         
         <tag>ubuntu</tag>
          
@@ -1537,71 +1644,107 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/01/linux/linux%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E4%BA%91%E4%BB%A5%E5%8F%8A%E9%85%B7%E6%88%91%E9%9F%B3%E4%B9%90/</loc>
-    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E4%B8%8B%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85android-studio/</loc>
+    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
     <data>
         <display>
-        <title> linux下使用百度云以及酷我音乐</title>
-        <pubTime>2016-06-01T15:49:11.000Z</pubTime>
+        <title>ubuntu下如何安装android studio</title>
+        <pubTime>2015-06-01T14:01:52.000Z</pubTime>
+        
+        <tag>AndroidStudio</tag>
+         
+        <tag>ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/18/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</loc>
+    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
+    <data>
+        <display>
+        <title>NexT主题内置标签</title>
+        <pubTime>2016-06-17T17:38:40.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/03/%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
+    <data>
+        <display>
+        <title>hexo搭建个人博客</title>
+        <pubTime>2016-06-02T18:24:38.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/07/16/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
+    <data>
+        <display>
+        <title>NexT主题配置</title>
+        <pubTime>2016-07-16T12:59:41.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85Mac-OS-X%E4%B8%BB%E9%A2%98/</loc>
+    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
+    <data>
+        <display>
+        <title> ubuntu如何安装Mac OS X主题</title>
+        <pubTime>2015-06-01T10:43:57.000Z</pubTime>
         
         <tag>linux</tag>
          
-        <tag>百度云</tag>
+        <tag>ubuntu</tag>
          
-        <tag>酷我音乐</tag>
-         
-         
-           
-             
-              <breadCrumb title="linux" url="http://www.qiuchengjia.cn/categories/linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/06/SEO/hexo%E5%81%9ASEO%EF%BC%88%E6%B7%BB%E5%8A%A0sitemap%E5%92%8Cbaidusitemap%EF%BC%89/</loc>
-    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
-    <data>
-        <display>
-        <title>hexo做SEO（添加sitemap和baidusitemap）</title>
-        <pubTime>2016-06-06T12:07:57.000Z</pubTime>
-        
-        <tag>SEO</tag>
-         
-        <tag>搜索引擎</tag>
-         
-        <tag>hexo</tag>
+        <tag>MacOSX</tag>
          
          
            
              
-              <breadCrumb title="SEO" url="http://www.qiuchengjia.cn/categories/SEO/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/07/SEO/hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2%EF%BC%88github%E5%92%8Ccoding%EF%BC%89/</loc>
-    <lastmod>2016-09-26T11:54:28.069Z</lastmod>
-    <data>
-        <display>
-        <title>hexo博客添加域名实现双线部署（github和coding）</title>
-        <pubTime>2016-06-07T11:47:00.000Z</pubTime>
-        
-        <tag>SEO</tag>
-         
-        <tag>搜索引擎</tag>
-         
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="SEO" url="http://www.qiuchengjia.cn/categories/SEO/"/>
+              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
           
         </display>
     </data>
@@ -1675,127 +1818,19 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/18/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E5%86%85%E7%BD%AE%E6%A0%87%E7%AD%BE/</loc>
-    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
+    <loc>http://www.qiuchengjia.cn/2016/06/28/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%BB%96%E5%A6%88%E7%9A%84-%E5%B0%A7%E5%8D%81%E4%B8%89/</loc>
+    <lastmod>2016-09-26T11:54:28.061Z</lastmod>
     <data>
         <display>
-        <title>NexT主题内置标签</title>
-        <pubTime>2016-06-17T17:38:40.000Z</pubTime>
+        <title>他妈的-尧十三</title>
+        <pubTime>2016-06-27T21:44:41.000Z</pubTime>
         
-        <tag>hexo</tag>
+        <tag>尧十三</tag>
          
          
            
              
-              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/07/16/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
-    <data>
-        <display>
-        <title>NexT主题配置</title>
-        <pubTime>2016-07-16T12:59:41.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/03/%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
-    <data>
-        <display>
-        <title>hexo搭建个人博客</title>
-        <pubTime>2016-06-02T18:24:38.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客" url="http://www.qiuchengjia.cn/categories/%E5%8D%9A%E5%AE%A2/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E5%B0%86firefox%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</loc>
-    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu系统如何将firefox升级到最新版本</title>
-        <pubTime>2015-05-31T22:30:22.000Z</pubTime>
-        
-        <tag>ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E4%B8%8B%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85android-studio/</loc>
-    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu下如何安装android studio</title>
-        <pubTime>2015-06-01T14:01:52.000Z</pubTime>
-        
-        <tag>AndroidStudio</tag>
-         
-        <tag>ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2015/06/01/ubuntu/ubuntu%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85Mac-OS-X%E4%B8%BB%E9%A2%98/</loc>
-    <lastmod>2016-09-26T11:54:28.065Z</lastmod>
-    <data>
-        <display>
-        <title> ubuntu如何安装Mac OS X主题</title>
-        <pubTime>2015-06-01T10:43:57.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>ubuntu</tag>
-         
-        <tag>MacOSX</tag>
-         
-         
-           
-             
-              <breadCrumb title="ubuntu" url="http://www.qiuchengjia.cn/categories/ubuntu/"/>
+              <breadCrumb title="文学电影音乐诗歌和画" url="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
           
         </display>
     </data>
@@ -1813,50 +1848,6 @@
         <tag>一千零一夜</tag>
          
         <tag>音乐</tag>
-         
-         
-           
-             
-              <breadCrumb title="文学电影音乐诗歌和画" url="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/25/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%BD%A0%E6%B8%B4%E6%9C%9B%E7%9A%84%E7%A6%BB%E5%BC%80%EF%BC%8C%E5%8F%AA%E6%98%AF%E6%97%A0%E5%A4%84%E5%81%9C%E6%91%86%E3%80%8A%E7%90%86%E6%83%B3%E4%B8%89%E6%97%AC%E3%80%8B%E9%99%88%E9%B8%BF%E5%AE%87/</loc>
-    <lastmod>2016-09-26T11:54:28.061Z</lastmod>
-    <data>
-        <display>
-        <title>你渴望的离开，只是无处停摆《理想三旬》陈鸿宇</title>
-        <pubTime>2016-06-25T10:14:26.000Z</pubTime>
-        
-        <tag>民谣</tag>
-         
-        <tag>油画</tag>
-         
-         
-           
-             
-              <breadCrumb title="文学电影音乐诗歌和画" url="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/25/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E7%B1%B3%E5%BA%97/</loc>
-    <lastmod>2016-09-26T11:54:28.061Z</lastmod>
-    <data>
-        <display>
-        <title>米店</title>
-        <pubTime>2016-06-25T11:17:35.000Z</pubTime>
-        
-        <tag>民谣</tag>
-         
-        <tag>水彩画</tag>
          
          
            
@@ -1929,6 +1920,28 @@
 
     
   <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/25/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E7%B1%B3%E5%BA%97/</loc>
+    <lastmod>2016-09-26T11:54:28.061Z</lastmod>
+    <data>
+        <display>
+        <title>米店</title>
+        <pubTime>2016-06-25T11:17:35.000Z</pubTime>
+        
+        <tag>民谣</tag>
+         
+        <tag>水彩画</tag>
+         
+         
+           
+             
+              <breadCrumb title="文学电影音乐诗歌和画" url="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.qiuchengjia.cn/2016/06/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E9%80%9F%E6%9F%A5%E8%A1%A8/</loc>
     <lastmod>2016-09-26T11:54:28.061Z</lastmod>
     <data>
@@ -1949,19 +1962,21 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/28/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%BB%96%E5%A6%88%E7%9A%84-%E5%B0%A7%E5%8D%81%E4%B8%89/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81/</loc>
     <lastmod>2016-09-26T11:54:28.061Z</lastmod>
     <data>
         <display>
-        <title>他妈的-尧十三</title>
-        <pubTime>2016-06-27T21:44:41.000Z</pubTime>
+        <title>海明校验码</title>
+        <pubTime>2016-06-16T21:04:03.000Z</pubTime>
         
-        <tag>尧十三</tag>
+        <tag>组成原理</tag>
+         
+        <tag>海明校验码</tag>
          
          
            
              
-              <breadCrumb title="文学电影音乐诗歌和画" url="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
+              <breadCrumb title="数据结构和算法和组成原理" url="http://www.qiuchengjia.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
           
         </display>
     </data>
@@ -1989,21 +2004,21 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%B7%E6%98%8E%E6%A0%A1%E9%AA%8C%E7%A0%81/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/25/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/%E4%BD%A0%E6%B8%B4%E6%9C%9B%E7%9A%84%E7%A6%BB%E5%BC%80%EF%BC%8C%E5%8F%AA%E6%98%AF%E6%97%A0%E5%A4%84%E5%81%9C%E6%91%86%E3%80%8A%E7%90%86%E6%83%B3%E4%B8%89%E6%97%AC%E3%80%8B%E9%99%88%E9%B8%BF%E5%AE%87/</loc>
     <lastmod>2016-09-26T11:54:28.061Z</lastmod>
     <data>
         <display>
-        <title>海明校验码</title>
-        <pubTime>2016-06-16T21:04:03.000Z</pubTime>
+        <title>你渴望的离开，只是无处停摆《理想三旬》陈鸿宇</title>
+        <pubTime>2016-06-25T10:14:26.000Z</pubTime>
         
-        <tag>组成原理</tag>
+        <tag>民谣</tag>
          
-        <tag>海明校验码</tag>
+        <tag>油画</tag>
          
          
            
              
-              <breadCrumb title="数据结构和算法和组成原理" url="http://www.qiuchengjia.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+              <breadCrumb title="文学电影音乐诗歌和画" url="http://www.qiuchengjia.cn/categories/%E6%96%87%E5%AD%A6%E7%94%B5%E5%BD%B1%E9%9F%B3%E4%B9%90%E8%AF%97%E6%AD%8C%E5%92%8C%E7%94%BB/"/>
           
         </display>
     </data>
@@ -2051,15 +2066,20 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/08/21/%E9%80%9A%E7%94%A8/K%E6%AD%8C%E4%B9%8B%E7%8E%8B/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2016-09-26T11:54:28.057Z</lastmod>
     <data>
         <display>
-        <title>K歌之王</title>
-        <pubTime>2016-08-21T15:16:18.000Z</pubTime>
+        <title>帮程序员和站长减压放松的10个良心网站</title>
+        <pubTime>2016-06-23T20:44:33.000Z</pubTime>
         
+        <tag>减压</tag>
+         
          
            
+             
+              <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
+          
         </display>
     </data>
     </url>
@@ -2148,19 +2168,34 @@
 
     
   <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/24/%E9%80%9A%E7%94%A8/%E5%B8%AE%E7%A8%8B%E5%BA%8F%E5%91%98%E5%92%8C%E7%AB%99%E9%95%BF%E5%87%8F%E5%8E%8B%E6%94%BE%E6%9D%BE%E7%9A%8410%E4%B8%AA%E8%89%AF%E5%BF%83%E7%BD%91%E7%AB%99/</loc>
+    <loc>http://www.qiuchengjia.cn/2016/08/21/%E9%80%9A%E7%94%A8/K%E6%AD%8C%E4%B9%8B%E7%8E%8B/</loc>
     <lastmod>2016-09-26T11:54:28.057Z</lastmod>
     <data>
         <display>
-        <title>帮程序员和站长减压放松的10个良心网站</title>
-        <pubTime>2016-06-23T20:44:33.000Z</pubTime>
+        <title>K歌之王</title>
+        <pubTime>2016-08-21T15:16:18.000Z</pubTime>
         
-        <tag>减压</tag>
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.qiuchengjia.cn/2016/06/04/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E4%B8%80%E4%B8%AA%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE%E5%A4%9A%E4%B8%AAgithub%E8%B4%A6%E5%8F%B7/</loc>
+    <lastmod>2016-09-26T11:54:28.053Z</lastmod>
+    <data>
+        <display>
+        <title>一个客户端设置多个github账号</title>
+        <pubTime>2016-06-04T14:29:09.000Z</pubTime>
+        
+        <tag>git</tag>
          
          
            
              
-              <breadCrumb title="通用" url="http://www.qiuchengjia.cn/categories/%E9%80%9A%E7%94%A8/"/>
+              <breadCrumb title="项目管理" url="http://www.qiuchengjia.cn/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
           
         </display>
     </data>
@@ -2176,26 +2211,6 @@
         <pubTime>2016-08-13T19:24:27.000Z</pubTime>
         
         <tag>项目管理</tag>
-         
-         
-           
-             
-              <breadCrumb title="项目管理" url="http://www.qiuchengjia.cn/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.qiuchengjia.cn/2016/06/04/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E4%B8%80%E4%B8%AA%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE%E5%A4%9A%E4%B8%AAgithub%E8%B4%A6%E5%8F%B7/</loc>
-    <lastmod>2016-09-26T11:54:28.053Z</lastmod>
-    <data>
-        <display>
-        <title>一个客户端设置多个github账号</title>
-        <pubTime>2016-06-04T14:29:09.000Z</pubTime>
-        
-        <tag>git</tag>
          
          
            
