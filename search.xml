@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[PHP刷CSDN访问量]]></title>
-      <url>http://www.qiuchengjia.cn/2016/10/24/PHP/PHP%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F/</url>
+      <url>http://www.qiuchengjia.cn/2016/10/24/%E5%B7%A5%E5%85%B7/%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F/</url>
       <content type="html"><![CDATA[<h2 id="PHP刷"><a href="#PHP刷" class="headerlink" title="PHP刷"></a>PHP刷</h2><ul>
 <li><p>搭建PHP运行环境</p>
 </li>
@@ -29,7 +29,13 @@
 <li>至于浏览器的，关闭浏览器就行了</li>
 </ul>
 <a id="more"></a>
-<h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
+<h2 id="exe工具"><a href="#exe工具" class="headerlink" title="exe工具"></a>exe工具</h2><ul>
+<li><p>直接运行就行</p>
+</li>
+<li><p><a href="http://oe7guoyyy.bkt.clouddn.com/csdn.exe" target="_blank" rel="external">传送门</a></p>
+</li>
+</ul>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><ul>
 <li><a href="https://github.com/fengyuanzemin/blog-markdown/blob/master/%E5%A6%82%E4%BD%95%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F.md" target="_blank" rel="external">如何刷CSDN访问量</a></li>
 </ul>
 ]]></content>
