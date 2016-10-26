@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.qiuchengjia.cn/about/index.html</loc>
+    
+    <lastmod>2016-10-26T08:04:08.931Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.qiuchengjia.cn/2015/06/01/linux/Linux%E4%B8%8B%E5%AE%89%E8%A3%85sublime%E6%B1%89%E5%8C%96%E7%89%88%E5%8F%8A%E5%AE%8C%E7%BE%8E%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/</loc>
     
     <lastmod>2016-10-25T04:19:06.726Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://www.qiuchengjia.cn/2016/10/24/%E5%B7%A5%E5%85%B7/%E5%88%B7CSDN%E8%AE%BF%E9%97%AE%E9%87%8F/</loc>
     
     <lastmod>2016-10-24T05:03:10.983Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.qiuchengjia.cn/about/index.html</loc>
-    
-    <lastmod>2016-10-22T03:38:41.872Z</lastmod>
     
   </url>
   
