@@ -106,8 +106,17 @@
 <h4 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a><strong>注意：</strong></h4><ul>
 <li>这个标识比较特殊，它定义了执行此Activity时所需要的数据，也就是说，这些数据是必须的！！！！！所有如果其它条件都足以激活该Activity，但intent却没有传进来指定类型的Data时，就不能激活该activity！！！！</li>
 </ul>
-<h2 id="Intent隐式传递方法"><a href="#Intent隐式传递方法" class="headerlink" title="Intent隐式传递方法"></a>Intent隐式传递方法</h2><ul>
-<li>上面我们讲了一个Activity能被某隐式Intent唤醒的原则，只有这些全部匹配的intent才能唤醒这个Activity，下面我们就讲讲怎么向隐式intent传递这些参数，以便与activity匹配将向唤醒</li>
+<h2 id="Intent的七大属性"><a href="#Intent的七大属性" class="headerlink" title="Intent的七大属性"></a>Intent的七大属性</h2><ul>
+<li><p>Intent七大属性是指Intent的ComponentName、Action、Category、Data、Type、Extra以及Flag，七个属性，总体上可以分为3类：</p>
+</li>
+<li><p>第一类：启动，有ComponentName（显式）,Action（隐式），Category（隐式）。</p>
+</li>
+<li><p>第二类：传值，有Data（隐式），Type（隐式），Extra（隐式、显式）。</p>
+</li>
+<li><p>第三类：启动模式，有Flag。</p>
+</li>
+<li><p>下面我们逐一来说</p>
+</li>
 </ul>
 <h3 id="ComponentName"><a href="#ComponentName" class="headerlink" title="ComponentName"></a>ComponentName</h3><ul>
 <li><p>Component本身有组件的意思，我们通过设置Component可以启动其他的Activity或者其他应用中的Activity，来看一个简单的实例：</p>
@@ -124,59 +133,51 @@
 <ul>
 <li>当然，通过设置ComponentName属性我们也可以启动其他App中的Activity，关于这一块的内容大家可以参考 <a href="http://blog.csdn.net/u012702547/article/details/49557905" target="_blank" rel="external">关于ComponentName的使用</a>。下面我们看看隐式启动</li>
 </ul>
-<h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><ul>
-<li>使用Intent的一个构造方法即可实现传递Action参数：</li>
+<h3 id="Action和Category"><a href="#Action和Category" class="headerlink" title="Action和Category"></a>Action和Category</h3><ul>
+<li>因为在实际开发中，Action大多时候都是和Category一起使用的，所以这里我们将这两个放在一起来讲解。Intent中的Action我们在使用广播的时候用的比较多，在Activity中，我们可以通过设置Action来隐式的启动一个Activity，比如我们有一个ThirdActivity，我们在清单文件中做如下配置：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Intent</span><span class="params">(String action)</span> </span>&#123;  </div><div class="line">    mAction = action;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".ThirdActivity"</span>  </div><div class="line">    <span class="attr">android:label</span>=<span class="string">"@string/title_activity_third"</span> &gt;  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.qf.ThirdActivity"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
 <ul>
-<li>对于有如下声明的Activity：</li>
+<li>当我们在清单文件中做了这样的配置之后，我们的ThirdActivity会就会响应这个动作，怎么那么怎么响应呢？看下面：</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>   </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setAction(<span class="string">"com.qf.ThirdActivity"</span>);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
 <ul>
-<li>要激活这个Activity，就需要如下这样构造Intent:(直接向intent中传递action的name值)</li>
+<li>当然，我们也可以写的更简单一些，如下：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gotoTargetActivity</span><span class="params">(View view)</span> </span>&#123;  </div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.TARGET"</span>);  </div><div class="line">    startActivity(intent);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent(<span class="string">"com.qf.ThirdActivity"</span>);  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
 <ul>
-<li><p>这样就可以启动我们上面的这个activity了。</p>
+<li>通过这中方式我们也可以启动一个Activity，那么大家可能也注意到了，我们的清单文件中有一个category的节点，那么没有这个节点可以吗？不可以！！当我们使用这种隐式启动的方式来启动一个Activity的时候，必须要action和category都匹配上了，该Activity才会成功启动。如果我们没有定义category，那么可以暂时先使用系统默认的category，总之，category不能没有。这个时候我们可能会有疑问了，如果我有多个Activity都配置了相同的action，那么会启动哪个？看看下面这个熟悉的图片：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Intent%E8%AF%A6%E8%A7%A3.png" alt=""></center>
+
+<ul>
+<li>当我们有多个Activity配置了相同的action的时候，那么系统会弹出来一个选择框，让我们自己选择要启动那个Activity。<br>action我们只能添加一个，但是category却可以添加多个（至少有一个，没有就要设置为DEFAULT），如下：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".ThirdActivity"</span>  </div><div class="line">    <span class="attr">android:label</span>=<span class="string">"@string/title_activity_third"</span> &gt;  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"mycategory"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.qf.ThirdActivity"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>相应的我们的启动方式也可以修改，如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent(<span class="string">"com.qf.ThirdActivity"</span>);  </div><div class="line">            intent.addCategory(<span class="string">"mycategory"</span>);  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><ul>
+<li>通过设置data，我们可以执行打电话，发短信，开发网页等等操作。究竟做哪种操作，要看我们的数据格式：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 打开网页  </span></div><div class="line">intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);  </div><div class="line">intent.setData(Uri.parse(<span class="string">"http://www.baidu.com"</span>));  </div><div class="line">startActivity(intent);  </div><div class="line"><span class="comment">// 打电话  </span></div><div class="line">intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);  </div><div class="line">intent.setData(Uri.parse(<span class="string">"tel:18565554482"</span>));  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>当我们的data是一个http协议的时候，系统会自动去查找可以打开http协议的Activity，这个时候如果手机安装了多个浏览器，那么系统会弹出多个浏览器供我们选择。这是我们通过设置Data来启动一个Activity，同时，我们也可以通过设置一个Data属性来将我们的Activity发布出去供别人调用，怎么发布呢？</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".HttpActivity"</span>  </div><div class="line">    <span class="attr">android:label</span>=<span class="string">"@string/title_activity_http"</span> &gt;  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">data</span>  </span></div><div class="line">            <span class="attr">android:scheme</span>=<span class="string">"http"</span> /&gt;  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>在data节点中我们设置我们这个Activity可以打开的协议，我们这里设置为http协议，那么以后要打开一个http请求的时候，系统都会让我们选择是否用这个Activity打开。当然，我们也可以自己定义一个协议（自己定义的协议，由于别人不知道，所以只能由我们自己的程序打开）。比如下面这样：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".HttpActivity"</span>  </div><div class="line">    <span class="attr">android:label</span>=<span class="string">"@string/title_activity_http"</span> &gt;  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">data</span>  </span></div><div class="line">            <span class="attr">android:scheme</span>=<span class="string">"myhttp"</span> /&gt;  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>那么我们怎么打开自己的Activity呢？</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent();  </div><div class="line">            intent.setData(Uri.parse(<span class="string">"myhttp://www.baidu.com"</span>));  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>这个例子没有什么实际意义，我只是举一个自定义协议的栗子</p>
 </li>
-<li><p>注意这里再次提醒，一个activity可以有多个action，只要有一个匹配就可以被启动。同样，如果仅指定某个action,而多个activity都具有这个action的话，系统会列出列表供用户选择执行哪一个activity.</p>
-</li>
-</ul>
-<h3 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h3><p>一个intent对象可以有任意个category。intent类定义了许多category常数.</p>
-<ul>
-<li><p>addCategory()方法为一个intent对象增加一个category,</p>
-</li>
-<li><p>removeCategory删除一个category,</p>
-</li>
-<li><p>getCategories()获取intent所有的category.</p>
-</li>
-</ul>
-<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>有两种传递data的方式：</p>
-<ul>
-<li><strong>第一种：</strong>利用构造函数：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Intent</span><span class="params">(String action, Uri uri)</span> </span>&#123;  </div><div class="line">    mAction = action;  </div><div class="line">    mData = uri;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>第二种：</strong>利用Intent::SetData(URI uri)</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.name"</span>);  </div><div class="line">intent.setData(Uri.parse(<span class="string">"scheme://host:port/parth"</span>));  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>举个例子：</strong>（改动下上面的action的例子）</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"scott"</span> <span class="attr">android:host</span>=<span class="string">"com.scott.intent.data"</span> <span class="attr">android:port</span>=<span class="string">"7788"</span> <span class="attr">android:path</span>=<span class="string">"/target"</span>/&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>这个时候如果要启动这个TargetActivity只指定action就不够了，我们需要为其设置data值，如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.TARGET"</span>);  </div><div class="line">intent.setData(Uri.parse(<span class="string">"scott://com.scott.intent.data:7788/target"</span>));  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
-<ul>
-<li>此时，url中的每个部分和TargetActivity配置信息中全部一致才能跳转成功，否则就被系统拒绝。</li>
-</ul>
-<h4 id="注意：-2"><a href="#注意：-2" class="headerlink" title="注意："></a><strong>注意：</strong></h4><ul>
-<li><p>不过有时候对path限定死了也不太好，比如我们有这样的url：（scott://com.scott.intent.data:7788/target/hello）（scott://com.scott.intent.data:7788/target/hi）</p>
-</li>
-<li><p>这个时候该怎么办呢？我们需要使用另外一个元素：android:pathPrefix，表示路径前缀</p>
-</li>
-<li><p>我们把android:path=”/target”修改为android:pathPrefix=”/target”，然后就可以满足以上的要求了</p>
+<li><p>其实，说到这里，大家应该明白了为什么我们说data是隐式传值，比如我们打开一个网页，http协议后面跟的就是网页地址，我们不用再单独指定要打开哪个网页。</p>
 </li>
 </ul>
 <h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><ul>
