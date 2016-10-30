@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qiuchengjia.cn/"/>
-  <updated>2016-10-24T05:03:10.983Z</updated>
+  <updated>2016-10-30T08:08:51.754Z</updated>
   <id>http://www.qiuchengjia.cn/</id>
   
   <author>
@@ -14,6 +14,281 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Intent详解</title>
+    <link href="http://www.qiuchengjia.cn/2016/10/30/Android%E5%9F%BA%E7%A1%80/Intent%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://www.qiuchengjia.cn/2016/10/30/Android基础/Intent详解/</id>
+    <published>2016-10-30T15:42:58.000Z</published>
+    <updated>2016-10-30T08:08:51.754Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Intent是什么"><a href="#Intent是什么" class="headerlink" title="Intent是什么"></a>Intent是什么</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><p>Intent被译作意图，其实还是很能传神的，Intent期望做到的，就是把实现者和调用者完全解耦，调用者专心将以意图描述清晰，发送出去，就可以梦想成真，达到目的</p>
+</li>
+<li><p>Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。通过Intent，你的程序可以向Android表达某种请求或者意愿，Android会根据意愿的内容选择适当的组件来完成请求。比如，有一个Activity希望打开网页浏览器查看某一网页的内容，那么这个Activity只需要发出WEB_SEARCH_ACTION给Android，Android就会根据Intent的请求内容，查询各组件注册时声明的IntentFilter，找到网页浏览器的Activity来浏览网页。这个解释好像理解起来就容易好多，我们通过intent传入某种意图，而android就会根据这种意图，自动寻找合适的activity来启动，如果有多个条件符合的activity，就以列表的方式让用户手动选择一个</p>
+</li>
+</ul>
+<h3 id="显示Intent与隐式Intent"><a href="#显示Intent与隐式Intent" class="headerlink" title="显示Intent与隐式Intent"></a>显示Intent与隐式Intent</h3><ul>
+<li><strong>例一：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setClass(Context packageContext, OtherActivity.class);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>例二：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setAction(Intent.ACTION_NEW);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>从这两段代码中可以明显看出，同样是startActivity，但第一个明确指出是启动OtherActivity，而在第二个例子中，并没有明确指出要启动哪个activity！</li>
+</ul>
+<p>这两种书写方式就分别是显示Intent（例一）、隐式Intent（例二）；</p>
+<ul>
+<li><p>显式intent是指明确指出此intent是启动哪个activity.</p>
+</li>
+<li><p>隐式intent是指并没有指出要启动哪个activity,而要系统自动去判断并启动匹配的activity.</p>
+</li>
+</ul>
+<h3 id="显式Intent小结"><a href="#显式Intent小结" class="headerlink" title="显式Intent小结"></a>显式Intent小结</h3><ul>
+<li><p>有两种方式来显示的指示要启动的Activity:</p>
+</li>
+<li><p><strong>方式一：</strong>（通过setClassName）</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line"><span class="comment">//表示希望启动com.example.test_permission包中的com.example.test_permission.MainActivity  </span></div><div class="line">intent.setClassName(<span class="string">"com.example.test_permission"</span>, <span class="string">"com.example.test_permission.MainActivity"</span>);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>方式二：</strong>（通过SetClass）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setClass(Context packageContext, OtherActivity.class);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>同样，setClass(Context packageContext, OtherActivity.class);是指启动packageContext包里的OtherActivity.class类；</li>
+</ul>
+<h2 id="针对隐式intent，Activity的匹配原则"><a href="#针对隐式intent，Activity的匹配原则" class="headerlink" title="针对隐式intent，Activity的匹配原则"></a>针对隐式intent，Activity的匹配原则</h2><ul>
+<li><p>上面我们讲了隐式intent是要靠系统自动去匹配并启动某个activity的。那系统是怎样匹配activity的呢，系统是怎样知道这个actitiy就是某个intent想要的呢。</p>
+</li>
+<li><p>某个activity能不能被某个intent激活，要看这个activity是不是符合这个intent的要求，而某个activity能被哪个intent激活是有定义的，定义就在AndroidManifest.xml</p>
+</li>
+<li><p>打开AndroidManifest.xml，找到任意一个activity，一般都能看到一段代码，举个例子，我随便复制一个，如下：</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span>  </span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>  </div><div class="line">    <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span> &gt;  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span>  </div><div class="line">  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>看这里有一对标签<intent-filter>……</intent-filter><br>在这个标签里定义的所有东东都是用来定义该activity可以被哪些intent激活的，如果匹配，就会被激活！！！！！</p>
+</li>
+<li><p>在<intent-filter>里有以下几个属性可以让intent来匹配：Action、Category、Data；下面逐一介绍：</intent-filter></p>
+</li>
+</ul>
+<h3 id="Action：该activity可以执行的动作"><a href="#Action：该activity可以执行的动作" class="headerlink" title="Action：该activity可以执行的动作"></a>Action：该activity可以执行的动作</h3><ul>
+<li><p>该标识用来说明这个activity可以执行哪些动作，所以当隐式intent传递过来action时，如果跟这里<intent-filter>所列出的任意一个匹配的话，就说明这个activity是可以完成这个intent的意图的，可以将它激活！！！！</intent-filter></p>
+</li>
+<li><p>常用的Action如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ACTION_CALL activity 启动一个电话.  </div><div class="line">ACTION_EDIT activity 显示用户编辑的数据.  </div><div class="line">ACTION_MAIN activity 作为Task中第一个Activity启动  </div><div class="line">ACTION_SYNC activity 同步手机与数据服务器上的数据.  </div><div class="line">ACTION_BATTERY_LOW broadcast receiver 电池电量过低警告.  </div><div class="line">ACTION_HEADSET_PLUG broadcast receiver 插拔耳机警告  </div><div class="line">ACTION_SCREEN_ON broadcast receiver 屏幕变亮警告.  </div><div class="line">ACTION_TIMEZONE_CHANGED broadcast receiver 改变时区警告.</div></pre></td></tr></table></figure>
+<h4 id="两条原则："><a href="#两条原则：" class="headerlink" title="两条原则："></a><strong>两条原则：</strong></h4><ul>
+<li><p>一条<intent-filter>元素至少应该包含一个<action>，否则任何Intent请求都不能和该<intent-filter>匹配。</intent-filter></action></intent-filter></p>
+</li>
+<li><p>如果Intent请求的Action和<intent-filter>中个任意一条<action>匹配，那么该Intent就可以激活该activity(前提是除了action的其它项也要通过)。</action></intent-filter></p>
+</li>
+</ul>
+<h4 id="两条注意："><a href="#两条注意：" class="headerlink" title="两条注意："></a><strong>两条注意：</strong></h4><p>如果Intent请求或<intent-filter>中没有说明具体的Action类型，那么会出现下面两种情况</intent-filter></p>
+<ul>
+<li><p>如果<intent-filter>中没有包含任何Action类型，那么无论什么Intent请求都无法和这条<intent-filter>匹配</intent-filter></intent-filter></p>
+</li>
+<li><p>反之，如果Intent请求中没有设定Action类型，那么只要<intent-filter>中包含有Action类型，这个Intent请求就将顺利地通过<intent-filter>的行为测试</intent-filter></intent-filter></p>
+</li>
+</ul>
+<h3 id="Category：于指定当前动作（Action）被执行的环境"><a href="#Category：于指定当前动作（Action）被执行的环境" class="headerlink" title="Category：于指定当前动作（Action）被执行的环境"></a>Category：于指定当前动作（Action）被执行的环境</h3><ul>
+<li><p>即这个activity在哪个环境中才能被激活。不属于这个环境的，不能被激活</p>
+</li>
+<li><p>常用的Category属性如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">CATEGORY_DEFAULT：Android系统中默认的执行方式，按照普通Activity的执行方式执行。表示所有intent都可以激活它　  </div><div class="line">  </div><div class="line">CATEGORY_HOME：设置该组件为Home Activity。  </div><div class="line">  </div><div class="line">CATEGORY_PREFERENCE：设置该组件为Preference。　  </div><div class="line">  </div><div class="line">CATEGORY_LAUNCHER：设置该组件为在当前应用程序启动器中优先级最高的Activity，通常为入口ACTION_MAIN配合使用。　  </div><div class="line">  </div><div class="line">CATEGORY_BROWSABLE：设置该组件可以使用浏览器启动。表示该activity只能用来浏览网页。　  </div><div class="line">  </div><div class="line">CATEGORY_GADGET：设置该组件可以内嵌到另外的Activity中。</div></pre></td></tr></table></figure>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h4><ul>
+<li>如果该activity想要通过隐式intent方式激活，那么不能没有任何category设置，至少包含一个android.intent.category.DEFAULT</li>
+</ul>
+<h3 id="Data-执行时要操作的数据"><a href="#Data-执行时要操作的数据" class="headerlink" title="Data  执行时要操作的数据"></a>Data  执行时要操作的数据</h3><p>在目标<data>标签中包含了以下几种子元素，他们定义了url的匹配规则：</data></p>
+<ul>
+<li><p>android:scheme 匹配url中的前缀，除了“http”、“https”、“tel”…之外，我们可以定义自己的前缀</p>
+</li>
+<li><p>android:host 匹配url中的主机名部分，如“google.com”，如果定义为“*”则表示任意主机名</p>
+</li>
+<li><p>android:port 匹配url中的端口</p>
+</li>
+<li><p>android:path 匹配url中的路径</p>
+</li>
+</ul>
+<p>在XML中声明可以操作的data域应该是这样的：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"scott"</span> <span class="attr">android:host</span>=<span class="string">"com.scott.intent.data"</span> <span class="attr">android:port</span>=<span class="string">"7788"</span> <span class="attr">android:path</span>=<span class="string">"/target"</span>/&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a><strong>注意：</strong></h4><ul>
+<li>这个标识比较特殊，它定义了执行此Activity时所需要的数据，也就是说，这些数据是必须的！！！！！所有如果其它条件都足以激活该Activity，但intent却没有传进来指定类型的Data时，就不能激活该activity！！！！</li>
+</ul>
+<h2 id="Intent隐式传递方法"><a href="#Intent隐式传递方法" class="headerlink" title="Intent隐式传递方法"></a>Intent隐式传递方法</h2><ul>
+<li>上面我们讲了一个Activity能被某隐式Intent唤醒的原则，只有这些全部匹配的intent才能唤醒这个Activity，下面我们就讲讲怎么向隐式intent传递这些参数，以便与activity匹配将向唤醒</li>
+</ul>
+<h3 id="ComponentName"><a href="#ComponentName" class="headerlink" title="ComponentName"></a>ComponentName</h3><ul>
+<li><p>Component本身有组件的意思，我们通过设置Component可以启动其他的Activity或者其他应用中的Activity，来看一个简单的实例：</p>
+</li>
+<li><p>启动同一个App中另外一个Activity：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent();  </div><div class="line">            intent.setComponent(<span class="keyword">new</span> ComponentName(<span class="keyword">this</span>, SecondActivity.class));  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>这中启动方式等同于以下两种启动方式：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>,SecondActivity.class);  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent();  </div><div class="line">            intent.setClass(<span class="keyword">this</span>, SecondActivity.class);  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>当然，通过设置ComponentName属性我们也可以启动其他App中的Activity，关于这一块的内容大家可以参考 <a href="http://blog.csdn.net/u012702547/article/details/49557905" target="_blank" rel="external">关于ComponentName的使用</a>。下面我们看看隐式启动</li>
+</ul>
+<h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><ul>
+<li>使用Intent的一个构造方法即可实现传递Action参数：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Intent</span><span class="params">(String action)</span> </span>&#123;  </div><div class="line">    mAction = action;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>对于有如下声明的Activity：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>   </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>要激活这个Activity，就需要如下这样构造Intent:(直接向intent中传递action的name值)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gotoTargetActivity</span><span class="params">(View view)</span> </span>&#123;  </div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.TARGET"</span>);  </div><div class="line">    startActivity(intent);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>这样就可以启动我们上面的这个activity了。</p>
+</li>
+<li><p>注意这里再次提醒，一个activity可以有多个action，只要有一个匹配就可以被启动。同样，如果仅指定某个action,而多个activity都具有这个action的话，系统会列出列表供用户选择执行哪一个activity.</p>
+</li>
+</ul>
+<h3 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h3><p>一个intent对象可以有任意个category。intent类定义了许多category常数.</p>
+<ul>
+<li><p>addCategory()方法为一个intent对象增加一个category,</p>
+</li>
+<li><p>removeCategory删除一个category,</p>
+</li>
+<li><p>getCategories()获取intent所有的category.</p>
+</li>
+</ul>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>有两种传递data的方式：</p>
+<ul>
+<li><strong>第一种：</strong>利用构造函数：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Intent</span><span class="params">(String action, Uri uri)</span> </span>&#123;  </div><div class="line">    mAction = action;  </div><div class="line">    mData = uri;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>第二种：</strong>利用Intent::SetData(URI uri)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.name"</span>);  </div><div class="line">intent.setData(Uri.parse(<span class="string">"scheme://host:port/parth"</span>));  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>举个例子：</strong>（改动下上面的action的例子）</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".TargetActivity"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.scott.intent.action.TARGET"</span>/&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"scott"</span> <span class="attr">android:host</span>=<span class="string">"com.scott.intent.data"</span> <span class="attr">android:port</span>=<span class="string">"7788"</span> <span class="attr">android:path</span>=<span class="string">"/target"</span>/&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>这个时候如果要启动这个TargetActivity只指定action就不够了，我们需要为其设置data值，如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.TARGET"</span>);  </div><div class="line">intent.setData(Uri.parse(<span class="string">"scott://com.scott.intent.data:7788/target"</span>));  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>此时，url中的每个部分和TargetActivity配置信息中全部一致才能跳转成功，否则就被系统拒绝。</li>
+</ul>
+<h4 id="注意：-2"><a href="#注意：-2" class="headerlink" title="注意："></a><strong>注意：</strong></h4><ul>
+<li><p>不过有时候对path限定死了也不太好，比如我们有这样的url：（scott://com.scott.intent.data:7788/target/hello）（scott://com.scott.intent.data:7788/target/hi）</p>
+</li>
+<li><p>这个时候该怎么办呢？我们需要使用另外一个元素：android:pathPrefix，表示路径前缀</p>
+</li>
+<li><p>我们把android:path=”/target”修改为android:pathPrefix=”/target”，然后就可以满足以上的要求了</p>
+</li>
+</ul>
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><ul>
+<li>type的存在，主要是为了对data的类型做进一步的说明，但是一般情况下，只有data属性为null的时候，type属性才有效，如果data属性不为null，系统会自动根据data中的协议来分析data的数据类型，而不会去管type，我们先来看看下面一段源码：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"> * Set the data this intent is operating on.  This method automatically </div><div class="line"> * clears any type that was previously set by &#123;<span class="doctag">@link</span> #setType&#125; or </div><div class="line"> * &#123;<span class="doctag">@link</span> #setTypeAndNormalize&#125;. </div><div class="line"> * </div><div class="line"> * &lt;p&gt;&lt;em&gt;Note: scheme matching in the Android framework is </div><div class="line"> * case-sensitive, unlike the formal RFC. As a result, </div><div class="line"> * you should always write your Uri with a lower case scheme, </div><div class="line"> * or use &#123;<span class="doctag">@link</span> Uri#normalizeScheme&#125; or </div><div class="line"> * &#123;<span class="doctag">@link</span> #setDataAndNormalize&#125; </div><div class="line"> * to ensure that the scheme is converted to lower case.&lt;/em&gt; </div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> data The Uri of the data this intent is now targeting. </div><div class="line"> * </div><div class="line"> * <span class="doctag">@return</span> Returns the same Intent object, for chaining multiple calls </div><div class="line"> * into a single statement. </div><div class="line"> * </div><div class="line"> * <span class="doctag">@see</span> #getData </div><div class="line"> * <span class="doctag">@see</span> #setDataAndNormalize </div><div class="line"> * <span class="doctag">@see</span> android.net.Uri#normalizeScheme() </div><div class="line"> */  </div><div class="line"><span class="function"><span class="keyword">public</span> Intent <span class="title">setData</span><span class="params">(Uri data)</span> </span>&#123;  </div><div class="line">    mData = data;  </div><div class="line">    mType = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="comment">/** </span></div><div class="line"> * Set an explicit MIME data type. </div><div class="line"> * </div><div class="line"> * &lt;p&gt;This is used to create intents that only specify a type and not data, </div><div class="line"> * for example to indicate the type of data to return. </div><div class="line"> * </div><div class="line"> * &lt;p&gt;This method automatically clears any data that was </div><div class="line"> * previously set (for example by &#123;<span class="doctag">@link</span> #setData&#125;). </div><div class="line"> * </div><div class="line"> * &lt;p&gt;&lt;em&gt;Note: MIME type matching in the Android framework is </div><div class="line"> * case-sensitive, unlike formal RFC MIME types.  As a result, </div><div class="line"> * you should always write your MIME types with lower case letters, </div><div class="line"> * or use &#123;<span class="doctag">@link</span> #normalizeMimeType&#125; or &#123;<span class="doctag">@link</span> #setTypeAndNormalize&#125; </div><div class="line"> * to ensure that it is converted to lower case.&lt;/em&gt; </div><div class="line"> * </div><div class="line"> * <span class="doctag">@param</span> type The MIME type of the data being handled by this intent. </div><div class="line"> * </div><div class="line"> * <span class="doctag">@return</span> Returns the same Intent object, for chaining multiple calls </div><div class="line"> * into a single statement. </div><div class="line"> * </div><div class="line"> * <span class="doctag">@see</span> #getType </div><div class="line"> * <span class="doctag">@see</span> #setTypeAndNormalize </div><div class="line"> * <span class="doctag">@see</span> #setDataAndType </div><div class="line"> * <span class="doctag">@see</span> #normalizeMimeType </div><div class="line"> */  </div><div class="line"><span class="function"><span class="keyword">public</span> Intent <span class="title">setType</span><span class="params">(String type)</span> </span>&#123;  </div><div class="line">    mData = <span class="keyword">null</span>;  </div><div class="line">    mType = type;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>当我们设置data的时候，系统会默认将type设置为null，当我们设置type的时候，系统会默认将data设置为null.也就是说，一般情况下，data和type我们只需要设置一个就行了，如果我们既想要设置data又想要设置type，那么可以使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setDataAndType(Uri data, String type)</div></pre></td></tr></table></figure>
+<ul>
+<li>这个方法来完成。下面我们来看看通过给Intent设置type来打开一个音乐播放器。代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">intent = <span class="keyword">new</span> Intent();  </div><div class="line">            intent.setAction(Intent.ACTION_VIEW);  </div><div class="line">            Uri data = Uri.parse(<span class="string">"file:///storage/emulated/0/xiami/audios/被动.mp3"</span>);  </div><div class="line">            intent.setDataAndType(data, <span class="string">"audio/mp3"</span>);  </div><div class="line">            startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>如果我们要打开的是视频文件，那么type就要设置为”video/<em>“，其中</em>表示支持所有的视频文件</li>
+</ul>
+<h3 id="Extras"><a href="#Extras" class="headerlink" title="Extras"></a>Extras</h3><ul>
+<li><p>这个参数不参与匹配activity，而仅作为额外数据传送到另一个activity中，接收的activity可以将其取出来。这些信息并不是激活这个activity所必须的。也就是说激活某个activity与否只上action、data、catagory有关，与extras无关。而extras用来传递附加信息，诸如用户名，用户密码什么的</p>
+</li>
+<li><p>可通过putXX()和getXX()方法存取信息；也可以通过创建Bundle对象，再通过putExtras()和getExtras()方法来存取</p>
+</li>
+</ul>
+<p><strong>通过bundle对象传递</strong></p>
+<ul>
+<li><strong>发送方</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.scott.intent.action.TARGET"</span>);    </div><div class="line">Bundle bundle = <span class="keyword">new</span> Bundle();    </div><div class="line">bundle.putInt(<span class="string">"id"</span>, <span class="number">0</span>);    </div><div class="line">bundle.putString(<span class="string">"name"</span>, <span class="string">"scott"</span>);    </div><div class="line">intent.putExtras(bundle);    </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>接收方：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Bundle bundle = intent.getExtras();  </div><div class="line"><span class="keyword">int</span> id = bundle.getInt(<span class="string">"id"</span>);  </div><div class="line">String name = bundle.getString(<span class="string">"name"</span>);</div></pre></td></tr></table></figure>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><ul>
+<li>通过设置Flag，我们可以设定一个Activity的启动模式，这个和launchMode基本上是一样的，所以我也不再细说，关于launchMode的使用参见 <a href="http://blog.csdn.net/u012702547/article/details/49529825" target="_blank" rel="external">launchMode使用详解</a></li>
+</ul>
+<h2 id="附《Intent调用常见系统组件方法》"><a href="#附《Intent调用常见系统组件方法》" class="headerlink" title="附《Intent调用常见系统组件方法》"></a>附《Intent调用常见系统组件方法》</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 调用浏览器  </span></div><div class="line">Uri webViewUri = Uri.parse(<span class="string">"http://blog.csdn.net/zuolongsnail"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, webViewUri);  </div><div class="line">  </div><div class="line"><span class="comment">// 调用地图  </span></div><div class="line">Uri mapUri = Uri.parse(<span class="string">"geo:100,100"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, mapUri);  </div><div class="line">  </div><div class="line"><span class="comment">// 播放mp3  </span></div><div class="line">Uri playUri = Uri.parse(<span class="string">"file:///sdcard/test.mp3"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, playUri);  </div><div class="line">intent.setDataAndType(playUri, <span class="string">"audio/mp3"</span>);  </div><div class="line">  </div><div class="line"><span class="comment">// 调用拨打电话  </span></div><div class="line">Uri dialUri = Uri.parse(<span class="string">"tel:10086"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_DIAL, dialUri);  </div><div class="line"><span class="comment">// 直接拨打电话，需要加上权限&lt;uses-permission id="android.permission.CALL_PHONE" /&gt;  </span></div><div class="line">Uri callUri = Uri.parse(<span class="string">"tel:10086"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL, callUri);  </div><div class="line">  </div><div class="line"><span class="comment">// 调用发邮件（这里要事先配置好的系统Email，否则是调不出发邮件界面的）  </span></div><div class="line">Uri emailUri = Uri.parse(<span class="string">"mailto:zuolongsnail@163.com"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO, emailUri);  </div><div class="line"><span class="comment">// 直接发邮件  </span></div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SEND);  </div><div class="line">String[] tos = &#123; <span class="string">"zuolongsnail@gmail.com"</span> &#125;;  </div><div class="line">String[] ccs = &#123; <span class="string">"zuolongsnail@163.com"</span> &#125;;  </div><div class="line">intent.putExtra(Intent.EXTRA_EMAIL, tos);  </div><div class="line">intent.putExtra(Intent.EXTRA_CC, ccs);  </div><div class="line">intent.putExtra(Intent.EXTRA_TEXT, <span class="string">"the email text"</span>);  </div><div class="line">intent.putExtra(Intent.EXTRA_SUBJECT, <span class="string">"subject"</span>);  </div><div class="line">intent.setType(<span class="string">"text/plain"</span>);  </div><div class="line">Intent.createChooser(intent, <span class="string">"Choose Email Client"</span>);  </div><div class="line">  </div><div class="line"><span class="comment">// 发短信  </span></div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);  </div><div class="line">intent.putExtra(<span class="string">"sms_body"</span>, <span class="string">"the sms text"</span>);  </div><div class="line">intent.setType(<span class="string">"vnd.android-dir/mms-sms"</span>);  </div><div class="line"><span class="comment">// 直接发短信  </span></div><div class="line">Uri smsToUri = Uri.parse(<span class="string">"smsto:10086"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO, smsToUri);  </div><div class="line">intent.putExtra(<span class="string">"sms_body"</span>, <span class="string">"the sms text"</span>);  </div><div class="line"><span class="comment">// 发彩信  </span></div><div class="line">Uri mmsUri = Uri.parse(<span class="string">"content://media/external/images/media/23"</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SEND);  </div><div class="line">intent.putExtra(<span class="string">"sms_body"</span>, <span class="string">"the sms text"</span>);  </div><div class="line">intent.putExtra(Intent.EXTRA_STREAM, mmsUri);  </div><div class="line">intent.setType(<span class="string">"image/png"</span>);  </div><div class="line">  </div><div class="line"><span class="comment">// 卸载应用  </span></div><div class="line">Uri uninstallUri = Uri.fromParts(<span class="string">"package"</span>, <span class="string">"com.app.test"</span>, <span class="keyword">null</span>);  </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_DELETE, uninstallUri);  </div><div class="line"><span class="comment">// 安装应用  </span></div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW);  </div><div class="line">intent.setDataAndType(Uri.fromFile(<span class="keyword">new</span> File(<span class="string">"/sdcard/test.apk"</span>), <span class="string">"application/vnd.android.package-archive"</span>);  </div><div class="line">  </div><div class="line"><span class="comment">// 在Android Market中查找应用  </span></div><div class="line">Uri uri = Uri.parse(<span class="string">"market://search?q=愤怒的小鸟"</span>);           </div><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, uri);</div></pre></td></tr></table></figure>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><ul>
+<li><p><a href="http://blog.csdn.net/harvic880925/article/details/38399723" target="_blank" rel="external">intent详解（一）</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/u012702547/article/details/50178429" target="_blank" rel="external">关于Intent的七大属性</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/u012702547/article/details/49557905" target="_blank" rel="external">关于ComponentName的使用</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/u012702547/article/details/49529825" target="_blank" rel="external">launchMode使用详解</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/harvic880925/article/details/38406421" target="_blank" rel="external">intent详解（二）</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Intent是什么&quot;&gt;&lt;a href=&quot;#Intent是什么&quot; class=&quot;headerlink&quot; title=&quot;Intent是什么&quot;&gt;&lt;/a&gt;Intent是什么&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Intent被译作意图，其实还是很能传神的，Intent期望做到的，就是把实现者和调用者完全解耦，调用者专心将以意图描述清晰，发送出去，就可以梦想成真，达到目的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。通过Intent，你的程序可以向Android表达某种请求或者意愿，Android会根据意愿的内容选择适当的组件来完成请求。比如，有一个Activity希望打开网页浏览器查看某一网页的内容，那么这个Activity只需要发出WEB_SEARCH_ACTION给Android，Android就会根据Intent的请求内容，查询各组件注册时声明的IntentFilter，找到网页浏览器的Activity来浏览网页。这个解释好像理解起来就容易好多，我们通过intent传入某种意图，而android就会根据这种意图，自动寻找合适的activity来启动，如果有多个条件符合的activity，就以列表的方式让用户手动选择一个&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;显示Intent与隐式Intent&quot;&gt;&lt;a href=&quot;#显示Intent与隐式Intent&quot; class=&quot;headerlink&quot; title=&quot;显示Intent与隐式Intent&quot;&gt;&lt;/a&gt;显示Intent与隐式Intent&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;例一：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;intent.setClass(Context packageContext, OtherActivity.class);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;startActivity(intent);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;例二：&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;intent.setAction(Intent.ACTION_NEW);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;startActivity(intent);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;从这两段代码中可以明显看出，同样是startActivity，但第一个明确指出是启动OtherActivity，而在第二个例子中，并没有明确指出要启动哪个activity！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两种书写方式就分别是显示Intent（例一）、隐式Intent（例二）；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;显式intent是指明确指出此intent是启动哪个activity.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;隐式intent是指并没有指出要启动哪个activity,而要系统自动去判断并启动匹配的activity.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;显式Intent小结&quot;&gt;&lt;a href=&quot;#显式Intent小结&quot; class=&quot;headerlink&quot; title=&quot;显式Intent小结&quot;&gt;&lt;/a&gt;显式Intent小结&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;有两种方式来显示的指示要启动的Activity:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;方式一：&lt;/strong&gt;（通过setClassName）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//表示希望启动com.example.test_permission包中的com.example.test_permission.MainActivity  &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;intent.setClassName(&lt;span class=&quot;string&quot;&gt;&quot;com.example.test_permission&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;com.example.test_permission.MainActivity&quot;&lt;/span&gt;);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;startActivity(intent);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方式二：&lt;/strong&gt;（通过SetClass）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;intent.setClass(Context packageContext, OtherActivity.class);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;startActivity(intent);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Android基础" scheme="http://www.qiuchengjia.cn/categories/Android%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Android基础" scheme="http://www.qiuchengjia.cn/tags/Android%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>刷CSDN访问量</title>
@@ -2646,187 +2921,6 @@
 &lt;h3 id=&quot;逆变&quot;&gt;&lt;a href=&quot;#逆变&quot; class=&quot;headerlink&quot; title=&quot;逆变&quot;&gt;&lt;/a&gt;&lt;strong&gt;逆变&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;而“逆”则不那么直观，平时用的也很少，后面讲&lt;strong&gt;Java泛型中的协变和逆变&lt;/strong&gt;会看到例子&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://www.qiuchengjia.cn/categories/JAVA/"/>
-    
-    
-      <category term="JAVA" scheme="http://www.qiuchengjia.cn/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java方法签名</title>
-    <link href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D/"/>
-    <id>http://www.qiuchengjia.cn/2016/08/14/JAVA/Java方法签名/</id>
-    <published>2016-08-14T14:50:34.000Z</published>
-    <updated>2016-09-26T11:54:28.077Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="方法签名的意义"><a href="#方法签名的意义" class="headerlink" title="方法签名的意义"></a>方法签名的意义</h2><ul>
-<li>对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，<strong>方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">aaaa</span><span class="params">()</span></span>&#123;  </div><div class="line">      </div><div class="line">&#125;  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">aaaa</span><span class="params">()</span></span>&#123;  </div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="方法签名的格式"><a href="#方法签名的格式" class="headerlink" title="方法签名的格式"></a>方法签名的格式</h2><ul>
-<li>首先我们先看几个方法以及他们的方法签名：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;&#125;                   test1()<span class="function">V</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">(String str)</span>     <span class="title">test2</span><span class="params">(Ljava/lang/String;)</span>V</div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">test3</span><span class="params">()</span>&#123;&#125;                      test3()I</div></pre></td></tr></table></figure>
-<ul>
-<li>从以上三个例子，我们就可以很简单的看出一些小小的规律：<br>JVM为我们提供的方法签名实际上是由方法名(上文的例子为了简单没有写出全类名)、形参列表、返回值三部分构成的，基本形式就是：<br><strong>全类名.方法名(形参数据类型列表)返回值数据类型</strong></li>
-</ul>
-<ul>
-<li><strong>Java方法签名中特殊字符/字母含义</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>特殊字符</th>
-<th style="text-align:left">数据类型</th>
-<th style="text-align:left">特殊说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V</td>
-<td style="text-align:left">void</td>
-<td style="text-align:left">一般用于表示方法的返回值</td>
-</tr>
-<tr>
-<td>Z</td>
-<td style="text-align:left">boolean     </td>
-</tr>
-<tr>
-<td>B</td>
-<td style="text-align:left">byte     </td>
-</tr>
-<tr>
-<td>C</td>
-<td style="text-align:left">char     </td>
-</tr>
-<tr>
-<td>S</td>
-<td style="text-align:left">short     </td>
-</tr>
-<tr>
-<td>I</td>
-<td style="text-align:left">int     </td>
-</tr>
-<tr>
-<td>J</td>
-<td style="text-align:left">long     </td>
-</tr>
-<tr>
-<td>F</td>
-<td style="text-align:left">float     </td>
-</tr>
-<tr>
-<td>D</td>
-<td style="text-align:left">double     </td>
-</tr>
-<tr>
-<td>[</td>
-<td style="text-align:left">数组</td>
-<td style="text-align:left">以[开头，配合其他的特殊字符，表示对应数据类型的数组，几个[表示几维数组</td>
-</tr>
-<tr>
-<td>L</td>
-<td style="text-align:left">全类名;</td>
-<td style="text-align:left">引用类型    以 L 开头 ; 结尾，中间是引用类型的全类名</td>
-</tr>
-</tbody>
-</table>
-<a id="more"></a>
-<blockquote>
-<p>一定要注意的是方法重载时，方法返回值没有什么意义，是由方法名和参数列表决定的</p>
-</blockquote>
-<h2 id="利用javap生成方法签名"><a href="#利用javap生成方法签名" class="headerlink" title="利用javap生成方法签名"></a>利用javap生成方法签名</h2><h3 id="类库类"><a href="#类库类" class="headerlink" title="类库类"></a>类库类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">$ javap -s java.lang.String  </div><div class="line">Compiled from <span class="string">"String.java"</span>  </div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">String</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>,<span class="title">java</span>.<span class="title">lang</span>.<span class="title">Comparable</span>,<span class="title">java</span>.<span class="title">lang</span>.<span class="title">CharSequence</span></span>&#123;  </div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.Comparator CASE_INSENSITIVE_ORDER;  </div><div class="line">  Signature: Ljava/util/Comparator;  </div><div class="line"><span class="keyword">public</span> java.lang.String();  </div><div class="line">  Signature: ()V  </div><div class="line"><span class="keyword">public</span> java.lang.String(java.lang.String);  </div><div class="line">  Signature: (Ljava/lang/String;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">char</span>[]);  </div><div class="line">  Signature: ([C)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">char</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([CII)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">int</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([III)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([BIII)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>);  </div><div class="line">  Signature: ([BI)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>, java.lang.String)   <span class="keyword">throws</span> java.io.UnsupportedEncodingException;  </div><div class="line">  Signature: ([BIILjava/lang/String;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>, java.nio.charset.Charset);  </div><div class="line">  Signature: ([BIILjava/nio/charset/Charset;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], java.lang.String)   <span class="keyword">throws</span> java.io.UnsupportedEncodingException;  </div><div class="line">  Signature: ([BLjava/lang/String;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], java.nio.charset.Charset);  </div><div class="line">  Signature: ([BLjava/nio/charset/Charset;)V  </div><div class="line"><span class="keyword">public</span> java.lang.String(<span class="keyword">byte</span>[], <span class="keyword">int</span>, <span class="keyword">int</span>);  </div><div class="line">  Signature: ([BII)V  </div><div class="line">...</div></pre></td></tr></table></figure>
-<h3 id="自定义类"><a href="#自定义类" class="headerlink" title="自定义类"></a>自定义类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.demo;  </div><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SigTest</span> </span>&#123;  </div><div class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String name = <span class="keyword">null</span>;  </div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getName</span><span class="params">(<span class="keyword">int</span>[] data,<span class="keyword">long</span> index)</span> </span>&#123;  </div><div class="line">         <span class="keyword">return</span> <span class="number">0</span>;  </div><div class="line">     &#125;  </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>输出</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ javac SigTest.java </div><div class="line">$ javap -s -p com.demo.SigTest</div><div class="line">Compiled from <span class="string">"SigTest.java"</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">demo</span>.<span class="title">SigTest</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span></span>&#123;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> java.lang.String name;</div><div class="line">  Signature: Ljava/lang/String;</div><div class="line"><span class="keyword">public</span> com.demo.SigTest();</div><div class="line">  Signature: ()<span class="function">V</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getName</span><span class="params">(<span class="keyword">int</span>[], <span class="keyword">long</span>)</span>;</div><div class="line">  Signature: ([IJ)I</div><div class="line"><span class="keyword">static</span> &#123;&#125;;</div><div class="line">  Signature: ()V</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>-s 表示打印签名信息</p>
-</li>
-<li><p>-p 表示打印所有函数和成员的签名信息，默认只打印public的签名信息</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;方法签名的意义&quot;&gt;&lt;a href=&quot;#方法签名的意义&quot; class=&quot;headerlink&quot; title=&quot;方法签名的意义&quot;&gt;&lt;/a&gt;方法签名的意义&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;对于同名不同类、同类不同名的方法，方法签名的意义并不是很大，但是对于重载方法来说，方法签名的意义就十分巨大了。由于重载方法之间的方法名是相同的，那么我们势必要从构成方法的其他几个要素中找到另一个要素与方法名组成能够唯一标示方法的签名，方法体当然不予考虑。那么就是形参列表和返回值了，但是由于对于调用方法的人来说，方法的形参数据类型列表的重要程度要远远高于返回值，所以方法签名就由方法名+形参列表构成，也就是说，&lt;strong&gt;方法名和形参数据类型列表可以唯一的确定一个方法，与方法的返回值一点关系都没有，这是判断重载重要依据，所以，以下的代码是不允许的&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;aaaa&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;aaaa&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;方法签名的格式&quot;&gt;&lt;a href=&quot;#方法签名的格式&quot; class=&quot;headerlink&quot; title=&quot;方法签名的格式&quot;&gt;&lt;/a&gt;方法签名的格式&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;首先我们先看几个方法以及他们的方法签名：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;                   test1()&lt;span class=&quot;function&quot;&gt;V&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String str)&lt;/span&gt;     &lt;span class=&quot;title&quot;&gt;test2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Ljava/lang/String;)&lt;/span&gt;V&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test3&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;                      test3()I&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;从以上三个例子，我们就可以很简单的看出一些小小的规律：&lt;br&gt;JVM为我们提供的方法签名实际上是由方法名(上文的例子为了简单没有写出全类名)、形参列表、返回值三部分构成的，基本形式就是：&lt;br&gt;&lt;strong&gt;全类名.方法名(形参数据类型列表)返回值数据类型&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Java方法签名中特殊字符/字母含义&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;特殊字符&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;数据类型&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;特殊说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;V&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;void&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;一般用于表示方法的返回值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Z&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;boolean     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;B&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;byte     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;char     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;S&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;short     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;I&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;int     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;J&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;long     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;float     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;D&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;double     &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;[&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;数组&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;以[开头，配合其他的特殊字符，表示对应数据类型的数组，几个[表示几维数组&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;L&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;全类名;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;引用类型    以 L 开头 ; 结尾，中间是引用类型的全类名&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
     
     </summary>
     

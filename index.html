@@ -333,6 +333,171 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/30/Android基础/Intent详解/" itemprop="url">
+                  Intent详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-30T15:42:58Z" content="2016-10-30">
+              2016-10-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Android基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/30/Android基础/Intent详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/30/Android基础/Intent详解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/30/Android基础/Intent详解/" class="leancloud_visitors" data-flag-title="Intent详解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Intent是什么"><a href="#Intent是什么" class="headerlink" title="Intent是什么"></a>Intent是什么</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><p>Intent被译作意图，其实还是很能传神的，Intent期望做到的，就是把实现者和调用者完全解耦，调用者专心将以意图描述清晰，发送出去，就可以梦想成真，达到目的</p>
+</li>
+<li><p>Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。通过Intent，你的程序可以向Android表达某种请求或者意愿，Android会根据意愿的内容选择适当的组件来完成请求。比如，有一个Activity希望打开网页浏览器查看某一网页的内容，那么这个Activity只需要发出WEB_SEARCH_ACTION给Android，Android就会根据Intent的请求内容，查询各组件注册时声明的IntentFilter，找到网页浏览器的Activity来浏览网页。这个解释好像理解起来就容易好多，我们通过intent传入某种意图，而android就会根据这种意图，自动寻找合适的activity来启动，如果有多个条件符合的activity，就以列表的方式让用户手动选择一个</p>
+</li>
+</ul>
+<h3 id="显示Intent与隐式Intent"><a href="#显示Intent与隐式Intent" class="headerlink" title="显示Intent与隐式Intent"></a>显示Intent与隐式Intent</h3><ul>
+<li><strong>例一：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setClass(Context packageContext, OtherActivity.class);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>例二：</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setAction(Intent.ACTION_NEW);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>从这两段代码中可以明显看出，同样是startActivity，但第一个明确指出是启动OtherActivity，而在第二个例子中，并没有明确指出要启动哪个activity！</li>
+</ul>
+<p>这两种书写方式就分别是显示Intent（例一）、隐式Intent（例二）；</p>
+<ul>
+<li><p>显式intent是指明确指出此intent是启动哪个activity.</p>
+</li>
+<li><p>隐式intent是指并没有指出要启动哪个activity,而要系统自动去判断并启动匹配的activity.</p>
+</li>
+</ul>
+<h3 id="显式Intent小结"><a href="#显式Intent小结" class="headerlink" title="显式Intent小结"></a>显式Intent小结</h3><ul>
+<li><p>有两种方式来显示的指示要启动的Activity:</p>
+</li>
+<li><p><strong>方式一：</strong>（通过setClassName）</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line"><span class="comment">//表示希望启动com.example.test_permission包中的com.example.test_permission.MainActivity  </span></div><div class="line">intent.setClassName(<span class="string">"com.example.test_permission"</span>, <span class="string">"com.example.test_permission.MainActivity"</span>);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>方式二：</strong>（通过SetClass）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();  </div><div class="line">intent.setClass(Context packageContext, OtherActivity.class);  </div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/30/Android基础/Intent详解/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/24/工具/刷CSDN访问量/" itemprop="url">
                   刷CSDN访问量
                 </a>
@@ -928,148 +1093,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/11/JAVA进阶之路/JavaMail发送邮件实例/" itemprop="url">
-                  JavaMail发送邮件实例
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-10T19:55:36Z" content="2016-10-10">
-              2016-10-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JAVA进阶之路/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA进阶之路</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/11/JAVA进阶之路/JavaMail发送邮件实例/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/11/JAVA进阶之路/JavaMail发送邮件实例/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/10/11/JAVA进阶之路/JavaMail发送邮件实例/" class="leancloud_visitors" data-flag-title="JavaMail发送邮件实例">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="550类型错误"><a href="#550类型错误" class="headerlink" title="550类型错误"></a>550类型错误</h2><ul>
-<li><p>登录自己的163邮箱，注意，要用你的应用程序中设置的邮箱地址去登录</p>
-</li>
-<li><p>在主菜单栏上的“设置”子菜单里面，选择POP3/SMTP/IAMP菜单</p>
-</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/JavaMail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E5%AE%9E%E4%BE%8B1.png" alt=""></center>
-
-<ul>
-<li>若没有开启“客户端授权密码”，则选择将其开启。开启后，会给你生成一个应用授权密码。要用这个生成的密码作为java mail API发送邮件的认证密码，如此，才能解除500密码，若用邮箱的登录密码去设置这个认证密码，会遇到500的错误。下图是开启“客户端授权密码”功能后的截图</li>
-</ul>
-<center><img src="http://o99dg8ap9.bkt.clouddn.com/JavaMail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E5%AE%9E%E4%BE%8B2.png" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/11/JAVA进阶之路/JavaMail发送邮件实例/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1115,7 +1138,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">107</span>
+              <span class="site-state-item-count">108</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1123,7 +1146,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1132,7 +1155,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">79</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
