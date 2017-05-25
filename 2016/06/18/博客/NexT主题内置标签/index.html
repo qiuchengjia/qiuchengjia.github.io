@@ -362,6 +362,16 @@ HTML方式：使用这种方式时，给 img 添加属性 class=”blockquote-ce
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/06/18/博客/NexT主题内置标签/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -523,6 +533,8 @@ HTML方式：使用这种方式时，给 img 添加属性 class=”blockquote-ce
 
           
   <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
     
   </div>
 
@@ -780,18 +792,21 @@ HTML方式：使用这种方式时，给 img 添加属性 class=”blockquote-ce
 
 
   
-
-
-
-
-
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "7a3e30d792ef4f998d3d3bf9432b1a32",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
   
 
 
 
 
-
-  
 
 
 

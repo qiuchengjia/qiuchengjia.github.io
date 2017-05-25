@@ -386,6 +386,16 @@ Just do it! 杰哥博客，极力推荐
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/06/24/通用/优秀网站和博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -698,6 +708,8 @@ Just do it! 杰哥博客，极力推荐
           
   <div class="comments" id="comments">
     
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
   </div>
 
 
@@ -954,18 +966,21 @@ Just do it! 杰哥博客，极力推荐
 
 
   
-
-
-
-
-
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "7a3e30d792ef4f998d3d3bf9432b1a32",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
   
 
 
 
 
-
-  
 
 
 
