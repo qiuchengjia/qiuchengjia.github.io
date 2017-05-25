@@ -1,0 +1,810 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ds7Z6wfgZDXtlM8MEMdnKgcgx7Qy3Q40-_puv7SDRTk" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++,STL,string," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="戎码人生" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="string是非常强大的类型，很好的封装了字符串的操作，有些时候我们可以把string当做字符的容器，string也支持大多数容器操作，下面就列出string类型所支持的所有操作，本文并不是为了讲解string的用法和应用，而是希望作为string类型的参考文档，每个函数皆在注释后有详细说明，需要用时查阅即可
+
+构造函数
+
+123456789101112131415string();//空串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ string类型详解">
+<meta property="og:url" content="http://www.qiuchengjia.cn/2016/06/02/C++/C++string类型详解/index.html">
+<meta property="og:site_name" content="戎码人生">
+<meta property="og:description" content="string是非常强大的类型，很好的封装了字符串的操作，有些时候我们可以把string当做字符的容器，string也支持大多数容器操作，下面就列出string类型所支持的所有操作，本文并不是为了讲解string的用法和应用，而是希望作为string类型的参考文档，每个函数皆在注释后有详细说明，需要用时查阅即可
+
+构造函数
+
+123456789101112131415string();//空串">
+<meta property="og:image" content="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2c++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3%E5%9B%BE%E7%89%87.png">
+<meta property="og:updated_time" content="2017-05-25T10:03:56.295Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ string类型详解">
+<meta name="twitter:description" content="string是非常强大的类型，很好的封装了字符串的操作，有些时候我们可以把string当做字符的容器，string也支持大多数容器操作，下面就列出string类型所支持的所有操作，本文并不是为了讲解string的用法和应用，而是希望作为string类型的参考文档，每个函数皆在注释后有详细说明，需要用时查阅即可
+
+构造函数
+
+123456789101112131415string();//空串">
+<meta name="twitter:image" content="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2c++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3%E5%9B%BE%E7%89%87.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.qiuchengjia.cn/2016/06/02/C++/C++string类型详解/"/>
+
+
+
+
+
+  <title>C++ string类型详解 | 戎码人生</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78633936-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">戎码人生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界上有10种人，一种懂二进制，一种不懂二进制 ！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/06/02/C++/C++string类型详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++ string类型详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-02T00:16:30+08:00">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>string是非常强大的类型，很好的封装了字符串的操作，有些时候我们可以把string当做字符的容器，string也支持大多数容器操作，下面就列出string类型所支持的所有操作，本文并不是为了讲解string的用法和应用，而是希望作为string类型的参考文档，每个函数皆在注释后有详细说明，需要用时查阅即可</p>
+</li>
+<li><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span>();<span class="comment">//空串  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(size_type length,<span class="keyword">char</span> ch);</div><div class="line"><span class="comment">//以length为长度的ch的拷贝（即length个ch）  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(<span class="keyword">const</span> <span class="keyword">char</span> *str);<span class="comment">//以str为初值 (长度任意)  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(<span class="keyword">const</span> <span class="keyword">char</span> *str,size_type length);</div><div class="line"><span class="comment">//同上，长度不限，但注意不要越界，以免发生不可预知问题  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(<span class="built_in">string</span> &amp;str, size_type index, size_type length);  </div><div class="line"><span class="comment">//以index为索引开始的子串，长度为length, 或者小于length  </span></div><div class="line">  </div><div class="line"><span class="built_in">string</span>(input_iterator begin, input_iterator end);</div><div class="line"><span class="comment">//以从start到end的元素为初值</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h3 id="支持的操作符"><a href="#支持的操作符" class="headerlink" title="支持的操作符"></a>支持的操作符</h3></li>
+</ul>
+<center><img src="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2c++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3%E5%9B%BE%E7%89%87.png" alt=""></center>
+
+<ul>
+<li><h3 id="追加文本（append）"><a href="#追加文本（append）" class="headerlink" title="追加文本（append）"></a>追加文本（append）</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function">basic_string &amp;<span class="title">append</span><span class="params">(<span class="keyword">const</span> basic_string &amp;str)</span></span>;</div><div class="line"><span class="comment">//在字符串的末尾添加str  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">append</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span>;</div><div class="line"><span class="comment">//在字符串末尾添加str所指向的c风格字符串  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">append</span><span class="params">(<span class="keyword">const</span> basic_string &amp;str,size_type index,size_type len)</span></span>;  </div><div class="line"><span class="comment">//在字符串的末尾添加str的子串,子串以index索引开始，长度为len  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">append</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str,size_type num)</span></span>;</div><div class="line"><span class="comment">//在字符串的末尾添加str中的num个字符  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">append</span><span class="params">(size_type num,<span class="keyword">char</span> ch)</span></span>;</div><div class="line"><span class="comment">//在字符串的末尾添加num个字符ch  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">append</span><span class="params">(input_iterator start,input_iterator end)</span></span>;  </div><div class="line"><span class="comment">//在字符串的末尾添加以迭代器start和end表示的字符序列  </span></div><div class="line">  </div><div class="line">push_back(<span class="string">'k'</span>);</div><div class="line"><span class="comment">//把一个字符连接到当前字符串的结尾</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="赋值（assign"><a href="#赋值（assign" class="headerlink" title="赋值（assign)"></a>赋值（assign)</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function">basic_string &amp;<span class="title">assign</span><span class="params">(<span class="keyword">const</span> basic_string &amp;str)</span></span>;</div><div class="line"><span class="comment">//用str为字符串赋值  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">assign</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span>;</div><div class="line"><span class="comment">//用str c风格为字符串赋值  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">assign</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str,size_type num)</span></span>;</div><div class="line"><span class="comment">//用str的开始num个字符为字符串赋值  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">assign</span><span class="params">(<span class="keyword">const</span> basic_string &amp;str,size_type index,size_type len)</span></span>;  </div><div class="line"><span class="comment">//用str的子串为字符串赋值,子串以index索引开始，长度为len  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">assign</span><span class="params">(size_type num,<span class="keyword">char</span> ch)</span></span>;</div><div class="line"><span class="comment">//用num个字符ch为字符串赋值  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="built_in">string</span> &amp;<span class="title">assign</span><span class="params">(const_iterator begin,const_itertor end)</span></span>;  </div><div class="line"><span class="comment">//把first和last迭代器之间的部分赋给字符串</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="比较（compare）"><a href="#比较（compare）" class="headerlink" title="比较（compare）"></a>比较（compare）</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> basic_string &amp;str)</span></span>;<span class="comment">//比较自己和str  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(size_type index,size_type length,</span></span></div><div class="line"><span class="keyword">const</span> basic_string &amp;str);  </div><div class="line"><span class="comment">//比较自己的子串和str,子串以index索引开始，长度为length  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(size_type index,size_type length,</span></span></div><div class="line"><span class="keyword">const</span> basic_string &amp;str,size_type  index2,</div><div class="line">size_type length2);  </div><div class="line"><span class="comment">//比较自己的子串和str的子串，其中index2</span></div><div class="line"><span class="comment">//和length2引用str，index和length引用自己  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span>;<span class="comment">//比较自己和str  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> n,<span class="keyword">const</span> <span class="keyword">char</span> *s)</span>  </span></div><div class="line"><span class="comment">//比较自己的子串，从pos开始，n个字符，和s进行比较  </span></div><div class="line">  </div><div class="line"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(size_type index,size_type length</span></div><div class="line">,<span class="keyword">const</span> <span class="keyword">char</span> *str,size_type length2);  </div><div class="line"><span class="comment">//比较自己的子串和str的子串，其中str的</span></div><div class="line"><span class="comment">//子串以索引0开始，长度为length2，自己的子串  </span></div><div class="line"><span class="comment">//以index开始，长度为length</span></div></pre></td></tr></table></figure>
+<center><img src="http://7xstki.com1.z0.glb.clouddn.com/hexo%E5%8D%9A%E5%AE%A2C++string%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3%E5%9B%BE%E7%89%87.png" alt=""></center>
+
+<ul>
+<li><h3 id="删除（erase）"><a href="#删除（erase）" class="headerlink" title="删除（erase）"></a>删除（erase）</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator first, iterator last)</span></span>;  </div><div class="line"><span class="comment">//删除[first，last）之间的所有字符，返回删除后迭代器的位置  </span></div><div class="line">  </div><div class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator it)</span></span>;</div><div class="line"><span class="comment">//删除it指向的字符，返回删除后迭代器的位置  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="built_in">string</span> &amp;<span class="title">erase</span><span class="params">(<span class="keyword">int</span> pos = <span class="number">0</span>, <span class="keyword">int</span> n = npos)</span></span>;</div><div class="line"><span class="comment">//删除pos开始的n个字符，返回修改后的字符串</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="插入（insert）"><a href="#插入（insert）" class="headerlink" title="插入（insert）"></a>插入（insert）</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function">iterator <span class="title">insert</span><span class="params">(iterator i,<span class="keyword">const</span> <span class="keyword">char</span> &amp;ch)</span></span>;</div><div class="line"><span class="comment">//在迭代器i表示的位置前面插入一个字符ch  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">insert</span><span class="params">(size_type index,<span class="keyword">const</span> basic_string &amp;str)</span></span>;</div><div class="line"><span class="comment">//在字符串的位置index插入字符串str  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">insert</span><span class="params">(size_type index,<span class="keyword">const</span> <span class="keyword">char</span> *str)</span></span>;</div><div class="line"><span class="comment">//在字符串的位置index插入字符串str  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">insert</span><span class="params">(size_type index1,<span class="keyword">const</span> basic_string</span></span></div><div class="line">&amp;str,size_type index2,size_type num);  </div><div class="line"><span class="comment">//在字符串的位置index插入字符串str的子串(从index2开始，长num个字符)  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">insert</span><span class="params">(size_type index,</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *str,size_type num);  </div><div class="line"><span class="comment">//在字符串的位置index插入字符串str的num个字符  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">insert</span><span class="params">(size_type index,size_type num,<span class="keyword">char</span> ch )</span></span>;  </div><div class="line"><span class="comment">//在字符串的位置index插入num个字符ch的拷贝  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(iterator i,size_type num,<span class="keyword">const</span> <span class="keyword">char</span> &amp;ch)</span></span>;  </div><div class="line"><span class="comment">//在迭代器i表示的位置前面插入num个字符ch的拷贝  </span></div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(iterator i,iterator begin,iterator end )</span></span>;  </div><div class="line"><span class="comment">//在迭代器i表示的位置前面插入一段字符，从start开始，以end结束</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="替换（replace）"><a href="#替换（replace）" class="headerlink" title="替换（replace）"></a>替换（replace）</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(size_type index,size_type num</span></span></div><div class="line">,<span class="keyword">const</span> basic_string &amp;str);  </div><div class="line"><span class="comment">//用str中的num个字符替换本字符串中的字符,从index开始  </span></div><div class="line">  </div><div class="line">replace(size_type index1,size_type num1,</div><div class="line"><span class="keyword">const</span> basic_string &amp;str,size_type index2,size_type num2);  </div><div class="line"><span class="comment">//用str中的num2个字符（从index2开始）替换本字符串中的字符</span></div><div class="line"><span class="comment">//，从index1开始，最多num1个字符  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(size_type index,size_type num,</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *str);  </div><div class="line"><span class="comment">//用str中的num个字符（从index开始）替换本字符串中的字符  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(size_type index,size_type num1,</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *str,size_type num2);  </div><div class="line"><span class="comment">//用str中的num2个字符（从index2开始）替换本字符串</span></div><div class="line"><span class="comment">//中的字符，从index1开始，num1个字符  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(size_type index,size_type num1,</span></span></div><div class="line">size_type num2,<span class="keyword">char</span> ch);  </div><div class="line"><span class="comment">//用num2个ch字符替换本字符串中的字符，从index开始，num1个字符  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(iterator start,iterator end,</span></span></div><div class="line"><span class="keyword">const</span> basic_string &amp;str);  </div><div class="line"><span class="comment">//用str中的字符替换本字符串中的字符,迭代器start和end指示范围  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(iterator start,iterator end,</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *str);  </div><div class="line"><span class="comment">//用str替换本字符串中的内容,迭代器start和end指示范围  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(iterator start,iterator end,</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *str,size_type num );  </div><div class="line"><span class="comment">//用str中的num个字符替换本字符串中的内容,迭代器start和end指示范围  </span></div><div class="line">  </div><div class="line"><span class="function">basic_string &amp;<span class="title">replace</span><span class="params">(iterator start,iterator end,</span></span></div><div class="line">size_type num,<span class="keyword">char</span> ch );  </div><div class="line"><span class="comment">//用num个ch字符替换本字符串中的内容，迭代器start和end指示范围</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">函数 find:  </div><div class="line">  </div><div class="line"><span class="function">size_type <span class="title">find</span><span class="params">( <span class="keyword">const</span> basic_string &amp;str, size_type index )</span></span>;  </div><div class="line"><span class="comment">//返回str在字符串中第一次出现的位置（从index开始查找）  </span></div><div class="line">  </div><div class="line"><span class="function">size_type <span class="title">find</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index )</span></span>;  </div><div class="line"><span class="comment">//返回str在字符串中第一次出现的位置（从index开始查找）  </span></div><div class="line">  </div><div class="line"><span class="function">size_type <span class="title">find</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index, </span></span></div><div class="line">size_type length );  </div><div class="line"><span class="comment">//返回str在字符串中第一次出现的位置（从index开始查找，长度为length）  </span></div><div class="line">  </div><div class="line"><span class="function">size_type <span class="title">find</span><span class="params">( <span class="keyword">char</span> ch, size_type index )</span></span>;  </div><div class="line"><span class="comment">//返回字符ch在字符串中第一次出现的位置（从index开始查找）  </span></div><div class="line">  </div><div class="line">  </div><div class="line">函数 find_first_of:查找在字符串中第一个与str中的某个字符匹配的字符  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_of</span><span class="params">( <span class="keyword">const</span> basic_string &amp;str, size_type index = <span class="number">0</span>)</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index = <span class="number">0</span> )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index, size_type num )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_of</span><span class="params">( <span class="keyword">char</span> ch, size_type index = <span class="number">0</span> )</span></span>;  </div><div class="line">  </div><div class="line">函数 find_first_not_of:在字符串中查找第一个与str中的字符都不匹配的字符  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_not_of</span><span class="params">( <span class="keyword">const</span> basic_string &amp;str, size_type index = <span class="number">0</span> )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_not_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index = <span class="number">0</span> )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_not_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index, size_type num )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_first_not_of</span><span class="params">( <span class="keyword">char</span> ch, size_type index = <span class="number">0</span> )</span></span>;  </div><div class="line">  </div><div class="line">函数 find_last_of:在字符串中查找最后一个与str中的某个字符匹配的字符  </div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">find_last_of</span><span class="params">( <span class="keyword">const</span> basic_string &amp;str, size_type index = npos )</span></span>;  </div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">find_last_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index = npos )</span></span>;  </div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">find_last_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index, size_type num )</span></span>;  </div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">find_last_of</span><span class="params">( <span class="keyword">char</span> ch, size_type index = npos )</span></span>;  </div><div class="line">  </div><div class="line">函数 find_last_not_of:在字符串中查找最后一个与str中的字符都不匹配的字符  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_last_not_of</span><span class="params">( <span class="keyword">const</span> basic_string &amp;str, size_type index = npos )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_last_not_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index = npos)</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_last_not_of</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index, size_type num )</span></span>;  </div><div class="line">  </div><div class="line">    <span class="function">size_type <span class="title">find_last_not_of</span><span class="params">( <span class="keyword">char</span> ch, size_type index = npos )</span></span>;  </div><div class="line">  </div><div class="line">rfind函数  </div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">rfind</span><span class="params">( <span class="keyword">const</span> basic_string &amp;str, size_type index )</span></span>;  </div><div class="line">  <span class="comment">//返回最后一个与str中的某个字符匹配的字符，从index开始查找  </span></div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">rfind</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index )</span></span>;  </div><div class="line">  <span class="comment">//返回最后一个与str中的某个字符匹配的字符，从index开始查找  </span></div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">rfind</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> *str, size_type index, </span></span></div><div class="line">  size_type num );  </div><div class="line">  <span class="comment">//返回最后一个与str中的某个字符匹配的字符，从index开始查找,最多查找num个字符  </span></div><div class="line">  </div><div class="line">  <span class="function">size_type <span class="title">rfind</span><span class="params">( <span class="keyword">char</span> ch, size_type index )</span></span>;  </div><div class="line">  <span class="comment">//返回最后一个与ch匹配的字符，从index开始查找  </span></div><div class="line"></div><div class="line">  <span class="comment">//该函数返回字符串的其余部分（从匹配点）。如果未找到所搜索的字符串，则返回 false</span></div><div class="line">  <span class="built_in">strstr</span>(<span class="built_in">string</span>,search)</div><div class="line">  <span class="comment">//参数 </span></div><div class="line">  <span class="comment">//string必需。规定被搜索的字符串。</span></div><div class="line">  <span class="comment">//search必需。规定所搜索的字符串。</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">at函数  </div><div class="line">     <span class="function">reference <span class="title">at</span><span class="params">( size_type index )</span></span>;  </div><div class="line">     <span class="comment">//at()函数返回一个引用，指向在index位置的字符. 如果index  </span></div><div class="line">     <span class="comment">//不在字符串范围内, at() 将报告"out of range"错误，并抛出out_of_range异常  </span></div><div class="line">  </div><div class="line">begin函数  </div><div class="line">    <span class="function">iterator <span class="title">begin</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//begin()函数返回一个迭代器,指向字符串的第一个元素  </span></div><div class="line">  </div><div class="line">end函数  </div><div class="line">    <span class="function">iterator <span class="title">end</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//返回一个迭代器，指向字符串的末尾(最后一个字符的下一个位置)  </span></div><div class="line">  </div><div class="line">c_str函数  </div><div class="line">    <span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">c_str</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//返回一个指向正规C字符串的指针, 内容与本字符串相同  </span></div><div class="line">  </div><div class="line">capacity函数  </div><div class="line">    <span class="function">size_type <span class="title">capacity</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//返回在重新申请更多的空间前字符串可以  </span></div><div class="line">    <span class="comment">//容纳的字符数. 这个数字至少与 size()一样大  </span></div><div class="line">  </div><div class="line">copy函数  </div><div class="line">    <span class="function">size_type <span class="title">copy</span><span class="params">( <span class="keyword">char</span> *str, size_type num, size_type index )</span></span>;  </div><div class="line">    <span class="comment">//拷贝自己的num个字符到str中（从索引index开始）。返回值是拷贝的字符数  </span></div><div class="line">  </div><div class="line">data函数  </div><div class="line">    <span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">data</span><span class="params">()</span></span>;<span class="comment">//返回指向自己的第一个字符的指针  </span></div><div class="line">  </div><div class="line">empty函数  </div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//如果字符串为空则empty()返回真(true)，否则返回假(false)  </span></div><div class="line">  </div><div class="line">get_allocator函数  </div><div class="line">    <span class="function">allocator_type <span class="title">get_allocator</span><span class="params">()</span></span>;<span class="comment">//返回本字符串的配置器  </span></div><div class="line">  </div><div class="line">length函数  </div><div class="line">    <span class="function">size_type <span class="title">length</span><span class="params">()</span></span>;</div><div class="line">    <span class="comment">//返回字符串的长度. 这个数字应该和size()返回的数字相同  </span></div><div class="line">  </div><div class="line"><span class="function">max_size  </span></div><div class="line">    size_type <span class="title">max_size</span><span class="params">()</span>;<span class="comment">//返回字符串能保存的最大字符数  </span></div><div class="line">  </div><div class="line">rbegin函数  </div><div class="line">    rbegin();<span class="comment">//返回一个逆向迭代器，指向最后一个字符  </span></div><div class="line">  </div><div class="line">rend函数  </div><div class="line">    rend();</div><div class="line">    <span class="comment">//返回一个逆向迭代器，指向第一个元素的前一个位置  </span></div><div class="line">  </div><div class="line">reserve函数  </div><div class="line">    reserve( size_type num );</div><div class="line">    <span class="comment">//保留一定容量以容纳字符串（设置capacity值）  </span></div><div class="line">  </div><div class="line">resize函数  </div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">( size_type num )</span></span>;</div><div class="line">  <span class="comment">//改变本字符串的大小到num, 新空间的内容不确定  </span></div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">( size_type num, <span class="keyword">char</span> ch )</span></span>;</div><div class="line">  <span class="comment">//也可以指定用ch填充  </span></div><div class="line">  </div><div class="line">size函数  </div><div class="line">    size();<span class="comment">//返回字符串中字符的数量  </span></div><div class="line">  </div><div class="line">substr函数  </div><div class="line">     <span class="function">basic_string <span class="title">substr</span><span class="params">( size_type index, size_type num = npos )</span></span>;  </div><div class="line">     <span class="comment">//返回本字符串的一个子串，从index开始，</span></div><div class="line">     <span class="comment">//长num个字符。如果没有指定，  </span></div><div class="line">     <span class="comment">//将是默认值 string::npos。这样，</span></div><div class="line">     <span class="comment">//substr()函数将简单的返回从index开始的剩余的字符串  </span></div><div class="line">  </div><div class="line">swap函数  </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">( basic_string &amp;str )</span></span>;<span class="comment">//把str和本字符串交换</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span>  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span>  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span>  </span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;  </div><div class="line">    <span class="comment">//1.string类重载运算符operator&gt;&gt;用于输入，</span></div><div class="line">    <span class="comment">//同样重载运算符operator&lt;&lt;用于输出操作  </span></div><div class="line">    <span class="built_in">string</span> str1;  </div><div class="line">    <span class="built_in">cin</span> &gt;&gt; str1;<span class="comment">//当用cin&gt;&gt;进行字符串的输入的时候，</span></div><div class="line">    <span class="comment">//遇到空格的地方就停止字符串的读取输入  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str1 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    <span class="built_in">cin</span>.get();<span class="comment">//这个的作用就是读取cin&gt;&gt;输入的结束符，</span></div><div class="line">    <span class="comment">//不用对getline的输入产生影响！  </span></div><div class="line">    getline(<span class="built_in">cin</span>, str1);<span class="comment">//字符串的行输入  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str1 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//2.string类的构造函数  </span></div><div class="line">    <span class="built_in">string</span> str2 = <span class="string">"aaaaa"</span>;<span class="comment">//最简单的字符串初始化  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str2 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="keyword">char</span> *s = <span class="string">"bbbbb"</span>;  </div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">str3</span><span class="params">(s)</span></span>;<span class="comment">//用c字符串s初始化  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str3 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="keyword">char</span> ch = <span class="string">'c'</span>;  </div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">str4</span><span class="params">(<span class="number">5</span>, ch)</span></span>;<span class="comment">//用n个字符ch初始化  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str4 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//3.string类的字符操作  </span></div><div class="line">    <span class="built_in">string</span> str5 = <span class="string">"abcde"</span>;  </div><div class="line">    ch = str5[<span class="number">3</span>];<span class="comment">//operator[]返回当前字符串中第n个字符的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ch &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="built_in">string</span> str6 = <span class="string">"abcde"</span>;  </div><div class="line">    ch = str6.at(<span class="number">4</span>);</div><div class="line">    <span class="comment">//at()返回当前字符串中第n个字符的位置,</span></div><div class="line">    <span class="comment">//并且提供范围检查，当越界时会抛出异常！  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ch &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//4.string的特性描述  </span></div><div class="line">    <span class="built_in">string</span> str7 = <span class="string">"abcdefgh"</span>;  </div><div class="line">    <span class="keyword">int</span> size;  </div><div class="line">    size = str7.capacity();<span class="comment">//返回当前容量  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; size &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    size = str7.max_size();</div><div class="line">    <span class="comment">//返回string对象中可存放的最大字符串的长度  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; size &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    size = str7.size();<span class="comment">//返回当前字符串的大小  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; size &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    size = str7.length();<span class="comment">//返回当前字符串的长度  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; size &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    <span class="keyword">bool</span> flag;  </div><div class="line">    flag = str7.empty();<span class="comment">//判断当前字符串是否为空  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    <span class="keyword">int</span> len = <span class="number">10</span>;  </div><div class="line">    str7.resize(len, ch);</div><div class="line">    <span class="comment">//把字符串当前大小置为len，并用字符ch填充不足的部分  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str7 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//5.string的赋值  </span></div><div class="line">    <span class="built_in">string</span> str8;  </div><div class="line">    str8 = str7;<span class="comment">//把字符串str7赋给当前字符串  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str8.assign(str7);<span class="comment">//把字符串str7赋给当前字符串  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str8.assign(s);<span class="comment">//用c类型字符串s赋值  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str8.assign(s, <span class="number">2</span>);<span class="comment">//用c类型字符串s开始的n个字符赋值  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str8.assign(len, ch);<span class="comment">//用len个字符ch赋值给当前字符串  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str8.assign(str7, <span class="number">0</span>, <span class="number">3</span>);<span class="comment">//把字符串str7中从0开始的3个字符赋给当前字符串  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    <span class="built_in">string</span> str9 = <span class="string">"0123456789"</span>;  </div><div class="line">    str8.assign(str9.begin(), str9.end());<span class="comment">//把迭代器之间的字符赋给字符串  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str8 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//6.string的连接  </span></div><div class="line">    <span class="built_in">string</span> str10;  </div><div class="line">    str10 += str9;<span class="comment">//把字符串str9连接到当前字符串的结尾  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str10 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str10.append(s);<span class="comment">//把c类型字符串s连接到当前字符串的结尾  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str10 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str10.append(s, <span class="number">2</span>);</div><div class="line">    <span class="comment">//把c类型字符串s的前2个字符连接到当前字符串的结尾  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str10 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str10.append(str9.begin(), str9.end());</div><div class="line">    <span class="comment">//把迭代器之间的一段字符连接到当前字符串的结尾  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str10 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str10.push_back(<span class="string">'k'</span>);<span class="comment">//把一个字符连接到当前字符串的结尾  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str10 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//7.string的比较  </span></div><div class="line">    flag = (str9 == str10);<span class="comment">//判断两个字符串是否相等  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = (str9 != str10);<span class="comment">//判断两个字符串是否不相等  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = (str9 &gt; str10);<span class="comment">//判断两个字符串是否大于关系  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = (str9 &lt; str10);<span class="comment">//判断两个字符串是否为小于关系  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = (str9 &gt;= str10);<span class="comment">//判断两个字符串是否为大于等于关系  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = (str9 &lt;= str10);<span class="comment">//判断两个字符串否为小于等于关系  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//以下的3个函数同样适用于c类型的字符串，</span></div><div class="line">    <span class="comment">//在compare函数中&gt;时返回1，&lt;时返回-1，=时返回0  </span></div><div class="line">    flag = str10.compare(str9);</div><div class="line">    <span class="comment">//比较两个字符串的大小，通过ASCII的相减得出！  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = str10.compare(<span class="number">6</span>, <span class="number">12</span>, str9);</div><div class="line">    <span class="comment">//比较str10字符串从6开始的12个字符组成的字符串与str9的大小  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    flag = str10.compare(<span class="number">6</span>, <span class="number">12</span>, str9, <span class="number">3</span>, <span class="number">5</span>);</div><div class="line">    <span class="comment">//比较str10字符串从6开始的12个字符组成的字符串</span></div><div class="line">    <span class="comment">//与str9字符串从3开始的5个字符组成的字符串的大小  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; flag &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//8.string的字串  </span></div><div class="line">    <span class="built_in">string</span> str11;  </div><div class="line">    str11 = str10.substr(<span class="number">10</span>, <span class="number">15</span>);</div><div class="line">    <span class="comment">//返回从下标10开始的15个字符组成的字符串  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str11 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//9.string的交换  </span></div><div class="line">    str11.swap(str10);<span class="comment">//交换str11与str10的值  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str11 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//10.string的查找，查找成功时返回所在位置，</span></div><div class="line">    <span class="comment">//失败时返回string::npos的值，即是-1  </span></div><div class="line">    <span class="built_in">string</span> str12 = <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>;  </div><div class="line">    <span class="keyword">int</span> pos;  </div><div class="line">    pos = str12.find(<span class="string">'i'</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//从位置0开始查找字符i在当前字符串的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str12.find(<span class="string">"ghijk"</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//从位置0开始查找字符串“ghijk”在当前字符串的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str12.find(<span class="string">"opqrstuvw"</span>, <span class="number">0</span>, <span class="number">4</span>);</div><div class="line">    <span class="comment">//从位置0开始查找字符串“opqrstuvw”前4个字符</span></div><div class="line">    <span class="comment">//组成的字符串在当前字符串中的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str12.rfind(<span class="string">'s'</span>, <span class="built_in">string</span>::npos);</div><div class="line">    <span class="comment">//从字符串str12反向开始查找字符s在字符串中的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str12.rfind(<span class="string">"klmn"</span>, <span class="built_in">string</span>::npos);</div><div class="line">    <span class="comment">//从字符串str12反向开始查找字符串“klmn”在字符串中的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str12.rfind(<span class="string">"opqrstuvw"</span>, <span class="built_in">string</span>::npos, <span class="number">3</span>);</div><div class="line">    <span class="comment">//从string::pos开始从后向前查找字符串s中前n个字符</span></div><div class="line">    <span class="comment">//组成的字符串在当前串中的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="built_in">string</span> str13 = <span class="string">"aaaabbbbccccdddeeefffggghhhiiijjjkkllmmmandjfaklsdfpopdtwptioczx"</span>;  </div><div class="line">    pos = str13.find_first_of(<span class="string">'d'</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//从位置0开始查找字符d在当前字符串第一次出现的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_first_of(<span class="string">"eefff"</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//从位置0开始查找字符串“eeefff“在当前字符串中第一次出现的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_first_of(<span class="string">"efff"</span>, <span class="number">0</span>, <span class="number">3</span>);</div><div class="line">    <span class="comment">//从位置0开始查找当前串中第一个在字符串”efff“的</span></div><div class="line">    <span class="comment">//前3个字符组成的数组里的字符的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_first_not_of(<span class="string">'b'</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//从当前串中查找第一个不在串s中的字符出现的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_first_not_of(<span class="string">"abcdefghij"</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//从当前串中查找第一个不在串s中的字符出现的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_first_not_of(<span class="string">"abcdefghij"</span>, <span class="number">0</span>, <span class="number">3</span>);</div><div class="line">    <span class="comment">//从当前串中查找第一个不在由字符串”abcdefghij”的</span></div><div class="line">    <span class="comment">//前3个字符所组成的字符串中的字符出现的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    <span class="comment">//下面的last的格式和first的一致，只是它从后面检索！  </span></div><div class="line">    pos = str13.find_last_of(<span class="string">'b'</span>, <span class="built_in">string</span>::npos);  </div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_last_of(<span class="string">"abcdef"</span>, <span class="built_in">string</span>::npos);  </div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_last_of(<span class="string">"abcdef"</span>, <span class="built_in">string</span>::npos, <span class="number">2</span>);  </div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_last_not_of(<span class="string">'a'</span>, <span class="built_in">string</span>::npos);  </div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_last_not_of(<span class="string">"abcdef"</span>, <span class="built_in">string</span>::npos);  </div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    pos = str13.find_last_not_of(<span class="string">"abcdef"</span>, <span class="built_in">string</span>::npos, <span class="number">3</span>);  </div><div class="line">    <span class="built_in">cout</span> &lt;&lt; pos &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//11.string的替换  </span></div><div class="line">    <span class="built_in">string</span> str14 = <span class="string">"abcdefghijklmn"</span>;  </div><div class="line">    str14.replace(<span class="number">0</span>, <span class="number">3</span>, <span class="string">"qqqq"</span>);</div><div class="line">    <span class="comment">//删除从0开始的3个字符，然后在0处插入字符串“qqqq”  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str14 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str14.replace(<span class="number">0</span>, <span class="number">3</span>, <span class="string">"vvvv"</span>, <span class="number">2</span>);</div><div class="line">    <span class="comment">//删除从0开始的3个字符，然后在0处插入字符串“vvvv”的前2个字符  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str14 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str14.replace(<span class="number">0</span>, <span class="number">3</span>, <span class="string">"opqrstuvw"</span>, <span class="number">2</span>, <span class="number">4</span>);</div><div class="line">    <span class="comment">//删除从0开始的3个字符，然后在0处插入</span></div><div class="line">    <span class="comment">//字符串“opqrstuvw”从位置2开始的4个字符  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str14 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str14.replace(<span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="string">'c'</span>);</div><div class="line">    <span class="comment">//删除从0开始的3个字符，然后在0处插入8个字符 c  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str14 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    <span class="comment">//上面的位置可以换为迭代器的位置，操作是一样的，</span></div><div class="line">    <span class="comment">//在这里就不再重复了！  </span></div><div class="line">  </div><div class="line">    <span class="comment">//12.string的插入，下面的位置处亦可以用迭代器</span></div><div class="line">    <span class="comment">//的指针表示，操作是一样的  </span></div><div class="line">    <span class="built_in">string</span> str15 = <span class="string">"abcdefg"</span>;  </div><div class="line">    str15.insert(<span class="number">0</span>, <span class="string">"mnop"</span>);<span class="comment">//在字符串的0位置开始处，插入字符串“mnop”  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str15 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str15.insert(<span class="number">0</span>, <span class="number">2</span>, <span class="string">'m'</span>);</div><div class="line">    <span class="comment">//在字符串的0位置开始处，插入2个字符m  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str15 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str15.insert(<span class="number">0</span>, <span class="string">"uvwxy"</span>, <span class="number">3</span>);</div><div class="line">    <span class="comment">//在字符串的0位置开始处，插入字符串“uvwxy”中的前3个字符  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str15 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str15.insert(<span class="number">0</span>, <span class="string">"uvwxy"</span>, <span class="number">1</span>, <span class="number">2</span>);</div><div class="line">    <span class="comment">//在字符串的0位置开始处，插入从字符串“uvwxy”的1位置开始的2个字符  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str15 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//13.string的删除  </span></div><div class="line">    <span class="built_in">string</span> str16 = <span class="string">"gfedcba"</span>;  </div><div class="line">    <span class="built_in">string</span>::iterator it;  </div><div class="line">    it = str16.begin();  </div><div class="line">    it++;  </div><div class="line">    str16.erase(it);</div><div class="line">    <span class="comment">//删除it指向的字符，返回删除后迭代器的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str16 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str16.erase(it, it+<span class="number">3</span>);</div><div class="line">    <span class="comment">//删除it和it+3之间的所有字符，返回删除后迭代器的位置  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str16 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    str16.erase(<span class="number">2</span>);</div><div class="line">    <span class="comment">//删除从字符串位置3以后的所有字符，返回位置3前面的字符  </span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; str16 &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//14.字符串的流处理  </span></div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">str17</span><span class="params">(<span class="string">"hello,this is a test"</span>)</span></span>;  </div><div class="line">    <span class="function"><span class="built_in">istringstream</span> <span class="title">is</span><span class="params">(str17)</span></span>;  </div><div class="line">    <span class="built_in">string</span> s1,s2,s3,s4;  </div><div class="line">    is&gt;&gt;s1&gt;&gt;s2&gt;&gt;s3&gt;&gt;s4;</div><div class="line">    <span class="comment">//s1="hello,this",s2="is",s3="a",s4="test"  </span></div><div class="line">    <span class="built_in">ostringstream</span> os;  </div><div class="line">    os&lt;&lt;s1&lt;&lt;s2&lt;&lt;s3&lt;&lt;s4;  </div><div class="line">    <span class="built_in">cout</span>&lt;&lt;os.str() &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">  </div><div class="line">    <span class="comment">//system("pause");  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/STL/" rel="tag"># STL</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/02/通用/装机软件清单/" rel="next" title="装机软件清单">
+                <i class="fa fa-chevron-left"></i> 装机软件清单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/02/C++/STL容器总结之Vector/" rel="prev" title="STL容器总结之Vector">
+                STL容器总结之Vector <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="戎码人生" />
+          <p class="site-author-name" itemprop="name">戎码人生</p>
+           
+              <p class="site-description motion-element" itemprop="description">彪悍的人生不需要解释</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持的操作符"><span class="nav-number">2.</span> <span class="nav-text">支持的操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追加文本（append）"><span class="nav-number">3.</span> <span class="nav-text">追加文本（append）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值（assign"><span class="nav-number">4.</span> <span class="nav-text">赋值（assign)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较（compare）"><span class="nav-number">5.</span> <span class="nav-text">比较（compare）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除（erase）"><span class="nav-number">6.</span> <span class="nav-text">删除（erase）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入（insert）"><span class="nav-number">7.</span> <span class="nav-text">插入（insert）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换（replace）"><span class="nav-number">8.</span> <span class="nav-text">替换（replace）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">9.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他函数"><span class="nav-number">10.</span> <span class="nav-text">其他函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">11.</span> <span class="nav-text">示例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎码人生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

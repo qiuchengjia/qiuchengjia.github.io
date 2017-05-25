@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ds7Z6wfgZDXtlM8MEMdnKgcgx7Qy3Q40-_puv7SDRTk" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA进阶之路," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="戎码人生" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="概述效果
+
+原理和功能
+服务器搭建在内网上，通过内网访问实现签到者位置的判断
+
+我这个签到系统没有使用数据库，是将每个人的mac地址和姓名存在数组中，每天签
+
+
+一次，然后每周可以自动发一封签到数据邮件给维护者
+
+以后可以实现数据库，然后扩展更多的功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Socket多客户端简易签到系统">
+<meta property="og:url" content="http://www.qiuchengjia.cn/2016/10/13/JAVA进阶之路/Socket多客户端简易签到系统/index.html">
+<meta property="og:site_name" content="戎码人生">
+<meta property="og:description" content="概述效果
+
+原理和功能
+服务器搭建在内网上，通过内网访问实现签到者位置的判断
+
+我这个签到系统没有使用数据库，是将每个人的mac地址和姓名存在数组中，每天签
+
+
+一次，然后每周可以自动发一封签到数据邮件给维护者
+
+以后可以实现数据库，然后扩展更多的功能">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Socket%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%80%E6%98%93%E7%AD%BE%E5%88%B0%E7%B3%BB%E7%BB%9F.png">
+<meta property="og:updated_time" content="2017-05-25T10:03:56.571Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Socket多客户端简易签到系统">
+<meta name="twitter:description" content="概述效果
+
+原理和功能
+服务器搭建在内网上，通过内网访问实现签到者位置的判断
+
+我这个签到系统没有使用数据库，是将每个人的mac地址和姓名存在数组中，每天签
+
+
+一次，然后每周可以自动发一封签到数据邮件给维护者
+
+以后可以实现数据库，然后扩展更多的功能">
+<meta name="twitter:image" content="http://o99dg8ap9.bkt.clouddn.com/Socket%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%80%E6%98%93%E7%AD%BE%E5%88%B0%E7%B3%BB%E7%BB%9F.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.qiuchengjia.cn/2016/10/13/JAVA进阶之路/Socket多客户端简易签到系统/"/>
+
+
+
+
+
+  <title>Socket多客户端简易签到系统 | 戎码人生</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78633936-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">戎码人生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界上有10种人，一种懂二进制，一种不懂二进制 ！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/10/13/JAVA进阶之路/Socket多客户端简易签到系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Socket多客户端简易签到系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-13T00:53:51+08:00">
+                2016-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA进阶之路/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA进阶之路</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><center><img src="http://o99dg8ap9.bkt.clouddn.com/Socket%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%80%E6%98%93%E7%AD%BE%E5%88%B0%E7%B3%BB%E7%BB%9F.png" alt=""></center>
+
+<h3 id="原理和功能"><a href="#原理和功能" class="headerlink" title="原理和功能"></a>原理和功能</h3><ul>
+<li><p>服务器搭建在内网上，通过内网访问实现签到者位置的判断</p>
+</li>
+<li><p>我这个签到系统没有使用数据库，是将每个人的mac地址和姓名存在数组中，每天签</p>
+</li>
+</ul>
+<p>一次，然后每周可以自动发一封签到数据邮件给维护者</p>
+<ul>
+<li>以后可以实现数据库，然后扩展更多的功能</li>
+</ul>
+<a id="more"></a>
+<h2 id="服务端代码"><a href="#服务端代码" class="headerlink" title="服务端代码"></a>服务端代码</h2><h3 id="服务器主类-MyServer"><a href="#服务器主类-MyServer" class="headerlink" title="服务器主类 MyServer"></a>服务器主类 MyServer</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> qiu;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.BorderLayout;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</div><div class="line"><span class="keyword">import</span> java.awt.print.Printable;</div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.io.PrintWriter;</div><div class="line"><span class="keyword">import</span> java.net.ServerSocket;</div><div class="line"><span class="keyword">import</span> java.net.Socket;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.Calendar;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">import</span> javax.swing.JFrame;</div><div class="line"><span class="keyword">import</span> javax.swing.JPanel;</div><div class="line"><span class="keyword">import</span> javax.swing.JScrollPane;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextArea;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextField;</div><div class="line"><span class="comment">/**</span></div><div class="line"> *  服务端</div><div class="line"> * */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServer</span> <span class="keyword">extends</span> <span class="title">JFrame</span></span>&#123;</div><div class="line">    </div><div class="line">	JTextArea jTextArea =<span class="keyword">null</span>;<span class="comment">//用来显示纯文本的单行区域</span></div><div class="line">	JPanel jPanel=<span class="keyword">null</span>;</div><div class="line">	JScrollPane jScrollPane =<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> num=<span class="number">0</span>;</div><div class="line">	ServerSocket ss;</div><div class="line">	<span class="comment">/*************************************************/</span></div><div class="line">	<span class="comment">/*****这里存放签到的人的信息,以后可以直接修改*********/</span></div><div class="line">	<span class="keyword">public</span> String [] name = &#123;<span class="string">"邱承佳"</span>,<span class="string">"姜伟"</span>,<span class="string">"邝遥黔"</span>,<span class="string">"王浩"</span>,<span class="string">"刁龙"</span>,<span class="string">"宋艳"</span>,<span class="string">"曾诚"</span></div><div class="line">			,<span class="string">"文浩轩"</span>,<span class="string">"陈鑫海"</span>,<span class="string">"曹兵"</span>,<span class="string">"江小斐"</span>,<span class="string">"魏圳辉"</span>,<span class="string">"李尚"</span>,<span class="string">"蔡洋"</span>,<span class="string">"曾玲萍"</span>,<span class="string">"邱承佳windows"</span>,</div><div class="line">			<span class="string">"丁涛"</span>,<span class="string">"余旺林"</span>,<span class="string">"苏相学"</span>,<span class="string">"黄立民"</span>,<span class="string">"邓诗洋"</span>,<span class="string">"宋璐君"</span>&#125;;</div><div class="line">	<span class="keyword">public</span> String [] mac = &#123;</div><div class="line">			<span class="string">"c4:54:44:39:e7:d0"</span>,<span class="comment">//邱承佳</span></div><div class="line">			<span class="string">"9C-5C-8E-1B-73-61"</span>,<span class="comment">//姜伟</span></div><div class="line">			<span class="string">"50-7B-9D-CF-A5-FD"</span>,<span class="comment">//邝遥黔</span></div><div class="line">			<span class="string">"1E-E0-10-14-7C-DB"</span>,<span class="comment">//王浩</span></div><div class="line">			<span class="string">"54-EE-75-86-D8-6A"</span>,<span class="comment">//刁龙</span></div><div class="line">			<span class="string">"00-AC-45-41-E6-AB"</span>,<span class="comment">//宋艳</span></div><div class="line">			<span class="string">"34-E6-AD-00-EF-75"</span>,<span class="comment">//曾诚</span></div><div class="line">			<span class="string">"12-A5-89-3E-43-B3"</span>,<span class="comment">//文浩轩</span></div><div class="line">			<span class="string">"F0-DE-F1-70-E8-BE"</span>,<span class="comment">//陈鑫海</span></div><div class="line">			<span class="string">"54-AB-3A-47-16-CC"</span>,<span class="comment">//曹兵</span></div><div class="line">			<span class="string">"80-56-F2-68-7C-CD"</span>,<span class="comment">//江小斐</span></div><div class="line">			<span class="string">"50-7B-9D-83-C8-7F"</span>,<span class="comment">//魏圳辉</span></div><div class="line">			<span class="string">"C8-5B-76-09-4C-F6"</span>,<span class="comment">//李尚</span></div><div class="line">			<span class="string">"30-3A-64-72-73-6B"</span>,<span class="comment">//蔡洋</span></div><div class="line">			<span class="string">"3C-97-0E-D3-FA-E9"</span>,<span class="comment">//曾玲萍</span></div><div class="line">			<span class="string">"08-00-27-D4-59-99"</span>,<span class="comment">//邱承佳windows</span></div><div class="line">			<span class="string">"C4-8E-8F-A7-3E-FD"</span>,<span class="comment">//丁涛</span></div><div class="line">			<span class="string">"B8-2A-72-F1-E3-EF"</span>,<span class="comment">//余旺林</span></div><div class="line">			<span class="string">"40-E2-30-74-16-D2"</span>,<span class="comment">//苏相学</span></div><div class="line">			<span class="string">"34-DE-1A-A7-45-8C"</span>,<span class="comment">//黄立民</span></div><div class="line">			<span class="string">"2E-84-DC-91-58-3F"</span>,<span class="comment">//邓诗洋</span></div><div class="line">			<span class="string">"12-52-CB-77-86-5B"</span><span class="comment">//宋璐君</span></div><div class="line">	&#125;;</div><div class="line"><span class="comment">//签到次数</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> [] time=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span></div><div class="line">			,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,</div><div class="line">			<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</div><div class="line"><span class="comment">//用来记录当天是否签到</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span>[] isQianDao=&#123;<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,</div><div class="line">			<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span></div><div class="line">			,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,</div><div class="line">			<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,</div><div class="line">			<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,</div><div class="line">			<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>&#125;;</div><div class="line">	<span class="comment">/*************************************************/</span></div><div class="line">	<span class="comment">//把信息发给客户端对象</span></div><div class="line">	PrintWriter printWriter =<span class="keyword">null</span>;</div><div class="line">	String firstQianDaoTime=<span class="string">""</span>;<span class="comment">//记录的开始签到时间</span></div><div class="line"><span class="comment">/**</span></div><div class="line">  *  服务端的主函数</div><div class="line">  * */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">       <span class="keyword">new</span> MyServer();</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> *  服务端的构造函数,用来进行初始化</div><div class="line"> * */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyServer</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//这里是对GUI的初始化</span></div><div class="line">	jTextArea = <span class="keyword">new</span> JTextArea();</div><div class="line">	jScrollPane= <span class="keyword">new</span> JScrollPane(jTextArea);</div><div class="line">	jPanel = <span class="keyword">new</span> JPanel();</div><div class="line">		</div><div class="line">	<span class="comment">//将两个面板添加布局</span></div><div class="line">	<span class="keyword">this</span>.add(jScrollPane,BorderLayout.CENTER);</div><div class="line">	<span class="keyword">this</span>.add(jPanel,BorderLayout.SOUTH);</div><div class="line">		</div><div class="line">	<span class="keyword">this</span>.setSize(<span class="number">800</span>,<span class="number">600</span>);</div><div class="line">	<span class="keyword">this</span>.setTitle(<span class="string">"签到服务器"</span>);</div><div class="line">	<span class="keyword">this</span>.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<span class="comment">//设置退出按钮</span></div><div class="line">	<span class="keyword">this</span>.setVisible(<span class="keyword">true</span>);</div><div class="line">    <span class="keyword">this</span>.setResizable(<span class="keyword">true</span>);</div><div class="line">    <span class="comment">//获取时间</span></div><div class="line">    firstQianDaoTime=getTime();</div><div class="line">        </div><div class="line">    <span class="keyword">new</span> TimeThread(firstQianDaoTime,time,name,isQianDao,jTextArea).start();</div><div class="line">    <span class="comment">//下面是socket服务器的搭建</span></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">//服务器监听</span></div><div class="line">       	 ss = <span class="keyword">new</span> ServerSocket(<span class="number">10124</span>);</div><div class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">			</div><div class="line">			<span class="keyword">new</span> ServerThread(ss.accept(),num,printWriter,jTextArea,</div><div class="line">					name,mac,time,isQianDao).start();</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;   </div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">		ss.close();</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line"> &#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 用来获取当前的时间</div><div class="line"> * <span class="doctag">@return</span> 当前的时间</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getTime</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//可以对每个单独时间域进行修改</span></div><div class="line">	Calendar c = Calendar.getInstance();</div><div class="line">	<span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);<span class="comment">//周几</span></div><div class="line">	<span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);<span class="comment">//r</span></div><div class="line">	<span class="keyword">int</span> month = c.get(Calendar.MONTH);<span class="comment">//月份</span></div><div class="line">	<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">	<span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</div><div class="line">	<span class="keyword">int</span> second = c.get(Calendar.SECOND);</div><div class="line">		</div><div class="line">	<span class="keyword">return</span> month+<span class="string">"月"</span>+day+<span class="string">"号-"</span>+<span class="string">"星期"</span>+week+<span class="string">"--"</span>+hour+<span class="string">"时"</span>+minute+<span class="string">"分"</span>+second+<span class="string">"秒"</span>;	</div><div class="line">   &#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>通过 name 数组记录每个人的姓名，对应的数组 mac 记录每个人的mac地址，添加</li>
+</ul>
+<p>数据只要在数组中添加就行，time 用来记录每个人每个星期的签到次数，每周清零，</p>
+<p>isQianDao用来记录用户当天是否签到，然后 MyServer() 里面是界面的初始化，每当有</p>
+<p>一个用户请求签到的时候新建一个 ServerThread 线程用来处理用户的请求，</p>
+<p>TimeThread 线程用来每天数据更新和每周发送一个电子邮件给维护者，ServerSocket </p>
+<p>是服务器监听，用来接收客户端的请求，没有请求则阻塞等待</p>
+<h3 id="时间线程类-TimeThread"><a href="#时间线程类-TimeThread" class="headerlink" title="时间线程类 TimeThread"></a>时间线程类 TimeThread</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> qiu;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.TextArea;</div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.io.PrintWriter;</div><div class="line"><span class="keyword">import</span> java.net.Socket;</div><div class="line"><span class="keyword">import</span> java.util.Calendar;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextArea;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> [] time;</div><div class="line">	<span class="keyword">boolean</span> []isQianDao;</div><div class="line">	String firstQianDaoTime;</div><div class="line">	String  [] name;</div><div class="line">	JTextArea jTextArea;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TimeThread</span><span class="params">(String firstQianDaoTime ,<span class="keyword">int</span>[] time, String[] name, <span class="keyword">boolean</span>[] isQianDao,</span></span></div><div class="line">			JTextArea jTextArea)&#123;</div><div class="line">		<span class="keyword">this</span>.time=time;</div><div class="line">		<span class="keyword">this</span>.firstQianDaoTime=firstQianDaoTime;</div><div class="line">		<span class="keyword">this</span>.isQianDao=isQianDao;</div><div class="line">		<span class="keyword">this</span>.jTextArea = jTextArea;</div><div class="line">		<span class="keyword">this</span>.name=name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> hourFlag=<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> weekFlag=<span class="number">1</span>;</div><div class="line">		<span class="keyword">boolean</span> emailFlag=<span class="keyword">true</span>;</div><div class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">			<span class="keyword">if</span>(getHour()==<span class="number">1</span>)&#123;</div><div class="line">				hourFlag=<span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="comment">//当今天过完的时候将签到状态置为false</span></div><div class="line">			<span class="keyword">if</span>(getHour()==<span class="number">2</span> &amp;&amp; hourFlag==<span class="number">1</span>)&#123;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;isQianDao.length;i++)&#123;</div><div class="line">						isQianDao[i]=<span class="keyword">false</span>;</div><div class="line">				&#125;						</div><div class="line">				hourFlag--;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span>(getWeek()==<span class="number">4</span>)&#123;</div><div class="line">				weekFlag=<span class="number">1</span>;</div><div class="line">				emailFlag=<span class="keyword">true</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//当今天是周五的时候发送一封邮件，并将所有状态清空</span></div><div class="line">			<span class="keyword">if</span>(getWeek()==<span class="number">5</span> &amp;&amp; weekFlag==<span class="number">1</span>)&#123;</div><div class="line">				<span class="comment">//获取签到情况的起止时间</span></div><div class="line">				String s=<span class="string">"签到开始时间="</span>+firstQianDaoTime+<span class="string">"\r\n"</span>+</div><div class="line">				<span class="string">"签到结束时间="</span>+getTimeStr()+<span class="string">"\r\n"</span>;</div><div class="line">				firstQianDaoTime = getTimeStr();</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;name.length;i++)&#123;</div><div class="line">					s=s+name[i]+<span class="string">"--的签到次数="</span>+time[i]+<span class="string">"\r\n"</span>;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				String [] emailArr = &#123;</div><div class="line">						<span class="string">"2470041229@qq.com"</span>,<span class="comment">//邱承佳</span></div><div class="line">						<span class="string">"478529861@qq.com"</span>,<span class="comment">//余旺林</span></div><div class="line">						<span class="string">"14880047@qq.com"</span>&#125;;<span class="comment">//王宁</span></div><div class="line">				String [] emailName = &#123;<span class="string">"邱承佳"</span>,<span class="string">"余旺林"</span>,<span class="string">"王宁"</span>&#125;;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;emailArr.length;i++)&#123;</div><div class="line">					<span class="comment">//发送邮件</span></div><div class="line">					JavaEmail email = <span class="keyword">new</span> JavaEmail(emailArr[i],s,jTextArea,emailName[i],emailFlag);</div><div class="line">					emailFlag=<span class="keyword">false</span>;</div><div class="line">					<span class="keyword">try</span> &#123;</div><div class="line">						email.send();</div><div class="line">					&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">						<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">						e.printStackTrace();</div><div class="line">					&#125;	</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;isQianDao.length;i++)&#123;</div><div class="line">					isQianDao[i]=<span class="keyword">false</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;time.length;i++)&#123;</div><div class="line">					time[i]=<span class="number">0</span>;</div><div class="line">				&#125;</div><div class="line">				weekFlag--;</div><div class="line">			&#125;</div><div class="line">		&#125;	</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 用来获取当前的时间</div><div class="line">	 * <span class="doctag">@return</span> 当前的时间</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getHour</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//可以对每个单独时间域进行修改 分钟</span></div><div class="line">		Calendar c = Calendar.getInstance();</div><div class="line">		<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">		<span class="keyword">int</span> min = c.get(Calendar.MINUTE);</div><div class="line">		<span class="keyword">return</span> hour;	</div><div class="line">	   &#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//可以对每个单独时间域进行修改 分钟</span></div><div class="line">		Calendar c = Calendar.getInstance();</div><div class="line">		<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">		<span class="keyword">int</span> min = c.get(Calendar.MINUTE);</div><div class="line">		<span class="keyword">return</span> min;	</div><div class="line">	   &#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeek</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//可以对每个单独时间域进行修改</span></div><div class="line">		Calendar c = Calendar.getInstance();</div><div class="line">		<span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);<span class="comment">//周几</span></div><div class="line">		<span class="keyword">return</span> week;	</div><div class="line">	   &#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 用来获取当前的时间</div><div class="line">	 * <span class="doctag">@return</span> 当前的时间</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTime</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//可以对每个单独时间域进行修改</span></div><div class="line">		Calendar c = Calendar.getInstance();</div><div class="line">		<span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);<span class="comment">//周几</span></div><div class="line">		<span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);<span class="comment">//r</span></div><div class="line">		<span class="keyword">int</span> month = c.get(Calendar.MONTH);<span class="comment">//月份</span></div><div class="line">		<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">		<span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</div><div class="line">		<span class="keyword">int</span> second = c.get(Calendar.SECOND);</div><div class="line">			</div><div class="line">		<span class="keyword">return</span> week;	</div><div class="line">	   &#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 用来获取当前的时间</div><div class="line">	 * <span class="doctag">@return</span> 当前的时间</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTimeStr</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//可以对每个单独时间域进行修改</span></div><div class="line">				Calendar c = Calendar.getInstance();</div><div class="line">				<span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);<span class="comment">//周几</span></div><div class="line">				<span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);<span class="comment">//r</span></div><div class="line">				<span class="keyword">int</span> month = c.get(Calendar.MONTH);<span class="comment">//月份</span></div><div class="line">				<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">				<span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</div><div class="line">				<span class="keyword">int</span> second = c.get(Calendar.SECOND);</div><div class="line">					</div><div class="line">				<span class="keyword">return</span> month+<span class="string">"月"</span>+day+<span class="string">"号-"</span>+<span class="string">"星期"</span>+week+<span class="string">"--"</span>+hour+<span class="string">"时"</span>+minute+<span class="string">"分"</span>+second+<span class="string">"秒"</span>;	</div><div class="line">	   &#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>TimeThread 继承了 Thread 类，在服务器主类 MyServer 中调用，用来实现每天</li>
+</ul>
+<p>签到状态的更新，以及每周发送一封邮件给维护者</p>
+<h3 id="邮件发送类-JavaEmail"><a href="#邮件发送类-JavaEmail" class="headerlink" title="邮件发送类 JavaEmail"></a>邮件发送类 JavaEmail</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> qiu;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"><span class="keyword">import</span> java.util.Properties;</div><div class="line"><span class="keyword">import</span> javax.mail.Address;</div><div class="line"><span class="keyword">import</span> javax.mail.Authenticator;</div><div class="line"><span class="keyword">import</span> javax.mail.Message;</div><div class="line"><span class="keyword">import</span> javax.mail.PasswordAuthentication;</div><div class="line"><span class="keyword">import</span> javax.mail.Session;</div><div class="line"><span class="keyword">import</span> javax.mail.Transport;</div><div class="line"><span class="keyword">import</span> javax.mail.internet.InternetAddress;</div><div class="line"><span class="keyword">import</span> javax.mail.internet.MimeMessage;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextArea;</div><div class="line"><span class="comment">/** */</span><span class="comment">/**</span></div><div class="line"> * 发送普通邮件，接受普通邮件 发送带有附件的邮件，接收带有附件的邮件 发送html形式的邮件，接受html形式的邮件 发送带有图片的邮件等做了一个总结。</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaEmail</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 邮箱服务器</span></div><div class="line">    <span class="keyword">private</span> String host = <span class="string">"smtp.163.com"</span>;</div><div class="line">    <span class="comment">// 这个是你的邮箱用户名</span></div><div class="line">    <span class="keyword">private</span> String username = <span class="string">"qiandaoxitong313"</span>;</div><div class="line">    <span class="comment">// 你的邮箱密码</span></div><div class="line">    <span class="keyword">private</span> String password = <span class="string">"admin313"</span>;</div><div class="line">    <span class="keyword">private</span> String mail_head_name = <span class="string">"ACM实验室签到情况"</span>;</div><div class="line">    <span class="keyword">private</span> String mail_head_value = <span class="string">"ACM实验室签到情况"</span>;</div><div class="line">    <span class="keyword">private</span> String mail_from = <span class="string">"qiandaoxitong313@163.com"</span>;</div><div class="line">    <span class="keyword">private</span> String mail_subject = <span class="string">"ACM实验室签到情况统计"</span>;</div><div class="line">    <span class="keyword">private</span> String personalName = <span class="string">"ACM实验室签到情况"</span>;</div><div class="line">    String mail_to,mail_body;<span class="comment">//邮件接收者和邮件的内容</span></div><div class="line">    JTextArea jTextArea;</div><div class="line">    String emailName;</div><div class="line">    <span class="keyword">boolean</span> emailFlag;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 邮件要发送给谁，和邮件的内容,flag用来标示邮件有没有发送成功</div><div class="line">     * <span class="doctag">@param</span> jTextArea </div><div class="line">     * <span class="doctag">@param</span> emailName </div><div class="line">     * <span class="doctag">@param</span> emailFlag </div><div class="line">     * */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JavaEmail</span><span class="params">(String mail_to,String mail_body, JTextArea jTextArea,</span></span></div><div class="line">    		String emailName, <span class="keyword">boolean</span> emailFlag)&#123;</div><div class="line">    	<span class="keyword">this</span>.mail_to=mail_to;</div><div class="line">    	<span class="keyword">this</span>.emailName = emailName;</div><div class="line">    	<span class="keyword">this</span>.mail_body =mail_body;</div><div class="line">    	<span class="keyword">this</span>.jTextArea=jTextArea;</div><div class="line">    	<span class="keyword">this</span>.emailFlag = emailFlag;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/** */</span><span class="comment">/**</span></div><div class="line">     * 此段代码用来发送普通电子邮件</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            Properties props = <span class="keyword">new</span> Properties(); <span class="comment">// 获取系统环境</span></div><div class="line">            Authenticator auth = <span class="keyword">new</span> Email_Autherticator(); <span class="comment">// 进行邮件服务器用户认证</span></div><div class="line">            props.put(<span class="string">"mail.smtp.host"</span>, host);</div><div class="line">            props.put(<span class="string">"mail.smtp.auth"</span>, <span class="string">"true"</span>);</div><div class="line">            Session session = Session.getDefaultInstance(props, auth);</div><div class="line">            <span class="comment">// 设置session,和邮件服务器进行通讯。</span></div><div class="line">            MimeMessage message = <span class="keyword">new</span> MimeMessage(session);</div><div class="line">            <span class="comment">// message.setContent("foobar, "application/x-foobar"); // 设置邮件格式</span></div><div class="line">            message.setSubject(mail_subject); <span class="comment">// 设置邮件主题</span></div><div class="line">            message.setText(mail_body); <span class="comment">// 设置邮件正文</span></div><div class="line">            message.setHeader(mail_head_name, mail_head_value); <span class="comment">// 设置邮件标题</span></div><div class="line">            message.setSentDate(<span class="keyword">new</span> Date()); <span class="comment">// 设置邮件发送日期</span></div><div class="line">            Address address = <span class="keyword">new</span> InternetAddress(mail_from, personalName);</div><div class="line">            message.setFrom(address); <span class="comment">// 设置邮件发送者的地址</span></div><div class="line">            Address toAddress = <span class="keyword">new</span> InternetAddress(mail_to); <span class="comment">// 设置邮件接收方的地址</span></div><div class="line">            message.addRecipient(Message.RecipientType.TO, toAddress);</div><div class="line">            Transport.send(message); <span class="comment">// 发送邮件</span></div><div class="line">            jTextArea.append(<span class="string">"\r\n*****发送邮件给-"</span>+emailName+<span class="string">"-成功*****\r\n"</span>);</div><div class="line">            <span class="keyword">if</span>(emailFlag)&#123;</div><div class="line">            	jTextArea.append(<span class="string">"*****邮件内容*****\r\n"</span>);</div><div class="line">                jTextArea.append(mail_body+<span class="string">"\r\n"</span>);</div><div class="line">            &#125;            </div><div class="line">        &#125; <span class="keyword">catch</span> (Exception ex)&#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">            jTextArea.append(<span class="string">"\r\n*****发送邮件失败*****\r\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/** */</span><span class="comment">/**</span></div><div class="line">     * 用来进行服务器对用户的认证</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Email_Autherticator</span> <span class="keyword">extends</span> <span class="title">Authenticator</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Email_Autherticator</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">super</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Email_Autherticator</span><span class="params">(String user, String pwd)</span></span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">super</span>();</div><div class="line">            username = user;</div><div class="line">            password = pwd;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> PasswordAuthentication(username, password);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>用来发送邮件，没什么好说的</li>
+</ul>
+<h3 id="服务器线程类-ServerThread"><a href="#服务器线程类-ServerThread" class="headerlink" title="服务器线程类 ServerThread"></a>服务器线程类 ServerThread</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> qiu;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.TextArea;</div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.io.PrintWriter;</div><div class="line"><span class="keyword">import</span> java.net.Socket;</div><div class="line"><span class="keyword">import</span> java.util.Calendar;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextArea;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</div><div class="line">	Socket socket = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">int</span> clientNum;</div><div class="line">	 PrintWriter printWriter=<span class="keyword">null</span>;</div><div class="line">	 String info;</div><div class="line">	JTextArea jTextArea;</div><div class="line">	 String [] name ;</div><div class="line">	 String [] mac ;</div><div class="line">	 <span class="keyword">int</span> [] time;</div><div class="line">	 <span class="keyword">boolean</span>[] isQianDao;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ServerThread</span><span class="params">(Socket socket ,<span class="keyword">int</span> num,PrintWriter printWriter,JTextArea jTextArea</span></span></div><div class="line">			, String[] name,String[] mac, <span class="keyword">int</span>[] time, <span class="keyword">boolean</span>[] isQianDao)&#123;</div><div class="line">		<span class="keyword">this</span>.socket = socket;</div><div class="line">		clientNum = num + <span class="number">1</span>;</div><div class="line">		<span class="keyword">this</span>.printWriter = printWriter;</div><div class="line">		<span class="keyword">this</span>.jTextArea = jTextArea;</div><div class="line">		<span class="keyword">this</span>.name=name;</div><div class="line">		<span class="keyword">this</span>.mac=mac;</div><div class="line">		<span class="keyword">this</span>.time=time;</div><div class="line">		<span class="keyword">this</span>.isQianDao=isQianDao;</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">//获得客户端发送过来的数据的流</span></div><div class="line">       	<span class="keyword">try</span> &#123;</div><div class="line">			BufferedReader br = <span class="keyword">new</span> BufferedReader</div><div class="line">					(<span class="keyword">new</span> InputStreamReader(socket.getInputStream()));</div><div class="line">			printWriter = <span class="keyword">new</span> PrintWriter(socket.getOutputStream(),<span class="keyword">true</span>);</div><div class="line">			<span class="comment">//读取从客户端发送过来的信息</span></div><div class="line">	       	<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">	      		 info = br.readLine();</div><div class="line">	      		 <span class="keyword">if</span>(info!=<span class="keyword">null</span>)&#123;</div><div class="line">	      			 <span class="comment">//数组中存在此mac地址</span></div><div class="line">	      			 <span class="keyword">int</span> result = isMac(info);</div><div class="line">	      			 <span class="keyword">if</span>(result!=-<span class="number">1</span>)&#123;</div><div class="line">	      				 <span class="comment">//表示该用户已经签到</span></div><div class="line">	      				 <span class="keyword">if</span>(isQianDao[result]==<span class="keyword">true</span>)&#123;</div><div class="line">	      					printWriter.println(<span class="string">"-1"</span>);<span class="comment">//不能重复签到</span></div><div class="line">	      				 &#125;<span class="keyword">else</span>&#123;</div><div class="line">	      					 isQianDao[result]=<span class="keyword">true</span>;</div><div class="line">	      					 time[result]++;</div><div class="line">	      					jTextArea.append(<span class="string">"\r\n\n*****"</span>+name[result]+<span class="string">"-签到成功*****\r\n"</span></div><div class="line">	      					 +<span class="string">"*****总签到次数="</span>+time[result]+<span class="string">"*****\r\n"</span>+</div><div class="line">	      			      			 <span class="string">"*****时间="</span>+getTime()+<span class="string">"*****\r\n"</span>+<span class="string">"*****mac地址="</span>+info+<span class="string">"*****\r\n"</span>);</div><div class="line">	      					 printWriter.println(time[result]+<span class="string">""</span>);<span class="comment">//签到次数</span></div><div class="line">	      					</div><div class="line">	      				 &#125;</div><div class="line">	      				 </div><div class="line">	      			 &#125;<span class="keyword">else</span>&#123;</div><div class="line">	      				jTextArea.append(<span class="string">"\r\n\n*****不存在的mac地址*****\r\n"</span>+</div><div class="line">	      			 <span class="string">"*****时间="</span>+getTime()+<span class="string">"*****\r\n"</span>+<span class="string">"*****mac地址="</span>+info+<span class="string">"*****\r\n"</span>);</div><div class="line">			      		printWriter.println(<span class="string">"-2"</span>);<span class="comment">//不存在的mac地址，签到失败</span></div><div class="line">	      			 &#125; </div><div class="line">	       	&#125;</div><div class="line">	       &#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 用来判断mac地址是否存在在数组中</div><div class="line">	 * */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">isMac</span><span class="params">(String str)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> f=-<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;mac.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(mac[i].equals(str))&#123;</div><div class="line">				f=i;</div><div class="line">				<span class="keyword">return</span> f;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> f;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 用来获取当前的时间</div><div class="line">	 * <span class="doctag">@return</span> 当前的时间</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTime</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//可以对每个单独时间域进行修改</span></div><div class="line">		Calendar c = Calendar.getInstance();</div><div class="line">		<span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);<span class="comment">//周几</span></div><div class="line">		<span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);<span class="comment">//r</span></div><div class="line">		<span class="keyword">int</span> month = c.get(Calendar.MONTH);<span class="comment">//月份</span></div><div class="line">		<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">		<span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</div><div class="line">		<span class="keyword">int</span> second = c.get(Calendar.SECOND);</div><div class="line">			</div><div class="line">		<span class="keyword">return</span> month+<span class="string">"月"</span>+day+<span class="string">"号-"</span>+<span class="string">"星期"</span>+week+<span class="string">"--"</span>+hour+<span class="string">"时"</span>+minute+<span class="string">"分"</span>+second+<span class="string">"秒"</span>;	</div><div class="line">	   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>每次服务器监听到有用户请求签到的时候就为用户开辟一个 ServerThread 线程用来</li>
+</ul>
+<p>处理用户请求，所谓的多客户端签到系统，多客户就是通过这里来实现的，里面的主要</p>
+<p>判断逻辑是通过用户传递过来的 mac 地址来判断，如果服务器中不存在用户的 mac </p>
+<p>地址，就认为是非法请求 ，如果存在再判断是否签到，然后进行处理，最后发送最后</p>
+<p>的处理信息传递给客户端</p>
+<h2 id="客户端-MyClient"><a href="#客户端-MyClient" class="headerlink" title="客户端 MyClient"></a>客户端 MyClient</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> qiu;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.BorderLayout;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.io.PrintWriter;</div><div class="line"><span class="keyword">import</span> java.net.Socket;</div><div class="line"><span class="keyword">import</span> java.net.UnknownHostException;</div><div class="line"><span class="keyword">import</span> java.util.Calendar;</div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">import</span> javax.swing.JFrame;</div><div class="line"><span class="keyword">import</span> javax.swing.JPanel;</div><div class="line"><span class="keyword">import</span> javax.swing.JScrollPane;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextArea;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextField;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 客户端</div><div class="line"> * */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClient</span> <span class="keyword">extends</span> <span class="title">JFrame</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;</div><div class="line">    </div><div class="line">	JTextArea jTextArea=<span class="keyword">null</span>;</div><div class="line">	JPanel jPanel=<span class="keyword">null</span>;</div><div class="line">	JScrollPane jScrollPane=<span class="keyword">null</span>;</div><div class="line">	JButton sendButton=<span class="keyword">null</span>;</div><div class="line">	PrintWriter printWriter=<span class="keyword">null</span>;</div><div class="line">	</div><div class="line"><span class="comment">/**</span></div><div class="line">  *  客户端的主函数</div><div class="line">  * */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">      <span class="keyword">new</span> MyClient();</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 客户端构造函数用来初始化</div><div class="line"> * */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyClient</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//GUI初始化</span></div><div class="line">	jTextArea= <span class="keyword">new</span> JTextArea();</div><div class="line">	sendButton= <span class="keyword">new</span> JButton(<span class="string">"签到"</span>);</div><div class="line">	sendButton.addActionListener(<span class="keyword">this</span>);</div><div class="line">	sendButton.setActionCommand(<span class="string">"send"</span>);</div><div class="line">	jScrollPane=<span class="keyword">new</span> JScrollPane(jTextArea);</div><div class="line">	jPanel=<span class="keyword">new</span> JPanel();</div><div class="line">	jPanel.add(sendButton);</div><div class="line">		</div><div class="line">	<span class="keyword">this</span>.add(jScrollPane,BorderLayout.CENTER);</div><div class="line">	<span class="keyword">this</span>.add(jPanel,BorderLayout.SOUTH);</div><div class="line">		</div><div class="line">	<span class="keyword">this</span>.setSize(<span class="number">400</span>, <span class="number">300</span>);</div><div class="line">	<span class="keyword">this</span>.setTitle(<span class="string">"签到客户端"</span>);</div><div class="line">	<span class="keyword">this</span>.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">	<span class="keyword">this</span>.setVisible(<span class="keyword">true</span>);</div><div class="line">    <span class="keyword">this</span>.setResizable(<span class="keyword">true</span>);	</div><div class="line">        </div><div class="line">    <span class="comment">//socket通信代码</span></div><div class="line">     <span class="keyword">try</span> &#123;</div><div class="line">    	Socket s= <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>,<span class="number">10124</span>);</div><div class="line">		BufferedReader br = <span class="keyword">new</span> BufferedReader</div><div class="line">				(<span class="keyword">new</span> InputStreamReader(s.getInputStream()));</div><div class="line">		printWriter= <span class="keyword">new</span> PrintWriter(s.getOutputStream(),<span class="keyword">true</span>);</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">          	<span class="comment">//不停的读取服务器发过来的信息</span></div><div class="line">            String string=br.readLine();</div><div class="line">            <span class="keyword">if</span>(string.equals(<span class="string">"-1"</span>))&#123;<span class="comment">//不能重复签到</span></div><div class="line">            	jTextArea.append(<span class="string">"\r\n**********不能重复签到**********\r\n"</span>);</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(string.equals(<span class="string">"-2"</span>))&#123;<span class="comment">//没有mac地址</span></div><div class="line">            	jTextArea.append(<span class="string">"\r\n**********服务器中不存在您的mac地址,签到失败**********\r\n"</span>);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//签到成功，显示签到次数</span></div><div class="line">            	jTextArea.append(<span class="string">"\r\n**********签到成功**********\r\n\n"</span>+</div><div class="line">	      			      			 <span class="string">"*****你的总签到次数="</span>+string+<span class="string">"*****\r\n"</span>);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line">			</div><div class="line">	&#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 用来获取当前的时间</div><div class="line"> * <span class="doctag">@return</span> 当前的时间</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getTime</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//可以对每个单独时间域进行修改</span></div><div class="line">	Calendar c = Calendar.getInstance();</div><div class="line">	<span class="keyword">int</span> week = c.get(Calendar.DAY_OF_WEEK);<span class="comment">//周几</span></div><div class="line">	<span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);<span class="comment">//r</span></div><div class="line">	<span class="keyword">int</span> month = c.get(Calendar.MONTH);<span class="comment">//月份</span></div><div class="line">	<span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);<span class="comment">//获取小时</span></div><div class="line">	<span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</div><div class="line">	<span class="keyword">int</span> second = c.get(Calendar.SECOND);</div><div class="line">		</div><div class="line">	<span class="keyword">return</span> month+<span class="string">"月"</span>+day+<span class="string">"号-"</span>+<span class="string">"星期"</span>+week+<span class="string">"--"</span>+hour+<span class="string">"时"</span>+minute+<span class="string">"分"</span>+second+<span class="string">"秒"</span>;	</div><div class="line">   &#125;</div><div class="line"><span class="comment">/**</span></div><div class="line">  * 当button被点击的时候调用</div><div class="line">  */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	<span class="keyword">if</span>(sendButton.getActionCommand().equals(<span class="string">"send"</span>))&#123;</div><div class="line">		<span class="comment">//将客户端发送的信息发送给服务端</span></div><div class="line">		jTextArea.append(<span class="string">"\r\n*****请求签到*****\r\n"</span>+<span class="string">"*****"</span>+getTime()+<span class="string">"*****\r\n"</span>);</div><div class="line">		<span class="comment">//getUnixMACAddress getWindowsMACAddress</span></div><div class="line">		printWriter.println(SystemTool.getUnixMACAddress());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用的时候注意在构造函数中的服务器 ip 地址和在 actionPerformed() 函数中</li>
+</ul>
+<p>得到的是 windows 的 mac 还是 linux 的 mac 地址 </p>
+<ul>
+<li>客户端中也是先初始化界面，然后监听服务端发送过来的消息</li>
+</ul>
+<h2 id="工具类-SystemTool"><a href="#工具类-SystemTool" class="headerlink" title="工具类 SystemTool"></a>工具类 SystemTool</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> qiu;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.net.InetAddress;</div><div class="line"><span class="keyword">import</span> java.net.UnknownHostException;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@className</span>: SystemTool</div><div class="line"> * <span class="doctag">@description</span>: 与系统相关的一些常用工具方法. 目前实现的有：获取MAC地址、IP地址、主机名</div><div class="line"> * <span class="doctag">@author</span>: 笑遍世界</div><div class="line"> * <span class="doctag">@createTime</span>: 2010-11-13 下午08:03:44</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SystemTool</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* 获取当前操作系统名称.</div><div class="line">* return 操作系统名称 例如:windows xp,linux 等.</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getOSName</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> System.getProperty(<span class="string">"os.name"</span>).toLowerCase();</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line">* 获取unix网卡的mac地址.</div><div class="line">* 非windows的系统默认调用本方法获取.如果有特殊系统请继续扩充新的取mac地址方法.</div><div class="line">* <span class="doctag">@return</span> mac地址</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getUnixMACAddress</span><span class="params">()</span> </span>&#123;</div><div class="line">	String mac = <span class="keyword">null</span>;</div><div class="line">	BufferedReader bufferedReader = <span class="keyword">null</span>;</div><div class="line">	Process process = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">			process = Runtime.getRuntime().exec(<span class="string">"ifconfig"</span>);<span class="comment">// linux下的命令，一般取eth0作为本地主网卡 显示信息中包含有mac地址信息</span></div><div class="line">			bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(process</div><div class="line">			.getInputStream()));</div><div class="line">		String line = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">int</span> index = -<span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</div><div class="line">			index = line.toLowerCase().indexOf(<span class="string">"硬件地址"</span>);<span class="comment">// 寻找标示字符串[hwaddr]</span></div><div class="line">			<span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;<span class="comment">// 找到了</span></div><div class="line">				mac = line.substring(index +<span class="string">"硬件地址"</span>.length()+ <span class="number">1</span>).trim();<span class="comment">//  取出mac地址并去除2边空格</span></div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; <span class="keyword">finally</span> &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">if</span> (bufferedReader != <span class="keyword">null</span>) &#123;</div><div class="line">				bufferedReader.close();</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e1) &#123;</div><div class="line">			e1.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		bufferedReader = <span class="keyword">null</span>;</div><div class="line">		process = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> mac;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* 获取widnows网卡的mac地址.</div><div class="line">* <span class="doctag">@return</span> mac地址</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getWindowsMACAddress</span><span class="params">()</span> </span>&#123;</div><div class="line">	String mac = <span class="keyword">null</span>;</div><div class="line">	BufferedReader bufferedReader = <span class="keyword">null</span>;</div><div class="line">	Process process = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		process = Runtime.getRuntime().exec(<span class="string">"ipconfig /all"</span>);<span class="comment">// windows下的命令，显示信息中包含有mac地址信息</span></div><div class="line">		bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(process</div><div class="line">				.getInputStream()));</div><div class="line">		String line = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">int</span> index = -<span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</div><div class="line">			index = line.toLowerCase().indexOf(<span class="string">"物理地址"</span>);<span class="comment">// 寻找标示字符串[physical address]物理地址</span></div><div class="line">			<span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;<span class="comment">// 找到了</span></div><div class="line">				index = line.indexOf(<span class="string">":"</span>);<span class="comment">// 寻找":"的位置</span></div><div class="line">				<span class="keyword">if</span> (index&gt;=<span class="number">0</span>) &#123;</div><div class="line">					mac = line.substring(index + <span class="number">1</span>).trim();<span class="comment">//  取出mac地址并去除2边空格</span></div><div class="line">				&#125;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; <span class="keyword">finally</span> &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">if</span> (bufferedReader != <span class="keyword">null</span>) &#123;</div><div class="line">				bufferedReader.close();</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e1) &#123;</div><div class="line">			e1.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		bufferedReader = <span class="keyword">null</span>;</div><div class="line">		process = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> mac;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line">* <span class="doctag">@return</span>  本机主机名</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getHostName</span><span class="params">()</span> </span>&#123;</div><div class="line">	InetAddress ia = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		ia = InetAddress.getLocalHost();</div><div class="line">	&#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; </div><div class="line">	<span class="keyword">if</span> (ia == <span class="keyword">null</span> ) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"some error.."</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> </div><div class="line">		<span class="keyword">return</span> ia.getHostName();</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line">* <span class="doctag">@return</span>  本机IP 地址</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getIPAddress</span><span class="params">()</span> </span>&#123;</div><div class="line">	InetAddress ia = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		ia = InetAddress.getLocalHost();</div><div class="line">	&#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; </div><div class="line">	<span class="keyword">if</span> (ia == <span class="keyword">null</span> ) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"some error.."</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> </div><div class="line">		<span class="keyword">return</span> ia.getHostAddress();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* 测试用的main方法.</div><div class="line">* </div><div class="line">* <span class="doctag">@param</span> argc</div><div class="line">*            运行参数.</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argc)</span> </span>&#123;</div><div class="line">	</div><div class="line">	 String os = getOSName();</div><div class="line">	System.out.println(<span class="string">"OS Type:"</span>+os);</div><div class="line">	<span class="keyword">if</span>(os.startsWith(<span class="string">"windows"</span>))&#123;</div><div class="line">		<span class="comment">//本地是windows</span></div><div class="line">		String mac = getWindowsMACAddress();</div><div class="line">		System.out.println(<span class="string">"MAC Address:"</span>+mac);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="comment">//本地是非windows系统 一般就是unix</span></div><div class="line">		String mac = getUnixMACAddress();</div><div class="line">		System.out.println(mac);</div><div class="line">	&#125;</div><div class="line">	System.out.println(<span class="string">"HostName:"</span>+getHostName());</div><div class="line">	System.out.println(<span class="string">"IPAddress:"</span>+getIPAddress());</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>用来得到用户的 mac 地址，注意 windows 和 linux 是不一样的</li>
+</ul>
+<h2 id="源码，客户端，服务器和所需的jar包下载"><a href="#源码，客户端，服务器和所需的jar包下载" class="headerlink" title="源码，客户端，服务器和所需的jar包下载"></a>源码，客户端，服务器和所需的jar包下载</h2><ul>
+<li><p><a href="http://oe7guoyyy.bkt.clouddn.com/mail.jar" target="_blank" rel="external">mail.jar</a> 邮件发送需要的jar包</p>
+</li>
+<li><p><a href="http://oe7guoyyy.bkt.clouddn.com/qiandao.zip" target="_blank" rel="external">源码</a></p>
+</li>
+<li><p><a href="http://oe7guoyyy.bkt.clouddn.com/%E7%AD%BE%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8.jar" target="_blank" rel="external">服务端</a></p>
+</li>
+<li><p><a href="http://oe7guoyyy.bkt.clouddn.com/windows%E5%AE%A2%E6%88%B7%E7%AB%AF.jar" target="_blank" rel="external">windows客户端</a></p>
+</li>
+<li><p><a href="http://oe7guoyyy.bkt.clouddn.com/linux%E5%AE%A2%E6%88%B7%E7%AB%AF.jar" target="_blank" rel="external">linux客户端</a></p>
+</li>
+</ul>
+<h3 id="服务端的使用方法"><a href="#服务端的使用方法" class="headerlink" title="服务端的使用方法"></a>服务端的使用方法</h3><ul>
+<li>通过命令</li>
+</ul>
+<blockquote>
+<p>java -jar 签到服务器.jar</p>
+</blockquote>
+<h3 id="客户端的使用方法"><a href="#客户端的使用方法" class="headerlink" title="客户端的使用方法"></a>客户端的使用方法</h3><ul>
+<li><p>windows 下安装 JDK 之后双击可执行</p>
+</li>
+<li><p>linux 下使用命令</p>
+</li>
+</ul>
+<blockquote>
+<p>java -jar linux客户端.jar</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA进阶之路/" rel="tag"># JAVA进阶之路</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/11/JAVA进阶之路/JavaMail发送邮件实例/" rel="next" title="JavaMail发送邮件实例">
+                <i class="fa fa-chevron-left"></i> JavaMail发送邮件实例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/16/ubuntu/ubuntu安装lampp/" rel="prev" title="ubuntu安装lampp">
+                ubuntu安装lampp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="戎码人生" />
+          <p class="site-author-name" itemprop="name">戎码人生</p>
+           
+              <p class="site-description motion-element" itemprop="description">彪悍的人生不需要解释</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果"><span class="nav-number">1.1.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理和功能"><span class="nav-number">1.2.</span> <span class="nav-text">原理和功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端代码"><span class="nav-number">2.</span> <span class="nav-text">服务端代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器主类-MyServer"><span class="nav-number">2.1.</span> <span class="nav-text">服务器主类 MyServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间线程类-TimeThread"><span class="nav-number">2.2.</span> <span class="nav-text">时间线程类 TimeThread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邮件发送类-JavaEmail"><span class="nav-number">2.3.</span> <span class="nav-text">邮件发送类 JavaEmail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器线程类-ServerThread"><span class="nav-number">2.4.</span> <span class="nav-text">服务器线程类 ServerThread</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端-MyClient"><span class="nav-number">3.</span> <span class="nav-text">客户端 MyClient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具类-SystemTool"><span class="nav-number">4.</span> <span class="nav-text">工具类 SystemTool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码，客户端，服务器和所需的jar包下载"><span class="nav-number">5.</span> <span class="nav-text">源码，客户端，服务器和所需的jar包下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端的使用方法"><span class="nav-number">5.1.</span> <span class="nav-text">服务端的使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端的使用方法"><span class="nav-number">5.2.</span> <span class="nav-text">客户端的使用方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎码人生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ds7Z6wfgZDXtlM8MEMdnKgcgx7Qy3Q40-_puv7SDRTk" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="戎码人生" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是可变参数
+在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现
+
+12void foo(String... args);void foo(String[] args);
+
+//方法签名([Ljava/lang/String;)V // public void foo(String[] args)
+
+定义方法在定义方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java可变参数">
+<meta property="og:url" content="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java可变参数/index.html">
+<meta property="og:site_name" content="戎码人生">
+<meta property="og:description" content="什么是可变参数
+在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现
+
+12void foo(String... args);void foo(String[] args);
+
+//方法签名([Ljava/lang/String;)V // public void foo(String[] args)
+
+定义方法在定义方法">
+<meta property="og:updated_time" content="2017-05-25T10:03:56.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java可变参数">
+<meta name="twitter:description" content="什么是可变参数
+在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现
+
+12void foo(String... args);void foo(String[] args);
+
+//方法签名([Ljava/lang/String;)V // public void foo(String[] args)
+
+定义方法在定义方法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java可变参数/"/>
+
+
+
+
+
+  <title>Java可变参数 | 戎码人生</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78633936-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">戎码人生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界上有10种人，一种懂二进制，一种不懂二进制 ！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/08/14/JAVA/Java可变参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java可变参数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-14T05:55:32+08:00">
+                2016-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是可变参数"><a href="#什么是可变参数" class="headerlink" title="什么是可变参数"></a>什么是可变参数</h2><ul>
+<li>在 Java 5 中提供了变长参数，允许在调用方法时传入不定长度的参数。变长参数是Java的一个语法糖，本质上还是基于数组的实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String[] args)</span></span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>//方法签名<br>([Ljava/lang/String;)V // public void foo(String[] args)</p>
+</blockquote>
+<h3 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h3><p>在定义方法时，在最后一个形参后加上三点“…“，就表示该形参可以接受多个参数值，多个参数值被当成数组传入。上述定义有几个要点需要注意：</p>
+<ul>
+<li><p>可变参数只能作为函数的最后一个参数，但其前面可以有也可以没有任何其他参数</p>
+</li>
+<li><p>由于可变参数必须是最后一个参数，所以一个函数最多只能有一个可变参数</p>
+</li>
+<li><p>Java的可变参数，会被编译器转型为一个数组</p>
+</li>
+<li><p>变长参数在编译为字节码后，在方法签名中就是以数组形态出现的。这两个方法的签名是一致的，不能作为方法的重载。如果同时出现，是不能编译通过的。可变参数可以兼容数组，反之则不成立</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String...varargs)</span></span>&#123;&#125;</div><div class="line"></div><div class="line">foo(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>);</div><div class="line"></div><div class="line"><span class="comment">//上述过程和下面的调用是等价的</span></div><div class="line">foo(<span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>&#125;);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>J2SE 1.5中新增了“泛型”的机制，可以在一定条件下把一个类型参数化。例如，可以在编写一个类的时候，把一个方法的形参的类型用一个标识符（如T）来代表， 至于这个标识符到底表示什么类型，则在生成这个类的实例的时候再行指定。这一机制可以用来提供更充分的代码重用和更严格的编译时类型检查。不过泛型机制却不能和个数可变的形参配合使用。如果把一个能和不确定个实参相匹配的形参的类型，用一个标识符来代表，那么编译器会给出一个“generic array creation”的错误</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(String arg : args) &#123;<span class="comment">//当作数组用foreach遍历</span></div><div class="line">            System.out.println(arg);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//Compile error</span></div><div class="line">    <span class="comment">//The variable argument type Object of the method must be the last parameter</span></div><div class="line">    <span class="comment">//public void error1(String... args, Object o) &#123;&#125;</span></div><div class="line">    <span class="comment">//public void error2(String... args, Integer... i) &#123;&#125;</span></div><div class="line"></div><div class="line">        <span class="comment">//Compile error</span></div><div class="line">        <span class="comment">//Duplicate method test(String...) in type Varargs</span></div><div class="line">        <span class="comment">//public void test(String[] args)&#123;&#125;</span></div></pre></td></tr></table></figure>
+<h2 id="可变参数方法的调用"><a href="#可变参数方法的调用" class="headerlink" title="可变参数方法的调用"></a>可变参数方法的调用</h2><ul>
+<li>调用可变参数方法，可以给出零到任意多个参数，编译器会将可变参数转化为一个数组。也可以直接传递一个数组，示例如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(String arg : args) &#123;</div><div class="line">            System.out.println(arg);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        test();<span class="comment">//0个参数</span></div><div class="line">        test(<span class="string">"a"</span>);<span class="comment">//1个参数</span></div><div class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//多个参数</span></div><div class="line">        test(<span class="keyword">new</span> String[] &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>&#125;);<span class="comment">//直接传递数组</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><h3 id="优先匹配固定参数"><a href="#优先匹配固定参数" class="headerlink" title="优先匹配固定参数"></a>优先匹配固定参数</h3><ul>
+<li>调用一个被重载的方法时，如果此调用既能够和固定参数的重载方法匹配，也能够与可变长参数的重载方法匹配，则选择固定参数的方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 1"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String arg1, String arg2)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 2"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//version 2 优先匹配固定参数的重载方法</span></div><div class="line">                test();<span class="comment">//version 1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="匹配多个可变参数"><a href="#匹配多个可变参数" class="headerlink" title="匹配多个可变参数"></a>匹配多个可变参数</h3><ul>
+<li>调用一个被重载的方法时，如果此调用既能够和两个可变长参数的重载方法匹配，则编译出错</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Varargs</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 1"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String arg1, String... arg2)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"version 2"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        test(<span class="string">"a"</span>,<span class="string">"b"</span>);<span class="comment">//Compile error</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2><h3 id="避免带有变长参数的方法重载"><a href="#避免带有变长参数的方法重载" class="headerlink" title="避免带有变长参数的方法重载"></a>避免带有变长参数的方法重载</h3><ul>
+<li>即便编译器可以按照优先匹配固定参数的方式确定具体的调用方法，但在阅读代码的依然容易掉入陷阱。要慎重考虑变长参数的方法重载</li>
+</ul>
+<h3 id="别让null值和空值威胁到变长方法"><a href="#别让null值和空值威胁到变长方法" class="headerlink" title="别让null值和空值威胁到变长方法"></a>别让null值和空值威胁到变长方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;  </div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(String str,Integer... is)</span></span>&#123;       </div><div class="line">     &#125;  </div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(String str,String... strs)</span></span>&#123;          </div><div class="line">     &#125;  </div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">           Client client = <span class="keyword">new</span> Client();  </div><div class="line">           client.methodA(<span class="string">"China"</span>, <span class="number">0</span>);  </div><div class="line">           client.methodA(<span class="string">"China"</span>, <span class="string">"People"</span>);  </div><div class="line">           client.methodA(<span class="string">"China"</span>);  <span class="comment">//compile error</span></div><div class="line">           client.methodA(<span class="string">"China"</span>,<span class="keyword">null</span>);  <span class="comment">//compile error</span></div><div class="line">     &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>修改如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">     Client client = <span class="keyword">new</span> Client();  </div><div class="line">     String[] strs = <span class="keyword">null</span>;  </div><div class="line">     client.methodA(<span class="string">"China"</span>,strs);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>让编译器知道这个null值是String类型的，编译即可顺利通过，也就减少了错误的发生</li>
+</ul>
+<h3 id="覆写变长方法也要循规蹈矩"><a href="#覆写变长方法也要循规蹈矩" class="headerlink" title="覆写变长方法也要循规蹈矩"></a>覆写变长方法也要循规蹈矩</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VarArgsTest2</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        <span class="comment">// 向上转型</span></div><div class="line">        Base base = <span class="keyword">new</span> Sub();</div><div class="line">        base.print(<span class="string">"hello"</span>);</div><div class="line">        <span class="comment">// 不转型</span></div><div class="line">        Sub sub = <span class="keyword">new</span> Sub();</div><div class="line">        sub.print(<span class="string">"hello"</span>);<span class="comment">//compile error</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 基类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Base......test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 子类，覆写父类方法</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Sub......test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>第一个能编译通过，这是为什么呢？事实上，base对象把子类对象sub做了向上转型，形参列表是由父类决定的，当然能通过。而看看子类直接调用的情况，这时编译器看到子类覆写了父类的print方法，因此肯定使用子类重新定义的print方法，尽管参数列表不匹配也不会跑到父类再去匹配下，因为找到了就不再找了，因此有了类型不匹配的错误</p>
+</li>
+<li><p>这是个特例，覆写的方法参数列表竟然可以与父类不相同，这违背了覆写的定义，并且会引发莫名其妙的错误</p>
+</li>
+</ul>
+<hr>
+<p>这里，总结下覆写必须满足的条件：</p>
+<ul>
+<li><p>覆写方法不能缩小访问权限</p>
+</li>
+<li><p>参数列表必须与被覆写方法相同（包括显示形式）</p>
+</li>
+<li><p>返回类型必须与被覆写方法的相同或是其子类</p>
+</li>
+<li><p>覆写方法不能抛出新的异常，或者超出父类范围的异常，但是可以抛出更少、更有限的异常，或者不抛出异常</p>
+</li>
+</ul>
+<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="使用-Object…-作为变长参数"><a href="#使用-Object…-作为变长参数" class="headerlink" title="使用 Object… 作为变长参数"></a>使用 Object… 作为变长参数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(Object... args)</span> </span>&#123;</div><div class="line">    System.out.println(args.length);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"arg3"</span>&#125;); <span class="comment">//3</span></div><div class="line">foo(<span class="number">100</span>, <span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg1"</span>&#125;); <span class="comment">//2</span></div><div class="line"></div><div class="line">foo(<span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;); <span class="comment">//3</span></div><div class="line">foo(<span class="number">100</span>, <span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;); <span class="comment">//2</span></div><div class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">//3</span></div><div class="line">foo(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;); <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<ul>
+<li>int[] 无法转型为 Object[], 因而被当作一个单纯的<strong>数组对象</strong> ; Integer[] 可以转型为 Object[], 可以作为一个<strong>对象数组</strong></li>
+</ul>
+<h3 id="反射方法调用时的注意事项"><a href="#反射方法调用时的注意事项" class="headerlink" title="反射方法调用时的注意事项"></a>反射方法调用时的注意事项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... varargs)</span></span>&#123;</div><div class="line">        System.out.println(args.length);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        String[] varArgs = <span class="keyword">new</span> String[]&#123;<span class="string">"arg1"</span>, <span class="string">"arg2"</span>&#125;;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            Method method = Test.class.getMethod(<span class="string">"foo"</span>, String[].class);</div><div class="line">            method.invoke(<span class="keyword">null</span>, varArgs);</div><div class="line">            method.invoke(<span class="keyword">null</span>, (Object[])varArgs);</div><div class="line">            method.invoke(<span class="keyword">null</span>, (Object)varArgs);</div><div class="line">            method.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[]&#123;varArgs&#125;);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e)&#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>上面的四个调用中，前两个都会在运行时抛出java.lang.IllegalArgumentException: wrong number of arguments异常，后两个则正常调用</p>
+</li>
+<li><p>反射是运行时获取的，在运行时看来，可变长参数和数组是一致的，因而方法签名为：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法签名</span></div><div class="line">([Ljava/lang/String;)V <span class="comment">// public void foo(String[] varargs)</span></div></pre></td></tr></table></figure>
+<ul>
+<li>再来看一下 Method 对象的方法声明：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">Object <span class="title">invoke</span><span class="params">(Object obj, Object... args)</span></span></div></pre></td></tr></table></figure>
+<ul>
+<li>args 虽然是一个可变长度的参数，但是 args 的长度是受限于该方法对象代表的真实方法的参数列表长度的，而从运行时签名来看，([Ljava/lang/String;)V 实际上只有一个形参，即 String[] varargs，因而 invoke(Object obj, Object… args) 中可变参数 args 的<strong>实参长度只能为1</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Object invoke(Object obj, Object... args)</span></div><div class="line"><span class="comment">//String[] varArgs = new String[]&#123;"arg1", "arg2"&#125;;</span></div><div class="line">method.invoke(<span class="keyword">null</span>, varArgs); <span class="comment">//varArgs长度为2，错误</span></div><div class="line">method.invoke(<span class="keyword">null</span>, (Object[])varArgs); <span class="comment">//将String[]转换为Object[],长度为2的，错误</span></div><div class="line">method.invoke(<span class="keyword">null</span>, (Object)varArgs);<span class="comment">//将整个String[] 转为Object，长度为1，符合</span></div><div class="line">method.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[]&#123;varArgs&#125;);<span class="comment">//Object[]长度为1，正确。上一个和这个是等价的</span></div></pre></td></tr></table></figure>
+<h2 id="什么时候使用可变长参数？"><a href="#什么时候使用可变长参数？" class="headerlink" title="什么时候使用可变长参数？"></a>什么时候使用可变长参数？</h2><ul>
+<li><a href="http://stackoverflow.com/questions/766559/when-do-you-use-varargs-in-java" target="_blank" rel="external">Stack Overflow</a> 上有个关于变长参数使用的问题。简单地说，<br>在不确定方法需要处理的对象的数量时可以使用可变长参数，会使得方法调用更简单，无需手动创建数组 new T[]{…} </li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p><a href="http://blog.jrwang.me/2015/java-varargs/" target="_blank" rel="external">Java 中的变长参数</a></p>
+</li>
+<li><p><a href="http://dylangao.com/2014/01/06/java-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8/" target="_blank" rel="external">Java 可变参数列表</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/lanxuezaipiao/p/3190673.html" target="_blank" rel="external">Java中可变长参数的使用及注意事项</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/14/项目管理/https方式向github提交代码总是输入用户名和密码/" rel="next" title="https方式向github提交代码总是输入用户名和密码">
+                <i class="fa fa-chevron-left"></i> https方式向github提交代码总是输入用户名和密码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/14/JAVA/Java方法签名/" rel="prev" title="Java方法签名">
+                Java方法签名 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="戎码人生" />
+          <p class="site-author-name" itemprop="name">戎码人生</p>
+           
+              <p class="site-description motion-element" itemprop="description">彪悍的人生不需要解释</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是可变参数"><span class="nav-number">1.</span> <span class="nav-text">什么是可变参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义方法"><span class="nav-number">1.1.</span> <span class="nav-text">定义方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变参数方法的调用"><span class="nav-number">2.</span> <span class="nav-text">可变参数方法的调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法重载"><span class="nav-number">3.</span> <span class="nav-text">方法重载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优先匹配固定参数"><span class="nav-number">3.1.</span> <span class="nav-text">优先匹配固定参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配多个可变参数"><span class="nav-number">3.2.</span> <span class="nav-text">匹配多个可变参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法重写"><span class="nav-number">4.</span> <span class="nav-text">方法重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#避免带有变长参数的方法重载"><span class="nav-number">4.1.</span> <span class="nav-text">避免带有变长参数的方法重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#别让null值和空值威胁到变长方法"><span class="nav-number">4.2.</span> <span class="nav-text">别让null值和空值威胁到变长方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆写变长方法也要循规蹈矩"><span class="nav-number">4.3.</span> <span class="nav-text">覆写变长方法也要循规蹈矩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能出现的问题"><span class="nav-number">5.</span> <span class="nav-text">可能出现的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Object…-作为变长参数"><span class="nav-number">5.1.</span> <span class="nav-text">使用 Object… 作为变长参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射方法调用时的注意事项"><span class="nav-number">5.2.</span> <span class="nav-text">反射方法调用时的注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候使用可变长参数？"><span class="nav-number">6.</span> <span class="nav-text">什么时候使用可变长参数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎码人生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

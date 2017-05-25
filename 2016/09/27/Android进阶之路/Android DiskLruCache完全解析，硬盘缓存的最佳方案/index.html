@@ -1,0 +1,947 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="ds7Z6wfgZDXtlM8MEMdnKgcgx7Qy3Q40-_puv7SDRTk" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android进阶之路," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="戎码人生" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="概述
+防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android DiskLruCache完全解析，硬盘缓存的最佳方案">
+<meta property="og:url" content="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/index.html">
+<meta property="og:site_name" content="戎码人生">
+<meta property="og:description" content="概述
+防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%901.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%902.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%903.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%905.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%906.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%908.png">
+<meta property="og:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%909.png">
+<meta property="og:updated_time" content="2017-05-25T10:03:56.265Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android DiskLruCache完全解析，硬盘缓存的最佳方案">
+<meta name="twitter:description" content="概述
+防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，">
+<meta name="twitter:image" content="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%901.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/"/>
+
+
+
+
+
+  <title>Android DiskLruCache完全解析，硬盘缓存的最佳方案 | 戎码人生</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78633936-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">戎码人生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界上有10种人，一种懂二进制，一种不懂二进制 ！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/09/27/Android进阶之路/Android DiskLruCache完全解析，硬盘缓存的最佳方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android DiskLruCache完全解析，硬盘缓存的最佳方案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-27T23:44:34+08:00">
+                2016-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android进阶之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Android进阶之路</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p>防止多图OOM的核心解决思路就是使用LruCache技术。但LruCache只是管理了内存中图片的存储与释放，如果图片从内存中被移除的话，那么又需要从网络上重新加载一次图片，这显然非常耗时。对此，Google又提供了一套硬盘缓存的解决方案：DiskLruCache(非Google官方编写，但获得官方认证)。只可惜，Android Doc中并没有对DiskLruCache的用法给出详细的说明，而网上关于DiskLruCache的资料也少之又少，因此今天我准备专门写一篇博客来详细讲解DiskLruCache的用法，以及分析它的工作原理，这应该也是目前网上关于DiskLruCache最详细的资料了</p>
+</li>
+<li><p>那么我们先来看一下有哪些应用程序已经使用了DiskLruCache技术。在我所接触的应用范围里，Dropbox、Twitter、网易新闻等都是使用DiskLruCache来进行硬盘缓存的，其中Dropbox和Twitter大多数人应该都没用过，那么我们就从大家最熟悉的网易新闻开始着手分析，来对DiskLruCache有一个最初的认识吧</p>
+</li>
+</ul>
+<h2 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h2><ul>
+<li>相信所有人都知道，网易新闻中的数据都是从网络上获取的，包括了很多的新闻内容和新闻图片，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%901.png" alt=""></center>
+
+<a id="more"></a>
+<ul>
+<li><p>但是不知道大家有没有发现，这些内容和图片在从网络上获取到之后都会存入到本地缓存中，因此即使手机在没有网络的情况下依然能够加载出以前浏览过的新闻。而使用的缓存技术不用多说，自然是DiskLruCache了，那么首先第一个问题，这些数据都被缓存在了手机的什么位置呢？</p>
+</li>
+<li><p>其实DiskLruCache并没有限制数据的缓存位置，可以自由地进行设定，但是通常情况下多数应用程序都会将缓存的位置选择为 /sdcard/Android/data/<application package="">/cache 这个路径。选择在这个位置有两点好处：第一，这是存储在SD卡上的，因此即使缓存再多的数据也不会对手机的内置存储空间有任何影响，只要SD卡空间足够就行。第二，这个路径被Android系统认定为应用程序的缓存路径，当程序被卸载的时候，这里的数据也会一起被清除掉，这样就不会出现删除程序之后手机上还有很多残留数据的问题</application></p>
+</li>
+<li><p>那么这里还是以网易新闻为例，它的客户端的包名是com.netease.newsreader.activity，因此数据缓存地址就应该是 /sdcard/Android/data/com.netease.newsreader.activity/cache ，我们进入到这个目录中看一下，结果如下图所示：</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%902.png" alt=""></center>
+
+<ul>
+<li>可以看到有很多个文件夹，因为网易新闻对多种类型的数据都进行了缓存，这里简单起见我们只分析图片缓存就好，所以进入到bitmap文件夹当中。然后你将会看到一堆文件名很长的文件，这些文件命名没有任何规则，完全看不懂是什么意思，但如果你一直向下滚动，将会看到一个名为journal的文件，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%903.png" alt=""></center>
+
+<ul>
+<li>那么这些文件到底都是什么呢？看到这里相信有些朋友已经是一头雾水了，这里我简单解释一下。上面那些文件名很长的文件就是一张张缓存的图片，每个文件都对应着一张图片，而journal文件是DiskLruCache的一个日志文件，程序对每张图片的操作记录都存放在这个文件中，基本上看到journal这个文件就标志着该程序使用DiskLruCache技术了</li>
+</ul>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
+<li><p>好了，对DiskLruCache有了最初的认识之后，下面我们来学习一下DiskLruCache的用法吧。由于DiskLruCache并不是由Google官方编写的，所以这个类并没有被包含在Android API当中，我们需要将这个类从网上下载下来，然后手动添加到项目当中。DiskLruCache的源码在Google Source上，地址如下：</p>
+</li>
+<li><p><a href="https://android.googlesource.com/platform/libcore/+/jb-mr2-release/luni/src/main/java/libcore/io/DiskLruCache.java" target="_blank" rel="external">传送门</a></p>
+</li>
+<li><p>如果Google Source打不开的话，也可以 <a href="http://download.csdn.net/detail/sinyu890807/7709759" target="_blank" rel="external">点击这里</a> 下载DiskLruCache的源码。下载好了源码之后，只需要在项目中新建一个libcore.io包，然后将DiskLruCache.java文件复制到这个包中即可</p>
+</li>
+</ul>
+<h2 id="打开缓存"><a href="#打开缓存" class="headerlink" title="打开缓存"></a>打开缓存</h2><ul>
+<li>这样的话我们就把准备工作做好了，下面看一下DiskLruCache到底该如何使用。首先你要知道，DiskLruCache是不能new出实例的，如果我们要创建一个DiskLruCache的实例，则需要调用它的open()方法，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DiskLruCache <span class="title">open</span><span class="params">(File directory, <span class="keyword">int</span> appVersion, <span class="keyword">int</span> valueCount, <span class="keyword">long</span> maxSize)</span></span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>open()方法接收四个参数，第一个参数指定的是数据的缓存地址，第二个参数指定当前应用程序的版本号，第三个参数指定同一个key可以对应多少个缓存文件，基本都是传1，第四个参数指定最多可以缓存多少字节的数据</p>
+</li>
+<li><p>其中缓存地址前面已经说过了，通常都会存放在 /sdcard/Android/data/<application package="">/cache 这个路径下面，但同时我们又需要考虑如果这个手机没有SD卡，或者SD正好被移除了的情况，因此比较优秀的程序都会专门写一个方法来获取缓存地址，如下所示：</application></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> File <span class="title">getDiskCacheDir</span><span class="params">(Context context, String uniqueName)</span> </span>&#123;  </div><div class="line">    String cachePath;  </div><div class="line">    <span class="keyword">if</span> (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())  </div><div class="line">            || !Environment.isExternalStorageRemovable()) &#123;  </div><div class="line">        cachePath = context.getExternalCacheDir().getPath();  </div><div class="line">    &#125; <span class="keyword">else</span> &#123;  </div><div class="line">        cachePath = context.getCacheDir().getPath();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> File(cachePath + File.separator + uniqueName);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>可以看到，当SD卡存在或者SD卡不可被移除的时候，就调用getExternalCacheDir()方法来获取缓存路径，否则就调用getCacheDir()方法来获取缓存路径。前者获取到的就是 /sdcard/Android/data/(application package)/cache 这个路径，而后者获取到的是 /data/data/(application package)/cache 这个路径</p>
+</li>
+<li><p>接着又将获取到的路径和一个uniqueName进行拼接，作为最终的缓存路径返回。那么这个uniqueName又是什么呢？其实这就是为了对不同类型的数据进行区分而设定的一个唯一值，比如说在网易新闻缓存路径下看到的bitmap、object等文件夹</p>
+</li>
+<li><p>接着是应用程序版本号，我们可以使用如下代码简单地获取到当前应用程序的版本号：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAppVersion</span><span class="params">(Context context)</span> </span>&#123;  </div><div class="line">    <span class="keyword">try</span> &#123;  </div><div class="line">        PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), <span class="number">0</span>);  </div><div class="line">        <span class="keyword">return</span> info.versionCode;  </div><div class="line">    &#125; <span class="keyword">catch</span> (NameNotFoundException e) &#123;  </div><div class="line">        e.printStackTrace();  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>需要注意的是，每当版本号改变，缓存路径下存储的所有数据都会被清除掉，因为DiskLruCache认为当应用程序有版本更新的时候，所有的数据都应该从网上重新获取</p>
+</li>
+<li><p>后面两个参数就没什么需要解释的了，第三个参数传1，第四个参数通常传入10M的大小就够了，这个可以根据自身的情况进行调节。<br>因此，一个非常标准的open()方法就可以这样写：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DiskLruCache mDiskLruCache = <span class="keyword">null</span>;  </div><div class="line"><span class="keyword">try</span> &#123;  </div><div class="line">    File cacheDir = getDiskCacheDir(context, <span class="string">"bitmap"</span>);  </div><div class="line">    <span class="keyword">if</span> (!cacheDir.exists()) &#123;  </div><div class="line">        cacheDir.mkdirs();  </div><div class="line">    &#125;  </div><div class="line">    mDiskLruCache = DiskLruCache.open(cacheDir, getAppVersion(context), <span class="number">1</span>, <span class="number">10</span> * <span class="number">1024</span> * <span class="number">1024</span>);  </div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">    e.printStackTrace();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>首先调用getDiskCacheDir()方法获取到缓存地址的路径，然后判断一下该路径是否存在，如果不存在就创建一下。接着调用DiskLruCache的open()方法来创建实例，并把四个参数传入即可</p>
+</li>
+<li><p>有了DiskLruCache的实例之后，我们就可以对缓存的数据进行操作了，操作类型主要包括写入、访问、移除等，我们一个个进行学习</p>
+</li>
+</ul>
+<h2 id="写入缓存"><a href="#写入缓存" class="headerlink" title="写入缓存"></a>写入缓存</h2><ul>
+<li>先来看写入，比如说现在有一张图片，地址是</li>
+</ul>
+<blockquote>
+<p><a href="http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg" target="_blank" rel="external">http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg</a></p>
+</blockquote>
+<ul>
+<li>那么为了将这张图片下载下来，就可以这样写：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">downloadUrlToStream</span><span class="params">(String urlString, OutputStream outputStream)</span> </span>&#123;  </div><div class="line">    HttpURLConnection urlConnection = <span class="keyword">null</span>;  </div><div class="line">    BufferedOutputStream out = <span class="keyword">null</span>;  </div><div class="line">    BufferedInputStream in = <span class="keyword">null</span>;  </div><div class="line">    <span class="keyword">try</span> &#123;  </div><div class="line">        <span class="keyword">final</span> URL url = <span class="keyword">new</span> URL(urlString);  </div><div class="line">        urlConnection = (HttpURLConnection) url.openConnection();  </div><div class="line">        in = <span class="keyword">new</span> BufferedInputStream(urlConnection.getInputStream(), <span class="number">8</span> * <span class="number">1024</span>);  </div><div class="line">        out = <span class="keyword">new</span> BufferedOutputStream(outputStream, <span class="number">8</span> * <span class="number">1024</span>);  </div><div class="line">        <span class="keyword">int</span> b;  </div><div class="line">        <span class="keyword">while</span> ((b = in.read()) != -<span class="number">1</span>) &#123;  </div><div class="line">            out.write(b);  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </div><div class="line">    &#125; <span class="keyword">catch</span> (<span class="keyword">final</span> IOException e) &#123;  </div><div class="line">        e.printStackTrace();  </div><div class="line">    &#125; <span class="keyword">finally</span> &#123;  </div><div class="line">        <span class="keyword">if</span> (urlConnection != <span class="keyword">null</span>) &#123;  </div><div class="line">            urlConnection.disconnect();  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">try</span> &#123;  </div><div class="line">            <span class="keyword">if</span> (out != <span class="keyword">null</span>) &#123;  </div><div class="line">                out.close();  </div><div class="line">            &#125;  </div><div class="line">            <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;  </div><div class="line">                in.close();  </div><div class="line">            &#125;  </div><div class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">final</span> IOException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这段代码相当基础，相信大家都看得懂，就是访问urlString中传入的网址，并通过outputStream写入到本地。有了这个方法之后，下面我们就可以使用DiskLruCache来进行写入了，写入的操作是借助DiskLruCache.Editor这个类完成的。类似地，这个类也是不能new的，需要调用DiskLruCache的edit()方法来获取实例，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Editor <span class="title">edit</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>可以看到，edit()方法接收一个参数key，这个key将会成为缓存文件的文件名，并且必须要和图片的URL是一一对应的。那么怎样才能让key和图片的URL能够一一对应呢？直接使用URL来作为key？不太合适，因为图片URL中可能包含一些特殊字符，这些字符有可能在命名文件时是不合法的。其实最简单的做法就是将图片的URL进行MD5编码，编码后的字符串肯定是唯一的，并且只会包含0-F这样的字符，完全符合文件的命名规则</p>
+</li>
+<li><p>那么我们就写一个方法用来将字符串进行MD5编码，代码如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hashKeyForDisk</span><span class="params">(String key)</span> </span>&#123;  </div><div class="line">    String cacheKey;  </div><div class="line">    <span class="keyword">try</span> &#123;  </div><div class="line">        <span class="keyword">final</span> MessageDigest mDigest = MessageDigest.getInstance(<span class="string">"MD5"</span>);  </div><div class="line">        mDigest.update(key.getBytes());  </div><div class="line">        cacheKey = bytesToHexString(mDigest.digest());  </div><div class="line">    &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;  </div><div class="line">        cacheKey = String.valueOf(key.hashCode());  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> cacheKey;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">private</span> String <span class="title">bytesToHexString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;  </div><div class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();  </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bytes.length; i++) &#123;  </div><div class="line">        String hex = Integer.toHexString(<span class="number">0xFF</span> &amp; bytes[i]);  </div><div class="line">        <span class="keyword">if</span> (hex.length() == <span class="number">1</span>) &#123;  </div><div class="line">            sb.append(<span class="string">'0'</span>);  </div><div class="line">        &#125;  </div><div class="line">        sb.append(hex);  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> sb.toString();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>代码很简单，现在我们只需要调用一下hashKeyForDisk()方法，并把图片的URL传入到这个方法中，就可以得到对应的key了</p>
+</li>
+<li><p>因此，现在就可以这样写来得到一个DiskLruCache.Editor的实例：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">String key = hashKeyForDisk(imageUrl);  </div><div class="line">DiskLruCache.Editor editor = mDiskLruCache.edit(key);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>有了DiskLruCache.Editor的实例之后，我们可以调用它的newOutputStream()方法来创建一个输出流，然后把它传入到downloadUrlToStream()中就能实现下载并写入缓存的功能了。注意newOutputStream()方法接收一个index参数，由于前面在设置valueCount的时候指定的是1，所以这里index传0就可以了。在写入操作执行完之后，我们还需要调用一下commit()方法进行提交才能使写入生效，调用abort()方法的话则表示放弃此次写入</p>
+</li>
+<li><p>因此，一次完整写入操作的代码如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">try</span> &#123;  </div><div class="line">            String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">            String key = hashKeyForDisk(imageUrl);  </div><div class="line">            DiskLruCache.Editor editor = mDiskLruCache.edit(key);  </div><div class="line">            <span class="keyword">if</span> (editor != <span class="keyword">null</span>) &#123;  </div><div class="line">                OutputStream outputStream = editor.newOutputStream(<span class="number">0</span>);  </div><div class="line">                <span class="keyword">if</span> (downloadUrlToStream(imageUrl, outputStream)) &#123;  </div><div class="line">                    editor.commit();  </div><div class="line">                &#125; <span class="keyword">else</span> &#123;  </div><div class="line">                    editor.abort();  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">            mDiskLruCache.flush();  </div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;).start();</div></pre></td></tr></table></figure>
+<ul>
+<li><p>由于这里调用了downloadUrlToStream()方法来从网络上下载图片，所以一定要确保这段代码是在子线程当中执行的。注意在代码的最后我还调用了一下flush()方法，这个方法并不是每次写入都必须要调用的，但在这里却不可缺少，我会在后面说明它的作用</p>
+</li>
+<li><p>现在的话缓存应该是已经成功写入了，我们进入到SD卡上的缓存目录里看一下，如下图所示：</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%905.png" alt=""></center>
+
+<ul>
+<li>可以看到，这里有一个文件名很长的文件，和一个journal文件，那个文件名很长的文件自然就是缓存的图片了，因为是使用了MD5编码来进行命名的</li>
+</ul>
+<h2 id="读取缓存"><a href="#读取缓存" class="headerlink" title="读取缓存"></a>读取缓存</h2><ul>
+<li>缓存已经写入成功之后，接下来我们就该学习一下如何读取了。读取的方法要比写入简单一些，主要是借助DiskLruCache的get()方法实现的，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Snapshot <span class="title">get</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException</span></div></pre></td></tr></table></figure>
+<ul>
+<li>很明显，get()方法要求传入一个key来获取到相应的缓存数据，而这个key毫无疑问就是将图片URL进行MD5编码后的值了，因此读取缓存数据的代码就可以这样写：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">String key = hashKeyForDisk(imageUrl);  </div><div class="line">DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);</div></pre></td></tr></table></figure>
+<ul>
+<li>很奇怪的是，这里获取到的是一个DiskLruCache.Snapshot对象，这个对象我们该怎么利用呢？很简单，只需要调用它的getInputStream()方法就可以得到缓存文件的输入流了。同样地，getInputStream()方法也需要传一个index参数，这里传入0就好。有了文件的输入流之后，想要把缓存图片显示到界面上就轻而易举了。所以，一段完整的读取缓存，并将图片加载到界面上的代码如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;  </div><div class="line">    String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;  </div><div class="line">    String key = hashKeyForDisk(imageUrl);  </div><div class="line">    DiskLruCache.Snapshot snapShot = mDiskLruCache.get(key);  </div><div class="line">    <span class="keyword">if</span> (snapShot != <span class="keyword">null</span>) &#123;  </div><div class="line">        InputStream is = snapShot.getInputStream(<span class="number">0</span>);  </div><div class="line">        Bitmap bitmap = BitmapFactory.decodeStream(is);  </div><div class="line">        mImage.setImageBitmap(bitmap);  </div><div class="line">    &#125;  </div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">    e.printStackTrace();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>我们使用了BitmapFactory的decodeStream()方法将文件流解析成Bitmap对象，然后把它设置到ImageView当中。如果运行一下程序，将会看到如下效果：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%906.png" alt=""></center>
+
+<ul>
+<li>OK，图片已经成功显示出来了。注意这是我们从本地缓存中加载的，而不是从网络上加载的，因此即使在你手机没有联网的情况下，这张图片仍然可以显示出来</li>
+</ul>
+<h2 id="移除缓存"><a href="#移除缓存" class="headerlink" title="移除缓存"></a>移除缓存</h2><ul>
+<li>学习完了写入缓存和读取缓存的方法之后，最难的两个操作你就都已经掌握了，那么接下来要学习的移除缓存对你来说也一定非常轻松了。移除缓存主要是借助DiskLruCache的remove()方法实现的，接口如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(String key)</span> <span class="keyword">throws</span> IOException</span></div></pre></td></tr></table></figure>
+<ul>
+<li>相信你已经相当熟悉了，remove()方法中要求传入一个key，然后会删除这个key对应的缓存图片，示例代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;  </div><div class="line">    String imageUrl = <span class="string">"http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg"</span>;    </div><div class="line">    String key = hashKeyForDisk(imageUrl);    </div><div class="line">    mDiskLruCache.remove(key);  </div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">    e.printStackTrace();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>用法虽然简单，但是你要知道，这个方法我们并不应该经常去调用它。因为你完全不需要担心缓存的数据过多从而占用SD卡太多空间的问题，DiskLruCache会根据我们在调用open()方法时设定的缓存最大值来自动删除多余的缓存。只有你确定某个key对应的缓存内容已经过期，需要从网络获取最新数据的时候才应该调用remove()方法来移除缓存</li>
+</ul>
+<h2 id="其它API"><a href="#其它API" class="headerlink" title="其它API"></a>其它API</h2><ul>
+<li>除了写入缓存、读取缓存、移除缓存之外，DiskLruCache还提供了另外一些比较常用的API，我们简单学习一下</li>
+</ul>
+<h3 id="size"><a href="#size" class="headerlink" title="size()"></a>size()</h3><ul>
+<li>这个方法会返回当前缓存路径下所有缓存数据的总字节数，以byte为单位，如果应用程序中需要在界面上显示当前缓存数据的总大小，就可以通过调用这个方法计算出来。比如网易新闻中就有这样一个功能，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%907.png" alt=""></center>
+
+<h3 id="flush"><a href="#flush" class="headerlink" title="flush()"></a>flush()</h3><ul>
+<li>这个方法用于将内存中的操作记录同步到日志文件（也就是journal文件）当中。这个方法非常重要，因为DiskLruCache能够正常工作的前提就是要依赖于journal文件中的内容。前面在讲解写入缓存操作的时候我有调用过一次这个方法，但其实并不是每次写入缓存都要调用一次flush()方法的，频繁地调用并不会带来任何好处，只会额外增加同步journal文件的时间。比较标准的做法就是在Activity的onPause()方法中去调用一次flush()方法就可以了</li>
+</ul>
+<h3 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h3><ul>
+<li>这个方法用于将DiskLruCache关闭掉，是和open()方法对应的一个方法。关闭掉了之后就不能再调用DiskLruCache中任何操作缓存数据的方法，通常只应该在Activity的onDestroy()方法中去调用close()方法</li>
+</ul>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h3><ul>
+<li>这个方法用于将所有的缓存数据全部删除，比如说网易新闻中的那个手动清理缓存功能，其实只需要调用一下DiskLruCache的delete()方法就可以实现了</li>
+</ul>
+<h2 id="解读journal"><a href="#解读journal" class="headerlink" title="解读journal"></a>解读journal</h2><ul>
+<li>前面已经提到过，DiskLruCache能够正常工作的前提就是要依赖于journal文件中的内容，因此，能够读懂journal文件对于我们理解DiskLruCache的工作原理有着非常重要的作用。那么journal文件中的内容到底是什么样的呢？我们来打开瞧一瞧吧，如下图所示：</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%908.png" alt=""></center>
+
+<ul>
+<li><p>由于现在只缓存了一张图片，所以journal中并没有几行日志，我们一行行进行分析。第一行是个固定的字符串“libcore.io.DiskLruCache”，标志着我们使用的是DiskLruCache技术。第二行是DiskLruCache的版本号，这个值是恒为1的。第三行是应用程序的版本号，我们在open()方法里传入的版本号是什么这里就会显示什么。第四行是valueCount，这个值也是在open()方法中传入的，通常情况下都为1。第五行是一个空行。前五行也被称为journal文件的头，这部分内容还是比较好理解的，但是接下来的部分就要稍微动点脑筋了</p>
+</li>
+<li><p>第六行是以一个DIRTY前缀开始的，后面紧跟着缓存图片的key。通常我们看到DIRTY这个字样都不代表着什么好事情，意味着这是一条脏数据。没错，每当我们调用一次DiskLruCache的edit()方法时，都会向journal文件中写入一条DIRTY记录，表示我们正准备写入一条缓存数据，但不知结果如何。然后调用commit()方法表示写入缓存成功，这时会向journal中写入一条CLEAN记录，意味着这条“脏”数据被“洗干净了”，调用abort()方法表示写入缓存失败，这时会向journal中写入一条REMOVE记录。也就是说，每一行DIRTY的key，后面都应该有一行对应的CLEAN或者REMOVE的记录，否则这条数据就是“脏”的，会被自动删除掉</p>
+</li>
+<li><p>如果你足够细心的话应该还会注意到，第七行的那条记录，除了CLEAN前缀和key之外，后面还有一个152313，这是什么意思呢？其实，DiskLruCache会在每一行CLEAN记录的最后加上该条缓存数据的大小，以字节为单位。152313也就是我们缓存的那张图片的字节数了，换算出来大概是148.74K，和缓存图片刚刚好一样大，如下图所示：</p>
+</li>
+</ul>
+<center><img src="http://o99dg8ap9.bkt.clouddn.com/Android%20DiskLruCache%E5%92%8CLruCache%E7%BC%93%E5%AD%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%909.png" alt=""></center>
+
+<ul>
+<li><p>前面我们所学的size()方法可以获取到当前缓存路径下所有缓存数据的总字节数，其实它的工作原理就是把journal文件中所有CLEAN记录的字节数相加，求出的总合再把它返回而已</p>
+</li>
+<li><p>除了DIRTY、CLEAN、REMOVE之外，还有一种前缀是READ的记录，这个就非常简单了，每当我们调用get()方法去读取一条缓存数据时，就会向journal文件中写入一条READ记录。因此，像网易新闻这种图片和数据量都非常大的程序，journal文件中就可能会有大量的READ记录</p>
+</li>
+<li><p>那么你可能会担心了，如果我不停频繁操作的话，就会不断地向journal文件中写入数据，那这样journal文件岂不是会越来越大？这倒不必担心，DiskLruCache中使用了一个redundantOpCount变量来记录用户操作的次数，每执行一次写入、读取或移除缓存的操作，这个变量值都会加1，当变量值达到2000的时候就会触发重构journal的事件，这时会自动把journal中一些多余的、不必要的记录全部清除掉，保证journal文件的大小始终保持在一个合理的范围内</p>
+</li>
+<li><p>好了，这样的话我们就算是把DiskLruCache的用法以及简要的工作原理分析完了。至于DiskLruCache的源码还是比较简单的， 限于篇幅原因就不在这里展开了，感兴趣的朋友可以自己去摸索。下一篇文章中，我会带着大家通过一个项目实战的方式来更加深入地理解DiskLruCache的用法</p>
+</li>
+</ul>
+<h2 id="转载博客"><a href="#转载博客" class="headerlink" title="转载博客"></a>转载博客</h2><ul>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/28863651" target="_blank" rel="external"> Android DiskLruCache完全解析，硬盘缓存的最佳方案</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android进阶之路/" rel="tag"># Android进阶之路</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/27/Android进阶之路/Android高效加载大图、多图和LruCache缓存/" rel="next" title="Android高效加载大图、多图和LruCache缓存">
+                <i class="fa fa-chevron-left"></i> Android高效加载大图、多图和LruCache缓存
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/29/Android项目实战/Android照片墙应用实现，再多的图片也不怕崩溃/" rel="prev" title="Android照片墙应用实现，再多的图片也不怕崩溃">
+                Android照片墙应用实现，再多的图片也不怕崩溃 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="戎码人生" />
+          <p class="site-author-name" itemprop="name">戎码人生</p>
+           
+              <p class="site-description motion-element" itemprop="description">彪悍的人生不需要解释</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初探"><span class="nav-number">2.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">3.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开缓存"><span class="nav-number">4.</span> <span class="nav-text">打开缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入缓存"><span class="nav-number">5.</span> <span class="nav-text">写入缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取缓存"><span class="nav-number">6.</span> <span class="nav-text">读取缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移除缓存"><span class="nav-number">7.</span> <span class="nav-text">移除缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它API"><span class="nav-number">8.</span> <span class="nav-text">其它API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#size"><span class="nav-number">8.1.</span> <span class="nav-text">size()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flush"><span class="nav-number">8.2.</span> <span class="nav-text">flush()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close"><span class="nav-number">8.3.</span> <span class="nav-text">close()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">8.4.</span> <span class="nav-text">delete()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解读journal"><span class="nav-number">9.</span> <span class="nav-text">解读journal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转载博客"><span class="nav-number">10.</span> <span class="nav-text">转载博客</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戎码人生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
