@@ -5,11 +5,14 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
 
 
 
@@ -29,9 +32,12 @@
 
 
 
+
+
+
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -39,43 +45,25 @@
   
   
   
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -83,9 +71,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="戎码人生,android,linux,acm,java,php,c++,C,ios" />
@@ -99,7 +87,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -118,26 +106,37 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"always"},
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: undefined,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
 
 
-
   <link rel="canonical" href="http://www.qiuchengjia.cn/page/18/"/>
 
-  <title> 戎码人生 </title>
+
+
+
+
+  <title>戎码人生</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,11 +144,13 @@
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-78633936-1', 'auto');
   ga('send', 'pageview');
 </script>
@@ -159,11 +160,14 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
+      hm.src = "https://hm.baidu.com/hm.js?e4576958a35169bbd480e4f9e4e45d32";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
+
+
+
 
 
 
@@ -177,31 +181,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">戎码人生</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">戎码人生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世界上有10种人，一种懂二进制，一种不懂二进制 ！</p>
+      
   </div>
-  <p class="site-subtitle">世界上有10种人，一种懂二进制，一种不懂二进制 ！</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -266,7 +274,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
             
-            公益
+            公益404
           </a>
         </li>
       
@@ -274,7 +282,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="#" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
@@ -289,18 +297,30 @@
   
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
 
 
-    </div>
 
+    </div>
   
 </nav>
+
+
 
  </div>
     </header>
@@ -315,13 +335,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/06/01/矩阵/矩阵翻转/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oe7qxqges.bkt.clouddn.com/%E6%96%87%E8%89%BA%E7%9A%84%E9%BB%91%E8%A1%A3%E6%9C%8D%E7%9A%84%E7%94%B7%E7%94%9F%E5%9C%A8%E9%9B%A8%E4%B8%AD%E6%92%91%E7%9D%80%E4%BC%9E.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
 
     
       <header class="post-header">
@@ -329,38 +359,42 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/01/矩阵/矩阵翻转/" itemprop="url">
-                  矩阵翻转
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/01/矩阵/矩阵翻转/" itemprop="url">矩阵翻转</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T15:35:15Z" content="2016-06-01">
-              2016-06-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-01T15:35:15Z">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/矩阵/" itemprop="url" rel="index">
                     <span itemprop="name">矩阵</span>
                   </a>
@@ -368,7 +402,6 @@
 
                 
                 
-
               
             </span>
           
@@ -378,24 +411,28 @@
           
 
           
-
-          
           
              <span id="/2016/06/01/矩阵/矩阵翻转/" class="leancloud_visitors" data-flag-title="矩阵翻转">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -411,12 +448,18 @@
 
 </li>
 </ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/矩阵/矩阵翻转/" rel="contents">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/01/矩阵/矩阵翻转/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -434,6 +477,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -445,13 +490,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/06/01/linux/CentOS从php5-3升级到php5-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oe7qxqges.bkt.clouddn.com/%E6%96%87%E8%89%BA%E7%9A%84%E9%BB%91%E8%A1%A3%E6%9C%8D%E7%9A%84%E7%94%B7%E7%94%9F%E5%9C%A8%E9%9B%A8%E4%B8%AD%E6%92%91%E7%9D%80%E4%BC%9E.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
 
     
       <header class="post-header">
@@ -459,38 +514,42 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" itemprop="url">
-                  CentOS从php5.3升级到php5.5
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" itemprop="url">CentOS从php5.3升级到php5.5</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T15:31:35Z" content="2016-06-01">
-              2016-06-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-01T15:31:35Z">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/linux/" itemprop="url" rel="index">
                     <span itemprop="name">linux</span>
                   </a>
@@ -498,7 +557,6 @@
 
                 
                 
-
               
             </span>
           
@@ -508,24 +566,28 @@
           
 
           
-
-          
           
              <span id="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" class="leancloud_visitors" data-flag-title="CentOS从php5.3升级到php5.5">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -550,12 +612,18 @@
 <li>为了升级取代原来5.3档案</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install yum-plugin-replace  </div><div class="line">  </div><div class="line">yum replace php-common --replace-with=php55w-common</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/" rel="contents">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/01/linux/CentOS从php5-3升级到php5-5/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -573,6 +641,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -584,13 +654,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oe7qxqges.bkt.clouddn.com/%E6%96%87%E8%89%BA%E7%9A%84%E9%BB%91%E8%A1%A3%E6%9C%8D%E7%9A%84%E7%94%B7%E7%94%9F%E5%9C%A8%E9%9B%A8%E4%B8%AD%E6%92%91%E7%9D%80%E4%BC%9E.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
 
     
       <header class="post-header">
@@ -598,38 +678,42 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/" itemprop="url">
-                  Excel数据大量导入MySQL--MySQL数据换行符回车符替换处理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/" itemprop="url">Excel数据大量导入MySQL--MySQL数据换行符回车符替换处理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T15:17:41Z" content="2016-06-01">
-              2016-06-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-01T15:17:41Z">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/MySQL/" itemprop="url" rel="index">
                     <span itemprop="name">MySQL</span>
                   </a>
@@ -637,7 +721,6 @@
 
                 
                 
-
               
             </span>
           
@@ -647,24 +730,28 @@
           
 
           
-
-          
           
              <span id="/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/" class="leancloud_visitors" data-flag-title="Excel数据大量导入MySQL--MySQL数据换行符回车符替换处理">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -675,7 +762,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" rel="gallery_cj34f3cg9004ybwv7ijzh0c4e"
+                 href="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" rel="gallery_cj34gykvg0051qkv7evwab85c"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" itemprop="contentUrl"/>
               </a>
@@ -693,12 +780,18 @@
 <li>首先打开需要导入的表格，然后另存为，选择文本文件(制表符分隔)</li>
 </ul>
 <center><img src="http://img.blog.csdn.net/20160415165437777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/" rel="contents">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/01/MySQL/Excel数据大量导入MySQL-MySQL数据换行符回车符替换处理/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -716,6 +809,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -727,13 +822,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oe7qxqges.bkt.clouddn.com/%E6%96%87%E8%89%BA%E7%9A%84%E9%BB%91%E8%A1%A3%E6%9C%8D%E7%9A%84%E7%94%B7%E7%94%9F%E5%9C%A8%E9%9B%A8%E4%B8%AD%E6%92%91%E7%9D%80%E4%BC%9E.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
 
     
       <header class="post-header">
@@ -741,38 +846,42 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/" itemprop="url">
-                  Android Studio SVN的使用
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/" itemprop="url">Android Studio SVN的使用</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T14:52:54Z" content="2016-06-01">
-              2016-06-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-01T14:52:54Z">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
                     <span itemprop="name">AndroidStudio</span>
                   </a>
@@ -780,7 +889,6 @@
 
                 
                 
-
               
             </span>
           
@@ -790,24 +898,28 @@
           
 
           
-
-          
           
              <span id="/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/" class="leancloud_visitors" data-flag-title="Android Studio SVN的使用">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -829,12 +941,18 @@
 <p>原因在于studio是基于Intellij IDEA开发的，而Intellij IDEA 14.1.4目前还无法使用svn1.9.0这个版本。</p>
 <p>　3. 当你安装TortoiseSVN时，command line client tools 默认是不会安装的，必须手动选择安装上，否则无法在studio中进行svn关联配置</p>
 <center><img src="http://images2015.cnblogs.com/blog/828272/201512/828272-20151204084756986-546433595.png" alt=""></center>　<br><br>4.安装好之后就是进行studio与svn的关联了在studio中打开如下路径File-&gt;Settings-&gt;Version Control-&gt;Subversion,如下图所示：<br><center><img src="http://images2015.cnblogs.com/blog/828272/201512/828272-20151204085204252-55717462.png" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/" rel="contents">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/01/AndroidStudio/Android-Studio-SVN的使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -852,6 +970,8 @@
       
 
       
+
+      
       
         <div class="post-eof"></div>
       
@@ -863,13 +983,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.qiuchengjia.cn/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戎码人生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oe7qxqges.bkt.clouddn.com/%E6%96%87%E8%89%BA%E7%9A%84%E9%BB%91%E8%A1%A3%E6%9C%8D%E7%9A%84%E7%94%B7%E7%94%9F%E5%9C%A8%E9%9B%A8%E4%B8%AD%E6%92%91%E7%9D%80%E4%BC%9E.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戎码人生">
+    </span>
 
     
       <header class="post-header">
@@ -877,38 +1007,42 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/" itemprop="url">
-                  Gneymotion无法启动和Oracle VM VirtualBox常见问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/" itemprop="url">Gneymotion无法启动和Oracle VM VirtualBox常见问题</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T14:44:14Z" content="2016-06-01">
-              2016-06-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-01T14:44:14Z">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
                     <span itemprop="name">AndroidStudio</span>
                   </a>
@@ -916,7 +1050,6 @@
 
                 
                 
-
               
             </span>
           
@@ -926,24 +1059,28 @@
           
 
           
-
-          
           
              <span id="/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/" class="leancloud_visitors" data-flag-title="Gneymotion无法启动和Oracle VM VirtualBox常见问题">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -967,11 +1104,13 @@
 <h3 id="不能创建虚拟主机"><a href="#不能创建虚拟主机" class="headerlink" title="不能创建虚拟主机"></a>不能创建虚拟主机</h3><ul>
 <li>下图这个问题我们需要将虚拟机卸载一下，然后进去C:\Users\Administrator\AppData\Local下删除Genymobile文件夹和删除C:\Users\Administrator下的.VirtualBox<br>就可以解决这个问题，还有就是这里有兼容性问题，如果是别的系统的话，建议使用win7兼容性模式运行</li>
 </ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/" rel="contents">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/01/AndroidStudio/Gneymotion无法启动和Oracle-VM-VirtualBox常见问题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -984,7 +1123,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1032,25 +1177,32 @@
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://oe7qxqges.bkt.clouddn.com/%E6%96%87%E8%89%BA%E7%9A%84%E9%BB%91%E8%A1%A3%E6%9C%8D%E7%9A%84%E7%94%B7%E7%94%9F%E5%9C%A8%E9%9B%A8%E4%B8%AD%E6%92%91%E7%9D%80%E4%BC%9E.gif"
                alt="戎码人生" />
           <p class="site-author-name" itemprop="name">戎码人生</p>
-          <p class="site-description motion-element" itemprop="description">彪悍的人生不需要解释</p>
+           
+              <p class="site-description motion-element" itemprop="description">彪悍的人生不需要解释</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">108</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1058,8 +1210,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">79</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1176,7 +1330,12 @@
           </div>
         
 
+        
+
+
       </section>
+
+      
 
       
 
@@ -1192,7 +1351,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1200,39 +1359,39 @@
   <span class="author" itemprop="copyrightHolder">戎码人生</span>
 </div>
 
-
-
-<div class="theme-info">
-
-  
-</div>
-
-
         
-
 <div class="busuanzi-count">
-
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
   
 
   
-    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
   
 </div>
-
 
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -1255,220 +1414,426 @@
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
 
-  
-  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
   
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "7a3e30d792ef4f998d3d3bf9432b1a32",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
+    var isXml = true;
     // Search DB path;
     var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
     }
     var path = "/" + search_path;
     // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
     }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
     // search function;
     var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
         url: path,
-        dataType: "xml",
+        dataType: isXml ? "xml" : "json",
         async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
                     }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
                         }
-                        str += "</li>";
+                      }
                     }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
             });
-            proceedsearch();
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
         }
-    });}
+      });
+    }
 
     // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
+    $('.popup-trigger').click(function(e) {
       e.stopPropagation();
-      if (isfetched == false) {
+      if (isfetched === false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
         proceedsearch();
       };
-
     });
 
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
+    $('.popup-btn-close').click(onPopupClose);
     $('.popup').click(function(e){
       e.stopPropagation();
     });
-  </script>
-
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
       }
     });
   </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-  </script>
-  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 
   
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("SrdwhMrgLMuFT7RutWzheSK8-gzGzoHsz", "K6zzn3r4jSvkq3riXpiMOrrj");</script>
+  <script>AV.initialize("SrdwhMrgLMuFT7RutWzheSK8", "K6zzn3r4jSvkq3riXpiMOrrj");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
@@ -1574,9 +1939,49 @@
 
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
 </script>
 
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
 
 </body>
 </html>
